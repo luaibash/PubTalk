@@ -1,11 +1,27 @@
 .NavbarContainer {
-    margin: 0 auto;
-    max-width: 1400px;
+    border-bottom: solid 1px #d9d9d9;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
 }
 
 .Navbar {
-    padding-left: 75px;
-    padding-right: 75px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 75px;
+    display: flex;
+}
+
+.NavbarLogoNameContainer {
+    display: flex;
+    align-items: center;
+}
+
+.NavbarLogo {
+    height: 40px;
+}
+
+.NavbarName {
+    padding-left: 10px;
+    height: 20px;
 }
 
 @media (max-width: 1000px) {
