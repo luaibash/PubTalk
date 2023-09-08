@@ -1,0 +1,16 @@
+.NavbarContainer {
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.Navbar {
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+@media (max-width: 1000px) {
+    .Navbar {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
