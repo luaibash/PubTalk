@@ -1,5 +1,6 @@
 import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
+import RedirectButton from './RedirectButton';
 import '../styles/Navbar.css';
 import Logo from '../assets/logo/BlackLogo.png';
 import Name from '../assets/name/ArticleName.png';
@@ -16,6 +17,7 @@ const Navbar = () => {
                     <NavbarPageItem pageName="Home"/>
                     <NavbarPageItem pageName="Team"/>
                     <NavbarPageItem pageName="Contact"/>
+                    <RedirectButton title="Read More" destination="Article"/>
                 </div>
             </div>
         </div>

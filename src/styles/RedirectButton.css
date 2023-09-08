@@ -1,0 +1,9 @@
+.RedirectButton {
+    border: solid 1px;
+    border-radius: 20px;
+    padding: 8px 25px;
+    margin-left: 15px;
+}
+.RedirectButton:hover {
+    cursor: pointer;
+}

@@ -10,7 +10,6 @@
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .NavbarLeft {
@@ -29,6 +28,7 @@
 
 .NavbarRight {
     display: flex;
+    align-items: center;
 }
 
 .NavbarPage {
