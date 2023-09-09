@@ -1,4 +1,18 @@
 .PanelOne {
-    margin-top: 400px;
-    height: 800px;
+    margin-top: 64px;
+    height: 500px;
+}
+
+.PanelTwo {
+    background-color: lightgray;
+    height: 500px;
+}
+
+.PanelThree {
+    height: 500px;
+}
+
+.PanelFour {
+    background-color: lightgray;
+    height: 500px;
 }
