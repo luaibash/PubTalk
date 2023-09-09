@@ -1,30 +1,3 @@
-.Title {
-    font-size: 36px;
-    font-weight: 700;
-}
-
-.Subtext {
-    font-size: 18px;
-    color: #434343;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.PanelOne {
-    margin-top: 64px;
-    height: 500px;
-}
-
-.PanelTwo {
-    background-color: lightgray;
-    height: 500px;
-}
-
-.PanelThree {
-    background-color: lightblue;
-    height: 500px;
-}
-
 .PanelFour {
     max-width: 1400px;
     margin: 0 auto;

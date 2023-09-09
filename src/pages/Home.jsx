@@ -1,6 +1,10 @@
 import React from 'react';
 import RedirectButton from '../components/RedirectButton';
-import '../styles/Home.css';
+import '../styles/home/Home.css';
+import '../styles/home/PanelOne.css';
+import '../styles/home/PanelTwo.css';
+import '../styles/home/PanelThree.css';
+import '../styles/home/PanelFour.css';
 
 const Home = () => {
     return (
