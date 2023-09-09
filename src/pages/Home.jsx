@@ -1,9 +1,18 @@
 import React from 'react';
+import '../styles/Home.css';
 
 const Home = () => {
     return (
         <div>
-            Home Page
+            <PanelOne/>
+        </div>
+    );
+}
+
+const PanelOne = () => {
+    return (
+        <div className='PanelOne'>
+            Panel One
         </div>
     );
 }

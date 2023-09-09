@@ -17,7 +17,7 @@ const Navbar = () => {
                     <NavbarPageItem pageName="Home"/>
                     <NavbarPageItem pageName="Team"/>
                     <NavbarPageItem pageName="Contact"/>
-                    <RedirectButton title="Read More" destination="Article"/>
+                    <RedirectButton title="Read More" destination="article"/>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@ const Navbar = () => {
 }
 
 const NavbarPageItem = ({ pageName }) => {
-    const destination = "/" + pageName.toLowerCase();
+    const destination = "/" + pageName;
     const location = useLocation();
     const navigate = useNavigate();
     const goToLocation = (location) => {
