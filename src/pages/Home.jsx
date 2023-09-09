@@ -1,5 +1,7 @@
 import React from 'react';
+import RedirectButton from '../components/RedirectButton';
 import '../styles/Home.css';
+import ContactBox from '../assets/home/Contact Us Box.png';
 
 const Home = () => {
     return (
@@ -48,6 +50,9 @@ const PanelFour = () => {
                     with constant support, assistance, and a seamless
                     experience.
                 </div>
+            </div>
+            <div className='PanelFourContactContainer'>
+                <RedirectButton title="Contact Us" destination="Contact"/>
             </div>
         </div>
     );

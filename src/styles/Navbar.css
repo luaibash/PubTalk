@@ -55,6 +55,10 @@
     border-bottom: solid 4px;
 }
 
+.NavbarButtonContainer {
+    margin-left: 15px;
+}
+
 @media (max-width: 1000px) {
     .Navbar {
         padding-left: 25px;
