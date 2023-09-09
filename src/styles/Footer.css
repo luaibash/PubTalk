@@ -1,6 +1,8 @@
 .FooterContainer {
     background-color: #F2F2F2;
-    height: 300px;
+
+    color: #666666;
+    font-weight: 500;
 }
 
 .Footer {
@@ -21,12 +23,34 @@
 
 .FooterPages {
     display: flex;
-    
+}
+.FooterPage {
+    margin: 0 20px 30px 20px;
+    transition: color 0.2s;
+}
+.FooterPage:hover {
+    cursor: pointer;
+    color: black;
+}
+#FooterPageActive {
+    color: black;
+}
+
+.Credits {
+    border-top: solid 1px black;
+    padding: 30px 100px; 
 }
 
 @media (max-width: 1000px) {
     .Footer {
         padding-left: 25px;
         padding-right: 25px;
+    }
+}
+
+@media (max-width: 700px) {
+    .Credits {
+        padding-left: 0;
+        padding-right: 0;
     }
 }

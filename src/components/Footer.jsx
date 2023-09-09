@@ -14,9 +14,15 @@ const Footer = () => {
                 </div>
                 <div className='FooterPages'>
                     <FooterPageItem pageName='Home'/>
+                    |
                     <FooterPageItem pageName='Articles'/>
+                    |
                     <FooterPageItem pageName='Team'/>
+                    |
                     <FooterPageItem pageName='Contact'/>
+                </div>
+                <div className='Credits'>
+                    Developed by Luai Bashar and Gabriel Hernandez   
                 </div>
             </div>
         </div>
