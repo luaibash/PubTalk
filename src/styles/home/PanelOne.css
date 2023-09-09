@@ -1,4 +1,13 @@
 .PanelOne {
-    margin-top: 64px;
+    max-width: 1400px;
+    padding-top: 64px;
+    padding-left: 75px;
+    margin: 0 auto;
     height: 500px;
+}
+
+@media (max-width: 1000px) {
+    .PanelOne {
+        padding-left: 25px;
+    }
 }
