@@ -5,7 +5,7 @@ import '../styles/RedirectButton.css';
 const RedirectButton = ({title, destination}) => {
     let navigate = useNavigate();
     const goToLocation = (location) => {
-        navigate(location);
+        navigate(location.toLowerCase());
         window.scrollTo(0,0);
     }
 

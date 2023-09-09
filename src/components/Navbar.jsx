@@ -17,7 +17,7 @@ const Navbar = () => {
                     <NavbarPageItem pageName="Home"/>
                     <NavbarPageItem pageName="Team"/>
                     <NavbarPageItem pageName="Contact"/>
-                    <RedirectButton title="Read More" destination="article"/>
+                    <RedirectButton title="Read More" destination="Article"/>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@ const Navbar = () => {
 }
 
 const NavbarPageItem = ({ pageName }) => {
-    const destination = "/" + pageName;
+    const destination = (pageName != 'Home') ? "/" + pageName.toLowerCase() : '/';
     const location = useLocation();
     const navigate = useNavigate();
     const goToLocation = (location) => {
@@ -36,7 +36,7 @@ const NavbarPageItem = ({ pageName }) => {
     return (
         <div
             className='NavbarPage'
-            id={location.pathname === destination ? "NavbarPageActive" : "NavbarPageInactive"}
+            id={location.pathname.toLowerCase() === destination ? "NavbarPageActive" : "NavbarPageInactive"}
             onClick={() => goToLocation(destination)}
         >
             {pageName}
