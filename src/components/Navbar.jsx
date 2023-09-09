@@ -17,7 +17,7 @@ const Navbar = () => {
                     <NavbarPageItem pageName="Home"/>
                     <NavbarPageItem pageName="Team"/>
                     <NavbarPageItem pageName="Contact"/>
-                    <RedirectButton title="Read More" destination="Article"/>
+                    <RedirectButton title="Read More" destination="Articles"/>
                 </div>
             </div>
         </div>
