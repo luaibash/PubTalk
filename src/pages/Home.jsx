@@ -20,7 +20,20 @@ const Home = () => {
 const PanelOne = () => {
     return (
         <div className='PanelOne'>
-            Panel One
+            <div className='PanelOneTextContainer'>
+                <div className='Title' id='PanelOneTitle'>
+                    Empowering Tomorrow's
+                    Voices, Today.
+                </div>
+                <div className='Subtext' id='PanelOneSubtext'>
+                    Discover different stories and perspectives from
+                    students all around the country, offering unique
+                    perspectives on crucial global topics.
+                </div>
+            </div>
+            <div className='PanelOneImageContainer'>
+
+            </div>
         </div>
     );
 }
