@@ -39,6 +39,7 @@
 .Credits {
     border-top: solid 1px black;
     padding: 30px 100px; 
+    text-align: center;
 }
 
 @media (max-width: 1000px) {
@@ -52,5 +53,12 @@
     .Credits {
         padding-left: 0;
         padding-right: 0;
+    }
+}
+
+@media (max-width: 450px) {
+    .FooterPage {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
