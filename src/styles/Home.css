@@ -1,3 +1,15 @@
+.Title {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.Subtext {
+    font-size: 18px;
+    color: #434343;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .PanelOne {
     margin-top: 64px;
     height: 500px;
@@ -9,10 +21,23 @@
 }
 
 .PanelThree {
+    background-color: lightblue;
     height: 500px;
 }
 
 .PanelFour {
-    background-color: lightgray;
-    height: 500px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 75px 75px;
+    display: flex;
+}
+#PanelFourSubtext {
+    max-width: 460px;
+}
+
+@media (max-width: 1000px) {
+    .PanelFour {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
 }

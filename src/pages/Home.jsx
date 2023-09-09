@@ -39,7 +39,16 @@ const PanelThree = () => {
 const PanelFour = () => {
     return (
         <div className='PanelFour'>
-            Panel Four
+            <div className='PanelFourTextContainer'>
+                <div className='Title'>
+                    Contact Us.
+                </div>
+                <div className='Subtext' id='PanelFourSubtext'>
+                    Here at Article, we are committed to providing users
+                    with constant support, assistance, and a seamless
+                    experience.
+                </div>
+            </div>
         </div>
     );
 }
