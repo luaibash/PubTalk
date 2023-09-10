@@ -20,23 +20,26 @@ const Home = () => {
 const PanelOne = () => {
     return (
         <div className='PanelOne'>
-            <div className='PanelOneTextContainer'>
-                <div className='Title' id='PanelOneTitle'>
-                    Empowering Tomorrow's
-                    Voices, Today.
+            <div className='PanelOneContainer'>
+                <div className='PanelOneTextContainer'>
+                    <div className='Title' id='PanelOneTitle'>
+                        Empowering Tomorrow's
+                        Voices, Today.
+                    </div>
+                    <div className='Subtext' id='PanelOneSubtext'>
+                        Discover different stories and perspectives from
+                        students all around the country, offering unique
+                        perspectives on crucial global topics.
+                    </div>
+                    <div className='PanelOneButton'>
+                        <RedirectButton title="Start Reading" destination="Articles"/>
+                    </div>
                 </div>
-                <div className='Subtext' id='PanelOneSubtext'>
-                    Discover different stories and perspectives from
-                    students all around the country, offering unique
-                    perspectives on crucial global topics.
-                </div>
-                <div className='PanelOneButton'>
-                    <RedirectButton title="Start Reading" destination="Articles"/>
-                </div>
-            </div>
-            <div className='PanelOneImageContainer'>
+                <div className='PanelOneImageContainer'>
 
+                </div>
             </div>
+            <div className='PanelOneDivider'/>
         </div>
     );
 }
