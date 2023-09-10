@@ -1,8 +1,7 @@
 .PanelOne {
     height: 500px;
     max-width: 1475px;
-    padding-top: 64px;
-    padding-left: 75px;
+    padding: 64px 0 75px 75px;
     margin: 0 auto;
 
     display: flex;
@@ -17,7 +16,11 @@
 #PanelOneSubtext {
     max-width: 450px;
     margin-top: 30px;
-    margin-bottom: 30px;
+}
+
+.PanelOneButton {
+    margin-top: 60px;
+    display: flex;
 }
 
 .PanelOneImageContainer {
