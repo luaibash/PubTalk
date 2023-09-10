@@ -27,7 +27,7 @@ const Navbar = () => {
 }
 
 const NavbarPageItem = ({ pageName }) => {
-    const destination = (pageName != 'Home') ? "/" + pageName.toLowerCase() : '/';
+    const destination = (pageName !== 'Home') ? "/" + pageName.toLowerCase() : '/';
     const location = useLocation();
     const navigate = useNavigate();
     const goToLocation = (location) => {
