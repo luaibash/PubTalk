@@ -1,6 +1,8 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom";
 import RedirectButton from '../components/RedirectButton';
 import PersonReading from '../assets/home/PersonReading.png';
+import Arrow from '../assets/home/Arrow.png';
 import '../styles/home/Home.css';
 import '../styles/home/PanelOne.css';
 import '../styles/home/PanelTwo.css';
@@ -46,10 +48,17 @@ const PanelOne = () => {
 }
 
 const PanelTwo = () => {
+    let navigate = useNavigate();
+    const goToLocation = (location) => {
+        navigate(location.toLowerCase());
+        window.scrollTo(0,0);
+    }
+
     return (
         <div className='PanelTwo'>
-            <div className='Title'>
+            <div className='Title' id='PanelTwoTitle' onClick={() => goToLocation('Articles')}>
                 Top Articles
+                <img src={Arrow} alt="" className='Arrow'/>
             </div>
             <div className='Subtext' id='PanelTwoSubtext'>
                 Read into the articles that people are talking
