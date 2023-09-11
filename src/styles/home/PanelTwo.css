@@ -31,6 +31,7 @@
 /* Following code is all for the articles boxes */
 .PanelTwoArticlesContainer {
     display: flex;
+    align-items: center;
 }
 
 .PanelTwoMainBoxContainer {
@@ -47,8 +48,10 @@
 }
 
 .Box {
-    width: 280px;
-    height: 235px;
+    width: 20vw;
+    max-width: 280px;
+    height: 17.3vw;
+    max-height: 235px;
 }
 
 #BoxTop {
@@ -73,4 +76,6 @@
         padding-left: 25px;
         padding-right: 25px;
     }
+
+    /* yuh */
 }
