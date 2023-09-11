@@ -29,6 +29,21 @@
     max-width: 500px;
 }
 
+.PanelTwoArticlesContainer {
+    display: flex;
+}
+
+.PanelTwoMainBoxContainer {
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 20px;
+
+    width: 200px;
+    height: 200px;
+}
+.PanelTwoMainBoxContainer:hover {
+    box-shadow: 0 0 18px rgba(0,0,0,0.25);
+}
+
 @media (max-width: 1000px) {
     .PanelTwo {
         padding-left: 25px;

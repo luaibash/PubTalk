@@ -64,6 +64,14 @@ const PanelTwo = () => {
                 Read into the articles that people are talking
                 about more.
             </div>
+            <div className='PanelTwoArticlesContainer'>
+                <div className='PanelTwoMainBoxContainer'>
+
+                </div>
+                <div className='PanelTwoSmallBoxesContainer'>
+
+                </div>
+            </div>
         </div>
     );
 }
