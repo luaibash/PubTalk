@@ -80,9 +80,22 @@ const PanelTwo = () => {
 }
 
 const PanelThree = () => {
+    let navigate = useNavigate();
+    const goToLocation = (location) => {
+        navigate(location.toLowerCase());
+        window.scrollTo(0,0);
+    }
+
     return (
         <div className='PanelThree'>
-            Panel Three
+            <div className='Title' id='PanelThreeTitle' onClick={() => goToLocation('Articles')}>
+                Most Recent
+                <img src={Arrow} alt="" className='Arrow'/>
+            </div>
+            <div className='Subtext' id='PanelThreeSubtext'>
+                Read into the most recent articles, delivering
+                fresh news on current politics.
+            </div>
         </div>
     );
 }
