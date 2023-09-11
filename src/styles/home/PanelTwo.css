@@ -1,4 +1,14 @@
 .PanelTwo {
-    background-color: lightgray;
     height: 500px;
+    max-width: 1400px;
+
+    padding: 75px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1000px) {
+    .PanelTwo {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
 }
