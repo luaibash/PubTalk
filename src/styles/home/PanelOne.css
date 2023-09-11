@@ -9,10 +9,11 @@
 
 .PanelOneContainer {
     display: flex;
+    align-items: center;
 }
 
 .PanelOneTextContainer {
-    margin-top: 120px;
+    margin-top: 80px;
 }
 #PanelOneTitle {
     max-width: 450px;
@@ -29,8 +30,10 @@
 }
 
 .PanelOneImageContainer {
+    flex: 1;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .PanelOneDivider {

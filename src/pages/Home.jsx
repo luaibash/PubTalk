@@ -1,5 +1,6 @@
 import React from 'react';
 import RedirectButton from '../components/RedirectButton';
+import PersonReading from '../assets/home/PersonReading.png';
 import '../styles/home/Home.css';
 import '../styles/home/PanelOne.css';
 import '../styles/home/PanelTwo.css';
@@ -36,7 +37,7 @@ const PanelOne = () => {
                     </div>
                 </div>
                 <div className='PanelOneImageContainer'>
-
+                    <img src={PersonReading} alt="" className='PanelOneImage'/>
                 </div>
             </div>
             <div className='PanelOneDivider'/>
