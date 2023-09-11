@@ -16,7 +16,7 @@
     max-width: 485px;
     padding-bottom: 5px;
 
-    border-bottom: solid 3px transparent;
+    border-bottom: solid 2px transparent;
 }
 #PanelTwoTitle:hover {
     cursor: pointer;
@@ -28,21 +28,44 @@
     max-width: 500px;
 }
 
+/* Following code is all for the articles boxes */
 .PanelTwoArticlesContainer {
     display: flex;
 }
 
 .PanelTwoMainBoxContainer {
+    width: 43vw;
+    max-width: 600px;
+    height: 37vw;
+    max-height: 500px;
+}
+
+.PanelTwoBoxColumn {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Box {
+    width: 280px;
+    height: 235px;
+}
+
+#BoxTop {
+    margin-bottom: 30px;
+}
+
+.PanelTwoMainBoxContainer, .Box {
+    background-color: white;
+
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     border-radius: 20px;
 
-    width: 500px;
-    height: 500px;
-
     transition: box-shadow 0.2s;
 }
-.PanelTwoMainBoxContainer:hover {
+.PanelTwoMainBoxContainer:hover, .Box:hover {
     box-shadow: 0 0 18px rgba(0,0,0,0.25);
+    cursor: pointer;
 }
 
 @media (max-width: 1000px) {

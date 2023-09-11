@@ -65,11 +65,14 @@ const PanelTwo = () => {
                 about more.
             </div>
             <div className='PanelTwoArticlesContainer'>
-                <div className='PanelTwoMainBoxContainer'>
-
+                <div className='PanelTwoMainBoxContainer'/>
+                <div className='PanelTwoBoxColumn'>
+                    <div className='Box' id='BoxTop'/>
+                    <div className='Box'/>
                 </div>
-                <div className='PanelTwoSmallBoxesContainer'>
-
+                <div className='PanelTwoBoxColumn'>
+                    <div className='Box' id='BoxTop'/>
+                    <div className='Box'/>
                 </div>
             </div>
         </div>
