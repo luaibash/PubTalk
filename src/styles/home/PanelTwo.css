@@ -29,35 +29,6 @@
 }
 
 /* Following code is all for the articles boxes */
-.PanelTwoArticlesContainer {
-    display: flex;
-    align-items: center;
-}
-
-.PanelTwoMainBoxContainer {
-    width: 43vw;
-    max-width: 600px;
-    height: 37vw;
-    max-height: 500px;
-}
-
-.PanelTwoBoxColumn {
-    margin-left: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-.Box {
-    width: 20vw;
-    max-width: 280px;
-    height: 17.3vw;
-    max-height: 235px;
-}
-
-#BoxTop {
-    margin-bottom: 30px;
-}
-
 .PanelTwoMainBoxContainer, .Box {
     background-color: white;
 
@@ -71,11 +42,53 @@
     cursor: pointer;
 }
 
+@media (min-width: 1001px) {
+    .PanelTwoArticlesContainer {
+        display: flex;
+        align-items: center;
+    }
+
+    .PanelTwoMainBoxContainer {
+        width: 43vw;
+        max-width: 600px;
+        height: 37vw;
+        max-height: 500px;
+    }
+    
+    .PanelTwoBoxColumn {
+        margin-left: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .Box {
+        width: 20vw;
+        max-width: 280px;
+        height: 17.3vw;
+        max-height: 235px;
+    }
+    
+    #BoxTop {
+        margin-bottom: 30px;
+    }
+}
 @media (max-width: 1000px) {
     .PanelTwo {
         padding-left: 25px;
         padding-right: 25px;
     }
 
-    /* yuh */
+    .PanelTwoArticlesContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .PanelTwoMainBoxContainer, .Box {
+        height: 225px;
+        max-width: 1000px;
+    }
+
+    .Box {
+        margin-top: 20px;
+    }
 }
