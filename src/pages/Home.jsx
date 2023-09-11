@@ -48,7 +48,13 @@ const PanelOne = () => {
 const PanelTwo = () => {
     return (
         <div className='PanelTwo'>
-            Panel Two
+            <div className='Title'>
+                Top Articles
+            </div>
+            <div className='Subtext'>
+                Read into the articles that people are talking
+                about more.
+            </div>
         </div>
     );
 }

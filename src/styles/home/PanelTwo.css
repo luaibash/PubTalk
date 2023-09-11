@@ -2,8 +2,11 @@
     height: 500px;
     max-width: 1400px;
 
-    padding: 75px;
+    padding: 50px 75px;
     margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
 }
 
 @media (max-width: 1000px) {
