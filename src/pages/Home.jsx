@@ -96,6 +96,20 @@ const PanelThree = () => {
                 Read into the most recent articles, delivering
                 fresh news on current politics.
             </div>
+            <div className='PanelThreeArticlesContainer'>
+                <div className='PanelThreeBoxColumn' id='BoxLeft'>
+                    <div className='Box' id='BoxTop'/>
+                    <div className='Box'/>
+                </div>
+                <div className='PanelThreeBoxColumn' id='BoxLeft'>
+                    <div className='Box' id='BoxTop'/>
+                    <div className='Box'/>
+                </div>
+                <div className='PanelThreeBoxColumn'>
+                    <div className='LongBox' id='BoxTop'/>
+                    <div className='LongBox'/>
+                </div>
+            </div>
         </div>
     );
 }

@@ -26,3 +26,60 @@
     font-size: 20px;
     max-width: 500px;
 }
+
+/* Following code is all for the articles boxes */
+.PanelThreeMainBoxContainer, .Box {
+    background-color: white;
+
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 20px;
+
+    transition: box-shadow 0.2s;
+}
+.PanelThreeMainBoxContainer:hover, .Box:hover {
+    box-shadow: 0 0 18px rgba(0,0,0,0.25);
+    cursor: pointer;
+}
+
+@media (min-width: 1001px) {
+    .PanelThreeArticlesContainer {
+        display: flex;
+        align-items: center;
+    }
+    
+    .PanelThreeBoxColumn {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .Box {
+        width: 20vw;
+        max-width: 280px;
+        height: 17.3vw;
+        max-height: 235px;
+    }
+    
+    #BoxTop {
+        margin-bottom: 30px;
+    }
+    #BoxLeft {
+        margin-right: 30px;
+    }
+}
+@media (max-width: 1000px) {
+    .PanelThree {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .PanelThreeArticlesContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Box {
+        height: 225px;
+        max-width: 1000px;
+        margin-top: 20px;
+    }
+}
