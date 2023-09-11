@@ -51,7 +51,7 @@ const PanelTwo = () => {
             <div className='Title'>
                 Top Articles
             </div>
-            <div className='Subtext'>
+            <div className='Subtext' id='PanelTwoSubtext'>
                 Read into the articles that people are talking
                 about more.
             </div>

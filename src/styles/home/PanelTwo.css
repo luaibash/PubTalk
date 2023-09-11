@@ -9,6 +9,10 @@
     flex-direction: column;
 }
 
+#PanelTwoSubtext {
+    max-width: 400px;
+}
+
 @media (max-width: 1000px) {
     .PanelTwo {
         padding-left: 25px;
