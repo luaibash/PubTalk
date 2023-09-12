@@ -3,6 +3,8 @@
 .App {
   font-family: Inter, serif;
   font-weight: 600;
+  
+  overflow-x: hidden;
 }
 
 img {

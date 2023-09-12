@@ -1,5 +1,5 @@
 .PanelTwo {
-    max-width: 1400px;
+    max-width: 1250px;
 
     padding: 50px 75px;
     margin: 0 auto;
@@ -25,6 +25,24 @@
 #PanelTwoSubtext {
     font-size: 20px;
     max-width: 500px;
+    margin-bottom: 50px;
+}
+
+.PanelTwoArticlesContainer {
+    display: flex;
+    position: relative;
+}
+
+.BlueBlob {
+    position: absolute;
+    top: -40px;
+    left: -150px;
+    z-index: -1;
+
+    height: 45vw;
+    max-height: 630px;
+    width: 110vw;
+    max-width: 1540px;
 }
 
 /* Following code is all for the articles boxes */
@@ -43,7 +61,6 @@
 
 @media (min-width: 1001px) {
     .PanelTwoArticlesContainer {
-        display: flex;
         align-items: center;
     }
 

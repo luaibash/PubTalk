@@ -1,5 +1,5 @@
 .PanelThree {
-    max-width: 1400px;
+    max-width: 1250px;
 
     padding: 50px 75px;
     margin: 0 auto;
@@ -25,6 +25,12 @@
 #PanelThreeSubtext {
     font-size: 20px;
     max-width: 500px;
+    margin-bottom: 50px;
+}
+
+.PanelThreeArticlesContainer {
+    display: flex;
+    position: relative;
 }
 
 /* Following code is all for the articles boxes */
@@ -43,7 +49,6 @@
 
 @media (min-width: 1001px) {
     .PanelThreeArticlesContainer {
-        display: flex;
         align-items: center;
     }
     

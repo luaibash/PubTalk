@@ -2,7 +2,8 @@ import React from 'react';
 import {useNavigate} from "react-router-dom";
 import RedirectButton from '../components/RedirectButton';
 import PersonReading from '../assets/home/PersonReading.png';
-import Arrow from '../assets/home/Arrow.png';
+import Arrow from '../assets/home/Arrow.png'
+import BlueBlob from '../assets/home/BlueBlob.png';
 import '../styles/home/Home.css';
 import '../styles/home/PanelOne.css';
 import '../styles/home/PanelTwo.css';
@@ -74,6 +75,7 @@ const PanelTwo = () => {
                     <div className='Box' id='BoxTop'/>
                     <div className='Box'/>
                 </div>
+                <img src={BlueBlob} alt="" className='BlueBlob'/>
             </div>
         </div>
     );
