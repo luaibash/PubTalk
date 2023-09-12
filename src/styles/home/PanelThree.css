@@ -28,7 +28,7 @@
 }
 
 /* Following code is all for the articles boxes */
-.PanelThreeMainBoxContainer, .Box {
+.Box, .LongBox {
     background-color: white;
 
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
@@ -36,7 +36,7 @@
 
     transition: box-shadow 0.2s;
 }
-.PanelThreeMainBoxContainer:hover, .Box:hover {
+.Box:hover, .LongBox:hover {
     box-shadow: 0 0 18px rgba(0,0,0,0.25);
     cursor: pointer;
 }
@@ -47,14 +47,21 @@
         align-items: center;
     }
     
-    .PanelThreeBoxColumn {
+    .PanelThreeBoxColumn, .PanelThreeLongBoxColumn {
         display: flex;
         flex-direction: column;
+    }
+    .PanelThreeLongBoxColumn {
+        width: 100%;
     }
     
     .Box {
         width: 20vw;
         max-width: 280px;
+        height: 17.3vw;
+        max-height: 235px;
+    }
+    .LongBox {
         height: 17.3vw;
         max-height: 235px;
     }
@@ -77,7 +84,7 @@
         flex-direction: column;
     }
 
-    .Box {
+    .Box, .LongBox {
         height: 225px;
         max-width: 1000px;
         margin-top: 20px;

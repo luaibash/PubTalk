@@ -105,7 +105,7 @@ const PanelThree = () => {
                     <div className='Box' id='BoxTop'/>
                     <div className='Box'/>
                 </div>
-                <div className='PanelThreeBoxColumn'>
+                <div className='PanelThreeLongBoxColumn'>
                     <div className='LongBox' id='BoxTop'/>
                     <div className='LongBox'/>
                 </div>
