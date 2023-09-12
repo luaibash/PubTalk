@@ -107,4 +107,8 @@
     .Box {
         margin-top: 20px;
     }
+
+    .BlueBlob {
+        display: none;
+    }
 }
