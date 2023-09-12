@@ -94,6 +94,10 @@
         padding-right: 25px;
     }
 
+    .BlueBlob {
+        display: none;
+    }
+
     .PanelTwoArticlesContainer {
         display: flex;
         flex-direction: column;
@@ -106,9 +110,5 @@
 
     .Box {
         margin-top: 20px;
-    }
-
-    .BlueBlob {
-        display: none;
     }
 }

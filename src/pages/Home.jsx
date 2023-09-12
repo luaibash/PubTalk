@@ -4,6 +4,7 @@ import RedirectButton from '../components/RedirectButton';
 import PersonReading from '../assets/home/PersonReading.png';
 import Arrow from '../assets/home/Arrow.png'
 import BlueBlob from '../assets/home/BlueBlob.png';
+import PinkBlob from '../assets/home/PinkBlob.png';
 import '../styles/home/Home.css';
 import '../styles/home/PanelOne.css';
 import '../styles/home/PanelTwo.css';
@@ -111,6 +112,7 @@ const PanelThree = () => {
                     <div className='LongBox' id='BoxTop'/>
                     <div className='LongBox'/>
                 </div>
+                <img src={PinkBlob} alt="" className='PinkBlob'/>
             </div>
         </div>
     );
