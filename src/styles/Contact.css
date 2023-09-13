@@ -33,7 +33,7 @@
 .ContactBoxTitle {
     font-size: 24px;
     font-weight: 700;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
     display: flex;
     justify-content: center;
@@ -41,7 +41,9 @@
 
 .ContactBoxRow {
     display: flex;
-    gap: 100px;
+    column-gap: 100px;
+    row-gap: 50px;
+    flex-wrap: wrap;
 }
 
 .InputContainer, .MessageContainer {
