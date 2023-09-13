@@ -1,4 +1,5 @@
 import React from 'react';
+import Waves from '../assets/contact/Waves.svg';
 import '../styles/Contact.css';
 
 const Contact = () => {
@@ -42,6 +43,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
+            <img src={Waves} alt="" className='Waves'/>
         </div>
     );
 }

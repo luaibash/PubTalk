@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg preserveAspectRatio="none" version="1.1" viewBox="0 0 1440 560" xmlns="http://www.w3.org/2000/svg">
+<g mask="url(#a)">
+<path d="m0 184c57.6 39.8 172.8 204.6 288 199s172.8-262.2 288-227 172.8 429.2 288 403 172.8-502.2 288-534 230.4 300 288 375v160h-1440z" fill="rgba(180, 225, 237, 1)"/>
+<path d="m0 184c96 54.8 288 259.2 480 274s288-220.2 480-200 384 240.8 480 301v1h-1440z" fill="rgba(149, 210, 227, 1)"/>
+</g>
+<defs>
+<mask id="a">
+<rect width="1440" height="560" fill="#fff"/>
+</mask>
+</defs>
+</svg>
