@@ -36,7 +36,7 @@ const Contact = () => {
                         Message
                         <textarea placeholder="Write about anything you&#39;d like." className='Input' id='Message'></textarea>
                     </div>
-                    <div className='ContactButtonContainer'>
+                    <div className='ContactButtonContainer' onClick={() => sendEmail()}>
                         <div className='ContactButton'>
                             Submit
                         </div>
@@ -47,5 +47,14 @@ const Contact = () => {
         </div>
     );
 }
+
+const sendEmail = () => {
+    const firstName = document.getElementsByClassName("Input")[0].value;
+    const lastName = document.getElementsByClassName("Input")[1].value;
+    const email = document.getElementsByClassName("Input")[2].value;
+    const message = document.getElementsByClassName("Input")[3].value;
+
+    
+};
 
 export default Contact;
