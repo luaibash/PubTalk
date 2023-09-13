@@ -1,11 +1,15 @@
 .ContactPanel {
     max-width: 1250px;
 
-    padding: 64px 75px 75px 75px;
+    padding: 150px 75px 75px 75px;
     margin: 0 auto;
 
     display: flex;
     flex-direction: column;
+}
+
+#ContactSubtext {
+    max-width: 550px;
 }
 
 @media (max-width: 1000px) {
