@@ -42,7 +42,7 @@
 .ContactBoxRow {
     display: flex;
     column-gap: 100px;
-    row-gap: 50px;
+    row-gap: 30px;
     flex-wrap: wrap;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .MessageContainer {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 #Message {
     height: 140px;
