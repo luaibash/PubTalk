@@ -13,7 +13,6 @@
 }
 
 .ContactBoxContainer {
-    height: 500px;
     max-width: 1500px;
     width: 100%;
 
@@ -45,26 +44,50 @@
     gap: 100px;
 }
 
-.ContactBoxInputContainer {
+.InputContainer, .MessageContainer {
     display: flex;
     flex-direction: column;
     gap: 15px;
     flex: 1;
 }
 
-.ContactBoxInput {
+.Input {
     height: 50px;
     border-radius: 10px;
-    border: solid 1px #B9B5B5;
+    border: solid 2px #B9B5B5;
     padding-left: 20px;
+
     font-size: 16px;
+    font-family: Inter, serif;
 }
 
-.ContactBoxMessageContainer {
+.MessageContainer {
+    margin-top: 50px;
+}
+#Message {
+    height: 140px;
+    padding-top: 10px;
+    resize: none;
+}
+
+.ContactButtonContainer {
+    margin-top: 30px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 }
 
+.ContactButton {
+    border-radius: 20px;
+    padding: 10px 50px;
+    background-color: #C8BFFF;
+    font-weight: 700;
+
+    transition: all 0.2s;
+}
+.ContactButton:hover {
+    cursor: pointer;
+    background-color: #b0a6f7;
+}
 
 @media (max-width: 1000px) {
     .ContactPanel {

@@ -18,17 +18,26 @@ const Contact = () => {
                         Talk with our team
                     </div>
                     <div className='ContactBoxRow'>
-                        <div className='ContactBoxInputContainer'>
+                        <div className='InputContainer'>
                             First Name
-                            <input type="text" placeholder='e.g. John' className='ContactBoxInput'/>
+                            <input type="text" placeholder='e.g. John' className='Input'/>
                         </div>
-                        <div className='ContactBoxInputContainer'>
+                        <div className='InputContainer'>
                             Last Name
-                            <input type="text" placeholder='Smith' className='ContactBoxInput'/>
+                            <input type="text" placeholder='Smith' className='Input'/>
                         </div>
-                        <div className='ContactBoxInputContainer'>
+                        <div className='InputContainer'>
                             Email
-                            <input type="text" placeholder='john@gmail.com' className='ContactBoxInput'/>
+                            <input type="text" placeholder='john@gmail.com' className='Input'/>
+                        </div>
+                    </div>
+                    <div className='MessageContainer'>
+                        Message
+                        <textarea rows="4" cols="50" placeholder="Write about anything you&#39;d like." className='Input' id='Message'></textarea>
+                    </div>
+                    <div className='ContactButtonContainer'>
+                        <div className='ContactButton'>
+                            Submit
                         </div>
                     </div>
                 </div>
