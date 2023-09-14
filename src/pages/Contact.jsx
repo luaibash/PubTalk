@@ -1,4 +1,5 @@
 import React from 'react';
+import emailjs from '@emailjs/browser';
 import Waves from '../assets/contact/Waves.svg';
 import '../styles/Contact.css';
 
@@ -49,12 +50,28 @@ const Contact = () => {
 }
 
 const sendEmail = () => {
-    const firstName = document.getElementsByClassName("Input")[0].value;
-    const lastName = document.getElementsByClassName("Input")[1].value;
-    const email = document.getElementsByClassName("Input")[2].value;
-    const message = document.getElementsByClassName("Input")[3].value;
+    // const firstName = document.getElementsByClassName("Input")[0].value;
+    // const lastName = document.getElementsByClassName("Input")[1].value;
+    // const email = document.getElementsByClassName("Input")[2].value;
+    // const message = document.getElementsByClassName("Input")[3].value;
 
-    
+    var templateParams = {
+        firstName: "Luai",
+        lastName: "Bashar",
+        email: "luai.hawa@gmail.com",
+        message: "test test 123"
+    };
+    var serviceID = "service_2hxcqkk";
+    var templateID = "template_3i0d6br";
+    var publicKey = "8brRPBwE__7zDFkLo";
+
+     
+    emailjs.send(serviceID, templateID, templateParams, publicKey)
+        .then(function(response) {
+           console.log('SUCCESS!', response.status, response.text);
+        }, function(error) {
+           console.log('FAILED...', error);
+        });
 };
 
 export default Contact;
