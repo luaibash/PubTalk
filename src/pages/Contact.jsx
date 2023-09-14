@@ -54,19 +54,19 @@ const sendEmail = () => {
     const lastName = document.getElementsByClassName("Input")[1].value;
     const email = document.getElementsByClassName("Input")[2].value;
     const message = document.getElementsByClassName("Input")[3].value;
-    if (firstName.trim() == "") {
+    if (firstName.trim() === "") {
         // set warning display to block
         return;
     }
-    else if (lastName.trim() == "") {
+    else if (lastName.trim() === "") {
         
         return;
     }
-    else if (email.trim() == "") {
+    else if (email.trim() === "") {
         
         return;
     }
-    else if (message.trim() == "") {
+    else if (message.trim() === "") {
         
         return;
     }
