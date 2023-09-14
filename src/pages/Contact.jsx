@@ -1,10 +1,12 @@
-import React from 'react';
+import {React, useState} from 'react';
 import emailjs from '@emailjs/browser';
 import Waves from '../assets/contact/Waves.svg';
 import Checkmark from '../assets/contact/Checkmark.png';
 import '../styles/Contact.css';
 
 const Contact = () => {
+    const [isSent, setSent] = useState(false);
+
     return (
         <div className='ContactPanel'>
             <div className='Title'>
@@ -50,9 +52,9 @@ const Contact = () => {
                         </div>
                         <textarea placeholder="Write about anything you&#39;d like." className='Input' id='Message'></textarea>
                     </div>
-                    <div className='ContactButtonContainer' onClick={() => sendEmail()}>
+                    <div className='ContactButtonContainer' onClick={() => sendEmail(isSent, setSent)}>
                         <div className='ContactButton'>
-                            <div className='test'>
+                            <div className='TransitionContainer'>
                                 Submit
                                 <img src={Checkmark} alt="" className='Checkmark'/>
                             </div>
@@ -65,7 +67,7 @@ const Contact = () => {
     );
 }
 
-const sendEmail = () => {
+const sendEmail = (isSent, setSent) => {
     const setDisplay = (isVisible, index) => {
         if (isVisible) document.getElementsByClassName("Required")[index].style.display = 'block';
         else document.getElementsByClassName("Required")[index].style.display = 'none';  
@@ -91,15 +93,17 @@ const sendEmail = () => {
     var serviceID = "service_2hxcqkk";
     var templateID = "template_3i0d6br";
     var publicKey = "8brRPBwE__7zDFkLo";
-
-     
-    // emailjs.send(serviceID, templateID, templateParams, publicKey)
-    //     .then(function(response) {
-    //         // set checkmark display to block
-    //        console.log('SUCCESS!', response.status, response.text);
-    //     }, function(error) {
-    //        console.log('FAILED...', error);
-    //     });
+    
+    if (!isSent) {
+        emailjs.send(serviceID, templateID, templateParams, publicKey)
+        .then(function(response) {
+            document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
+            setSent(true);
+            console.log('SUCCESS!', response.status, response.text);
+        }, function(error) {
+            console.log('FAILED...', error);
+        });
+    }
 };
 
 export default Contact;

@@ -102,14 +102,12 @@
     transition: all 0.2s;
 }
 
-.test {
+.TransitionContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
     overflow-y: hidden;
     align-items: center;
-
-    animation: CheckmarkTransition 1s ease forwards;
 }
 .ContactButton:hover {
     cursor: pointer;
@@ -117,7 +115,7 @@
 }
 
 .Checkmark {
-    height: 20px;
+    height: 25px;
     width: 30px;
 }
 @keyframes CheckmarkTransition {
@@ -125,7 +123,7 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-30px);
+        transform: translateY(-32px);
     }
 }
 
