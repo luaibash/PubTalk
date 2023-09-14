@@ -86,6 +86,7 @@
 }
 
 .ContactButtonContainer {
+    height: 40px;
     margin-top: 30px;
     display: flex;
     justify-content: center;
@@ -96,12 +97,36 @@
     padding: 10px 50px;
     background-color: #C8BFFF;
     font-weight: 700;
+    overflow-y: hidden;
 
     transition: all 0.2s;
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: hidden;
+    align-items: center;
+
+    animation: CheckmarkTransition 1s ease forwards;
 }
 .ContactButton:hover {
     cursor: pointer;
     background-color: #b0a6f7;
+}
+
+.Checkmark {
+    height: 20px;
+    width: 30px;
+}
+@keyframes CheckmarkTransition {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-30px);
+    }
 }
 
 .Waves {

@@ -1,6 +1,7 @@
 import React from 'react';
 import emailjs from '@emailjs/browser';
 import Waves from '../assets/contact/Waves.svg';
+import Checkmark from '../assets/contact/Checkmark.png';
 import '../styles/Contact.css';
 
 const Contact = () => {
@@ -51,7 +52,10 @@ const Contact = () => {
                     </div>
                     <div className='ContactButtonContainer' onClick={() => sendEmail()}>
                         <div className='ContactButton'>
-                            Submit
+                            <div className='test'>
+                                Submit
+                                <img src={Checkmark} alt="" className='Checkmark'/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,13 +93,13 @@ const sendEmail = () => {
     var publicKey = "8brRPBwE__7zDFkLo";
 
      
-    emailjs.send(serviceID, templateID, templateParams, publicKey)
-        .then(function(response) {
-            // set checkmark display to block
-           console.log('SUCCESS!', response.status, response.text);
-        }, function(error) {
-           console.log('FAILED...', error);
-        });
+    // emailjs.send(serviceID, templateID, templateParams, publicKey)
+    //     .then(function(response) {
+    //         // set checkmark display to block
+    //        console.log('SUCCESS!', response.status, response.text);
+    //     }, function(error) {
+    //        console.log('FAILED...', error);
+    //     });
 };
 
 export default Contact;
