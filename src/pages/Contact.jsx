@@ -50,16 +50,35 @@ const Contact = () => {
 }
 
 const sendEmail = () => {
-    // const firstName = document.getElementsByClassName("Input")[0].value;
-    // const lastName = document.getElementsByClassName("Input")[1].value;
-    // const email = document.getElementsByClassName("Input")[2].value;
-    // const message = document.getElementsByClassName("Input")[3].value;
+    const firstName = document.getElementsByClassName("Input")[0].value;
+    const lastName = document.getElementsByClassName("Input")[1].value;
+    const email = document.getElementsByClassName("Input")[2].value;
+    const message = document.getElementsByClassName("Input")[3].value;
+    if (firstName.trim() == "") {
+        // set warning display to block
+        return;
+    }
+    else if (lastName.trim() == "") {
+        
+        return;
+    }
+    else if (email.trim() == "") {
+        
+        return;
+    }
+    else if (message.trim() == "") {
+        
+        return;
+    }
+    else {
+        // set all warning displays to none
+    }
 
     var templateParams = {
-        firstName: "Luai",
-        lastName: "Bashar",
-        email: "luai.hawa@gmail.com",
-        message: "test test 123"
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        message: message
     };
     var serviceID = "service_2hxcqkk";
     var templateID = "template_3i0d6br";
@@ -68,6 +87,7 @@ const sendEmail = () => {
      
     emailjs.send(serviceID, templateID, templateParams, publicKey)
         .then(function(response) {
+            // set checkmark display to block
            console.log('SUCCESS!', response.status, response.text);
         }, function(error) {
            console.log('FAILED...', error);
