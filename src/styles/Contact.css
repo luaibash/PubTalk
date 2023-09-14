@@ -47,6 +47,17 @@
     flex-wrap: wrap;
 }
 
+.ContactTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.Required {
+    color: rgb(240, 58, 58);
+    font-size: 14px;
+    display: none;
+}
+
 .InputContainer, .MessageContainer {
     display: flex;
     flex-direction: column;
