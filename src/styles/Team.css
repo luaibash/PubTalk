@@ -12,7 +12,7 @@
 
 #TeamSubtext {
     max-width: 530px;
-    margin-bottom: 75px;
+    margin-bottom: 100px;
 }
 
 .MembersContainer {
@@ -31,10 +31,51 @@
 }
 
 .HeadshotContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
     height: 350px;
     width: 300px;
+
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
+}
+
+.Headshot {
+    position: absolute;
+    bottom: 0;
+    height: 390px;
+}
+
+.TextContainer {
+    display: flex;
+    flex-direction: column;
+
+    padding: 15px;
+    gap: 15px;
+}
+
+.MemberName {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.MemberRole {
+    font-weight: 400;
+    color: gray;
+}
+
+.LogoContainer {
+    display: flex;
+}
+.LinkedIn {
+    height: 25px;
+    margin-left: 10px;
+}
+.LinkedIn:hover {
+    cursor: pointer;
 }
 
 @media (max-width: 1000px) {
