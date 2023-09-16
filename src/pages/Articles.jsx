@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/Articles.css';
 
 const Articles = () => {
     return (
-        <div>
+        <div  className='ArticlePanel'>
             Article Page
         </div>
     );

@@ -13,7 +13,7 @@ const Team = () => {
                     Meet Our Team.
                 </div>
                 <div className='Subtext' id='TeamSubtext'>
-                    Meet our team: A diverse group of students passionate about
+                    A diverse group of students passionate about
                     exploring today, future, and past topics in technology,
                     politics, and more.
                 </div>
@@ -55,7 +55,6 @@ const Member = ({name, role, headshot, link, colour}) => {
 }
 
 const LinkedIn = (link) => {
-
     return (
         <a className='LogoContainer' href={link.link} target="_blank" rel="noopener noreferrer">
             <img src={LinkedInLogo} alt="" className='LinkedIn'/>
