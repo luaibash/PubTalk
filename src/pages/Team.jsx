@@ -6,6 +6,7 @@ import Owen from '../assets/team/Owen.png';
 import Gabe from '../assets/team/Gabe.png';
 import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
+import Ivan from '../assets/team/Ivan.png';
 
 const Team = () => {
     return (
@@ -21,8 +22,9 @@ const Team = () => {
                 </div>
             </div>
             <div className='MembersContainer'>
+                <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
                 <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                <Member name='Ivan Manca' role='Head Article Designer' link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
+                <Member name='Ivan Manca' role='Head Article Designer' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
                 <Member name='Owen Skanes' role='Head Article Designer' headshot={Owen} colour='#72FF80'/>
                 <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
                 <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
