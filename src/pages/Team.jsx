@@ -7,6 +7,7 @@ import Gabe from '../assets/team/Gabe.png';
 import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
 import Ivan from '../assets/team/Ivan.png';
+import Alex from '../assets/team/Alex.png';
 
 const Team = () => {
     const memberRef = useRef(null);
@@ -17,6 +18,7 @@ const Team = () => {
             const computedStyle = window.getComputedStyle(memberRef.current);
             var marginLeft = computedStyle.getPropertyValue('margin-left');
             marginLeft = parseInt(marginLeft, 10);
+            console.log(marginLeft);
 
             // Add current shift in margin based on direction, and apply it
             if (left) marginLeft += 350;
@@ -29,9 +31,9 @@ const Team = () => {
                     memberRef.current.style.transition = 'none';
                     memberRef.current.style.marginLeft = '-1925px';
                 };
-            }, 500);
+            }, 400);
 
-            memberRef.current.style.transition = 'margin-left 0.5s ease';
+            memberRef.current.style.transition = 'margin-left 0.4s ease';
         });
     }
 
@@ -49,22 +51,22 @@ const Team = () => {
             </div>
             <div className='MembersContainer'>
                 <div className='Members' ref={memberRef}>
-                    <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
+                    <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
                     <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                    <Member name='Ivan Manca' role='Head Article Designer' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                    <Member name='Owen Skanes' role='Head Article Designer' headshot={Owen} colour='#72FF80'/>
+                    <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
+                    <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
                     <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
-                    <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
+                    <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
                     <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                    <Member name='Ivan Manca' role='Head Article Designer' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                    <Member name='Owen Skanes' role='Head Article Designer' headshot={Owen} colour='#72FF80'/>
+                    <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
+                    <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
                     <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
-                    <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
+                    <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
                     <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                    <Member name='Ivan Manca' role='Head Article Designer' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                    <Member name='Owen Skanes' role='Head Article Designer' headshot={Owen} colour='#72FF80'/>
+                    <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
+                    <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
                     <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
-                    <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
+                    <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
                 </div>
                 <div className='ScrollButtonLeft' onClick={() => scroll({left: true})}>
                     <img src={LeftArrow} alt="" className='ScrollArrow'/>

@@ -26,7 +26,7 @@
     position: absolute;
     gap: 50px;
     margin-left: -1925px;
-    transition: margin-left 0.5s ease;
+    transition: margin-left 0.4s ease;
 }
 
 .MemberContainer {
