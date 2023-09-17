@@ -25,7 +25,9 @@
     display: flex;
     position: absolute;
     gap: 50px;
+
     margin-left: -175px;
+    transition: margin-left 0.5s ease;
 }
 
 .MemberContainer {
@@ -100,6 +102,8 @@
     border-radius: 50%;
     box-shadow: 0 6px 8px 0 #0003;
     background-color: white;
+
+    user-select: none;
 
     transition: transform 0.2s ease-in-out;
 }

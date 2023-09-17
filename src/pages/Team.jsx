@@ -17,9 +17,9 @@ const Team = () => {
             var marginLeft = computedStyle.getPropertyValue('margin-left');
             marginLeft = parseInt(marginLeft, 10);
 
-            if (left) marginLeft -= 50;
-            else marginLeft += 50;
-            
+            if (left) marginLeft -= 350;
+            else marginLeft += 350;
+
             memberRef.current.style.marginLeft = `${marginLeft}px`;
         });
     }
