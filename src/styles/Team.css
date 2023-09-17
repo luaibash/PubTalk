@@ -1,6 +1,6 @@
 .TeamPanel {
     margin-top: 150px;
-    margin-bottom: 150px;
+    margin-bottom: 125px;
 }
 
 .TitleContainer {
@@ -18,7 +18,8 @@
 .MembersContainer {
     display: flex;
     gap: 50px;
-    margin-left: 75px;
+    position: relative;
+    align-items: center;
 }
 
 .MemberContainer {
@@ -81,22 +82,30 @@
 }
 
 .ScrollButtonLeft, .ScrollButtonRight {
+    position: absolute;
+    z-index: 1;
     width: 60px;
     height: 60px;
-    box-shadow: 0 6px 8px 0 #0003;
-    border-radius: 50%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    transition: transform 0.2s ease-in-out;
+    border-radius: 50%;
+    box-shadow: 0 6px 8px 0 #0003;
+    background-color: white;
 
-    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
 }
 .ScrollButtonLeft:hover, .ScrollButtonRight:hover {
     cursor: pointer;
     transform: scale(1.05,1.05);
+}
+.ScrollButtonLeft {
+    left: 75px;
+}
+.ScrollButtonRight {
+    right: 75px;
 }
 .ScrollArrow {
     width: 15px;
@@ -107,5 +116,13 @@
     .TitleContainer {
         padding-left: 25px;
         padding-right: 25px;
+    }
+
+    .ScrollButtonLeft {
+        left: 25px;
+    }
+
+    .ScrollButtonRight {
+        right: 25px;
     }
 }

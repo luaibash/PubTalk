@@ -26,12 +26,12 @@ const Team = () => {
                 <Member name='Owen Skanes' role='Head Article Designer' headshot={Owen} colour='#72FF80'/>
                 <Member name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} colour='#7299FF'/>
                 <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
-            </div>
-            <div className='ScrollButtonLeft'>
-                <img src={LeftArrow} alt="" className='ScrollArrow'/>
-            </div>
-            <div className='ScrollButtonRight'>
-                <img src={RightArrow} alt="" className='ScrollArrow'/>
+                <div className='ScrollButtonLeft'>
+                    <img src={LeftArrow} alt="" className='ScrollArrow'/>
+                </div>
+                <div className='ScrollButtonRight'>
+                    <img src={RightArrow} alt="" className='ScrollArrow'/>
+                </div>
             </div>
         </div>
     );
