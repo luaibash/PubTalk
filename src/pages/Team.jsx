@@ -4,6 +4,8 @@ import LinkedInLogo from '../assets/team/LinkedIn.png';
 import Luai from '../assets/team/Luai.png';
 import Owen from '../assets/team/Owen.png';
 import Gabe from '../assets/team/Gabe.png';
+import LeftArrow from '../assets/team/LeftArrow.svg';
+import RightArrow from '../assets/team/RightArrow.svg';
 
 const Team = () => {
     return (
@@ -24,6 +26,12 @@ const Team = () => {
                 <Member name='Owen Skanes' role='Head Article Designer' headshot={Owen} colour='#72FF80'/>
                 <Member name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} colour='#7299FF'/>
                 <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
+            </div>
+            <div className='ScrollButtonLeft'>
+                <img src={LeftArrow} alt="" className='ScrollArrow'/>
+            </div>
+            <div className='ScrollButtonRight'>
+                <img src={RightArrow} alt="" className='ScrollArrow'/>
             </div>
         </div>
     );
