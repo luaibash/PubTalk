@@ -11,14 +11,17 @@ import Alex from '../assets/team/Alex.png';
 
 const Team = () => {
     const memberRef = useRef(null);
+    const [isScrolling, setScrolling] = useState(false);
 
     const scroll = ({ left, right }) => {
+        if (isScrolling) return;
+        setScrolling(true);
+
         requestAnimationFrame(() => {
             // Retrieve current margin value
             const computedStyle = window.getComputedStyle(memberRef.current);
             var marginLeft = computedStyle.getPropertyValue('margin-left');
             marginLeft = parseInt(marginLeft, 10);
-            console.log(marginLeft);
 
             // Add current shift in margin based on direction, and apply it
             if (left) marginLeft += 350;
@@ -31,6 +34,7 @@ const Team = () => {
                     memberRef.current.style.transition = 'none';
                     memberRef.current.style.marginLeft = '-1925px';
                 };
+                setScrolling(false);
             }, 400);
 
             memberRef.current.style.transition = 'margin-left 0.4s ease';
