@@ -1,4 +1,4 @@
-import { React, useEffect, useRef } from 'react';
+import { React, useEffect, useRef, useState } from 'react';
 import '../styles/Team.css';
 import LinkedInLogo from '../assets/team/LinkedIn.png';
 import Luai from '../assets/team/Luai.png';
@@ -9,6 +9,21 @@ import RightArrow from '../assets/team/RightArrow.svg';
 import Ivan from '../assets/team/Ivan.png';
 
 const Team = () => {
+    const memberRef = useRef(null);
+
+    const scroll = ({ left, right }) => {
+        requestAnimationFrame(() => {
+            const computedStyle = window.getComputedStyle(memberRef.current);
+            var marginLeft = computedStyle.getPropertyValue('margin-left');
+            marginLeft = parseInt(marginLeft, 10);
+
+            if (left) marginLeft -= 50;
+            else marginLeft += 50;
+            
+            memberRef.current.style.marginLeft = `${marginLeft}px`;
+        });
+    }
+
     return (
         <div className='TeamPanel'>
             <div className='TitleContainer'>  
@@ -22,16 +37,18 @@ const Team = () => {
                 </div>
             </div>
             <div className='MembersContainer'>
-                <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
-                <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                <Member name='Ivan Manca' role='Head Article Designer' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                <Member name='Owen Skanes' role='Head Article Designer' headshot={Owen} colour='#72FF80'/>
-                <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
-                <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
-                <div className='ScrollButtonLeft'>
+                <div className='Members' ref={memberRef}>
+                    <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
+                    <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
+                    <Member name='Ivan Manca' role='Head Article Designer' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
+                    <Member name='Owen Skanes' role='Head Article Designer' headshot={Owen} colour='#72FF80'/>
+                    <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
+                    <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
+                </div>
+                <div className='ScrollButtonLeft' onClick={() => scroll({left: true})}>
                     <img src={LeftArrow} alt="" className='ScrollArrow'/>
                 </div>
-                <div className='ScrollButtonRight'>
+                <div className='ScrollButtonRight' onClick={() => scroll({right: true})}>
                     <img src={RightArrow} alt="" className='ScrollArrow'/>
                 </div>
             </div>

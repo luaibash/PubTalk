@@ -17,9 +17,15 @@
 
 .MembersContainer {
     display: flex;
-    gap: 50px;
     position: relative;
     align-items: center;
+    height: 450px;
+}
+.Members {
+    display: flex;
+    position: absolute;
+    gap: 50px;
+    margin-left: -175px;
 }
 
 .MemberContainer {
