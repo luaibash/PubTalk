@@ -24,7 +24,7 @@ const Team = () => {
                 <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
                 <Member name='Ivan Manca' role='Head Article Designer' link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
                 <Member name='Owen Skanes' role='Head Article Designer' headshot={Owen} colour='#72FF80'/>
-                <Member name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} colour='#7299FF'/>
+                <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
                 <Member name='Alex S.' role='Head Article Designer' colour='#D661FF'/>
                 <div className='ScrollButtonLeft'>
                     <img src={LeftArrow} alt="" className='ScrollArrow'/>
