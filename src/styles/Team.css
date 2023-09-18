@@ -123,14 +123,25 @@
     height: 15px;
 }
 
-/* The following is for expanded member */
-.MembersExpandedContainer {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin: 0 auto;
+/* The following is for default member */
+@media (min-width: 651px) {
+    .MembersDefaultContainer {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 650px) {
+    .MembersDefaultContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+    }
 }
 
+/* Default media queries */
 @media (max-width: 1000px) {
     .TitleContainer {
         padding-left: 25px;

@@ -4,18 +4,18 @@ import LinkedInLogo from '../assets/team/LinkedIn.png';
 import Luai from '../assets/team/Luai.png';
 import Owen from '../assets/team/Owen.png';
 import Gabe from '../assets/team/Gabe.png';
-import LeftArrow from '../assets/team/LeftArrow.svg';
-import RightArrow from '../assets/team/RightArrow.svg';
 import Ivan from '../assets/team/Ivan.png';
 import Alex from '../assets/team/Alex.png';
+import LeftArrow from '../assets/team/LeftArrow.svg';
+import RightArrow from '../assets/team/RightArrow.svg';
 
 const Team = () => {
-    const [isWideViewport, setIsWideViewport] = useState(false);
+    const [showSlideshow, setSlideshow] = useState(false);
 
     // Checks if width is too long to display slideshow
     useEffect(() => {
         const handleResize = () => {
-          setIsWideViewport(window.innerWidth >= 1650);
+          setSlideshow(window.innerWidth >= 650 && window.innerWidth < 1650);
         };
     
         // Initial check when the component mounts and add event listener
@@ -39,12 +39,12 @@ const Team = () => {
                     politics, and more.
                 </div>
             </div>
-            {isWideViewport ? <MemberExpanded/> : <MemberSlideshow/>}
+            {showSlideshow ? <MembersSlideshow/> : <MembersDefault/>}
         </div>
     );
 }
 
-const MemberSlideshow = () => {
+const MembersSlideshow = () => {
     const memberRef = useRef(null);
     const [isScrolling, setScrolling] = useState(false);
 
@@ -106,9 +106,9 @@ const MemberSlideshow = () => {
     );
 }
 
-const MemberExpanded = () => {
+const MembersDefault = () => {
     return (
-        <div className='MembersExpandedContainer'>
+        <div className='MembersDefaultContainer'>
             <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
             <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
             <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
