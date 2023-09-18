@@ -15,20 +15,7 @@
     margin-bottom: 100px;
 }
 
-.MembersContainer {
-    display: flex;
-    position: relative;
-    align-items: center;
-    height: 450px;
-}
-.Members {
-    display: flex;
-    position: absolute;
-    gap: 50px;
-    margin-left: -1925px;
-    transition: margin-left 0.4s ease;
-}
-
+/* The following is for a separate member */
 .MemberContainer {
     width: 300px;
     height: 450px;
@@ -88,6 +75,21 @@
     cursor: pointer;
 }
 
+/* The following is for member slideshow */
+.MembersSlideshowContainer {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 450px;
+}
+.MembersSlideshow {
+    display: flex;
+    position: absolute;
+    gap: 50px;
+    margin-left: -1925px;
+    transition: margin-left 0.4s ease;
+}
+
 .ScrollButtonLeft, .ScrollButtonRight {
     position: absolute;
     z-index: 1;
@@ -119,6 +121,14 @@
 .ScrollArrow {
     width: 15px;
     height: 15px;
+}
+
+/* The following is for expanded member */
+.MembersExpandedContainer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 0 auto;
 }
 
 @media (max-width: 1000px) {

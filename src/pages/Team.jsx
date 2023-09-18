@@ -10,6 +10,41 @@ import Ivan from '../assets/team/Ivan.png';
 import Alex from '../assets/team/Alex.png';
 
 const Team = () => {
+    const [isWideViewport, setIsWideViewport] = useState(false);
+
+    // Checks if width is too long to display slideshow
+    useEffect(() => {
+        const handleResize = () => {
+          setIsWideViewport(window.innerWidth >= 1650);
+        };
+    
+        // Initial check when the component mounts and add event listener
+        handleResize();
+        window.addEventListener('resize', handleResize);
+    
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
+
+    return (
+        <div className='TeamPanel'>
+            <div className='TitleContainer'>  
+                <div className='Title'>
+                    Meet Our Team.
+                </div>
+                <div className='Subtext' id='TeamSubtext'>
+                    A diverse group of students passionate about
+                    exploring today, future, and past topics in technology,
+                    politics, and more.
+                </div>
+            </div>
+            {isWideViewport ? <MemberExpanded/> : <MemberSlideshow/>}
+        </div>
+    );
+}
+
+const MemberSlideshow = () => {
     const memberRef = useRef(null);
     const [isScrolling, setScrolling] = useState(false);
 
@@ -42,43 +77,43 @@ const Team = () => {
     }
 
     return (
-        <div className='TeamPanel'>
-            <div className='TitleContainer'>  
-                <div className='Title'>
-                    Meet Our Team.
-                </div>
-                <div className='Subtext' id='TeamSubtext'>
-                    A diverse group of students passionate about
-                    exploring today, future, and past topics in technology,
-                    politics, and more.
-                </div>
+        <div className='MembersSlideshowContainer'>
+            <div className='MembersSlideshow' ref={memberRef}>
+                <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
+                <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
+                <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
+                <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
+                <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
+                <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
+                <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
+                <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
+                <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
+                <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
+                <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
+                <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
+                <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
+                <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
+                <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
+                <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
             </div>
-            <div className='MembersContainer'>
-                <div className='Members' ref={memberRef}>
-                    <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                    <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                    <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                    <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
-                    <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
-                    <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                    <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                    <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                    <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
-                    <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
-                    <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                    <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                    <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                    <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
-                    <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
-                    <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                </div>
-                <div className='ScrollButtonLeft' onClick={() => scroll({left: true})}>
-                    <img src={LeftArrow} alt="" className='ScrollArrow'/>
-                </div>
-                <div className='ScrollButtonRight' onClick={() => scroll({right: true})}>
-                    <img src={RightArrow} alt="" className='ScrollArrow'/>
-                </div>
+            <div className='ScrollButtonLeft' onClick={() => scroll({left: true})}>
+                <img src={LeftArrow} alt="" className='ScrollArrow'/>
             </div>
+            <div className='ScrollButtonRight' onClick={() => scroll({right: true})}>
+                <img src={RightArrow} alt="" className='ScrollArrow'/>
+            </div>
+        </div>
+    );
+}
+
+const MemberExpanded = () => {
+    return (
+        <div className='MembersExpandedContainer'>
+            <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
+            <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
+            <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
+            <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
+            <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
         </div>
     );
 }
