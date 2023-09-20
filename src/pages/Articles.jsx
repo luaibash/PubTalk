@@ -37,6 +37,28 @@ const Articles = () => {
                     <div className='Box'/>
                 </div>
             </div>
+            <div className='Title' id='PanelThreeTitle'>
+                All Articles
+                <img src={Arrow} alt="" className='Arrow'/>
+            </div>
+            <div className='Subtext' id='PanelThreeSubtext'>
+                Read into any article, ordered from most recent to
+                least.
+            </div>
+            <div className='BoxContainer'>
+                <div className='BoxRow'>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                </div>
+                <div className='BoxRow'>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                </div>
+            </div>
         </div>
     );
 }
