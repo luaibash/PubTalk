@@ -10,6 +10,7 @@ import '../styles/home/PanelOne.css';
 import '../styles/home/PanelTwo.css';
 import '../styles/home/PanelThree.css';
 import '../styles/home/PanelFour.css';
+import '../styles/Boxes.css';
 
 const Home = () => {
     return (

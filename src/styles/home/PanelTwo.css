@@ -45,8 +45,7 @@
     max-width: 1540px;
 }
 
-/* Following code is all for the articles boxes */
-.PanelTwoMainBoxContainer, .Box {
+.PanelTwoMainBoxContainer {
     background-color: white;
 
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
@@ -54,7 +53,7 @@
 
     transition: box-shadow 0.2s;
 }
-.PanelTwoMainBoxContainer:hover, .Box:hover {
+.PanelTwoMainBoxContainer:hover {
     box-shadow: 0 0 18px rgba(0,0,0,0.25);
     cursor: pointer;
 }
@@ -76,17 +75,6 @@
         display: flex;
         flex-direction: column;
     }
-    
-    .Box {
-        width: 20vw;
-        max-width: 280px;
-        height: 17.3vw;
-        max-height: 235px;
-    }
-    
-    #BoxTop {
-        margin-bottom: 30px;
-    }
 }
 @media (max-width: 1000px) {
     .PanelTwo {
@@ -103,12 +91,8 @@
         flex-direction: column;
     }
 
-    .PanelTwoMainBoxContainer, .Box {
+    .PanelTwoMainBoxContainer {
         height: 225px;
         max-width: 1000px;
-    }
-
-    .Box {
-        margin-top: 20px;
     }
 }

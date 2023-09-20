@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Articles.css';
+import '../styles/Boxes.css';
 import Books from '../assets/articles/books.png';
 import Arrow from '../assets/home/Arrow.png';
 
