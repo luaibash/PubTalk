@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Articles.css';
-import Search from '../assets/articles/Search.png';
+import Books from '../assets/articles/books.png';
 
 const Articles = () => {
     return (
@@ -12,6 +12,7 @@ const Articles = () => {
             <div className='SearchContainer'>
                 <input type="text" placeholder='Search any topic (e.g. Politics) ' className='Search'/>
             </div>
+            <img src={Books} alt="" className='Books'/>
         </div>
     );
 }
