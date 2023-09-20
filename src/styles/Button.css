@@ -1,4 +1,4 @@
-.RedirectButton {
+.Button {
     border: solid black 1px;
     border-radius: 20px;
 
@@ -8,7 +8,7 @@
 
     transition: all 0.3s;
 }
-.RedirectButton:hover {
+.Button:hover {
     cursor: pointer;
     
     background-color: black;

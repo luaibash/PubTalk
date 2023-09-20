@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Articles.css';
 import '../styles/Boxes.css';
+import LoadButton from '../components/LoadButton';
 import Books from '../assets/articles/books.png';
 import Arrow from '../assets/home/Arrow.png';
 
@@ -37,6 +38,9 @@ const Articles = () => {
                     <div className='Box'/>
                 </div>
             </div>
+            <div className='LoadButtonContainer'>
+                <LoadButton title="More Top Articles"/>
+            </div>
             <div className='Title' id='PanelThreeTitle'>
                 All Articles
                 <img src={Arrow} alt="" className='Arrow'/>
@@ -58,6 +62,9 @@ const Articles = () => {
                     <div className='Box'/>
                     <div className='Box'/>
                 </div>
+            </div>
+            <div className='LoadButtonContainer'>
+                <LoadButton title="More Articles"/>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import '../styles/RedirectButton.css';
+import '../styles/Button.css';
 
 const RedirectButton = ({title, destination}) => {
     let navigate = useNavigate();
@@ -10,7 +10,7 @@ const RedirectButton = ({title, destination}) => {
     }
 
     return (
-        <div className="RedirectButton" onClick={() => goToLocation(destination)}>
+        <div className="Button" onClick={() => goToLocation(destination)}>
             {title}
         </div>
     );
