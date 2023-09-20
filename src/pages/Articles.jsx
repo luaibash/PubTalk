@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Articles.css';
 import Books from '../assets/articles/books.png';
+import Arrow from '../assets/home/Arrow.png';
 
 const Articles = () => {
     return (
@@ -13,6 +14,28 @@ const Articles = () => {
                 <input type="text" placeholder='Search any topic (e.g. Politics) ' className='Search'/>
             </div>
             <img src={Books} alt="" className='Books'/>
+            <div className='Title' id='PanelTwoTitle'>
+                Top Articles
+                <img src={Arrow} alt="" className='Arrow'/>
+            </div>
+            <div className='Subtext' id='PanelTwoSubtext'>
+                Read into the articles that people are talking
+                about more.
+            </div>
+            <div className='BoxContainer'>
+                <div className='BoxRow'>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                </div>
+                <div className='BoxRow'>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                    <div className='Box'/>
+                </div>
+            </div>
         </div>
     );
 }

@@ -37,12 +37,32 @@
 }
 
 .Books {
-    margin: 75px -75px 0 -75px;
+    margin: 75px -75px 100px -75px;
+}
+
+.BoxRow {
+    display: flex;
+    gap: 30px;
+}
+
+.BoxContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 @media (max-width: 1000px) {
     .ArticlePanel {
         padding-left: 25px;
         padding-right: 25px;
+    }
+
+    .BoxRow {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .BoxContainer {
+        gap: 0px;
     }
 }
