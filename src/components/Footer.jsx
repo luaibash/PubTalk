@@ -1,8 +1,8 @@
 import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import '../styles/Footer.css';
-import Logo from '../assets/logo/BlackLogo.png';
-import Name from '../assets/name/Name.png';
+import Logo from '../assets/branding/Logo.png';
+import Name from '../assets/branding/Name.png';
 
 const Footer = () => {
     return (
