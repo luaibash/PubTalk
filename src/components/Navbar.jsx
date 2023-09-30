@@ -3,7 +3,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import RedirectButton from './RedirectButton';
 import '../styles/Navbar.css';
 import Logo from '../assets/logo/BlackLogo.png';
-import Name from '../assets/name/ArticleName.png';
+import Name from '../assets/name/Name.png';
 
 const Navbar = () => {
     return (
