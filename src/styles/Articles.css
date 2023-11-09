@@ -1,0 +1,75 @@
+.ArticlePanel {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 150px 75px 0 75px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#ArticleTitle {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.SearchContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.Search {
+    width: 600px; 
+    height: 45px;
+    padding-left: 20px;
+    padding-right: 55px;
+
+    border: solid 2px #B9B5B5;
+    border-radius: 50px;
+
+    font-size: 16px;
+    font-family: Inter, serif;
+
+    background-image: url('../assets/articles/Search.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px);
+}
+
+.Books {
+    margin: 75px -75px 100px -75px;
+}
+
+.BoxRow {
+    display: flex;
+    gap: 30px;
+}
+
+.BoxContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.LoadButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 75px;
+}
+
+@media (max-width: 1000px) {
+    .ArticlePanel {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .BoxRow {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .BoxContainer {
+        gap: 0;
+    }
+}

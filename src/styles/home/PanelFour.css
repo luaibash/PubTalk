@@ -1,0 +1,52 @@
+.PanelFour {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 75px 75px;
+
+    display: flex;
+}
+#PanelFourSubtext {
+    max-width: 460px;
+}
+
+.PanelFourContactContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PanelFourContactBox {
+    margin-top: -50px;
+    padding: 20px 120px;
+    background-color: #B4E1ED;
+    box-shadow: 100px 30px #ffdaee;
+}
+
+@media (max-width: 1100px) {
+    .PanelFourContactBox {
+        padding: 20px 60px;
+    }
+}
+@media (max-width: 1000px) {
+    .PanelFour {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+@media (max-width: 950px) {
+    .PanelFour {
+        flex-direction: column;
+    }
+
+    .PanelFourContactBox {
+        padding: 20px 120px;
+        margin-top: 50px;
+        margin-left: -100px;
+    }
+}
+@media (max-width: 500px) {
+    .PanelFourContactBox {
+        padding: 20px 40px;
+    }
+}

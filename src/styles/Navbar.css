@@ -1,0 +1,77 @@
+.NavbarContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    height: 64px;
+
+    border-bottom: solid 1px #d9d9d9;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+
+    background-color: white;
+}
+
+.Navbar {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 75px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.NavbarLeft {
+    display: flex;
+    align-items: center;
+}
+
+.NavbarLogo {
+    height: 40px;
+}
+
+.NavbarName {
+    padding-left: 10px;
+    height: 20px;
+}
+
+.NavbarRight {
+    display: flex;
+    align-items: center;
+}
+
+.NavbarPage {
+    padding: 20px 25px;
+    color: #666666;
+    height: max-content;
+}
+.NavbarPage:hover {
+    cursor: pointer;
+    color: black;
+}
+#NavbarPageActive {
+    color: black;
+    border-bottom: solid 4px;
+}
+
+.NavbarButtonContainer {
+    margin-left: 15px;
+}
+
+@media (max-width: 1000px) {
+    .Navbar {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+@media (max-width: 700px) {
+    .NavbarPage {
+        display: none;
+    }
+
+    .Navbar {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}

@@ -1,0 +1,75 @@
+.PanelThree {
+    max-width: 1250px;
+
+    padding: 50px 75px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#PanelThreeTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    max-width: 485px;
+    padding-bottom: 5px;
+
+    border-bottom: solid 2px transparent;
+}
+#PanelThreeTitle:hover {
+    cursor: pointer;
+    border-bottom-color: black;
+}
+#PanelThreeSubtext {
+    font-size: 20px;
+    max-width: 500px;
+    margin-bottom: 50px;
+}
+
+.PanelThreeArticlesContainer {
+    display: flex;
+    position: relative;
+}
+
+.PinkBlob {
+    position: absolute;
+    top: -20px;
+    left: -150px;
+    z-index: -1;
+
+    height: 45vw;
+    max-height: 630px;
+    width: 110vw;
+    max-width: 1540px;
+}
+
+@media (min-width: 1001px) {
+    .PanelThreeArticlesContainer {
+        align-items: center;
+    }
+    
+    .PanelThreeBoxColumn, .PanelThreeLongBoxColumn {
+        display: flex;
+        flex-direction: column;
+    }
+    .PanelThreeLongBoxColumn {
+        width: 100%;
+    }
+}
+@media (max-width: 1000px) {
+    .PanelThree {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .PinkBlob {
+        display: none;
+    }
+
+    .PanelThreeArticlesContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}

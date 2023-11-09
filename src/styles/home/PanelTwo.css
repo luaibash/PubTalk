@@ -1,0 +1,98 @@
+.PanelTwo {
+    max-width: 1250px;
+
+    padding: 50px 75px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#PanelTwoTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    max-width: 485px;
+    padding-bottom: 5px;
+
+    border-bottom: solid 2px transparent;
+}
+#PanelTwoTitle:hover {
+    cursor: pointer;
+    border-bottom-color: black;
+}
+#PanelTwoSubtext {
+    font-size: 20px;
+    max-width: 500px;
+    margin-bottom: 50px;
+}
+
+.PanelTwoArticlesContainer {
+    display: flex;
+    position: relative;
+}
+
+.BlueBlob {
+    position: absolute;
+    top: -40px;
+    left: -150px;
+    z-index: -1;
+
+    height: 45vw;
+    max-height: 630px;
+    width: 110vw;
+    max-width: 1540px;
+}
+
+.PanelTwoMainBoxContainer {
+    background-color: white;
+
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 20px;
+
+    transition: box-shadow 0.2s;
+}
+.PanelTwoMainBoxContainer:hover {
+    box-shadow: 0 0 18px rgba(0,0,0,0.25);
+    cursor: pointer;
+}
+
+@media (min-width: 1001px) {
+    .PanelTwoArticlesContainer {
+        align-items: center;
+    }
+
+    .PanelTwoMainBoxContainer {
+        width: 43vw;
+        max-width: 600px;
+        height: 37vw;
+        max-height: 500px;
+    }
+    
+    .PanelTwoBoxColumn {
+        margin-left: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 1000px) {
+    .PanelTwo {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .BlueBlob {
+        display: none;
+    }
+
+    .PanelTwoArticlesContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .PanelTwoMainBoxContainer {
+        height: 225px;
+        max-width: 1000px;
+    }
+}

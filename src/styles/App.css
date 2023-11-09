@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+.App {
+  font-family: Inter, serif;
+  font-weight: 600;
+  
+  overflow-x: hidden;
+}
+
+img {
+  font-size: 16px;
+  text-align: center;
+}
