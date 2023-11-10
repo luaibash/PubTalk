@@ -13,7 +13,7 @@ const articleSchema = new Schema({      //new schema document
         type: String,
         required: true
     },
-    paragrah: {
+    paragraph: {
         type: String,
         required: true
     },
