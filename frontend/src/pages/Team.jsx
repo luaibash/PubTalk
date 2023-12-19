@@ -80,20 +80,20 @@ const MembersSlideshow = () => {
         <div className='MembersSlideshowContainer'>
             <div className='MembersSlideshow' ref={memberRef}>
                 <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
+                <Member name='Luai Bashar' role ='Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
                 <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
                 <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
-                <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
+                <Member name='Gabriel Hernandez' role='Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' colour='#7299FF'/>
                 <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
+                <Member name='Luai Bashar' role ='Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
                 <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
                 <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
-                <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
+                <Member name='Gabriel Hernandez' role='Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' colour='#7299FF'/>
                 <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
+                <Member name='Luai Bashar' role ='Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
                 <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
                 <Member name='Owen Skanes' role='Head Author' headshot={Owen} colour='#72FF80'/>
-                <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} colour='#7299FF'/>
+                <Member name='Gabriel Hernandez' role='Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' colour='#7299FF'/>
                 <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
             </div>
             <div className='ScrollButtonLeft' onClick={() => scroll({left: true})}>
