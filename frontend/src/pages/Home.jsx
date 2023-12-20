@@ -1,5 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from 'react'  //imported useEffect
+import ArticleDetails from '../components/ArticleDetails'
 import RedirectButton from '../components/RedirectButton';
 import PersonReading from '../assets/home/PersonReading.png';
 import Arrow from '../assets/home/Arrow.png'
@@ -57,6 +59,22 @@ const PanelTwo = () => {
         window.scrollTo(0,0);
     }
 
+    const [articles, setArticles] = useState(null)
+
+    useEffect(() => {
+        const fetchArticles = async () => {
+            //i did a proxy in the package.json that has link to the http://localhost:4000/, the ending fetch is to grab that api
+            const response = await fetch('/api/articles')
+            const json = await response.json()
+
+            if (response.ok) {
+                setArticles(json)
+            }
+        }
+
+        fetchArticles()
+    }, [])
+
     return (
         <div className='PanelTwo'>
             <div className='Title' id='PanelTwoTitle' onClick={() => goToLocation('Articles')}>
@@ -68,14 +86,24 @@ const PanelTwo = () => {
                 about more.
             </div>
             <div className='PanelTwoArticlesContainer'>
-                <div className='PanelTwoMainBoxContainer'/>
-                <div className='PanelTwoBoxColumn'>
-                    <div className='Box' id='BoxTop'/>
-                    <div className='Box'/>
+                <div className='PanelTwoMainBoxContainer'>
+                    {articles && articles[0] && <ArticleDetails article={articles[0]} />}
                 </div>
                 <div className='PanelTwoBoxColumn'>
-                    <div className='Box' id='BoxTop'/>
-                    <div className='Box'/>
+                    <div className='Box' id='BoxTop'>
+                        {articles && articles[1] && <ArticleDetails article={articles[1]} />}
+                    </div>
+                    <div className='Box'>
+                        {articles && articles[2] && <ArticleDetails article={articles[2]} />}
+                    </div>
+                </div>
+                <div className='PanelTwoBoxColumn'>
+                    <div className='Box' id='BoxTop'>
+                        {articles && articles[3] && <ArticleDetails article={articles[3]} />}
+                    </div>
+                    <div className='Box'>
+                        {articles && articles[4] && <ArticleDetails article={articles[4]} />}
+                    </div>
                 </div>
                 <img src={BlueBlob} alt="" className='BlueBlob'/>
             </div>
