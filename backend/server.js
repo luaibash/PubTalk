@@ -1,30 +1,28 @@
-require('dotenv').config() //allows us to use the .env folder which is a private folder 
-//where i can put private sensitive information and it wont be pushed into my github it i decided to put this all on there
-//it .env just adds to more private variables for instance of this one would be the port number
+require('dotenv').config() // Allows us to use the .env folder which is a private folder that can keep sensitive info such as port number
 
 const express = require('express')
 const mongoose = require('mongoose')
-const articleRoutes = require('./routes/articles') //this gets the workouts.js routes
-//this is so that we dont need to do app.get() in this server.js file
+const articleRoutes = require('./routes/articles') // Gets the articles.js routes
+// This is so that we dont need to do app.get() in this server.js file
 
-//express app
+// Express app
 const app = express()
 
-//middleware
-app.use(express.json()) //any request it looks in it checks to find some body (attributes) and attaches it to req object
+// Middleware
+app.use(express.json()) // Any request it looks in it checks to find some body (attributes) and attaches it to req object
 app.use((req, res, next) => {
-    console.log(req.path, req.method) //just prints request paths and methods to the server
+    console.log(req.path, req.method) // Prints request paths and methods to the server
     next()
 })
 
 //routes
-app.use('/api/articles', articleRoutes)     //goes to app.get in articleRoutes
+app.use('/api/articles', articleRoutes)     // Goes to app.get in articleRoutes
 
 
 //connect to DB
-mongoose.connect(process.env.MONGO_URI) //connects to the database
-    .then(() => {       //what should we do after connecting to it? we want to start listen to request!
-        //listen for requests
+mongoose.connect(process.env.MONGO_URI) // Connects to the database
+    .then(() => {     
+        // Listen for requests
         app.listen(process.env.PORT, () => {
             console.log("connected to DB and listening on port", process.env.PORT)
         })
