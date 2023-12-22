@@ -12,7 +12,7 @@ const articleSchema = new Schema({
         type: String,
         required: true
     },
-    paragraph: {
+    description: {
         type: String,
         required: true
     },
@@ -28,6 +28,7 @@ const articleSchema = new Schema({
         type: Number,
         required: true
     }
+    
 
 }, {timestamps: true})  //this is a 2nd argument that will automatically give us a timestamp of when it is created and last updated, so for article this will be that property
 

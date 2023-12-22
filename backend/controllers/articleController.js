@@ -31,7 +31,7 @@ const getArticle = async(req, res) => {
 
 //create new article
 const createArticle = async (req, res) => {     //async function
-    const {title, author, paragraph, duration, genre, rating} = req.body
+    const {title, author, description, duration, genre, rating} = req.body
 
     let emptyFields = []
 
@@ -43,8 +43,8 @@ const createArticle = async (req, res) => {     //async function
         emptyFields.push('author')
     }
 
-    if (!paragraph) {
-        emptyFields.push('paragraph')
+    if (!description) {
+        emptyFields.push('description')
     }
 
     if (!duration) {
@@ -66,7 +66,7 @@ const createArticle = async (req, res) => {     //async function
 
     //add doc to db
     try {
-        const article = await Article.create({title, author, paragraph, duration, genre, rating})
+        const article = await Article.create({title, author, description, duration, genre, rating})
         res.status(200).json(article)
     }
     catch (error) {
