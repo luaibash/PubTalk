@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from 'react'  //imported useEffect
+import {useEffect, useState} from 'react'
 import ArticleDetails from '../components/ArticleDetails'
 import RedirectButton from '../components/RedirectButton';
 import PersonReading from '../assets/home/PersonReading.png';
@@ -87,7 +87,7 @@ const PanelTwo = () => {
             </div>
             <div className='PanelTwoArticlesContainer'>
                 <div className='PanelTwoMainBoxContainer'>
-                    {articles && articles[0] && <ArticleDetails article={articles[0]} />}
+                    {articles && articles[0] && <ArticleDetails article={articles[0]} large={true}/>}
                 </div>
                 <div className='PanelTwoBoxColumn'>
                     <div className='Box' id='BoxTop'>

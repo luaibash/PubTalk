@@ -1,0 +1,37 @@
+.articlePreview {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail {
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.articleContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+
+    padding: 20px 10px 10px 10px;
+}
+
+.articleTitle {
+
+}
+
+.articleBottomContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.articleAuthor {
+
+}
+
+.articleDuration {
+
+}
