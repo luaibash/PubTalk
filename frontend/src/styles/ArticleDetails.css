@@ -8,6 +8,8 @@
     height: 50%;
     width: 100%;
     object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .articleContent {
@@ -29,6 +31,11 @@
     font-size: 24px;
 }
 
+.articleDescription {
+    font-weight: 400;
+    padding-top: 10px;
+}
+
 .articleBottomContainer {
     display: flex;
     justify-content: space-between;
@@ -45,4 +52,10 @@
 }
 #articleDetailsLarge {
     font-size: 16px;
+}
+
+@media (max-width: 1000px) {
+    .articleDescription {
+        display: none;
+    }
 }
