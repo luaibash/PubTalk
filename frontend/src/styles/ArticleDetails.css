@@ -16,11 +16,17 @@
     justify-content: space-between;
     flex: 1;
 
-    padding: 20px 10px 10px 10px;
+    padding: 10px;
+}
+#articleContentLarge {
+    padding-top: 20px;
 }
 
 .articleTitle {
-
+    font-weight: 800;
+}
+#articleTitleLarge {
+    font-size: 24px;
 }
 
 .articleBottomContainer {
@@ -29,9 +35,14 @@
 }
 
 .articleAuthor {
-
+    font-weight: 400;
+    font-size: 14px;
 }
-
 .articleDuration {
-
+    color: #878787;
+    font-weight: 400;
+    font-size: 14px;
+}
+#articleDetailsLarge {
+    font-size: 16px;
 }
