@@ -26,14 +26,15 @@
 
 .articleTitle {
     font-weight: 800;
-    font-size: 16px;
+    font-size: 1.14vw;
 }
 #articleTitleLarge {
-    font-size: 24px;
+    font-size: 1.71vw;
 }
 
 .articleDescription {
     font-weight: 400;
+    font-size: 1.14vw;
     padding-top: 10px;
 }
 
@@ -44,23 +45,26 @@
 
 .articleAuthor {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1vw;
 }
 .articleDuration {
     color: #878787;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1vw;
 }
 #articleDetailsLarge {
-    font-size: 16px;
+    font-size: 1.14vw;
 }
 
 @media (min-width: 1400px) {
-    .articleTitle {
+    .articleTitle, .articleDescription, #articleDetailsLarge {
         font-size: 16px;
     }
     #articleTitleLarge {
         font-size: 24px;
+    }
+    .articleAuthor, .articleDuration {
+        font-size: 14px;
     }
 }
 
@@ -72,10 +76,11 @@
     #articleContentLarge {
         padding-top: 10px;
     }
-    #articleTitleLarge {
+
+    .articleTitle, #articleTitleLarge {
         font-size: 16px;
     }
-    #articleDetailsLarge {
+    .articleAuthor, .articleDuration, #articleDetailsLarge {
         font-size: 14px;
     }
 }
