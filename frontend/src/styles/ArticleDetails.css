@@ -26,6 +26,7 @@
 
 .articleTitle {
     font-weight: 800;
+    font-size: 16px;
 }
 #articleTitleLarge {
     font-size: 24px;
@@ -54,8 +55,27 @@
     font-size: 16px;
 }
 
+@media (min-width: 1400px) {
+    .articleTitle {
+        font-size: 16px;
+    }
+    #articleTitleLarge {
+        font-size: 24px;
+    }
+}
+
 @media (max-width: 1000px) {
     .articleDescription {
         display: none;
+    }
+
+    #articleContentLarge {
+        padding-top: 10px;
+    }
+    #articleTitleLarge {
+        font-size: 16px;
+    }
+    #articleDetailsLarge {
+        font-size: 14px;
     }
 }
