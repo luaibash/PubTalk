@@ -9,6 +9,20 @@ const getArticles = async(req, res) => {
     res.status(200).json(articles)
 }
 
+//get all RECENT articles
+const getRecent = async(req, res) => {
+    const articles = await Article.find({}).sort({createdAt: -1})
+   
+    res.status(200).json(articles)
+}
+
+//get all TOP RATED articles
+const getTop = async(req, res) => {
+    const articles = await Article.find({}).sort({rating: -1})
+   
+    res.status(200).json(articles)
+}
+
 
 //get a single article
 const getArticle = async(req, res) => {
@@ -119,6 +133,8 @@ const updateArticle = async (req, res) => {
 
 module.exports = {
     getArticles,
+    getRecent,
+    getTop,
     getArticle,
     createArticle, 
     deleteArticle,

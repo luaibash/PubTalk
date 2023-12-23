@@ -1,6 +1,8 @@
 const express = require('express')
 const {      //this is for later when i create the controller
     getArticles,
+    getRecent,
+    getTop,
     getArticle,
     createArticle,
     deleteArticle,
@@ -11,6 +13,12 @@ const router = express.Router()
 
 // GET all articles
 router.get('/', getArticles)
+
+//GET all RECENT articles
+router.get('/recent', getRecent)
+
+//GET all TOP RATED articles
+router.get('/top', getTop)
 
 //GET a single article
 router.get('/:id', getArticle)
