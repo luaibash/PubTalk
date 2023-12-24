@@ -9,8 +9,8 @@
 }
 
 .ScrollLeftArrow, .ScrollRightArrow {
-    height: 10px;
     width: 10px;
+    aspect-ratio: 1 / 1;
     padding: 15px;
 }
 
@@ -20,8 +20,9 @@
     justify-content: center;
     align-items: center;
 
-    width: 40px;
-    height: 40px;
+    max-width: 40px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
 
     font-weight: 400;
     font-size: 16px;
