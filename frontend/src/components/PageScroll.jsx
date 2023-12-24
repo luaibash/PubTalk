@@ -4,15 +4,23 @@ import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
 
 const PageScroll = () => {
-    const articles = 80
+    // Grab articles and find number of pages
+    const articles = 5
     const pages = Math.ceil(articles / 8);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // If there is only one page, return a space to replace the page numbers
+    if (pages <= 1) {
+        return <div style={{ height: '75px' }}></div>;
+    }
+
+    // Create arrary holding each page number
     const pageNumbers = [];
     for (let i = 1; i <= pages; i++) {
         pageNumbers.push(i);
     }
 
-    const [currentPage, setCurrentPage] = useState(1);
-
+    // Switch page number based on if allowed or not
     const switchPage = (change) => {
         if (change > 0 && currentPage + change <= pages) setCurrentPage(currentPage + change);
         else if (change < 0 && currentPage + change > 0) setCurrentPage(currentPage + change);
