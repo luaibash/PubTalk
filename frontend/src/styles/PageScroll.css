@@ -1,0 +1,44 @@
+.PageScrollContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+
+    height: 100px;
+    align-items: center;
+}
+
+.ScrollLeftArrow, .ScrollRightArrow {
+    height: 10px;
+    width: 10px;
+    padding: 15px;
+}
+
+.PageNumber {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(90, 147, 221);
+}
+
+.ScrollLeftArrow, .PageNumber, .ScrollRightArrow {
+    border: solid;
+    border-radius: 100%;
+    border-color: transparent;
+    border-width: 1px;
+}
+#ActiveArrow:hover, .PageNumber:hover {
+    border-color: lightgray;
+    cursor: pointer;
+}
+
+#ActivePage {
+    background-color: rgb(201, 227, 236);
+}

@@ -1,6 +1,5 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from 'react'
 import ArticleDetails from '../components/ArticleDetails'
 import RedirectButton from '../components/RedirectButton';
 import PersonReading from '../assets/home/PersonReading.png';

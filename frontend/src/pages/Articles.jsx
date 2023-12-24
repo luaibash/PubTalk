@@ -1,9 +1,9 @@
 import React from 'react';
 import '../styles/Articles.css';
 import '../styles/Boxes.css';
-import LoadButton from '../components/LoadButton';
 import Books from '../assets/articles/books.png';
 import Arrow from '../assets/home/Arrow.png';
+import PageScroll from '../components/PageScroll';
 
 const Articles = () => {
     return (
@@ -32,7 +32,7 @@ const SearchArticles = () => {
 
 const TopArticles = () => {
     return (
-        <div className='topArticlesContainer'>
+        <div className='TopArticlesContainer'>
             <div className='Title' id='PanelTwoTitle'>
                 Top Articles
                 <img src={Arrow} alt="" className='Arrow'/>
@@ -55,16 +55,14 @@ const TopArticles = () => {
                     <div className='Box'/>
                 </div>
             </div>
-            <div className='LoadButtonContainer'>
-                <LoadButton title="More Top Articles"/>
-            </div>
+            <PageScroll/>
         </div>
     )
 }
 
 const AllArticles = () => {
     return (
-        <div className='allArticlesContainer'>
+        <div className='AllArticlesContainer'>
             <div className='Title' id='PanelThreeTitle'>
                 All Articles
                 <img src={Arrow} alt="" className='Arrow'/>
@@ -87,9 +85,7 @@ const AllArticles = () => {
                     <div className='Box'/>
                 </div>
             </div>
-            <div className='LoadButtonContainer'>
-                <LoadButton title="More Articles"/>
-            </div>
+            <PageScroll/>
         </div>
     )
 }
