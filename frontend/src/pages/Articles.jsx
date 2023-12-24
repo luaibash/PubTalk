@@ -8,6 +8,16 @@ import Arrow from '../assets/home/Arrow.png';
 const Articles = () => {
     return (
         <div  className='ArticlePanel'>
+            <SearchArticles/>
+            <TopArticles/>
+            <AllArticles/>
+        </div>
+    );
+}
+
+const SearchArticles = () => {
+    return (
+        <div className='SearchArticleContainer'>
             <div className='Title' id='ArticleTitle'>
                 Explore Our Articles: Find Your Desired
                 Topics Here
@@ -16,6 +26,13 @@ const Articles = () => {
                 <input type="text" placeholder='Search any topic (e.g. Politics) ' className='Search'/>
             </div>
             <img src={Books} alt="" className='Books'/>
+        </div>
+    );
+}
+
+const TopArticles = () => {
+    return (
+        <div className='topArticlesContainer'>
             <div className='Title' id='PanelTwoTitle'>
                 Top Articles
                 <img src={Arrow} alt="" className='Arrow'/>
@@ -41,6 +58,13 @@ const Articles = () => {
             <div className='LoadButtonContainer'>
                 <LoadButton title="More Top Articles"/>
             </div>
+        </div>
+    )
+}
+
+const AllArticles = () => {
+    return (
+        <div className='allArticlesContainer'>
             <div className='Title' id='PanelThreeTitle'>
                 All Articles
                 <img src={Arrow} alt="" className='Arrow'/>
@@ -67,7 +91,7 @@ const Articles = () => {
                 <LoadButton title="More Articles"/>
             </div>
         </div>
-    );
+    )
 }
 
 export default Articles;

@@ -14,6 +14,11 @@
     text-align: center;
 }
 
+.SearchArticleContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .SearchContainer {
     display: flex;
     justify-content: center;
