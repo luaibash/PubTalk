@@ -5,7 +5,7 @@ import RightArrow from '../assets/team/RightArrow.svg';
 
 const PageScroll = () => {
     // Grab articles and find number of pages
-    const articles = 5
+    const articles = 80
     const pages = Math.ceil(articles / 8);
     const [currentPage, setCurrentPage] = useState(1);
 
