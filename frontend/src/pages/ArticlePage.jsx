@@ -1,6 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import ArticleDetails from '../components/ArticleDetails'
+import ArticleDetails from '../components/ArticleDetails';
+import NotFound from './NotFound';
 import '../styles/home/Home.css';
 import '../styles/home/PanelOne.css';
 import '../styles/home/PanelTwo.css';
@@ -10,22 +11,24 @@ import '../styles/Boxes.css';
 
 const ArticlePage = () => {
     //articleID is same name as in app.jsx that we set
-    const {articleID} = useParams()
-    const [article, setArticle] = useState(null)
+    const {articleID} = useParams();
+    const [article, setArticle] = useState(null);
+    const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
         const fetchArticle = async () => {
             // Fetches the API
-            const response = await fetch('/api/articles/' + articleID)
-            const json = await response.json()
+            const response = await fetch('/api/articles/' + articleID);
+            const json = await response.json();
 
-            if (response.ok) {
-                setArticle(json)
-            }
+            if (response.ok) setArticle(json);
+            else setNotFound(true);
         }
 
         fetchArticle()
     }, [articleID])
+
+    if (notFound) return <NotFound/>;
 
     return (
         <div className='TeamPanel'>
