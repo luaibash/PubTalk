@@ -53,12 +53,6 @@ const PanelOne = () => {
 
 const PanelTwo = () => {
     const [articles, setArticles] = useState(null)
-    
-    let navigate = useNavigate();
-    const goToLocation = (location) => {
-        navigate(location.toLowerCase());
-        window.scrollTo(0,0);
-    }
 
     useEffect(() => {
         const fetchArticles = async () => {
@@ -73,6 +67,12 @@ const PanelTwo = () => {
 
         fetchArticles()
     }, [])
+
+    let navigate = useNavigate();
+    const goToLocation = (location) => {
+        navigate(location.toLowerCase());
+        window.scrollTo(0,0);
+    }
 
     return (
         <div className='PanelTwo'>
@@ -113,12 +113,6 @@ const PanelTwo = () => {
 const PanelThree = () => {
     const [articles, setArticles] = useState(null)
 
-    let navigate = useNavigate();
-    const goToLocation = (location) => {
-        navigate(location.toLowerCase());
-        window.scrollTo(0,0);
-    }
-
     useEffect(() => {
         const fetchArticles = async () => {
             // Fetches the API
@@ -132,6 +126,12 @@ const PanelThree = () => {
 
         fetchArticles()
     }, [])
+
+    let navigate = useNavigate();
+    const goToLocation = (location) => {
+        navigate(location.toLowerCase());
+        window.scrollTo(0,0);
+    }
 
     return (
         <div className='PanelThree'>

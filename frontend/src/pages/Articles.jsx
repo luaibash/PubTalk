@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import '../styles/Articles.css';
 import '../styles/Boxes.css';
 import Books from '../assets/articles/books.png';
@@ -31,6 +31,23 @@ const SearchArticles = () => {
 }
 
 const TopArticles = () => {
+    const [articles, setArticles] = useState(null);
+    console.log(articles);
+    
+    useEffect(() => {
+        const fetchArticles = async () => {
+            // Fetches the API
+            const response = await fetch('/api/articles/top')
+            const json = await response.json()
+
+            if (response.ok) {
+                setArticles(json)
+            }
+        }
+
+        fetchArticles()
+    }, [])
+
     return (
         <div className='TopArticlesContainer'>
             <div className='Title' id='PanelTwoTitle'>
@@ -61,6 +78,23 @@ const TopArticles = () => {
 }
 
 const AllArticles = () => {
+    const [articles, setArticles] = useState(null);
+    console.log(articles);
+    
+    useEffect(() => {
+        const fetchArticles = async () => {
+            // Fetches the API
+            const response = await fetch('/api/articles/recent')
+            const json = await response.json()
+
+            if (response.ok) {
+                setArticles(json)
+            }
+        }
+
+        fetchArticles()
+    }, [])
+
     return (
         <div className='AllArticlesContainer'>
             <div className='Title' id='PanelThreeTitle'>
