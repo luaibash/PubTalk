@@ -23,6 +23,9 @@ router.get('/top', getTop)
 //GET a single article
 router.get('/:id', getArticle)
 
+//GET  a single article based by title
+//router.get('/:title', getArticleTitle)
+
 //POST a new article
 router.post('/', createArticle)
 
