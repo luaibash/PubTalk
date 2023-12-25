@@ -7,6 +7,7 @@ import Article from './pages/Articles';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ArticlePage from './pages/ArticlePage';
+import NotFound from './pages/NotFound';
 import './styles/App.css';
 
 function App() {
@@ -20,13 +21,12 @@ function App() {
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/articles' element={<Article/>}/>
             <Route path='/articles/:articleID' element={<ArticlePage/>}/>
+            <Route path="*" element={<NotFound/>} />
           </Routes>
         <Footer/>
       </Router>
     </div>
   );
 }
-
-//just added 2 more route paths
 
 export default App;

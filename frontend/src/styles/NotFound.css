@@ -1,0 +1,8 @@
+.NotFoundText {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding-top: 50px;
+    font-size: 50px;
+}
