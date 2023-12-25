@@ -65,14 +65,14 @@ const TopArticles = () => {
             <div className='BoxContainer'>
                 <div className='BoxRow'>
                     {[0, 1, 2, 3].map((index) => (
-                        <div key={index} className='Box'>
+                        <div key={index} className='Box' style={{ visibility: articles && articles[(currentPage - 1) * 8 + index] ? '' : 'hidden' }}>
                             {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
                         </div>
                     ))}
                 </div>
                 <div className='BoxRow'>
                     {[4, 5, 6, 7].map((index) => (
-                        <div key={index} className='Box'>
+                        <div key={index} className='Box' style={{ visibility: articles && articles[(currentPage - 1) * 8 + index] ? '' : 'hidden' }}>
                             {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
                         </div>
                     ))}
@@ -95,7 +95,7 @@ const AllArticles = () => {
 
             if (response.ok) {
                 // setArticles(json)                                                   // Real way to set articles
-                const duplicatedArticles = Array.from({ length: 8 }, () => [...json]); // duplicated way to test scrolling
+                const duplicatedArticles = Array.from({ length: 7 }, () => [...json]); // duplicated way to test scrolling
                 const combinedArticles = [].concat(...duplicatedArticles);
                 setArticles(combinedArticles);
             }
@@ -117,14 +117,14 @@ const AllArticles = () => {
             <div className='BoxContainer'>
                 <div className='BoxRow'>
                     {[0, 1, 2, 3].map((index) => (
-                        <div key={index} className='Box'>
+                        <div key={index} className='Box' style={{ visibility: articles && articles[(currentPage - 1) * 8 + index] ? '' : 'hidden' }}>
                             {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
                         </div>
                     ))}
                 </div>
                 <div className='BoxRow'>
                     {[4, 5, 6, 7].map((index) => (
-                        <div key={index} className='Box'>
+                        <div key={index} className='Box' style={{ visibility: articles && articles[(currentPage - 1) * 8 + index] ? '' : 'hidden' }}>
                             {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
                         </div>
                     ))}
