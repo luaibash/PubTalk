@@ -4,6 +4,7 @@ import '../styles/Boxes.css';
 import Books from '../assets/articles/books.png';
 import Arrow from '../assets/home/Arrow.png';
 import PageScroll from '../components/PageScroll';
+import ArticleDetails from '../components/ArticleDetails';
 
 const Articles = () => {
     return (
@@ -32,7 +33,7 @@ const SearchArticles = () => {
 
 const TopArticles = () => {
     const [articles, setArticles] = useState(null);
-    console.log(articles);
+    const [currentPage, setCurrentPage] = useState(1);
     
     useEffect(() => {
         const fetchArticles = async () => {
@@ -41,7 +42,10 @@ const TopArticles = () => {
             const json = await response.json()
 
             if (response.ok) {
-                setArticles(json)
+                // setArticles(json)                                                   // Real way to set articles
+                const duplicatedArticles = Array.from({ length: 7 }, () => [...json]); // duplicated way to test scrolling
+                const combinedArticles = [].concat(...duplicatedArticles);
+                setArticles(combinedArticles);
             }
         }
 
@@ -60,26 +64,28 @@ const TopArticles = () => {
             </div>
             <div className='BoxContainer'>
                 <div className='BoxRow'>
-                    <div className='Box'/>
-                    <div className='Box'/>
-                    <div className='Box'/>
-                    <div className='Box'/>
+                    {[0, 1, 2, 3].map((index) => (
+                        <div key={index} className='Box'>
+                            {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
+                        </div>
+                    ))}
                 </div>
                 <div className='BoxRow'>
-                    <div className='Box'/>
-                    <div className='Box'/>
-                    <div className='Box'/>
-                    <div className='Box'/>
+                    {[4, 5, 6, 7].map((index) => (
+                        <div key={index} className='Box'>
+                            {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
+                        </div>
+                    ))}
                 </div>
             </div>
-            <PageScroll/>
+            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={articles}/>
         </div>
     )
 }
 
 const AllArticles = () => {
     const [articles, setArticles] = useState(null);
-    console.log(articles);
+    const [currentPage, setCurrentPage] = useState(1);
     
     useEffect(() => {
         const fetchArticles = async () => {
@@ -88,7 +94,10 @@ const AllArticles = () => {
             const json = await response.json()
 
             if (response.ok) {
-                setArticles(json)
+                // setArticles(json)                                                   // Real way to set articles
+                const duplicatedArticles = Array.from({ length: 8 }, () => [...json]); // duplicated way to test scrolling
+                const combinedArticles = [].concat(...duplicatedArticles);
+                setArticles(combinedArticles);
             }
         }
 
@@ -107,19 +116,21 @@ const AllArticles = () => {
             </div>
             <div className='BoxContainer'>
                 <div className='BoxRow'>
-                    <div className='Box'/>
-                    <div className='Box'/>
-                    <div className='Box'/>
-                    <div className='Box'/>
+                    {[0, 1, 2, 3].map((index) => (
+                        <div key={index} className='Box'>
+                            {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
+                        </div>
+                    ))}
                 </div>
                 <div className='BoxRow'>
-                    <div className='Box'/>
-                    <div className='Box'/>
-                    <div className='Box'/>
-                    <div className='Box'/>
+                    {[4, 5, 6, 7].map((index) => (
+                        <div key={index} className='Box'>
+                            {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
+                        </div>
+                    ))}
                 </div>
             </div>
-            <PageScroll/>
+            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={articles}/>
         </div>
     )
 }
