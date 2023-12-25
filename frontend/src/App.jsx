@@ -6,10 +6,8 @@ import Contact from './pages/Contact';
 import Article from './pages/Articles';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import './styles/App.css';
-
-import Testing from './pages/Testing';
 import ArticlePage from './pages/ArticlePage';
+import './styles/App.css';
 
 function App() {
   return (
@@ -21,8 +19,7 @@ function App() {
             <Route path='/team' element={<Team/>}/>
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/articles' element={<Article/>}/>
-            <Route path='/testing' element={<Testing/>}/>
-            <Route path='/articlepage/:articleID' element={<ArticlePage/>}/>
+            <Route path='/articles/:articleID' element={<ArticlePage/>}/>
           </Routes>
         <Footer/>
       </Router>

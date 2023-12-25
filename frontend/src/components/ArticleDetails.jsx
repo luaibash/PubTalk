@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import '../styles/ArticleDetails.css';
 
 const ArticleDetails = ({article, large}) => {
     const imageFolder = article.title.replace(/[^a-zA-Z0-9]/g, ''); // Grabs name of folder for specified article
 
     return(
-        <div className='articlePreview'>
+        <Link to={`/articles/${article._id}`} className='articlePreview'>
             <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='thumbnail'/>
             <div className='articleContent' id={large ? 'articleContentLarge' : ''}>
                 <div className='articleTopContainer'>
@@ -17,7 +18,7 @@ const ArticleDetails = ({article, large}) => {
                     <div className='articleDuration' id={large ? 'articleDetailsLarge' : ''}>{article.duration} min</div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 
