@@ -28,3 +28,50 @@
     margin-top: 50px;
     display: flex;
 }
+
+@media(max-width: 1200px) {
+    .ReadingError {
+        max-width: 500px;
+        width: 50%;
+    }    
+
+    .ErrorNumber {
+        font-size: 5vw;
+    }
+
+    .NotFoundText {
+        font-size: 1.66vw;
+        margin-right: 50px;
+    }
+}
+@media (max-width: 1000px) {
+    .NotFoundPanel {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+@media(max-width: 700px) {
+    .NotFoundPanel {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ErrorNumber {
+        font-size: 8vw;
+    }
+
+    .NotFoundText {
+        font-size: 3vw;
+        margin-right: 0;
+    }
+
+    .ErrorButton {
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .ReadingError {
+        max-width: 500px;
+        width: 80%;
+    } 
+}
