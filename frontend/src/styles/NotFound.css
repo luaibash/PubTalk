@@ -1,8 +1,30 @@
-.NotFoundText {
+.NotFoundPanel {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
 
-    padding-top: 50px;
-    font-size: 50px;
+    max-width: 1250px;
+    margin: 115px auto 60px auto;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+.ErrorNumber {
+    font-size: 60px;
+}
+
+.ReadingError {
+    width: 500px;
+}
+
+.NotFoundText {
+    padding-top: 30px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 100px;
+}
+
+.ErrorButton {
+    margin-top: 50px;
+    display: flex;
 }
