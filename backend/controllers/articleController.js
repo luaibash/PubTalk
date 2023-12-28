@@ -43,6 +43,31 @@ const getArticle = async(req, res) => {
 }
 
 
+const getArticleTitle = async(req, res) => {
+    const { link } = req.params; // Assuming the title is passed as a parameter
+
+    // Find the article by its title using Mongoose query
+    try {
+        const article = await Article.findOne({ link: link });
+
+        if (!article) {
+            return res.status(404).json({ error: 'No such article' });
+        } else {
+            //article.title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '-');
+            console.log("Article Title:", article.link); // Log the article's title
+            res.status(200).json(article);
+        }
+    } catch (error) {
+        // Handle errors that might occur during the query
+        console.error(error); // Log any potential error
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
+
+
+
+
 //create new article
 const createArticle = async (req, res) => {     //async function
     const {title, author, description, duration, genre, rating} = req.body
@@ -136,6 +161,7 @@ module.exports = {
     getRecent,
     getTop,
     getArticle,
+    getArticleTitle,
     createArticle, 
     deleteArticle,
     updateArticle

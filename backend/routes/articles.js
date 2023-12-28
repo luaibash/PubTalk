@@ -4,6 +4,7 @@ const {      //this is for later when i create the controller
     getRecent,
     getTop,
     getArticle,
+    getArticleTitle,
     createArticle,
     deleteArticle,
     updateArticle
@@ -20,11 +21,11 @@ router.get('/recent', getRecent)
 //GET all TOP RATED articles
 router.get('/top', getTop)
 
+//GET a single article based by title
+router.get('/page/:link', getArticleTitle)
+
 //GET a single article
 router.get('/:id', getArticle)
-
-//GET  a single article based by title
-//router.get('/:title', getArticleTitle)
 
 //POST a new article
 router.post('/', createArticle)

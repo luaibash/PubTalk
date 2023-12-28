@@ -18,7 +18,7 @@ const ArticlePage = () => {
     useEffect(() => {
         const fetchArticle = async () => {
             // Fetches the API
-            const response = await fetch('/api/articles/' + articleID);
+            const response = await fetch('/api/articles/page/' + articleID);
             const json = await response.json();
 
             if (response.ok) setArticle(json);
