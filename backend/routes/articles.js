@@ -1,10 +1,9 @@
 const express = require('express')
-const {      //this is for later when i create the controller
+const {   
     getArticles,
     getRecent,
     getTop,
     getArticle,
-    getArticleTitle,
     createArticle,
     deleteArticle,
     updateArticle
@@ -15,25 +14,22 @@ const router = express.Router()
 // GET all articles
 router.get('/', getArticles)
 
-//GET all RECENT articles
+// GET all RECENT articles
 router.get('/recent', getRecent)
 
-//GET all TOP RATED articles
+// GET all TOP RATED articles
 router.get('/top', getTop)
 
-//GET a single article based by title
-router.get('/page/:link', getArticleTitle)
-
-//GET a single article
+// GET a single article based on id
 router.get('/:id', getArticle)
 
-//POST a new article
+// POST a new article
 router.post('/', createArticle)
 
 //DELETE a article
 router.delete('/:id', deleteArticle)
 
-//UPDATE a article
+// UPDATE a article
 router.patch('/:id', updateArticle)
 
 //TESTING API CALLS

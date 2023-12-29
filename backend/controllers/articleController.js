@@ -43,33 +43,8 @@ const getArticle = async(req, res) => {
 }
 
 
-const getArticleTitle = async(req, res) => {
-    const { link } = req.params; // Assuming the title is passed as a parameter
-
-    // Find the article by its title using Mongoose query
-    try {
-        const article = await Article.findOne({ link: link });
-
-        if (!article) {
-            return res.status(404).json({ error: 'No such article' });
-        } else {
-            //article.title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '-');
-            console.log("Article Title:", article.link); // Log the article's title
-            res.status(200).json(article);
-        }
-    } catch (error) {
-        // Handle errors that might occur during the query
-        console.error(error); // Log any potential error
-        return res.status(500).json({ error: 'Internal server error' });
-    }
-}
-
-
-
-
-
-//create new article
-const createArticle = async (req, res) => {     //async function
+// Create new article
+const createArticle = async (req, res) => {    
     const {title, author, description, duration, genre, rating} = req.body
 
     let emptyFields = []
@@ -103,7 +78,7 @@ const createArticle = async (req, res) => {     //async function
     
     }
 
-    //add doc to db
+    // Add doc to database
     try {
         const article = await Article.create({title, author, description, duration, genre, rating})
         res.status(200).json(article)
@@ -114,18 +89,18 @@ const createArticle = async (req, res) => {     //async function
 }
 
 
-//delete an article
+// Delete an article
 const deleteArticle = async (req, res) => {
     const {id} = req.params
 
-    if(!mongoose.Types.ObjectId.isValid(id)) {      //checks if the id is within 12 bits of json, if the id is like 123 it wont work and this will trigger
+    if(!mongoose.Types.ObjectId.isValid(id)) {      // Checks if the id is within 12 bits of json, if the id is like 123 it wont work and this will trigger
         return res.status(404).json({error: 'no such article'})
     }
 
-    const article = await Article.findOneAndDelete({_id: id})   //mongodb uses _id as their param for ids
+    const article = await Article.findOneAndDelete({_id: id})   // Mongodb uses _id as their param for ids
 
     if (!article) {
-        return res.status(400).json({error: 'no such article'}) //the reason we have return call is because if we dont it will continue running the code (it wont break)
+        return res.status(400).json({error: 'no such article'}) // The reason we have return call is because if we dont it will continue running the code (it wont break)
     }
     else {
         res.status(200).json(article)
@@ -133,11 +108,11 @@ const deleteArticle = async (req, res) => {
 }
 
 
-//update an article
+// Update an article
 const updateArticle = async (req, res) => {
     const {id} = req.params
 
-    if(!mongoose.Types.ObjectId.isValid(id)) {      //checks if the id is within 12 bits of json, if the id is like 123 it wont work and this will trigger
+    if(!mongoose.Types.ObjectId.isValid(id)) {     
         return res.status(404).json({error: 'no such article'})
     }
 
@@ -146,7 +121,7 @@ const updateArticle = async (req, res) => {
     })
 
     if (!article) {
-        return res.status(400).json({error: 'no such article'}) //the reason we have return call is because if we dont it will continue running the code (it wont break)
+        return res.status(400).json({error: 'no such article'})
     }
     else {
         res.status(200).json(article)
@@ -155,13 +130,11 @@ const updateArticle = async (req, res) => {
 }
 
 
-
 module.exports = {
     getArticles,
     getRecent,
     getTop,
     getArticle,
-    getArticleTitle,
     createArticle, 
     deleteArticle,
     updateArticle

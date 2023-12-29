@@ -4,11 +4,10 @@ import '../styles/ArticleDetails.css';
 
 const ArticleDetails = ({article, large}) => {
     const imageFolder = article.title.replace(/[^a-zA-Z0-9]/g, ''); // Grabs name of folder for specified article
-    //const name = article.title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '-');
-
+    const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-'); // Grab article link
 
     return(
-        <Link to={`/articles/page/${article.link}`} className='articlePreview'>
+        <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='articlePreview'>
             <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='thumbnail'/>
             <div className='articleContent' id={large ? 'articleContentLarge' : ''}>
                 <div className='articleTopContainer'>
