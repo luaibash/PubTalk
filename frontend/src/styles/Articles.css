@@ -1,7 +1,7 @@
 .ArticlePanel {
     max-width: 1250px;
     margin: 0 auto;
-    padding: 150px 75px 0 75px;
+    padding: 150px 75px 100px 75px;
 
     display: flex;
     flex-direction: column;
@@ -62,6 +62,47 @@
     margin-bottom: 75px;
 }
 
+#GenresTitle {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.RevolvingWordsContainer {
+    display: inline-block;
+    padding-left: 12px;
+
+    height: 44px;
+    vertical-align: bottom;
+    overflow-y: hidden;
+
+    user-select: none;
+    cursor:text;
+}
+.RevolvingWord {
+    display: block;
+    white-space: pre;
+    text-align: left;
+    animation: animateWords 15s infinite ease;
+}
+@keyframes animateWords {
+    0% {
+        transform: translateY(0);
+    }
+    12.5%, 25% {
+        transform: translateY(-43px);
+    }
+    37.5%, 50% {
+        transform: translateY(-86px);
+    }
+    62.5%, 75% {
+        transform: translateY(-131px);
+    }
+    87.5%, 100% {
+        transform: translateY(-176px);
+    }
+}
+
 @media (max-width: 1000px) {
     .ArticlePanel {
         padding-left: 25px;
@@ -76,4 +117,8 @@
     .BoxContainer {
         gap: 0;
     }
+}
+
+#test {
+    color: rgb(236, 86, 131);
 }
