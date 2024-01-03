@@ -107,6 +107,7 @@ const AllArticles = () => {
 
     return (
         <div className='AllArticlesContainer'>
+            <div className='divider'></div>
             <div className='Title' id='PanelThreeTitle'>
                 All Articles
                 <img src={Arrow} alt="" className='Arrow'/>
@@ -137,20 +138,55 @@ const AllArticles = () => {
 }
 
 const ArticleGenres = () => {
-    // const [genre, setGenre] = useState(null);
+    const [genre, setGenre] = useState('Technology');
+    const [articles, setArticles] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    
+    useEffect(() => {
+        const fetchArticles = async () => {
+            // Fetches the API
+            const response = await fetch('/api/articles/recent')
+            const json = await response.json()
+
+            if (response.ok) {
+                // setArticles(json)                                                   // Real way to set articles
+                const duplicatedArticles = Array.from({ length: 7 }, () => [...json]); // duplicated way to test scrolling
+                const combinedArticles = [].concat(...duplicatedArticles);
+                setArticles(combinedArticles);
+            }
+        }
+
+        fetchArticles()
+    }, [])
 
     return (
         <div className='ArticleGenresContainer'>
+            <div className='divider'></div>
             <div className='Title' id='GenresTitle'>
                 Explore Different Genres:
                 <span className='RevolvingWordsContainer'>
                     <span className='RevolvingWord' style={{color: 'rgb(75, 81, 170)'}}>Technology.</span>
                     <span className='RevolvingWord' style={{color: 'rgb(168, 169, 189)'}}>Economics.</span>
                     <span className='RevolvingWord' style={{color: 'rgb(102, 201, 63)'}}>Science.</span>
-                    <span className='RevolvingWord' style={{color: 'rgb(236, 86, 131)'}}>Arts.</span>
+                    <span className='RevolvingWord' style={{color: 'rgb(236, 86, 131)'}}>Education.</span>
                     <span className='RevolvingWord' style={{color: 'rgb(75, 81, 170)'}}>Technology.</span>
                 </span>
             </div>
+            <div className='ArticlesAndGenresContainer'>
+                <div className='GenreArticles'>
+                    {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
+                        <div key={index} className='LongBox' id={index !== 7 ? 'BoxTop' : ''} style={{ visibility: articles && articles[(currentPage - 1) * 8 + index] ? '' : 'hidden' }}>
+                            {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
+                        </div>
+                    ))}
+                </div>
+                <div className='Genres'>
+                    <div className='CurrentGenre'>
+                        Current Genre: <span style={{color: 'rgb(90, 169, 172)'}}>{genre}</span>
+                    </div>
+                </div>
+            </div>
+            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={articles}/>
         </div>
     )
 }

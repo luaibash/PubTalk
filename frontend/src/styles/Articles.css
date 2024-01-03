@@ -1,7 +1,7 @@
 .ArticlePanel {
     max-width: 1250px;
     margin: 0 auto;
-    padding: 150px 75px 100px 75px;
+    padding: 150px 75px 0px 75px;
 
     display: flex;
     flex-direction: column;
@@ -62,10 +62,14 @@
     margin-bottom: 75px;
 }
 
+.divider {
+    border-bottom: solid 1px #d9d9d9;
+    margin: 10px 0 40px 0;
+}
+
 #GenresTitle {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .RevolvingWordsContainer {
@@ -103,6 +107,27 @@
     }
 }
 
+.ArticlesAndGenresContainer {
+    display: flex;
+    margin-top: 50px;
+}
+
+.GenreArticles {
+    flex: 2;
+
+}
+
+.Genres {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.CurrentGenre {
+    font-size: 20px;
+    font-weight: 600;
+}
+
 @media (max-width: 1000px) {
     .ArticlePanel {
         padding-left: 25px;
@@ -117,8 +142,4 @@
     .BoxContainer {
         gap: 0;
     }
-}
-
-#test {
-    color: rgb(236, 86, 131);
 }
