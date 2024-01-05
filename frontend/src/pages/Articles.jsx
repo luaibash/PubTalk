@@ -5,6 +5,7 @@ import Books from '../assets/articles/books.png';
 import Arrow from '../assets/home/Arrow.png';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
+import GenreButton from '../components/GenreButton';
 
 const Articles = () => {
     return (
@@ -183,6 +184,35 @@ const ArticleGenres = () => {
                 <div className='Genres'>
                     <div className='CurrentGenre'>
                         Current Genre: <span style={{color: 'rgb(90, 169, 172)'}}>{genre}</span>
+                    </div>
+                    <div className='GenreButtons'>
+                        <div className='GenreRow'>
+                            <GenreButton genre='Art'/>
+                            <GenreButton genre='Technology'/>
+                            <GenreButton genre='History'/>
+                        </div>
+                        <div className='GenreRow'>
+                            <GenreButton genre='Society'/>
+                            <GenreButton genre='Cooking'/>
+                        </div>
+                        <div className='GenreRow'>
+                            <GenreButton genre='AI'/>
+                            <GenreButton genre='Business'/>
+                            <GenreButton genre='Design'/>
+                        </div>
+                        <div className='GenreRow'>
+                            <GenreButton genre='Innovation'/>
+                            <GenreButton genre='Ethics'/>
+                            <GenreButton genre='War'/>
+                        </div>
+                        <div className='GenreRow'>
+                            <GenreButton genre='Sustainability'/>
+                            <GenreButton genre='Climate'/>
+                        </div>
+                        <div className='GenreRow'>
+                            <GenreButton genre='Sports'/>
+                            <GenreButton genre='Entertainment'/>
+                        </div>
                     </div>
                 </div>
             </div>
