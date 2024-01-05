@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import RedirectButton from './RedirectButton';
-import '../styles/Navbar.css';
+import '../styles/components/Navbar.css';
 import Logo from '../assets/branding/Logo.png';
 import Name from '../assets/branding/Name.png';
 

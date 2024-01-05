@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import '../styles/Button.css';
+import '../styles/components/Button.css';
 
 const RedirectButton = ({title, destination}) => {
     let navigate = useNavigate();

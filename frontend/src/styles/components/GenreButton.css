@@ -1,0 +1,23 @@
+.GenreButton {
+    border: solid 1px #d9d9d9;
+    border-radius: 7px;
+
+    padding: 10px 15px;
+    margin: 0 3px;
+
+    font-weight: 500;
+
+    transition: all 0.15s;
+}
+
+#ActiveGenre {
+    background-color: rgb(201, 227, 236);
+    border-color: rgb(49, 171, 211);
+
+}
+
+#InactiveGenre:hover {
+    cursor: pointer;
+    background-color: rgb(212, 239, 248);
+    border-color: rgb(151, 219, 241);
+}

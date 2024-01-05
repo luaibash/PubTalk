@@ -158,7 +158,8 @@ const ArticleGenres = () => {
         }
 
         fetchArticles()
-    }, [])
+        console.log(genre)
+    }, [genre])
 
     return (
         <div className='ArticleGenresContainer'>
@@ -183,35 +184,35 @@ const ArticleGenres = () => {
                 </div>
                 <div className='Genres'>
                     <div className='CurrentGenre'>
-                        Current Genre: <span style={{color: 'rgb(90, 169, 172)'}}>{genre}</span>
+                        Current Genre: &nbsp; <span style={{color: 'rgb(90, 169, 172)'}}>{genre}</span>
                     </div>
                     <div className='GenreButtons'>
                         <div className='GenreRow'>
-                            <GenreButton genre='Art'/>
-                            <GenreButton genre='Technology'/>
-                            <GenreButton genre='History'/>
+                            <GenreButton genre='Technology' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='Art' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='History' curGenre={genre} setGenre={setGenre}/>
                         </div>
                         <div className='GenreRow'>
-                            <GenreButton genre='Society'/>
-                            <GenreButton genre='Cooking'/>
+                            <GenreButton genre='Society' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='Cooking' curGenre={genre} setGenre={setGenre}/>
                         </div>
                         <div className='GenreRow'>
-                            <GenreButton genre='AI'/>
-                            <GenreButton genre='Business'/>
-                            <GenreButton genre='Design'/>
+                            <GenreButton genre='AI' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='Business' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='Design' curGenre={genre} setGenre={setGenre}/>
                         </div>
                         <div className='GenreRow'>
-                            <GenreButton genre='Innovation'/>
-                            <GenreButton genre='Ethics'/>
-                            <GenreButton genre='War'/>
+                            <GenreButton genre='Innovation' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='Ethics' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='War' curGenre={genre} setGenre={setGenre}/>
                         </div>
                         <div className='GenreRow'>
-                            <GenreButton genre='Sustainability'/>
-                            <GenreButton genre='Climate'/>
+                            <GenreButton genre='Sustainability' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='Climate' curGenre={genre} setGenre={setGenre}/>
                         </div>
                         <div className='GenreRow'>
-                            <GenreButton genre='Sports'/>
-                            <GenreButton genre='Entertainment'/>
+                            <GenreButton genre='Sports' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='Entertainment' curGenre={genre} setGenre={setGenre}/>
                         </div>
                     </div>
                 </div>

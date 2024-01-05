@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../styles/ArticleDetails.css';
+import '../styles/components/ArticleDetails.css';
 
 const ArticleDetails = ({article, large}) => {
     const imageFolder = article.title.replace(/[^a-zA-Z0-9]/g, ''); // Grabs name of folder for specified article

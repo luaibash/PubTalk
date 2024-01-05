@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
-import '../styles/Footer.css';
+import '../styles/components/Footer.css';
 import Logo from '../assets/branding/Logo.png';
 import Name from '../assets/branding/Name.png';
 

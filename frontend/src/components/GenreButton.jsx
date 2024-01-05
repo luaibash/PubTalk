@@ -1,9 +1,13 @@
 import React from 'react';
-import '../styles/GenreButton.css';
+import '../styles/components/GenreButton.css';
 
-const GenreButton = ({genre}) => {
+const GenreButton = ({genre, curGenre, setGenre}) => {
+    const changeGenre = () => {
+        if (genre !== curGenre) setGenre(genre);
+    }
+
     return (
-        <div className='GenreButton'>
+        <div className='GenreButton' id={genre === curGenre ? 'ActiveGenre' : 'InactiveGenre'} onClick={() => changeGenre()}>
             {genre}
         </div>
     )

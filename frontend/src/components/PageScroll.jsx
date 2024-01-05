@@ -1,5 +1,5 @@
 import {React, useState} from 'react';
-import '../styles/PageScroll.css';
+import '../styles/components/PageScroll.css';
 import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
 
