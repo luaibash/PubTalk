@@ -3,11 +3,11 @@ import '../styles/components/PageScroll.css';
 import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
 
-const PageScroll = ({currentPage, setCurrentPage, articles}) => {
+const PageScroll = ({currentPage, setCurrentPage, articles, articlesPerPage=8}) => {
     // Find article length and set the amount of pages it will fill
     const [articlesLength, setArticlesLength] = useState(null);
     if (articles && articlesLength === null) setArticlesLength(articles.length);
-    const pages = Math.ceil(articlesLength / 8);
+    const pages = Math.ceil(articlesLength / articlesPerPage);
 
     // If there is only one page, return a space to replace the page numbers
     if (pages <= 1) {

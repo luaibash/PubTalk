@@ -176,9 +176,9 @@ const ArticleGenres = () => {
             </div>
             <div className='ArticlesAndGenresContainer'>
                 <div className='GenreArticles'>
-                    {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
-                        <div key={index} className='GenreBox' id={index !== 7 ? 'BoxTop' : ''} style={{ visibility: articles && articles[(currentPage - 1) * 8 + index] ? '' : 'hidden' }}>
-                            {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} genreArticle={true}/>}
+                    {[0, 1, 2, 3].map((index) => (
+                        <div key={index} className='GenreBox' id={index !== 7 ? 'BoxTop' : ''} style={{ display: articles && articles[(currentPage - 1) * 4 + index] ? '' : 'none' }}>
+                            {articles && articles[(currentPage - 1) * 4 + index] && <ArticleDetails article={articles[(currentPage - 1) * 4 + index]} genreArticle={true} articlesPerPage={4}/>}
                         </div>
                     ))}
                 </div>
@@ -217,7 +217,7 @@ const ArticleGenres = () => {
                     </div>
                 </div>
             </div>
-            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={articles}/>
+            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={articles} articlesPerPage={4}/>
         </div>
     )
 }
