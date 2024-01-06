@@ -79,6 +79,7 @@
     height: 44px;
     vertical-align: bottom;
     overflow-y: hidden;
+    overflow-x: hidden;
 
     user-select: none;
     cursor:text;
@@ -150,5 +151,15 @@
 
     .BoxContainer {
         gap: 0;
+    }
+}
+@media (max-width: 750px) {
+    #GenresTitle {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .RevolvingWord {
+        text-align: center;
     }
 }
