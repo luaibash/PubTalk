@@ -42,6 +42,14 @@ const getArticle = async(req, res) => {
     }
 }
 
+const getArticleGenre = async(req, res) => {
+    const {genre} = req.params;
+
+    //this basically gets the genre and finds and gets the [genre], if its even in the array, then sort article from recent to least
+    const articles = await Article.find({ genre: { $in: [genre] } }).sort({ createdAt: -1 });   
+    res.status(200).json(articles);
+}
+
 
 // Create new article
 const createArticle = async (req, res) => {    
@@ -135,6 +143,7 @@ module.exports = {
     getRecent,
     getTop,
     getArticle,
+    getArticleGenre,
     createArticle, 
     deleteArticle,
     updateArticle

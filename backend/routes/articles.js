@@ -4,6 +4,7 @@ const {
     getRecent,
     getTop,
     getArticle,
+    getArticleGenre,
     createArticle,
     deleteArticle,
     updateArticle
@@ -22,6 +23,9 @@ router.get('/top', getTop)
 
 // GET a single article based on id
 router.get('/:id', getArticle)
+
+//GET articles by a specific genre
+router.get('/genre/:genre', getArticleGenre)
 
 // POST a new article
 router.post('/', createArticle)
