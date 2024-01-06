@@ -6,6 +6,10 @@
     text-decoration: none;
     color: black;
 }
+#GenrePreview {
+    flex-direction: row;
+}
+
 
 .thumbnail {
     height: 50%;
@@ -13,6 +17,12 @@
     object-fit: cover;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+}
+#GenreThumbnail {
+    height: 100%;
+    width: 30%;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
 }
 
 .articleContent {
@@ -25,6 +35,9 @@
 }
 #articleContentLarge {
     padding-top: 20px;
+}
+#GenreContent {
+    padding: 15px;
 }
 
 .articleTitle {
@@ -39,6 +52,9 @@
     font-weight: 400;
     font-size: 1.14vw;
     padding-top: 10px;
+}
+#GenreDescription {
+    font-size: 1vw;
 }
 
 .articleBottomContainer {

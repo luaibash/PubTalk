@@ -177,8 +177,8 @@ const ArticleGenres = () => {
             <div className='ArticlesAndGenresContainer'>
                 <div className='GenreArticles'>
                     {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
-                        <div key={index} className='LongBox' id={index !== 7 ? 'BoxTop' : ''} style={{ visibility: articles && articles[(currentPage - 1) * 8 + index] ? '' : 'hidden' }}>
-                            {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} />}
+                        <div key={index} className='GenreBox' id={index !== 7 ? 'BoxTop' : ''} style={{ visibility: articles && articles[(currentPage - 1) * 8 + index] ? '' : 'hidden' }}>
+                            {articles && articles[(currentPage - 1) * 8 + index] && <ArticleDetails article={articles[(currentPage - 1) * 8 + index]} genreArticle={true}/>}
                         </div>
                     ))}
                 </div>

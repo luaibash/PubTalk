@@ -1,4 +1,4 @@
-.Box, .LongBox {
+.Box, .LongBox, .GenreBox {
     background-color: white;
 
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
@@ -6,7 +6,7 @@
 
     transition: box-shadow 0.2s;
 }
-.Box:hover, .LongBox:hover {
+.Box:hover, .LongBox:hover, .GenreBox:hover {
     box-shadow: 0 0 18px rgba(0,0,0,0.25);
     cursor: pointer;
 }
@@ -23,6 +23,11 @@
         height: 17.3vw;
         max-height: 235px;
     }
+
+    .GenreBox {
+        height: 170px;
+        margin: 0 20px;
+    }
     
     #BoxTop {
         margin-bottom: 30px;
@@ -36,5 +41,7 @@
         height: 225px;
         max-width: 1000px;
         margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
