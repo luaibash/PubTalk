@@ -146,8 +146,8 @@ const ArticleGenres = () => {
     useEffect(() => {
         const fetchArticles = async () => {
             // Fetches the API
-            const response = await fetch('/api/articles/recent')
-            const json = await response.json()
+            const response = await fetch('/api/articles/genre/' + genre);
+            const json = await response.json();
 
             if (response.ok) {
                 // setArticles(json)                                                   // Real way to set articles
@@ -157,8 +157,7 @@ const ArticleGenres = () => {
             }
         }
 
-        fetchArticles()
-        console.log(genre)
+        fetchArticles();
     }, [genre])
 
     return (
@@ -213,6 +212,11 @@ const ArticleGenres = () => {
                         <div className='GenreRow'>
                             <GenreButton genre='Sports' curGenre={genre} setGenre={setGenre}/>
                             <GenreButton genre='Entertainment' curGenre={genre} setGenre={setGenre}/>
+                        </div>
+                        <div className='GenreRow'>
+                            <GenreButton genre='Mystery' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='Fantasy' curGenre={genre} setGenre={setGenre}/>
+                            <GenreButton genre='Adventure' curGenre={genre} setGenre={setGenre}/>
                         </div>
                     </div>
                 </div>
