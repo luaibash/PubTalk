@@ -5,7 +5,7 @@ import Books from '../assets/articles/books.png';
 import Arrow from '../assets/home/Arrow.png';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
-import GenreButton from '../components/GenreButton';
+import Genres from '../components/Genres';
 
 const Articles = () => {
     return (
@@ -185,40 +185,7 @@ const ArticleGenres = () => {
                     <div className='CurrentGenre'>
                         Current Genre: &nbsp; <span style={{color: 'rgb(90, 169, 172)'}}>{genre}</span>
                     </div>
-                    <div className='GenreButtons'>
-                        <div className='GenreRow'>
-                            <GenreButton genre='Technology' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='Art' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='History' curGenre={genre} setGenre={setGenre}/>
-                        </div>
-                        <div className='GenreRow'>
-                            <GenreButton genre='Society' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='Cooking' curGenre={genre} setGenre={setGenre}/>
-                        </div>
-                        <div className='GenreRow'>
-                            <GenreButton genre='AI' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='Business' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='Design' curGenre={genre} setGenre={setGenre}/>
-                        </div>
-                        <div className='GenreRow'>
-                            <GenreButton genre='Innovation' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='Ethics' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='War' curGenre={genre} setGenre={setGenre}/>
-                        </div>
-                        <div className='GenreRow'>
-                            <GenreButton genre='Sustainability' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='Climate' curGenre={genre} setGenre={setGenre}/>
-                        </div>
-                        <div className='GenreRow'>
-                            <GenreButton genre='Sports' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='Entertainment' curGenre={genre} setGenre={setGenre}/>
-                        </div>
-                        <div className='GenreRow'>
-                            <GenreButton genre='Mystery' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='Fantasy' curGenre={genre} setGenre={setGenre}/>
-                            <GenreButton genre='Adventure' curGenre={genre} setGenre={setGenre}/>
-                        </div>
-                    </div>
+                    <Genres genre={genre} setGenre={setGenre}/>
                 </div>
             </div>
             <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={articles} articlesPerPage={4}/>

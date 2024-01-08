@@ -128,16 +128,16 @@
     font-weight: 600;
 }
 
-.GenreButtons {
-    margin-top: 20px;
-}
+@media (max-width: 1150px) {
+    .ArticlesAndGenresContainer {
+        flex-direction: column-reverse;
+        margin-top: 5px;
+    }
 
-.GenreRow {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+    .CurrentGenre {
+        display: none;
+    }
 }
-
 @media (max-width: 1000px) {
     .ArticlePanel {
         padding-left: 25px;
