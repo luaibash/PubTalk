@@ -139,7 +139,7 @@ const AllArticles = () => {
 }
 
 const ArticleGenres = () => {
-    const [genre, setGenre] = useState('Technology');
+    const [genre, setGenre] = useState('Fantasy');
     const [articles, setArticles] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     

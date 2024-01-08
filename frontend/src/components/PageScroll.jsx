@@ -7,13 +7,14 @@ const PageScroll = ({currentPage, setCurrentPage, articles, articlesPerPage=8}) 
     const [articlesLength, setArticlesLength] = useState(0);
     const [pages, setPages] = useState(0);
 
-    // Find article length and set the amount of pages it will fill, everytime articles change
+    // Find article length, set the amount of pages it will fill and bring user back to page 1 everytime genre changes
     useEffect(() => {
         if (articles) {
             setArticlesLength(articles.length);
             setPages(Math.ceil(articlesLength / articlesPerPage));
+            setCurrentPage(1);
         }
-    }, [articles, articlesLength, articlesPerPage]);
+    }, [articles, articlesLength, articlesPerPage, setCurrentPage]);
 
     // If there is only one page, return a space to replace the page numbers
     if (pages <= 1) {
