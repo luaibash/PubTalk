@@ -54,7 +54,7 @@
     padding-top: 10px;
 }
 #GenreDescription {
-    font-size: 1vw;
+    font-size: 13.5px;
 }
 
 .articleBottomContainer {
@@ -87,6 +87,14 @@
     }
 }
 
+@media (max-width: 1350px) {
+    #GenreDescription {
+        font-size: 1.1vw;
+    }
+}
+@media (max-width: 1150px) {
+
+}
 @media (max-width: 1000px) {
     .articleDescription {
         display: none;
