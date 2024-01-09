@@ -37,7 +37,7 @@
     }
 }
 @media (max-width: 1000px) {
-    .Box, .LongBox {
+    .Box, .LongBox, .GenreBox {
         height: 225px;
         max-width: 1000px;
         margin-top: 20px;

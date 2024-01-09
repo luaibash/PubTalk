@@ -96,6 +96,15 @@
         font-size: 1.1vw;
     }
 }
+@media (max-width: 1150px) {
+    #GenreTitle {
+        font-size: 1.5vw;
+    }
+
+    #GenreDescription {
+        font-size: 1.3vw;
+    }
+}
 @media (max-width: 1000px) {
     .articlePreview {
         flex-direction: row;
@@ -108,16 +117,16 @@
         border-bottom-left-radius: 20px;
     }
 
-    .articleDescription {
+    .articleDescription, #GenreDescription {
         display: block;
         font-size: 14px;
     }
 
-    #articleContentLarge {
+    #articleContentLarge, #GenreContent {
         padding-top: 10px;
     }
 
-    .articleTitle, #articleTitleLarge {
+    .articleTitle, #articleTitleLarge, #GenreTitle {
         font-size: 20px;
     }
     .articleAuthor, .articleDuration, #articleDetailsLarge {
@@ -125,15 +134,15 @@
     }
 }
 @media (max-width: 600px) {
-    .articleTitle, #articleTitleLarge {
+    .articleTitle, #articleTitleLarge, #GenreTitle {
         font-size: 16px;
     }
 
-    .articleDescription {
+    .articleDescription, #GenreDescription {
         font-size: 2.33vw;
     }
 
-    .thumbnail {
+    .thumbnail, #GenreThumbnail {
         width: 40%;
     }
 }

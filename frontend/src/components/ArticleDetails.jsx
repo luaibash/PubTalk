@@ -11,7 +11,7 @@ const ArticleDetails = ({article, large, genreArticle=false}) => {
             <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='thumbnail' id={genreArticle ? 'GenreThumbnail' : ''}/>
             <div className='articleContent' id={large ? 'articleContentLarge' : (genreArticle ? 'GenreContent' : '')}>
                 <div className='articleTopContainer'>
-                    <div className='articleTitle' id={large ? 'articleTitleLarge' : ''}>{article.title}</div>
+                    <div className='articleTitle' id={large ? 'articleTitleLarge' : (genreArticle ? 'GenreTitle' : '')}>{article.title}</div>
                     <div className='articleDescription' id={large ? 'LargeDescription' : (genreArticle ? 'GenreDescription' : '')}>{article.description}</div>
                 </div>
                 <div className='articleBottomContainer'>
