@@ -12,7 +12,7 @@ const ArticleDetails = ({article, large, genreArticle=false}) => {
             <div className='articleContent' id={large ? 'articleContentLarge' : (genreArticle ? 'GenreContent' : '')}>
                 <div className='articleTopContainer'>
                     <div className='articleTitle' id={large ? 'articleTitleLarge' : ''}>{article.title}</div>
-                    {(large || genreArticle) && <div className='articleDescription' id={genreArticle ? 'GenreDescription' : ''}>{article.description}</div>}
+                    <div className='articleDescription' id={large ? 'LargeDescription' : (genreArticle ? 'GenreDescription' : '')}>{article.description}</div>
                 </div>
                 <div className='articleBottomContainer'>
                     <div className='articleAuthor' id={large ? 'articleDetailsLarge' : ''}>{article.author}</div>
