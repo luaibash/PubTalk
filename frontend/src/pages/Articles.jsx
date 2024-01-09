@@ -180,6 +180,11 @@ const ArticleGenres = () => {
                             {articles && articles[(currentPage - 1) * 4 + index] && <ArticleDetails article={articles[(currentPage - 1) * 4 + index]} genreArticle={true} articlesPerPage={4}/>}
                         </div>
                     ))}
+                    {articles && articles.length == 0 &&
+                    <div className='GenreEmpty'>
+                        There are currently no articles under this genre.
+                    </div>
+                    }
                 </div>
                 <div className='Genres'>
                     <div className='CurrentGenre'>

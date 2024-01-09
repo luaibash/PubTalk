@@ -115,6 +115,10 @@
 
 .GenreArticles {
     flex: 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .Genres {
@@ -128,6 +132,14 @@
     font-weight: 600;
 }
 
+.GenreEmpty {
+    font-size: 3.5vw;
+    text-align: center;
+
+    width: 80%;
+    margin: auto;
+}
+
 @media (max-width: 1150px) {
     .ArticlesAndGenresContainer {
         flex-direction: column-reverse;
@@ -136,6 +148,11 @@
 
     .CurrentGenre {
         display: none;
+    }
+}
+@media (min-width: 1000px) {
+    .GenreEmpty {
+        font-size: 32px;
     }
 }
 @media (max-width: 1000px) {
@@ -161,5 +178,9 @@
 
     .RevolvingWord {
         text-align: center;
+    }
+
+    .GenreEmpty {
+        font-size: 24px;
     }
 }
