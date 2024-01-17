@@ -7,6 +7,20 @@
     flex-direction: column;
 }
 
+.PanelOneBackground {
+    position: absolute;
+    z-index: -1;
+
+    margin-left: -75px;
+
+    width: 100%;
+    max-width: 1800px;
+    height: 40.8vw;
+    max-height: 550px;
+
+    /* display: none; */
+}
+
 .PanelOneContainer {
     display: flex;
     align-items: center;
@@ -41,6 +55,13 @@
     border-bottom: solid 1px #d9d9d9;
 }
 
+@media (min-width: 1350px) {
+    .PanelOneBackground {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+}
 @media (max-width: 1100px) {
     .PanelOneImage {
         max-width: 400px;
@@ -52,13 +73,27 @@
         padding-left: 25px;
     }
 
+    .PanelOneBackground {
+        margin-left: -25px;
+        height: 47vw;
+    }
+
     .PanelOneDivider {
         margin-right: 75px;
+    }
+}
+@media (max-width: 900px) {
+    .PanelOneBackground {
+        height: 55vw;
     }
 }
 @media (max-width: 750px) {
     .PanelOne {
         padding-right: 25px;
+    }
+
+    .PanelOneBackground {
+        height: 90vw;
     }
 
     .PanelOneContainer {
@@ -67,6 +102,14 @@
 
     .PanelOneTextContainer {
         margin-top: 50px;
+    }
+
+    #PanelOneTitle, #PanelOneSubtext {
+        text-align: center;
+    }
+    
+    .PanelOneButton {
+        justify-content: center;
     }
 
     .PanelOneImage {

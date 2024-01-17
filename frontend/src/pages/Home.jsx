@@ -2,6 +2,7 @@ import {React, useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import ArticleDetails from '../components/ArticleDetails'
 import RedirectButton from '../components/RedirectButton';
+import PanelOneBackground from '../assets/home/PanelOneBackground.png';
 import PersonReading from '../assets/home/PersonReading.png';
 import Arrow from '../assets/home/Arrow.png'
 import BlueBlob from '../assets/home/BlueBlob.png';
@@ -47,6 +48,7 @@ const PanelOne = () => {
                 </div>
             </div>
             <div className='PanelOneDivider'/>
+            <img src={PanelOneBackground} alt="Background" className='PanelOneBackground'/>
         </div>
     );
 }
