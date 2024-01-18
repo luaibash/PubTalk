@@ -17,8 +17,6 @@
     max-width: 1800px;
     height: 40.8vw;
     max-height: 550px;
-
-    /* display: none; */
 }
 
 .PanelOneContainer {
@@ -29,13 +27,19 @@
 .PanelOneTextContainer {
     margin-top: 80px;
 }
-#PanelOneTitle {
-    max-width: 450px;
+.PanelOneTitle {
+    font-size: 52px;
+    font-weight: 700;
+    max-width: 650px;
 }
-#PanelOneSubtext {
-    max-width: 450px;
-    margin-top: 30px;
+.PanelOneSubtext {
+    font-size: 20px;
     font-weight: 400;
+    max-width: 550px;
+    color: #434343;
+    
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .PanelOneButton {
@@ -63,6 +67,17 @@
     }
 }
 @media (max-width: 1100px) {
+    .PanelOneTitle {
+        font-size: 36px;
+        font-weight: 700;
+        max-width: 450px;
+    }
+
+    .PanelOneSubtext {
+        font-size: 18px;
+        max-width: 450px;
+    }
+
     .PanelOneImage {
         max-width: 400px;
         padding-left: 50px;

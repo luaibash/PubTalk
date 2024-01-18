@@ -30,11 +30,11 @@ const PanelOne = () => {
         <div className='PanelOne'>
             <div className='PanelOneContainer'>
                 <div className='PanelOneTextContainer'>
-                    <div className='Title' id='PanelOneTitle'>
+                    <div className='PanelOneTitle'>
                         Empowering Tomorrow's
                         Voices, Today.
                     </div>
-                    <div className='Subtext' id='PanelOneSubtext'>
+                    <div className='PanelOneSubtext'>
                         Discover different stories and perspectives from
                         students all around the country, offering unique
                         perspectives on crucial global topics.
@@ -164,10 +164,10 @@ const PanelThree = () => {
                 </div>
                 <div className='PanelThreeLongBoxColumn'>
                     <div className='LongBox' id='BoxTop'>
-                        {articles && articles[4] && <ArticleDetails article={articles[4]} />}
+                        {articles && articles[4] && <ArticleDetails article={articles[4]} long={true}/>}
                     </div>
                     <div className='LongBox'>
-                        {articles && articles[0] && <ArticleDetails article={articles[0]} />}
+                        {articles && articles[0] && <ArticleDetails article={articles[0]} long={true}/>}
                     </div>
                 </div>
                 <img src={PinkBlob} alt="" className='PinkBlob'/>

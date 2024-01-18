@@ -54,11 +54,15 @@
     font-size: 1.14vw;
     padding-top: 10px;
 }
-#GenreDescription, #LargeDescription {
+#GenreDescription, #LargeDescription, #LongDescription {
     display: block;
 }
 #GenreDescription {
     font-size: 13.5px;
+}
+#LongDescription {
+    margin-top: -5px;
+    font-size: 13px;
 }
 
 .articleBottomContainer {
@@ -95,6 +99,10 @@
     #GenreDescription {
         font-size: 1.1vw;
     }
+
+    #LongDescription {
+        font-size: 1vw;
+    }
 }
 @media (max-width: 1150px) {
     #GenreTitle {
@@ -103,6 +111,10 @@
 
     #GenreDescription {
         font-size: 1.3vw;
+    }
+
+    #LongDescription {
+        display: none;
     }
 }
 @media (max-width: 1000px) {
@@ -117,7 +129,7 @@
         border-bottom-left-radius: 20px;
     }
 
-    .articleDescription, #GenreDescription {
+    .articleDescription, #GenreDescription, #LongDescription {
         display: block;
         font-size: 14px;
     }
@@ -138,7 +150,7 @@
         font-size: 16px;
     }
 
-    .articleDescription, #GenreDescription {
+    .articleDescription, #GenreDescription, #LongDescription {
         font-size: 2.33vw;
     }
 
