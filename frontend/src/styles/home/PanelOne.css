@@ -119,7 +119,7 @@
         margin-top: 50px;
     }
 
-    #PanelOneTitle, #PanelOneSubtext {
+    .PanelOneTitle, .PanelOneSubtext {
         text-align: center;
     }
     
