@@ -11,7 +11,9 @@
 }
 
 #TeamSubtext {
-    max-width: 530px;
+    margin-bottom: 30px;
+}
+#TeamSubtextBottom {
     margin-bottom: 100px;
 }
 
