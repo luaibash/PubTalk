@@ -1,7 +1,7 @@
 .ArticlePanel {
     max-width: 1250px;
     margin: 0 auto;
-    padding: 150px 75px 0px 75px;
+    padding: 280px 75px 0px 75px;
 
     display: flex;
     flex-direction: column;
@@ -17,6 +17,7 @@
 .SearchArticleContainer {
     display: flex;
     flex-direction: column;
+    margin-bottom: 300px;
 }
 
 .SearchContainer {
@@ -41,8 +42,21 @@
     background-position: calc(100% - 20px);
 }
 
-.Books {
-    margin: 75px -75px 100px -75px;
+.SearchBackground {
+    position: absolute;
+    z-index: -1;
+
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 100%;
+    height: 762px;
+
+    background-image: url('../assets/articles/SearchBackground.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .BoxRow {
@@ -140,6 +154,11 @@
     margin: auto;
 }
 
+@media (min-width: 2250px) {
+    .SearchBackground {
+        width: 2250px;
+    } 
+}
 @media (max-width: 1150px) {
     .ArticlesAndGenresContainer {
         flex-direction: column-reverse;
@@ -182,5 +201,15 @@
 
     .GenreEmpty {
         font-size: 24px;
+    }
+}
+@media (max-width: 498px) {
+    .SearchArticleContainer {
+        margin-bottom: 250px;
+    }
+}
+@media (max-width: 400px) {
+    .ArticlePanel {
+        padding-top: 250px;
     }
 }

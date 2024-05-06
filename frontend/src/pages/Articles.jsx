@@ -1,7 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import '../styles/Articles.css';
 import '../styles/Boxes.css';
-import Books from '../assets/articles/books.png';
 import Arrow from '../assets/home/Arrow.png';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
@@ -28,7 +27,7 @@ const SearchArticles = () => {
             <div className='SearchContainer'>
                 <input type="text" placeholder='Search any topic (e.g. Politics) ' className='Search'/>
             </div>
-            <img src={Books} alt="" className='Books'/>
+            <div className='SearchBackground'/>
         </div>
     );
 }
