@@ -1,6 +1,5 @@
 .ArticlePagePanel {
-    margin-top: 125px;
-    margin-bottom: 125px;
+    padding: 125px 75px;
 }
 
 #ArticleTitle {
@@ -11,5 +10,21 @@
 }
 
 .ArticleDetails {
+    color: #616161;
+    font-weight: 500;
+
     text-align: center;
+    margin-bottom: 30px;
+}
+
+.ArticleCover {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: 1000px) {
+    .ArticlePagePanel {
+        padding: 125px 25px;
+    }  
 }

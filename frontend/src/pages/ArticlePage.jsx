@@ -1,5 +1,4 @@
 import {React, useEffect, useState} from 'react';
-import ArticleDetails from '../components/ArticleDetails';
 import NotFound from './NotFound';
 import '../styles/App.css';
 import '../styles/ArticlePage.css';
@@ -7,6 +6,7 @@ import '../styles/ArticlePage.css';
 const ArticlePage = () => {
     const [article, setArticle] = useState(null);
     const [notFound, setNotFound] = useState(false);
+    const imageFolder = (article) ? article.title.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
 
     // Grab id from link
     const queryParams = new URLSearchParams(window.location.search);
@@ -25,15 +25,26 @@ const ArticlePage = () => {
         fetchArticle()
     }, [articleID])
 
+    // If link does not exist, show not found page
     if (notFound) return <NotFound/>;
 
-    return (
+    // Show article as soon as the article has been pulled from the database
+    else if (article) return (
         <div className='ArticlePagePanel'>
             <div className='Title' id='ArticleTitle'>
-                The Rise of NFTs: Exploring the Digital Art Revolution
+                {article.title}
             </div>
             <div className='ArticleDetails'>
-                Luai Bashar &#8226; May 9th, 2024 &#8226; 5 Min read
+                {article.author} &#8226; {Date(article.createdAt)} &#8226; {article.duration} Min read
+            </div>
+            <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='ArticleCover'/>
+            <div className='ArticleBody'>
+                <div className='ArticleContent'>
+
+                </div>
+                <div className='OtherArticleSuggestions'>
+
+                </div>
             </div>
         </div>
     );
