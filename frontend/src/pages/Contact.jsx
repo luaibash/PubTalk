@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import emailjs from '@emailjs/browser';
 import Waves from '../assets/contact/Waves.svg';
 import Checkmark from '../assets/contact/Checkmark.png';
+import '../styles/App.css';
 import '../styles/Contact.css';
 
 const Contact = () => {

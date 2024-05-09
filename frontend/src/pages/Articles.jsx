@@ -1,10 +1,11 @@
 import {React, useState, useEffect} from 'react';
-import '../styles/Articles.css';
-import '../styles/Boxes.css';
 import Arrow from '../assets/home/Arrow.png';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
 import Genres from '../components/Genres';
+import '../styles/App.css';
+import '../styles/Articles.css';
+import '../styles/Boxes.css';
 
 const Articles = () => {
     return (
@@ -20,7 +21,7 @@ const Articles = () => {
 const SearchArticles = () => {
     return (
         <div className='SearchArticleContainer'>
-            <div className='Title' id='ArticleTitle'>
+            <div className='Title' id='SearchTitle'>
                 Explore Our Articles: Find Your Desired
                 Topics Here
             </div>

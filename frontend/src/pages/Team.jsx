@@ -1,5 +1,4 @@
 import { React, useEffect, useRef, useState } from 'react';
-import '../styles/Team.css';
 import LinkedInLogo from '../assets/team/LinkedIn.png';
 import Luai from '../assets/team/Luai.png';
 import Owen from '../assets/team/Owen.png';
@@ -8,6 +7,8 @@ import Ivan from '../assets/team/Ivan.png';
 import Alex from '../assets/team/Alex.png';
 import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
+import '../styles/App.css';
+import '../styles/Team.css';
 
 const Team = () => {
     const [showSlideshow, setSlideshow] = useState(false);

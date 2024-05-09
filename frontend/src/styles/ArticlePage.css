@@ -2,3 +2,14 @@
     margin-top: 125px;
     margin-bottom: 125px;
 }
+
+#ArticleTitle {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.ArticleDetails {
+    text-align: center;
+}
