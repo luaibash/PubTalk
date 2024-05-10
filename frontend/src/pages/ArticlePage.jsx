@@ -25,6 +25,12 @@ const ArticlePage = () => {
         fetchArticle()
     }, [articleID])
 
+    // Converts the date given by the article to more readable terms
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+      }
+
     // If link does not exist, show not found page
     if (notFound) return <NotFound/>;
 
@@ -35,7 +41,7 @@ const ArticlePage = () => {
                 {article.title}
             </div>
             <div className='ArticleDetails'>
-                {article.author} &#8226; {Date(article.createdAt)} &#8226; {article.duration} Min read
+                {article.author} &#8226; {formatDate(article.createdAt)} &#8226; {article.duration} Min read
             </div>
             <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='ArticleCover'/>
             <div className='ArticleBody'>
