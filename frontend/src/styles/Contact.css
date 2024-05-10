@@ -137,6 +137,17 @@
     width: 1400px;
 }
 
+@media (min-width: 1400px) {
+    .Waves {
+        left: 50%;
+        transform: translateX(-50%);
+
+        height: 20vw;
+        max-height: 500px;
+        width: 100vw;
+        max-width: 2500px;
+    }
+}
 @media (max-width: 1000px) {
     .ContactPanel {
         padding-left: 25px;
