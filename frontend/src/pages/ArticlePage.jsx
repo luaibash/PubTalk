@@ -55,11 +55,22 @@ const ArticlePage = () => {
                     Accusantium quibusdam delectus voluptate necessitatibus iusto voluptas obcaecati fugit cupiditate commodi sunt corrupti corporis aliquam pariatur earum odit, provident quae quisquam! Rerum veritatis unde commodi veniam earum fuga tenetur autem doloremque facilis odit, officiis adipisci nam amet minima? Corrupti distinctio quo velit fuga ullam sed ex deleniti veniam, ab, qui quisquam eius eveniet. Repellendus, magni obcaecati, doloremque quidem expedita incidunt alias dolor numquam ipsa error aspernatur, harum sint unde. Vel veniam placeat facilis, amet culpa laboriosam ipsam quo quae magnam repellendus nulla eaque ipsa quis, voluptates aspernatur. Delectus, sequi? Autem, labore consectetur.
                 </div>
                 <div className='OtherArticleSuggestions'>
-
+                    <div className='OtherArticlesTitle'>
+                        OTHER ARTICLES
+                    </div>
+                    <OtherArticleSuggestions/>
                 </div>
             </div>
         </div>
     );
+}
+
+const OtherArticleSuggestions = () => {
+    return (
+        <div className='OtherArticleSuggestionsArticle'>
+
+        </div>
+    )
 }
 
 export default ArticlePage;

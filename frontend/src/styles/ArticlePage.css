@@ -25,6 +25,33 @@
     object-fit: cover;
 }
 
+.ArticleBody {
+    display: flex;
+    gap: 80px;
+}
+
+.ArticleContent {
+    flex: 2;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 30px;
+}
+
+.OtherArticleSuggestions {
+    flex: 1;
+}
+
+.OtherArticlesTitle {
+    font-size: 21px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.OtherArticleSuggestionsArticle {
+    border-top: solid 1px #C9C9C9;
+}
+
 @media (max-width: 1000px) {
     .ArticlePagePanel {
         padding: 125px 25px;
