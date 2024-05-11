@@ -1,4 +1,6 @@
 .ArticlePagePanel {
+    max-width: 1250px;
+    margin: 0 auto;
     padding: 125px 75px;
 }
 
