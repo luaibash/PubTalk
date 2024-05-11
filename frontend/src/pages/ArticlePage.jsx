@@ -76,7 +76,6 @@ const OtherArticleSuggestions = ({ genre, articleToExclude }) => {
             // Go through each genre and grab articles. If a genre does not have 4 articles, it goes to the next
             for (let i = 0; i < genre.length; i++) {
                 // Specifies only a max of 4 articles to pull, and which articles to not pull to not duplicate them
-                console.log(genre[i] + " checked")
                 const allArticlesToExclude = JSON.stringify([articleToExclude, ...accumulatedArticles]);
                 const response = await fetch(`/api/articles/genre/${genre[i]}?limit=4&excludeArticles=${allArticlesToExclude}`);
                 const json = await response.json();
@@ -91,7 +90,6 @@ const OtherArticleSuggestions = ({ genre, articleToExclude }) => {
             }
 
             // If none of related genres had enough articles for 4, it adds on from most recent articles. Same idea of limit/excludeArticles specification
-            console.log("all genres checked")
             const allArticlesToExclude = JSON.stringify([articleToExclude, ...accumulatedArticles]);
             const response = await fetch(`/api/articles/recent?limit=4&excludeArticles=${allArticlesToExclude}`);
             const json = await response.json();
@@ -107,7 +105,6 @@ const OtherArticleSuggestions = ({ genre, articleToExclude }) => {
 
     return (
         <div className='OtherArticleSuggestionsArticle'>
-            {console.log(articles)}
         </div>
     )
 }
