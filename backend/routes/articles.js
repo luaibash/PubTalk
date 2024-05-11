@@ -1,10 +1,10 @@
 const express = require('express')
 const {   
     getArticles,
-    getRecent,
-    getTop,
-    getArticle,
-    getArticleGenre,
+    getRecentArticles,
+    getTopArticles,
+    getArticleByID,
+    getArticlesByGenre,
     createArticle,
     deleteArticle,
     updateArticle
@@ -16,16 +16,16 @@ const router = express.Router()
 router.get('/', getArticles)
 
 // GET all RECENT articles
-router.get('/recent', getRecent)
+router.get('/recent', getRecentArticles)
 
 // GET all TOP RATED articles
-router.get('/top', getTop)
+router.get('/top', getTopArticles)
 
 // GET a single article based on id
-router.get('/:id', getArticle)
+router.get('/id/:id', getArticleByID)
 
 //GET articles by a specific genre
-router.get('/genre/:genre', getArticleGenre)
+router.get('/genre/:genre', getArticlesByGenre)
 
 // POST a new article
 router.post('/', createArticle)

@@ -15,7 +15,7 @@ const ArticlePage = () => {
     useEffect(() => {
         const fetchArticle = async () => {
             // Fetches the API and finds article using its id
-            const response = await fetch('/api/articles/' + articleID);
+            const response = await fetch(`/api/articles/id/${articleID}`);
             const json = await response.json();
 
             if (response.ok) setArticle(json);
@@ -75,7 +75,8 @@ const OtherArticleSuggestions = ({ genre }) => {
 
             // Go through each genre and grab articles. If a genre does not have 4 articles, it goes to the next
             for (let i = 0; i < genre.length; i++) {
-                const response = await fetch(`/api/articles/genre/${genre[i]}`);
+                console.log(genre[i] + " checked")
+                const response = await fetch(`/api/articles/genre/${genre[i]}?limit=4`);
                 const json = await response.json();
                 
                 if (response.ok) {
@@ -88,6 +89,7 @@ const OtherArticleSuggestions = ({ genre }) => {
             }
 
             // If none of the related genres had enough articles for 4, it adds on from the most recent articles
+            console.log("all genres checked")
             const response = await fetch(`/api/articles/recent`);
             const json = await response.json();
                 
@@ -98,12 +100,11 @@ const OtherArticleSuggestions = ({ genre }) => {
         }
 
         fetchArticles()
-    }, [articles, genre])
+    }, [genre])
 
     return (
         <div className='OtherArticleSuggestionsArticle'>
-            {/* {console.log(articles)} */}
-            {/* {articles && console.log(articles.length)} */}
+            {console.log(articles)}
         </div>
     )
 }

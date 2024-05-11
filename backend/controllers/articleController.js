@@ -1,54 +1,52 @@
 const Article = require('../models/ArticleModel')
 const mongoose = require('mongoose') 
 
-//get all articles
+// Get all articles
 const getArticles = async(req, res) => {
-    const articles = await Article.find({}).sort({createdAt: -1}) //i leave the object blank because i dont need to look for a specific thing like where rep: 20
-    //the createdAt: -1 means in decsending order
-   
+    const articles = await Article.find({}).sort({createdAt: -1}) // createdAt: -1 means in descending order
     res.status(200).json(articles)
 }
 
-//get all RECENT articles
-const getRecent = async(req, res) => {
+// Get all RECENT articles
+const getRecentArticles = async(req, res) => {
     const articles = await Article.find({}).sort({createdAt: -1})
-   
     res.status(200).json(articles)
 }
 
-//get all TOP RATED articles
-const getTop = async(req, res) => {
+// Get all TOP RATED articles
+const getTopArticles = async(req, res) => {
     const articles = await Article.find({}).sort({rating: -1})
-   
     res.status(200).json(articles)
 }
 
-
-//get a single article
-const getArticle = async(req, res) => {
+// Get a single article specified by ID
+const getArticleByID = async(req, res) => {
+    // Retrieves id from GET request, checks if the id is within 12 bits of json, if the id is like 123 it wont work and this will trigger
     const {id} = req.params
-
-    if(!mongoose.Types.ObjectId.isValid(id)) {      //checks if the id is within 12 bits of json, if the id is like 123 it wont work and this will trigger
-        return res.status(404).json({error: 'no such article'})
-    }
-
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({error: 'no such article'})
+    
+    // Checks for article with id. If no article, returns an error. We need to return something as the code will continue to run if we don't
     const article = await Article.findById(id)
-
-    if (!article) {
-        return res.status(404).json({error: 'no such article'}) //the reason we have return call is because if we dont it will continue running the code (it wont break)
-    }
-    else {
-        res.status(200).json(article)
-    }
+    if (!article) return res.status(404).json({error: 'no such article'})
+    else res.status(200).json(article)
 }
 
-const getArticleGenre = async(req, res) => {
+// Get all articles specified by genre with optional limit parameter that specifies how many articles to grab
+const getArticlesByGenre = async(req, res) => {
+    // Retrieves specified genre from GET request, and limit parameter from query string. If limit not specified, defaults to null
     const {genre} = req.params;
+    const limit = req.query.limit ? parseInt(req.query.limit) : null;
 
-    //this basically gets the genre and finds and gets the [genre], if its even in the array, then sort article from recent to least
-    const articles = await Article.find({ genre: { $in: [genre] } }).sort({ createdAt: -1 });   
+    // If limit is specified, find the number of articles specified by limit, otherwise, retrieve all articles from that genre
+    let articles;
+    if (limit) articles = await Article.find({ genre: { $in: [genre] } }).sort({ createdAt: -1 }).limit(limit);
+    else articles = await Article.find({ genre: { $in: [genre] } }).sort({ createdAt: -1 });
+
     res.status(200).json(articles);
 }
+
+
+
 
 
 // Create new article
@@ -83,7 +81,6 @@ const createArticle = async (req, res) => {
 
     if (emptyFields.length > 0) {
         return res.status(400).json({error: 'please fill in all the fields', emptyFields})
-    
     }
 
     // Add doc to database
@@ -95,7 +92,6 @@ const createArticle = async (req, res) => {
         res.status(400).json({error: error.message})
     }
 }
-
 
 // Delete an article
 const deleteArticle = async (req, res) => {
@@ -114,7 +110,6 @@ const deleteArticle = async (req, res) => {
         res.status(200).json(article)
     }
 }
-
 
 // Update an article
 const updateArticle = async (req, res) => {
@@ -137,13 +132,12 @@ const updateArticle = async (req, res) => {
 
 }
 
-
 module.exports = {
     getArticles,
-    getRecent,
-    getTop,
-    getArticle,
-    getArticleGenre,
+    getRecentArticles,
+    getTopArticles,
+    getArticleByID,
+    getArticlesByGenre,
     createArticle, 
     deleteArticle,
     updateArticle

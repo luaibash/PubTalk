@@ -146,7 +146,7 @@ const ArticleGenres = () => {
     useEffect(() => {
         const fetchArticles = async () => {
             // Fetches the API
-            const response = await fetch('/api/articles/genre/' + genre);
+            const response = await fetch(`/api/articles/genre/${genre}`);
             const json = await response.json();
 
             if (response.ok) {
