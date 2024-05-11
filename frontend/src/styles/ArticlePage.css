@@ -54,6 +54,16 @@
     border-top: solid 1px #C9C9C9;
 }
 
+@media (max-width: 1300px) {
+    .ArticleBody {
+        gap: 30px;
+    }
+}
+@media (max-width: 1200px) {
+    .OtherArticleSuggestions {
+        display: none;
+    }
+}
 @media (max-width: 1000px) {
     .ArticlePagePanel {
         padding: 125px 25px;
