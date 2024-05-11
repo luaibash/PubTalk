@@ -9,13 +9,18 @@ const getArticles = async(req, res) => {
 
 // Get all RECENT articles with optional limit parameter that specifies how many articles to grab
 const getRecentArticles = async(req, res) => {
-    // Retrieves limit parameter from query string. If not specified, default to null
+    // Retrieves limit parameter from query string, and excludeArticles, which specifies which articles to exclude when pulling from database
     const limit = (req.query.limit) ? parseInt(req.query.limit) : null;
+    const excludeArticles = (req.query.excludeArticles) ? JSON.parse(req.query.excludeArticles) : [];
+
+    // Construct query criteria to exclude the articles based on the extracted IDs if provided
+    let queryCriteria = {};
+    if (excludeArticles.length > 0) queryCriteria._id = { $nin: excludeArticles.map(article => article._id) }
 
     // If limit is specified, find and limit the number of recent articles, otherwise, retrieve all recent articles
     let articles;
-    if (limit) articles = await Article.find({}).sort({ createdAt: -1 }).limit(limit);
-    else articles = await Article.find({}).sort({ createdAt: -1 });
+    if (limit) articles = await Article.find(queryCriteria).sort({ createdAt: -1 }).limit(limit);
+    else articles = await Article.find(queryCriteria).sort({ createdAt: -1 });
 
     res.status(200).json(articles);
 }
@@ -45,16 +50,21 @@ const getArticleByID = async(req, res) => {
     else res.status(200).json(article);
 }
 
-// Get all articles specified by genre with optional limit parameter that specifies how many articles to grab
+// Get all articles specified by genre with limit that specifies how many articles to grab, and excludeArticles that specifies which articles to exlude
 const getArticlesByGenre = async(req, res) => {
-    // Retrieves specified genre from GET request, and limit parameter from query string. If limit not specified, defaults to null
+    // Retrieves specified genre from GET request, limit parameter, and excludeArticles, which specifies which articles to exclude when pulling from database
     const {genre} = req.params;
     const limit = (req.query.limit) ? parseInt(req.query.limit) : null;
+    const excludeArticles = (req.query.excludeArticles) ? JSON.parse(req.query.excludeArticles) : [];
+
+    // Construct query criteria to match genre, and to exclude the articles based on the extracted IDs if provided
+    let queryCriteria = { genre: { $in: [genre] } };
+    if (excludeArticles.length > 0) queryCriteria._id = { $nin: excludeArticles.map(article => article._id) }
 
     // If limit is specified, find the number of articles specified by limit, otherwise, retrieve all articles from that genre
     let articles;
-    if (limit) articles = await Article.find({ genre: { $in: [genre] } }).sort({ createdAt: -1 }).limit(limit);
-    else articles = await Article.find({ genre: { $in: [genre] } }).sort({ createdAt: -1 });
+    if (limit) articles = await Article.find(queryCriteria).sort({ createdAt: -1 }).limit(limit);
+    else articles = await Article.find(queryCriteria).sort({ createdAt: -1 });
 
     res.status(200).json(articles);
 }

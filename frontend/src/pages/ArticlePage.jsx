@@ -58,14 +58,14 @@ const ArticlePage = () => {
                     <div className='OtherArticlesTitle'>
                         OTHER ARTICLES
                     </div>
-                    <OtherArticleSuggestions genre={article.genre}/>
+                    <OtherArticleSuggestions genre={article.genre} articleToExclude={article}/>
                 </div>
             </div>
         </div>
     );
 }
 
-const OtherArticleSuggestions = ({ genre }) => {
+const OtherArticleSuggestions = ({ genre, articleToExclude }) => {
     const [articles, setArticles] = useState([]);
     
     // Fetches 4 most relatable articles to current article to preview to user
@@ -75,8 +75,10 @@ const OtherArticleSuggestions = ({ genre }) => {
 
             // Go through each genre and grab articles. If a genre does not have 4 articles, it goes to the next
             for (let i = 0; i < genre.length; i++) {
+                // Specifies only a max of 4 articles to pull, and which articles to not pull to not duplicate them
                 console.log(genre[i] + " checked")
-                const response = await fetch(`/api/articles/genre/${genre[i]}?limit=4`);
+                const allArticlesToExclude = JSON.stringify([articleToExclude, ...accumulatedArticles]);
+                const response = await fetch(`/api/articles/genre/${genre[i]}?limit=4&excludeArticles=${allArticlesToExclude}`);
                 const json = await response.json();
                 
                 if (response.ok) {
@@ -88,9 +90,10 @@ const OtherArticleSuggestions = ({ genre }) => {
                 }
             }
 
-            // If none of the related genres had enough articles for 4, it adds on from the most recent articles
+            // If none of related genres had enough articles for 4, it adds on from most recent articles. Same idea of limit/excludeArticles specification
             console.log("all genres checked")
-            const response = await fetch(`/api/articles/recent?limit=4`);
+            const allArticlesToExclude = JSON.stringify([articleToExclude, ...accumulatedArticles]);
+            const response = await fetch(`/api/articles/recent?limit=4&excludeArticles=${allArticlesToExclude}`);
             const json = await response.json();
                 
             if (response.ok) {
@@ -100,7 +103,7 @@ const OtherArticleSuggestions = ({ genre }) => {
         }
 
         fetchArticles()
-    }, [genre])
+    }, [genre, articleToExclude])
 
     return (
         <div className='OtherArticleSuggestionsArticle'>
