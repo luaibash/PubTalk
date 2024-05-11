@@ -58,17 +58,52 @@ const ArticlePage = () => {
                     <div className='OtherArticlesTitle'>
                         OTHER ARTICLES
                     </div>
-                    <OtherArticleSuggestions/>
+                    <OtherArticleSuggestions genre={article.genre}/>
                 </div>
             </div>
         </div>
     );
 }
 
-const OtherArticleSuggestions = () => {
+const OtherArticleSuggestions = ({ genre }) => {
+    const [articles, setArticles] = useState([]);
+    
+    // Fetches 4 most relatable articles to current article to preview to user
+    useEffect(() => {
+        const fetchArticles = async () => {
+            let accumulatedArticles = [];
+
+            // Go through each genre and grab articles. If a genre does not have 4 articles, it goes to the next
+            for (let i = 0; i < genre.length; i++) {
+                const response = await fetch(`/api/articles/genre/${genre[i]}`);
+                const json = await response.json();
+                
+                if (response.ok) {
+                    accumulatedArticles = [...accumulatedArticles, ...json];    // Adds new articles fetched to existing articles fetched
+                    if (accumulatedArticles.length >= 4) {
+                        setArticles(accumulatedArticles.slice(0, 4));           // Takes only the first four articles to show
+                        return;
+                    }
+                }
+            }
+
+            // If none of the related genres had enough articles for 4, it adds on from the most recent articles
+            const response = await fetch(`/api/articles/recent`);
+            const json = await response.json();
+                
+            if (response.ok) {
+                accumulatedArticles = [...accumulatedArticles, ...json];
+                setArticles(accumulatedArticles.slice(0, 4));
+            }
+        }
+
+        fetchArticles()
+    }, [articles, genre])
+
     return (
         <div className='OtherArticleSuggestionsArticle'>
-
+            {/* {console.log(articles)} */}
+            {/* {articles && console.log(articles.length)} */}
         </div>
     )
 }
