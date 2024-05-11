@@ -90,7 +90,7 @@ const OtherArticleSuggestions = ({ genre }) => {
 
             // If none of the related genres had enough articles for 4, it adds on from the most recent articles
             console.log("all genres checked")
-            const response = await fetch(`/api/articles/recent`);
+            const response = await fetch(`/api/articles/recent?limit=4`);
             const json = await response.json();
                 
             if (response.ok) {

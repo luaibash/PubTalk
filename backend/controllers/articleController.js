@@ -3,39 +3,53 @@ const mongoose = require('mongoose')
 
 // Get all articles
 const getArticles = async(req, res) => {
-    const articles = await Article.find({}).sort({createdAt: -1}) // createdAt: -1 means in descending order
-    res.status(200).json(articles)
+    const articles = await Article.find({}).sort({createdAt: -1}); // createdAt: -1 means in descending order
+    res.status(200).json(articles);
 }
 
-// Get all RECENT articles
+// Get all RECENT articles with optional limit parameter that specifies how many articles to grab
 const getRecentArticles = async(req, res) => {
-    const articles = await Article.find({}).sort({createdAt: -1})
-    res.status(200).json(articles)
+    // Retrieves limit parameter from query string. If not specified, default to null
+    const limit = (req.query.limit) ? parseInt(req.query.limit) : null;
+
+    // If limit is specified, find and limit the number of recent articles, otherwise, retrieve all recent articles
+    let articles;
+    if (limit) articles = await Article.find({}).sort({ createdAt: -1 }).limit(limit);
+    else articles = await Article.find({}).sort({ createdAt: -1 });
+
+    res.status(200).json(articles);
 }
 
-// Get all TOP RATED articles
+// Get all TOP RATED articles with optional limit parameter that specifies how many articles to grab
 const getTopArticles = async(req, res) => {
-    const articles = await Article.find({}).sort({rating: -1})
-    res.status(200).json(articles)
+    // Retrieves limit parameter from query string, if not specified, default to null
+    const limit = (req.query.limit) ? parseInt(req.query.limit) : null;
+
+    let articles;
+    // If limit is specified, find and limit the number of top rated articles, otherwise, retrieve all top rated articles
+    if (limit) articles = await Article.find({}).sort({ rating: -1 }).limit(limit);
+    else articles = await Article.find({}).sort({ rating: -1 });
+
+    res.status(200).json(articles);
 }
 
 // Get a single article specified by ID
 const getArticleByID = async(req, res) => {
     // Retrieves id from GET request, checks if the id is within 12 bits of json, if the id is like 123 it wont work and this will trigger
-    const {id} = req.params
-    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({error: 'no such article'})
+    const {id} = req.params;
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({error: 'no such article'});
     
     // Checks for article with id. If no article, returns an error. We need to return something as the code will continue to run if we don't
-    const article = await Article.findById(id)
-    if (!article) return res.status(404).json({error: 'no such article'})
-    else res.status(200).json(article)
+    const article = await Article.findById(id);
+    if (!article) return res.status(404).json({error: 'no such article'});
+    else res.status(200).json(article);
 }
 
 // Get all articles specified by genre with optional limit parameter that specifies how many articles to grab
 const getArticlesByGenre = async(req, res) => {
     // Retrieves specified genre from GET request, and limit parameter from query string. If limit not specified, defaults to null
     const {genre} = req.params;
-    const limit = req.query.limit ? parseInt(req.query.limit) : null;
+    const limit = (req.query.limit) ? parseInt(req.query.limit) : null;
 
     // If limit is specified, find the number of articles specified by limit, otherwise, retrieve all articles from that genre
     let articles;

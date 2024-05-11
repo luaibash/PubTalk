@@ -59,7 +59,7 @@ const PanelTwo = () => {
     useEffect(() => {
         const fetchArticles = async () => {
             // Fetches the API
-            const response = await fetch('/api/articles/top')
+            const response = await fetch('/api/articles/top?limit=5')
             const json = await response.json()
 
             if (response.ok) {
@@ -118,7 +118,7 @@ const PanelThree = () => {
     useEffect(() => {
         const fetchArticles = async () => {
             // Fetches the API
-            const response = await fetch('/api/articles/recent')
+            const response = await fetch('/api/articles/recent?limit=6')
             const json = await response.json()
 
             if (response.ok) {
