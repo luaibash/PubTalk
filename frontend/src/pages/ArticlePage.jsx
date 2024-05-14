@@ -54,6 +54,14 @@ const ArticlePage = () => {
                     Fuga temporibus saepe cum sapiente ab eum expedita non eligendi at fugit neque ducimus, nihil, numquam iusto. Veritatis cupiditate, in adipisci mollitia soluta dolorem sapiente. Suscipit, commodi deserunt at accusamus adipisci ducimus.
                     <br/><br/>
                     Accusantium quibusdam delectus voluptate necessitatibus iusto voluptas obcaecati fugit cupiditate commodi sunt corrupti corporis aliquam pariatur earum odit, provident quae quisquam! Rerum veritatis unde commodi veniam earum fuga tenetur autem doloremque facilis odit, officiis adipisci nam amet minima? Corrupti distinctio quo velit fuga ullam sed ex deleniti veniam, ab, qui quisquam eius eveniet. Repellendus, magni obcaecati, doloremque quidem expedita incidunt alias dolor numquam ipsa error aspernatur, harum sint unde. Vel veniam placeat facilis, amet culpa laboriosam ipsam quo quae magnam repellendus nulla eaque ipsa quis, voluptates aspernatur. Delectus, sequi? Autem, labore consectetur.
+                    <br/><br/>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nemo nesciunt, deleniti natus modi et pariatur, error vel aspernatur deserunt repellendus numquam iusto odio aliquid delectus laboriosam quis esse aut.
+                    <br/><br/>
+                    Dolore, temporibus. Modi, neque sed dolores suscipit voluptatum nihil, deleniti excepturi recusandae dolorem vitae distinctio vero et molestias beatae sapiente possimus commodi, eligendi est sunt iure sit ut. Dolore ratione esse eos.
+                    <br/><br/>
+                    Inventore repellendus assumenda sequi, a totam laboriosam mollitia unde iure porro amet dicta, ipsum officia vel animi dolorem doloribus cumque reprehenderit ipsam. Facilis blanditiis ratione, eos explicabo provident error eaque sunt illum laborum voluptatibus facere aspernatur enim quas dignissimos adipisci est. Obcaecati!
+                    <br/><br/>
+                    Itaque, nam aspernatur ratione dolorum libero ab eaque. Fuga, doloremque quas maxime voluptatibus, ipsum minima dignissimos a sequi possimus quidem mollitia quos sit illo eum amet iste cupiditate similique. Quidem, non itaque repudiandae quis quod, numquam commodi deserunt dolores exercitationem necessitatibus iure asperiores ab beatae sunt velit sint accusantium temporibus, voluptatem aspernatur!
                 </div>
                 <div className='OtherArticleSuggestionsContainer'>
                     <div className='OtherArticlesHeader'>
