@@ -1,4 +1,5 @@
 import {React, useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 import NotFound from './NotFound';
 import '../styles/App.css';
 import '../styles/ArticlePage.css';
@@ -23,7 +24,7 @@ const ArticlePage = () => {
         }
 
         fetchArticle()
-    }, [articleID])
+    }, [articleID, article])
 
     // Converts the date given by the article to more readable terms
     function formatDate(dateString) {
@@ -54,8 +55,8 @@ const ArticlePage = () => {
                     <br/><br/>
                     Accusantium quibusdam delectus voluptate necessitatibus iusto voluptas obcaecati fugit cupiditate commodi sunt corrupti corporis aliquam pariatur earum odit, provident quae quisquam! Rerum veritatis unde commodi veniam earum fuga tenetur autem doloremque facilis odit, officiis adipisci nam amet minima? Corrupti distinctio quo velit fuga ullam sed ex deleniti veniam, ab, qui quisquam eius eveniet. Repellendus, magni obcaecati, doloremque quidem expedita incidunt alias dolor numquam ipsa error aspernatur, harum sint unde. Vel veniam placeat facilis, amet culpa laboriosam ipsam quo quae magnam repellendus nulla eaque ipsa quis, voluptates aspernatur. Delectus, sequi? Autem, labore consectetur.
                 </div>
-                <div className='OtherArticleSuggestions'>
-                    <div className='OtherArticlesTitle'>
+                <div className='OtherArticleSuggestionsContainer'>
+                    <div className='OtherArticlesHeader'>
                         OTHER ARTICLES
                     </div>
                     <OtherArticleSuggestions genre={article.genre} articleToExclude={article}/>
@@ -103,10 +104,35 @@ const OtherArticleSuggestions = ({ genre, articleToExclude }) => {
         fetchArticles()
     }, [genre, articleToExclude])
 
-    return (
-        <div className='OtherArticleSuggestionsArticle'>
+    if (articles.length === 4) return (
+        <div>
+            <OtherArticle article={articles[0]}/>
+            <OtherArticle article={articles[1]}/>
+            <OtherArticle article={articles[2]}/>
+            <OtherArticle article={articles[3]}/>
         </div>
     )
 }
+
+const OtherArticle = ({ article }) => {
+    const imageFolder = (article) ? article.title.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
+    const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-'); // Grab article link
+
+    return (
+        <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='OtherArticleSuggestionsArticle'>
+            <div className='OtherArticleDescription'>
+                <div className='OtherArticleTitle'>
+                    {article.title}
+                </div>
+                <div className='OtherArticleGenreAuthor'>
+                    {article.genre[0]} &#8226; {article.author}
+                </div>
+            </div>
+            <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='OtherArticleCover'/>
+        </Link>
+    )
+}
+
+
 
 export default ArticlePage;

@@ -39,11 +39,11 @@
     line-height: 30px;
 }
 
-.OtherArticleSuggestions {
+.OtherArticleSuggestionsContainer {
     flex: 1;
 }
 
-.OtherArticlesTitle {
+.OtherArticlesHeader {
     font-size: 20px;
     font-weight: 700;
     text-align: center;
@@ -51,7 +51,42 @@
 }
 
 .OtherArticleSuggestionsArticle {
-    border-top: solid 1px #C9C9C9;
+    border-top: solid 1.5px #C9C9C9;
+
+    display: flex;
+    gap: 50px;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+}
+
+.OtherArticleCover {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.OtherArticleDescription {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.OtherArticleTitle {
+    color: black;
+}
+.OtherArticleTitle:hover {
+    text-decoration: underline;
+}
+
+.OtherArticleGenreAuthor {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444444;
 }
 
 @media (max-width: 1300px) {
