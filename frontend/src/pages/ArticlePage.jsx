@@ -133,6 +133,4 @@ const OtherArticle = ({ article }) => {
     )
 }
 
-
-
 export default ArticlePage;
