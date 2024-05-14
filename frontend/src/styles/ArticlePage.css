@@ -95,7 +95,7 @@
     }
 }
 @media (max-width: 1200px) {
-    .OtherArticleSuggestions {
+    .OtherArticleSuggestionsContainer {
         display: none;
     }
 }
