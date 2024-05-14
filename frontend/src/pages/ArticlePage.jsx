@@ -1,5 +1,5 @@
 import {React, useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import NotFound from './NotFound';
 import '../styles/App.css';
 import '../styles/ArticlePage.css';
@@ -13,6 +13,9 @@ const ArticlePage = () => {
     const queryParams = new URLSearchParams(window.location.search);
     const articleID = queryParams.get('id');
 
+    // IMPORTANT: This variable is only for the page to rerender! Grabs the current article title from the link, and when a new article is clicked, this value changes, prompting a rerender
+    const { articleLink } = useParams();
+
     useEffect(() => {
         const fetchArticle = async () => {
             // Fetches the API and finds article using its id
@@ -24,7 +27,7 @@ const ArticlePage = () => {
         }
 
         fetchArticle()
-    }, [articleID, article])
+    }, [articleID, articleLink])
 
     // Converts the date given by the article to more readable terms
     function formatDate(dateString) {
