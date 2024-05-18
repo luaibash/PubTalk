@@ -1,4 +1,4 @@
-const Article = require('../models/ArticleModel')
+const Article = require('../models/articleModel')
 const mongoose = require('mongoose') 
 
 // Get all articles

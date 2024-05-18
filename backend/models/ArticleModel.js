@@ -32,4 +32,5 @@ const articleSchema = new Schema({
 
 }, {timestamps: true})  // Extra argument that will automatically give timestamp of when it is created and last updated
 
-module.exports = mongoose.model('Article', articleSchema)   // Creates this model to be used in the controller as the name "Article". Ex. Article.find() will find all articles
+// Creates this model to be used in the controller as the name "Article". Ex. Article.find() will find all articles
+module.exports = mongoose.model('Article', articleSchema)
