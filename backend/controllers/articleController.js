@@ -69,6 +69,20 @@ const getArticlesByGenre = async(req, res) => {
     res.status(200).json(articles);
 }
 
+// Get all articles specified by the author sorted from most recent, with optional limit parameter that specifies how many articles to grab
+const getArticlesByAuthor = async (req, res) => {
+    // Retrieve author from request parameters and limit from query string
+    const { author } = req.params;
+    const limit = (req.query.limit) ? parseInt(req.query.limit) : null;
+
+    // If limit is specified, find and limit the number of articles, otherwise, retrieve all articles by the author
+    let articles;
+    if (limit) articles = await Article.find({ author }).sort({ createdAt: -1 }).limit(limit);
+    else articles = await Article.find({ author }).sort({ createdAt: -1 });
+
+    res.status(200).json(articles);
+}
+
 
 
 
@@ -162,6 +176,7 @@ module.exports = {
     getTopArticles,
     getArticleByID,
     getArticlesByGenre,
+    getArticlesByAuthor,
     createArticle, 
     deleteArticle,
     updateArticle

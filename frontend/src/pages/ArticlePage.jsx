@@ -82,6 +82,7 @@ const ArticlePage = () => {
     );
 }
 
+// Container that holds all other articles suggestions
 const OtherArticleSuggestions = ({ genre, articleToExclude }) => {
     const [articles, setArticles] = useState([]);
     
@@ -130,6 +131,7 @@ const OtherArticleSuggestions = ({ genre, articleToExclude }) => {
     )
 }
 
+// One article in the other articles container
 const OtherArticle = ({ article }) => {
     const imageFolder = (article) ? article.title.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
     const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-'); // Grab article link
@@ -149,6 +151,7 @@ const OtherArticle = ({ article }) => {
     )
 }
 
+// Author details components that holds who wrote the article
 const AuthorDetails = ({ authorName }) => {
     const [author, setAuthor] = useState();
     const authorHeadshotFolder = (authorName) ? authorName.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
@@ -183,6 +186,7 @@ const AuthorDetails = ({ authorName }) => {
     )
 }
 
+// Author articles container that holds other articles by that author
 const AuthorArticles = ({ authorName }) => {
 
     return (
