@@ -45,12 +45,51 @@
     border-bottom: solid 1.5px #C9C9C9;
 }
 
+.AuthorContainer {
+    padding-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
 .AuthorHeadshot {
+    flex-shrink: 0;
+
     border-radius: 100%;
     width: 115px;
     height: 115px;
     object-fit: cover;
     object-position: center top;
+    border: solid 1px #C9C9C9;
+}
+
+.AuthorDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.AuthorNameAndRole {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.AuthorDescription {
+    font-size: 14px;
+    font-weight: 400;
+    color: #2C2F34;
+    line-height: 1.5;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.AuthorLinkedInContainer {
+    width: 22px;
+    height: 22px;
+}
+
+.AuthorLinkedInLogo {
+    height: 22px;
+    width: 22px;
 }
 
 .OtherArticleSuggestionsContainer {
@@ -101,11 +140,6 @@
     font-size: 14px;
     font-weight: 500;
     color: #444444;
-}
-
-.AuthorContainer {
-    padding-top: 40px;
-    display: flex;
 }
 
 @media (max-width: 1300px) {

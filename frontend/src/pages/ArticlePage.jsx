@@ -1,6 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import NotFound from './NotFound';
+import LinkedInLogo from '../assets/team/LinkedIn.png';
 import '../styles/App.css';
 import '../styles/ArticlePage.css';
 
@@ -166,6 +167,17 @@ const AuthorDetails = ({ authorName }) => {
     if (author) return (
         <div className='AuthorContainer'>
             <img src={require(`../assets/team/${authorHeadshotFolder}.png`)} alt="Author Headshot" className='AuthorHeadshot'/>
+            <div className='AuthorDetails'>
+                <div className='AuthorNameAndRole'>
+                    {author.name} - {author.role}
+                </div>
+                <div className='AuthorDescription'>
+                    {author.description}
+                </div>
+                <a className="AuthorLinkedInContainer" href={author.linkedIn} target="_blank" rel="noopener noreferrer">
+                    <img src={LinkedInLogo} alt="LinkedIn Logo" className='AuthorLinkedInLogo'/>
+                </a>
+            </div>
         </div>
     )
 }
