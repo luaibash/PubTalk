@@ -77,6 +77,7 @@ const ArticlePage = () => {
                     <OtherArticleSuggestions genre={article.genre} articleToExclude={article}/>
                 </div>
             </div>
+            <AuthorArticles/>
         </div>
     );
 }
@@ -177,6 +178,17 @@ const AuthorDetails = ({ authorName }) => {
                 <a className="AuthorLinkedInContainer" href={author.linkedIn} target="_blank" rel="noopener noreferrer">
                     <img src={LinkedInLogo} alt="LinkedIn Logo" className='AuthorLinkedInLogo'/>
                 </a>
+            </div>
+        </div>
+    )
+}
+
+const AuthorArticles = ({ authorName }) => {
+
+    return (
+        <div className='AuthorArticlesContainer'>
+            <div className='AuthorArticlesHeader'>
+                MORE FROM AUTHOR
             </div>
         </div>
     )
