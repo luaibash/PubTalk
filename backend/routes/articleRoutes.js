@@ -30,7 +30,7 @@ router.get('/genre/:genre', getArticlesByGenre)
 // POST a new article
 router.post('/', createArticle)
 
-//DELETE a article
+// DELETE a article
 router.delete('/:id', deleteArticle)
 
 // UPDATE a article

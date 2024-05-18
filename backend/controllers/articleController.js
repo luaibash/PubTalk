@@ -42,7 +42,7 @@ const getTopArticles = async(req, res) => {
 const getArticleByID = async(req, res) => {
     // Retrieves id from GET request, checks if the id is within 12 bits of json, if the id is like 123 it wont work and this will trigger
     const {id} = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({error: 'no such article'});
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({error: 'Invalid article ID'});
     
     // Checks for article with id. If no article, returns an error. We need to return something as the code will continue to run if we don't
     const article = await Article.findById(id);

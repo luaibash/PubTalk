@@ -2,7 +2,8 @@ require('dotenv').config() // Allows us to use the .env folder which is a privat
 
 const express = require('express')
 const mongoose = require('mongoose')
-const articleRoutes = require('./routes/articleRoutes') // Gets the articleRoutes.js routes
+const articleRoutes = require('./routes/articleRoutes') // Gets the routes of each GET/POST/DELETE function from articleRoutes.js
+const authorRoutes = require('./routes/authorRoutes')   // Gets the routes of each GET/POST/DELETE function from authorRoutes.js
 
 // Express app
 const app = express()
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/api/articles', articleRoutes)     // Goes to app.get in articleRoutes
+// app.use('/api/authors', authorRoutes)      // Routes for authors
 
 //connect to DB
 mongoose.connect(process.env.MONGO_URI)
