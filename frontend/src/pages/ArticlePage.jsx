@@ -49,22 +49,25 @@ const ArticlePage = () => {
             </div>
             <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='ArticleCover'/>
             <div className='ArticleBody'>
-                <div className='ArticleContent'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sequi sed possimus neque! Omnis doloribus tempora reprehenderit sed, quia deleniti quo illo doloremque voluptatum laboriosam adipisci ipsam, nesciunt sint ad.
-                    <br/><br/>
-                    Ad, vitae eum commodi, quis ipsa rerum officia ab dicta soluta neque hic sunt perferendis eveniet veritatis ex ipsum eius praesentium mollitia, aut velit itaque adipisci! Adipisci repellendus, eos, nesciunt explicabo nostrum fugit, eum deserunt natus omnis quae quas hic commodi maiores.
-                    <br/><br/>
-                    Fuga temporibus saepe cum sapiente ab eum expedita non eligendi at fugit neque ducimus, nihil, numquam iusto. Veritatis cupiditate, in adipisci mollitia soluta dolorem sapiente. Suscipit, commodi deserunt at accusamus adipisci ducimus.
-                    <br/><br/>
-                    Accusantium quibusdam delectus voluptate necessitatibus iusto voluptas obcaecati fugit cupiditate commodi sunt corrupti corporis aliquam pariatur earum odit, provident quae quisquam! Rerum veritatis unde commodi veniam earum fuga tenetur autem doloremque facilis odit, officiis adipisci nam amet minima? Corrupti distinctio quo velit fuga ullam sed ex deleniti veniam, ab, qui quisquam eius eveniet. Repellendus, magni obcaecati, doloremque quidem expedita incidunt alias dolor numquam ipsa error aspernatur, harum sint unde. Vel veniam placeat facilis, amet culpa laboriosam ipsam quo quae magnam repellendus nulla eaque ipsa quis, voluptates aspernatur. Delectus, sequi? Autem, labore consectetur.
-                    <br/><br/>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nemo nesciunt, deleniti natus modi et pariatur, error vel aspernatur deserunt repellendus numquam iusto odio aliquid delectus laboriosam quis esse aut.
-                    <br/><br/>
-                    Dolore, temporibus. Modi, neque sed dolores suscipit voluptatum nihil, deleniti excepturi recusandae dolorem vitae distinctio vero et molestias beatae sapiente possimus commodi, eligendi est sunt iure sit ut. Dolore ratione esse eos.
-                    <br/><br/>
-                    Inventore repellendus assumenda sequi, a totam laboriosam mollitia unde iure porro amet dicta, ipsum officia vel animi dolorem doloribus cumque reprehenderit ipsam. Facilis blanditiis ratione, eos explicabo provident error eaque sunt illum laborum voluptatibus facere aspernatur enim quas dignissimos adipisci est. Obcaecati!
-                    <br/><br/>
-                    Itaque, nam aspernatur ratione dolorum libero ab eaque. Fuga, doloremque quas maxime voluptatibus, ipsum minima dignissimos a sequi possimus quidem mollitia quos sit illo eum amet iste cupiditate similique. Quidem, non itaque repudiandae quis quod, numquam commodi deserunt dolores exercitationem necessitatibus iure asperiores ab beatae sunt velit sint accusantium temporibus, voluptatem aspernatur!
+                <div className='ArticleContentAndAuthor'>
+                    <div className='ArticleContent'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sequi sed possimus neque! Omnis doloribus tempora reprehenderit sed, quia deleniti quo illo doloremque voluptatum laboriosam adipisci ipsam, nesciunt sint ad.
+                        <br/><br/>
+                        Ad, vitae eum commodi, quis ipsa rerum officia ab dicta soluta neque hic sunt perferendis eveniet veritatis ex ipsum eius praesentium mollitia, aut velit itaque adipisci! Adipisci repellendus, eos, nesciunt explicabo nostrum fugit, eum deserunt natus omnis quae quas hic commodi maiores.
+                        <br/><br/>
+                        Fuga temporibus saepe cum sapiente ab eum expedita non eligendi at fugit neque ducimus, nihil, numquam iusto. Veritatis cupiditate, in adipisci mollitia soluta dolorem sapiente. Suscipit, commodi deserunt at accusamus adipisci ducimus.
+                        <br/><br/>
+                        Accusantium quibusdam delectus voluptate necessitatibus iusto voluptas obcaecati fugit cupiditate commodi sunt corrupti corporis aliquam pariatur earum odit, provident quae quisquam! Rerum veritatis unde commodi veniam earum fuga tenetur autem doloremque facilis odit, officiis adipisci nam amet minima? Corrupti distinctio quo velit fuga ullam sed ex deleniti veniam, ab, qui quisquam eius eveniet. Repellendus, magni obcaecati, doloremque quidem expedita incidunt alias dolor numquam ipsa error aspernatur, harum sint unde. Vel veniam placeat facilis, amet culpa laboriosam ipsam quo quae magnam repellendus nulla eaque ipsa quis, voluptates aspernatur. Delectus, sequi? Autem, labore consectetur.
+                        <br/><br/>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nemo nesciunt, deleniti natus modi et pariatur, error vel aspernatur deserunt repellendus numquam iusto odio aliquid delectus laboriosam quis esse aut.
+                        <br/><br/>
+                        Dolore, temporibus. Modi, neque sed dolores suscipit voluptatum nihil, deleniti excepturi recusandae dolorem vitae distinctio vero et molestias beatae sapiente possimus commodi, eligendi est sunt iure sit ut. Dolore ratione esse eos.
+                        <br/><br/>
+                        Inventore repellendus assumenda sequi, a totam laboriosam mollitia unde iure porro amet dicta, ipsum officia vel animi dolorem doloribus cumque reprehenderit ipsam. Facilis blanditiis ratione, eos explicabo provident error eaque sunt illum laborum voluptatibus facere aspernatur enim quas dignissimos adipisci est. Obcaecati!
+                        <br/><br/>
+                        Itaque, nam aspernatur ratione dolorum libero ab eaque. Fuga, doloremque quas maxime voluptatibus, ipsum minima dignissimos a sequi possimus quidem mollitia quos sit illo eum amet iste cupiditate similique. Quidem, non itaque repudiandae quis quod, numquam commodi deserunt dolores exercitationem necessitatibus iure asperiores ab beatae sunt velit sint accusantium temporibus, voluptatem aspernatur!
+                    </div>
+                    <AuthorDetails authorName={article.author}/>
                 </div>
                 <div className='OtherArticleSuggestionsContainer'>
                     <div className='OtherArticlesHeader'>
@@ -73,7 +76,6 @@ const ArticlePage = () => {
                     <OtherArticleSuggestions genre={article.genre} articleToExclude={article}/>
                 </div>
             </div>
-            <AuthorDetails authorName={article.author}/>
         </div>
     );
 }
@@ -147,6 +149,7 @@ const OtherArticle = ({ article }) => {
 
 const AuthorDetails = ({ authorName }) => {
     const [author, setAuthor] = useState();
+    const authorHeadshotFolder = (authorName) ? authorName.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
 
     useEffect(() => {
         const fetchAuthor = async () => {
@@ -162,6 +165,7 @@ const AuthorDetails = ({ authorName }) => {
 
     if (author) return (
         <div className='AuthorContainer'>
+            <img src={require(`../assets/team/${authorHeadshotFolder}.png`)} alt="Author Headshot" className='AuthorHeadshot'/>
         </div>
     )
 }

@@ -32,14 +32,25 @@
     gap: 80px;
 }
 
-.ArticleContent {
+.ArticleContentAndAuthor {
     flex: 2;
+}
+
+.ArticleContent {
     font-weight: 400;
     font-size: 17px;
     line-height: 30px;
 
     padding-bottom: 40px;
     border-bottom: solid 1.5px #C9C9C9;
+}
+
+.AuthorHeadshot {
+    border-radius: 100%;
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .OtherArticleSuggestionsContainer {
