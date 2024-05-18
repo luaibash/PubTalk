@@ -1,10 +1,10 @@
 import { React, useEffect, useRef, useState } from 'react';
 import LinkedInLogo from '../assets/team/LinkedIn.png';
-import Luai from '../assets/team/Luai.png';
-import Owen from '../assets/team/Owen.png';
-import Gabe from '../assets/team/Gabe.png';
-import Ivan from '../assets/team/Ivan.png';
-import Alex from '../assets/team/Alex.png';
+import Luai from '../assets/team/LuaiBashar.png';
+import Owen from '../assets/team/OwenSkanes.png';
+import Gabe from '../assets/team/GabrielHernandez.png';
+import Ivan from '../assets/team/IvanManca.png';
+import Alex from '../assets/team/AlexS.png';
 import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
 import '../styles/App.css';

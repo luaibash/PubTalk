@@ -37,6 +37,9 @@
     font-weight: 400;
     font-size: 17px;
     line-height: 30px;
+
+    padding-bottom: 40px;
+    border-bottom: solid 1.5px #C9C9C9;
 }
 
 .OtherArticleSuggestionsContainer {
@@ -87,6 +90,11 @@
     font-size: 14px;
     font-weight: 500;
     color: #444444;
+}
+
+.AuthorContainer {
+    padding-top: 40px;
+    display: flex;
 }
 
 @media (max-width: 1300px) {

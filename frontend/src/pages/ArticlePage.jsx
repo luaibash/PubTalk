@@ -73,6 +73,7 @@ const ArticlePage = () => {
                     <OtherArticleSuggestions genre={article.genre} articleToExclude={article}/>
                 </div>
             </div>
+            <AuthorDetails author={article.author}/>
         </div>
     );
 }
@@ -141,6 +142,15 @@ const OtherArticle = ({ article }) => {
             </div>
             <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='OtherArticleCover'/>
         </Link>
+    )
+}
+
+const AuthorDetails = ({ author }) => {
+
+    return (
+        <div className='AuthorContainer'>
+
+        </div>
     )
 }
 
