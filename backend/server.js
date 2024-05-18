@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/api/articles', articleRoutes)     // Goes to app.get in articleRoutes
-// app.use('/api/authors', authorRoutes)      // Routes for authors
+app.use('/api/authors', authorRoutes)       // Routes for authors
 
 //connect to DB
 mongoose.connect(process.env.MONGO_URI)

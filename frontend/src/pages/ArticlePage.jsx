@@ -73,7 +73,7 @@ const ArticlePage = () => {
                     <OtherArticleSuggestions genre={article.genre} articleToExclude={article}/>
                 </div>
             </div>
-            <AuthorDetails author={article.author}/>
+            <AuthorDetails authorName={article.author}/>
         </div>
     );
 }
@@ -145,11 +145,23 @@ const OtherArticle = ({ article }) => {
     )
 }
 
-const AuthorDetails = ({ author }) => {
+const AuthorDetails = ({ authorName }) => {
+    const [author, setAuthor] = useState();
 
-    return (
+    useEffect(() => {
+        const fetchAuthor = async () => {
+            // Fetches the API and finds author using the author name
+            const response = await fetch(`/api/authors/${authorName}`);
+            const json = await response.json();
+
+            if (response.ok) setAuthor(json);
+        }
+
+        fetchAuthor()
+    }, [authorName])
+
+    if (author) return (
         <div className='AuthorContainer'>
-
         </div>
     )
 }
