@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
+// Article schema containing title, author, date created, date updated, body, html property
 const articleSchema = new Schema({
-    //Article schema containing title, author, date created, date updated, body, html property
     title: {   
         type: String,
         required: true
@@ -30,8 +30,6 @@ const articleSchema = new Schema({
     }
     
 
-}, {timestamps: true})  //this is a 2nd argument that will automatically give us a timestamp of when it is created and last updated, so for article this will be that property
+}, {timestamps: true})  // Extra argument that will automatically give timestamp of when it is created and last updated
 
-module.exports = mongoose.model('Article', articleSchema)    //creates this model
-
-// Article can now be used, for example Article.find() will finds all the articles for us
+module.exports = mongoose.model('Article', articleSchema)   // Creates this model to be used in the controller as the name "Article". Ex. Article.find() will find all articles
