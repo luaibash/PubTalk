@@ -19,10 +19,10 @@ const getAuthorByName = async (req, res) => {
 
 // Create a new author
 const createAuthor = async (req, res) => {
-    const { name, description, linkedIn } = req.body;
+    const { name, description, linkedIn, role } = req.body;
 
     // Name and description must be provided to create a new author
-    if (!name || !description) return res.status(400).json({ error: 'name and description are required' });
+    if (!name || !description || !role) return res.status(400).json({ error: 'name and description are required' });
 
     try {
         const author = await Author.create({ name, description, linkedIn });

@@ -15,6 +15,10 @@ const authorSchema = new Schema({
     linkedIn: {
         type: String,
         required: false
+    },
+    role: {
+        type: String,
+        required: true
     }
 });
 
