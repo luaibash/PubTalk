@@ -77,7 +77,7 @@ const ArticlePage = () => {
                     <OtherArticleSuggestions genre={article.genre} articleToExclude={article}/>
                 </div>
             </div>
-            <AuthorArticles/>
+            <AuthorArticles article={article}/>
         </div>
     );
 }
@@ -187,9 +187,23 @@ const AuthorDetails = ({ authorName }) => {
 }
 
 // Author articles container that holds other articles by that author
-const AuthorArticles = ({ authorName }) => {
+const AuthorArticles = ({ article }) => {
+    const [articles, setArticles] = useState([]);
 
-    return (
+    useEffect(() => {
+        const fetchArticles = async () => {
+            // Fetches the API and finds article using its id, providing a limit on articles to grab, and to exclude the current article being viewed
+            const articleToExclude = JSON.stringify(article);
+            const response = await fetch(`/api/articles/author/${article.author}?limit=4&excludeArticle=${articleToExclude}`);
+            const json = await response.json();
+
+            if (response.ok) setArticles(json);
+        }
+
+        fetchArticles()
+    }, [article])
+
+    if (articles.length > 0) return (
         <div className='AuthorArticlesContainer'>
             <div className='AuthorArticlesHeader'>
                 MORE FROM AUTHOR

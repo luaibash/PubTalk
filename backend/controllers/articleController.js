@@ -69,16 +69,21 @@ const getArticlesByGenre = async(req, res) => {
     res.status(200).json(articles);
 }
 
-// Get all articles specified by the author sorted from most recent, with optional limit parameter that specifies how many articles to grab
+// Get all articles by author from most recent, with limit that specifies how many articles to grab, and excludeArticles that specifies which articles to exlude
 const getArticlesByAuthor = async (req, res) => {
-    // Retrieve author from request parameters and limit from query string
+    // Retrieve author from GET request, limit parameter, and excludeArticles, which specifies which articles to exclude when pulling from database
     const { author } = req.params;
     const limit = (req.query.limit) ? parseInt(req.query.limit) : null;
+    const excludeArticle = (req.query.excludeArticle) ? JSON.parse(req.query.excludeArticle) : null;
+
+    // Construct query criteria to match genre, and to exclude the articles based on the extracted IDs if provided
+    let queryCriteria = { author: author };
+    if (excludeArticle) queryCriteria._id = { $nin: excludeArticle._id };
 
     // If limit is specified, find and limit the number of articles, otherwise, retrieve all articles by the author
     let articles;
-    if (limit) articles = await Article.find({ author }).sort({ createdAt: -1 }).limit(limit);
-    else articles = await Article.find({ author }).sort({ createdAt: -1 });
+    if (limit) articles = await Article.find(queryCriteria).sort({ createdAt: -1 }).limit(limit);
+    else articles = await Article.find(queryCriteria).sort({ createdAt: -1 });
 
     res.status(200).json(articles);
 }
