@@ -193,8 +193,9 @@ const AuthorArticles = ({ article }) => {
     useEffect(() => {
         const fetchArticles = async () => {
             // Fetches the API and finds article using its id, providing a limit on articles to grab, and to exclude the current article being viewed
-            const articleToExclude = JSON.stringify(article);
-            const response = await fetch(`/api/articles/author/${article.author}?limit=4&excludeArticle=${articleToExclude}`);
+            // const articleToExclude = JSON.stringify(article);
+            // const response = await fetch(`/api/articles/author/${article.author}?limit=4&excludeArticle=${articleToExclude}`);
+            const response = await fetch(`/api/articles?limit=4`);
             const json = await response.json();
 
             if (response.ok) setArticles(json);
@@ -204,11 +205,35 @@ const AuthorArticles = ({ article }) => {
     }, [article])
 
     if (articles.length > 0) return (
-        <div className='AuthorArticlesContainer'>
+        <div className='AuthorArticles'>
             <div className='AuthorArticlesHeader'>
                 MORE FROM AUTHOR
             </div>
+            <div className='AuthorArticlesContainer'>
+                {articles[0] && <AuthorArticle article={articles[0]}/>}
+                {articles[1] && <AuthorArticle article={articles[1]}/>}
+                {articles[2] && <AuthorArticle article={articles[2]}/>}
+                {articles[3] && <AuthorArticle article={articles[3]}/>}
+            </div>
         </div>
+    )
+}
+
+// One article in the author articles container
+const AuthorArticle = ({ article }) => {
+    const imageFolder = (article) ? article.title.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
+    const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-'); // Grab article link
+
+    return (
+        <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='AuthorArticle'>
+            <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='AuthorArticleCover'/>
+            <div className='AuthorArticleTitle'>
+                {article.title}
+            </div>
+            <div className='AuthorArticleGenreAuthor'>
+                {article.genre[0]} &#8226; {article.author}
+            </div>
+        </Link>
     )
 }
 

@@ -136,19 +136,46 @@
     text-decoration: underline;
 }
 
-.OtherArticleGenreAuthor {
+.OtherArticleGenreAuthor, .AuthorArticleGenreAuthor {
     font-size: 14px;
     font-weight: 500;
     color: #444444;
 }
 
-.AuthorArticlesContainer {
+.AuthorArticles {
     margin-top: 50px;
 }
 
 .AuthorArticlesHeader {
     font-size: 20px;
     font-weight: 700;
+}
+
+.AuthorArticlesContainer {
+    margin-top: 25px;
+    display: flex;
+    gap: 1.5vw;
+}
+
+.AuthorArticle {
+    flex: 25%;
+    text-decoration: none;
+}
+
+.AuthorArticleCover {
+    width: 100%;
+    aspect-ratio: 1.7;
+    object-fit: cover;
+
+    margin-bottom: 20px;
+}
+
+.AuthorArticleTitle {
+    color: black;
+    margin-bottom: 10px;
+}
+.AuthorArticleTitle:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 1300px) {
