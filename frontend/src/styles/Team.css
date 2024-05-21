@@ -17,6 +17,13 @@
     margin-bottom: 100px;
 }
 
+.EmailLink:link, .EmailLink:visited {
+    color: #0066CC;
+}
+.EmailLink:hover {
+    color: #0044CC;
+}
+
 /* The following is for a separate member */
 .MemberContainer {
     width: 300px;

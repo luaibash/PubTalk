@@ -41,7 +41,7 @@ const Team = () => {
                     Our goal is simple: to provide a platform for student expression and foster meaningful discussions on topics that matter. Whether it's through insightful articles, thought-provoking opinion pieces, or engaging multimedia content, we aim to spark dialogue and inspire change.
                 </div>
                 <div className='Subtext' id='TeamSubtextBottom'>
-                    Want to see your picture here? Simply reach out to us via <a href="/contact">email</a>, and you'll have the opportunity to become a part of our editorial crew. At PubTalk, we believe in the power of student voices. Join us in shaping the conversation and making a difference in our community.
+                    Want to see your picture here? Simply reach out to us via <a href="/contact" className='EmailLink'>email</a>, and you'll have the opportunity to become a part of our editorial crew. At PubTalk, we believe in the power of student voices. Join us in shaping the conversation and making a difference in our community.
                 </div>
             </div>
             {showSlideshow ? <MembersSlideshow/> : <MembersDefault/>}
