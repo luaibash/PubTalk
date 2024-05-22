@@ -164,6 +164,7 @@
 
 .AuthorArticle {
     flex: 25%;
+    max-width: 293.75px;
     text-decoration: none;
 }
 
@@ -172,7 +173,7 @@
     aspect-ratio: 1.7;
     object-fit: cover;
 
-    margin-bottom: 20px;
+    margin-bottom: 1vw;
 
     transition: opacity 0.3s, transform 0.3s;
 }
@@ -189,6 +190,15 @@
     text-decoration: underline;
 }
 
+@media (min-width: 1350px) {
+    .AuthorArticleCover {
+        margin-bottom: 20px;
+    }
+
+    .AuthorArticlesContainer {
+        gap: 25px;
+    }
+}
 @media (max-width: 1300px) {
     .ArticleBody {
         gap: 30px;
