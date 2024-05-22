@@ -141,7 +141,7 @@
     text-decoration: underline;
 }
 
-.OtherArticleGenreAuthor, .AuthorArticleGenreAuthor {
+.OtherArticleGenreAuthor {
     font-size: 14px;
     font-weight: 500;
     color: #444444;
@@ -190,6 +190,12 @@
     text-decoration: underline;
 }
 
+.AuthorArticleGenreAuthor {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444444;
+}
+
 @media (min-width: 1350px) {
     .AuthorArticleCover {
         margin-bottom: 20px;
@@ -207,6 +213,19 @@
 @media (max-width: 1200px) {
     .OtherArticleSuggestionsContainer {
         display: none;
+    }
+}
+@media (max-width: 1150px) {
+    .AuthorArticleTitle {
+        font-size: 15px;
+    }
+
+    .AuthorArticleGenreAuthor {
+        font-size: 12px;
+    }
+
+    .AuthorArticlesHeader {
+        font-size: 18px;
     }
 }
 @media (max-width: 1000px) {
