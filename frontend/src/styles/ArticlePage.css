@@ -121,6 +121,11 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
+
+    transition: opacity 0.3s;
+}
+.OtherArticleCover:hover {
+    opacity: 0.85;
 }
 
 .OtherArticleDescription {
@@ -168,6 +173,12 @@
     object-fit: cover;
 
     margin-bottom: 20px;
+
+    transition: opacity 0.3s, transform 0.3s;
+}
+.AuthorArticleCover:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
 }
 
 .AuthorArticleTitle {
