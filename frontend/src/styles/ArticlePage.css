@@ -238,3 +238,18 @@
         max-height: 450px;
     }
 }
+@media (max-width: 900px) {
+    .ArticleCover {
+        margin-bottom: 30px;
+    }
+
+    .AuthorArticlesContainer {
+        flex-wrap: wrap;
+        gap: 3.33vw 2.22vw;
+    }
+    
+    .AuthorArticle {
+        flex: 48%; /* Has to be 48% since the gap takes some space and making it 50% will make the second article overflow */
+        max-width: 50%;
+    }
+}
