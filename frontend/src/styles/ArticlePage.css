@@ -1,3 +1,7 @@
+.LoadingPage {
+    min-height: 20000px; /* Just some really high value to fill up the page until the article renders in */
+}
+
 .ArticlePagePanel {
     max-width: 1250px;
     margin: 0 auto;

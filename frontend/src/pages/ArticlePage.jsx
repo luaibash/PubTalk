@@ -39,6 +39,9 @@ const ArticlePage = () => {
     // If link does not exist, show not found page
     if (notFound) return <NotFound/>;
 
+    // If article has not rendered yet, fill it with a blank page with space so it doesn't snap user to top. This is because if we return nothing, only the footer will show and the page will be very small height, automatically snapping user to top of page    
+    else if (!article) return <div className='LoadingPage' />
+
     // Show article as soon as the article has been pulled from the database
     else if (article) return (
         <div className='ArticlePagePanel'>
