@@ -154,10 +154,18 @@
     margin: auto;
 }
 
-@media (min-width: 2250px) {
+@media (min-width: 2000px) {
+    .ArticlePanel {
+        padding-top: calc(22vw - 160px);
+    }
+
+    .SearchArticleContainer {
+        margin-bottom: calc(16vw - 20px);
+    }
+
     .SearchBackground {
-        width: 2250px;
-    } 
+        height: 38vw;
+    }
 }
 @media (max-width: 1150px) {
     .ArticlesAndGenresContainer {
