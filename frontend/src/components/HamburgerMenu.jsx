@@ -7,7 +7,7 @@ const HamburgerMenu = ({showHamburgerMenu, updateHamburgerMenu}) => {
         <div className='OverlayAndHamburgerMenu'>
             <div className='DarkOverlay' id={showHamburgerMenu ? 'DarkOverlayActive' : 'DarkOverlayInactive'}/>
             <div className='HamburgerMenuContainer' id={showHamburgerMenu ? 'HamburgerMenuActive' : 'HamburgerMenuInactive'} onClick={() => updateHamburgerMenu()}>
-                <div className='HamburgerMenu'>
+                <div className='HamburgerMenuTop'>
 
                 </div>
             </div>

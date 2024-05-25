@@ -47,17 +47,20 @@
     background-color: white;
 }
 #HamburgerMenuActive {
-    width: 50%;
+    width: 300px;
     transition: width 0.5s cubic-bezier(.95,.01,.05,.99), height 0.5s cubic-bezier(.95,.01,.05,.99);
 }
 #HamburgerMenuInactive {
-    width: 0%;
+    width: 0;
     overflow-y: hidden;
     transition: width 0.5s cubic-bezier(.89,0,.12,.99) 0.3s, height 0.5s cubic-bezier(.89,0,.12,.99) 0.3s;
 }
 
-.HamburgerMenu {
-    margin: 25px 30px 65px 25px;
+.HamburgerMenuTop {
+    height: 64px;
+    width: 100%;
+    border-bottom: solid 1px #d9d9d9;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
 }
 
 @media (min-width: 1001px) {
