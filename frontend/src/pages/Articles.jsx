@@ -108,7 +108,7 @@ const AllArticles = () => {
 
     return (
         <div className='AllArticlesContainer'>
-            <div className='divider'></div>
+            <div className='Divider'></div>
             <div className='Title' id='PanelThreeTitle'>
                 All Articles
                 <img src={Arrow} alt="" className='Arrow'/>
@@ -162,7 +162,7 @@ const ArticleGenres = () => {
 
     return (
         <div className='ArticleGenresContainer'>
-            <div className='divider'></div>
+            <div className='Divider'></div>
             <div className='Title' id='GenresTitle'>
                 Explore Different Genres:
                 <span className='RevolvingWordsContainer'>
