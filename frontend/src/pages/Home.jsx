@@ -1,6 +1,6 @@
 import {React, useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
-import ArticleDetails from '../components/ArticleDetails'
+import ArticleDetails from '../components/ArticleDetails';
 import RedirectButton from '../components/RedirectButton';
 import PanelOneBackground from '../assets/home/PanelOneBackground.png';
 import PersonReading from '../assets/home/PersonReading.png';
@@ -14,6 +14,7 @@ import '../styles/home/PanelThree.css';
 import '../styles/home/PanelFour.css';
 import '../styles/Boxes.css';
 
+// Home page that has the landing panel, the most recent/top articles, and a contact redirect
 const Home = () => {
     return (
         <div>
@@ -25,6 +26,7 @@ const Home = () => {
     );
 }
 
+// First panel of home page that is the landing panel
 const PanelOne = () => {
     return (
         <div className='PanelOne'>
@@ -53,6 +55,7 @@ const PanelOne = () => {
     );
 }
 
+// Second panel that shows the 5 top articles 
 const PanelTwo = () => {
     const [articles, setArticles] = useState(null)
 
@@ -112,6 +115,7 @@ const PanelTwo = () => {
     );
 }
 
+// Third panel that shows the 6 most recent articles
 const PanelThree = () => {
     const [articles, setArticles] = useState(null)
 
@@ -176,6 +180,7 @@ const PanelThree = () => {
     );
 }
 
+// Fourth panel that shows a contact box to redirect to the contact page
 const PanelFour = () => {
     return (
         <div className='PanelFour'>

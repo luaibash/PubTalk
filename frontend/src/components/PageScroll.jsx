@@ -1,8 +1,9 @@
 import {React, useState, useEffect} from 'react';
-import '../styles/components/PageScroll.css';
 import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
+import '../styles/components/PageScroll.css';
 
+// Scroll bar on bottom of each article section in the articles page, used to switch to next/previous page of articles
 const PageScroll = ({currentPage, setCurrentPage, articles, articlesPerPage=8}) => {
     const [articlesLength, setArticlesLength] = useState(0);
     const [pages, setPages] = useState(0);

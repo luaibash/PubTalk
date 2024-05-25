@@ -1,15 +1,16 @@
 import { React, useEffect, useRef, useState } from 'react';
-import LinkedInLogo from '../assets/team/LinkedIn.png';
 import Luai from '../assets/team/LuaiBashar.png';
 import Owen from '../assets/team/OwenSkanes.png';
 import Gabe from '../assets/team/GabrielHernandez.png';
 import Ivan from '../assets/team/IvanManca.png';
 import Alex from '../assets/team/AlexS.png';
+import LinkedInLogo from '../assets/team/LinkedIn.png';
 import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
 import '../styles/App.css';
 import '../styles/Team.css';
 
+// Team page that shows the whole team that worked on PubTalk!
 const Team = () => {
     const [showSlideshow, setSlideshow] = useState(false);
 
@@ -49,6 +50,7 @@ const Team = () => {
     );
 }
 
+// Member carousel that displayed each teammate and their card, and rotates when you click left or right
 const MembersSlideshow = () => {
     const memberRef = useRef(null);
     const [isScrolling, setScrolling] = useState(false);
@@ -111,6 +113,7 @@ const MembersSlideshow = () => {
     );
 }
 
+// Default Member showcase that does not move, and just shows the members
 const MembersDefault = () => {
     return (
         <div className='MembersDefaultContainer'>
@@ -123,6 +126,7 @@ const MembersDefault = () => {
     );
 }
 
+// Member component that is shows the member's card and their details
 const Member = ({name, role, headshot, link, colour}) => {
     const headshotRef = useRef(null);
 
@@ -148,6 +152,7 @@ const Member = ({name, role, headshot, link, colour}) => {
     );
 }
 
+// LinkedIn link under respective member card that redirects user to their linkedIn
 const LinkedIn = (link) => {
     return (
         <a className='LogoContainer' href={link.link} target="_blank" rel="noopener noreferrer">

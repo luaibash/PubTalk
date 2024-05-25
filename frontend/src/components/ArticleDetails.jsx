@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../styles/components/ArticleDetails.css';
 
+// Component that is an article preview on the home page and articles page
 const ArticleDetails = ({article, large, long, genreArticle=false}) => {
     const imageFolder = article.title.replace(/[^a-zA-Z0-9]/g, ''); // Grabs name of folder for specified article
     const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-'); // Grab article link
@@ -23,4 +24,4 @@ const ArticleDetails = ({article, large, long, genreArticle=false}) => {
     );
 }
 
-export default ArticleDetails
+export default ArticleDetails;

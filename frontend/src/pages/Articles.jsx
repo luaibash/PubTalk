@@ -1,12 +1,13 @@
 import {React, useState, useEffect} from 'react';
-import Arrow from '../assets/home/Arrow.png';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
 import Genres from '../components/Genres';
+import Arrow from '../assets/home/Arrow.png';
 import '../styles/App.css';
 import '../styles/Articles.css';
 import '../styles/Boxes.css';
 
+// Articles page that lets user search for articles, and see articles from most recent/popular/genre
 const Articles = () => {
     return (
         <div  className='ArticlePanel'>
@@ -18,6 +19,7 @@ const Articles = () => {
     );
 }
 
+// Search Articles container that holds the search bar for the user to search articles
 const SearchArticles = () => {
     return (
         <div className='SearchArticleContainer'>
@@ -33,6 +35,7 @@ const SearchArticles = () => {
     );
 }
 
+// Top articles container that shows all the top articles
 const TopArticles = () => {
     const [articles, setArticles] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
@@ -85,6 +88,7 @@ const TopArticles = () => {
     )
 }
 
+// All articles container that shows most recent articles
 const AllArticles = () => {
     const [articles, setArticles] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
@@ -138,6 +142,7 @@ const AllArticles = () => {
     )
 }
 
+// Articles genres container that shows articles based on the genre chosen
 const ArticleGenres = () => {
     const [genre, setGenre] = useState('Fantasy');
     const [articles, setArticles] = useState(null);

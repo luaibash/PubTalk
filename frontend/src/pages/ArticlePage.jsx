@@ -5,6 +5,7 @@ import LinkedInLogo from '../assets/team/LinkedIn.png';
 import '../styles/App.css';
 import '../styles/ArticlePage.css';
 
+// Component that is the article itself, with its title, cover photo, content, etc
 const ArticlePage = () => {
     const [article, setArticle] = useState(null);
     const [notFound, setNotFound] = useState(false);

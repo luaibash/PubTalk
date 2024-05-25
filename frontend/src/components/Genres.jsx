@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import '../styles/components/Genres.css';
 
+// Genres section at bottom of articles page that shows different genres to choose from when looking at articles
 const Genres = ({ genre, setGenre }) => {
     const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 1150);
   
@@ -20,6 +21,7 @@ const Genres = ({ genre, setGenre }) => {
     else return <GenresHorizontal genre={genre} setGenre={setGenre} />
   };
 
+// If the screen is wide enough, layout the genres in a vertical style
 const GenresVertical = ({genre, setGenre}) => {
     return (
         <div className='GenreButtons'>
@@ -59,6 +61,7 @@ const GenresVertical = ({genre, setGenre}) => {
     )
 }
 
+// If the screen is NOT wide enough, layout the genres in a horizontal style
 const GenresHorizontal = ({genre, setGenre}) => {
     return (
         <div className='GenreButtons'>
@@ -92,6 +95,7 @@ const GenresHorizontal = ({genre, setGenre}) => {
     )
 }
 
+// Genre button for each different button that when clicked, changes the genre of the featured articles to that genre
 const GenreButton = ({genre, curGenre, setGenre}) => {
     const changeGenre = () => {
         if (genre !== curGenre) setGenre(genre);

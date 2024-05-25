@@ -1,8 +1,9 @@
 import React from 'react';
 import RedirectButton from '../components/RedirectButton';
-import '../styles/NotFound.css';
 import ReadingError from '../assets/error/ReadingError.png';
+import '../styles/NotFound.css';
 
+// Not found page that is shown when a link that doesnt exist is reached
 const NotFound = () => {
   return (
     <div className='NotFoundPanel'>

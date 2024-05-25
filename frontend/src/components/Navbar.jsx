@@ -2,10 +2,10 @@ import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import RedirectButton from './RedirectButton';
 import HamburgerMenu from './HamburgerMenu';
-import '../styles/components/Navbar.css';
 import Logo from '../assets/branding/Logo.png';
 import Name from '../assets/branding/Name.png';
 // import HamburgerMenuIcon from '../assets/hamburgerMenu/HamburgerMenu.svg';
+import '../styles/components/Navbar.css';
 
 // The main navbar, holds both the navbar and the hamburger menu together
 const MainNavbar = () => {
@@ -39,6 +39,7 @@ const Navbar = () => {
     )
 }
 
+// Different pages on the navbar that when clicked, redirects to their respected page
 const NavbarPageItem = ({ pageName }) => {
     const destination = (pageName !== 'Home') ? "/" + pageName.toLowerCase() : '/';
     const location = useLocation();

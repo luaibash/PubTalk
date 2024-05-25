@@ -1,9 +1,10 @@
 import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
-import '../styles/components/Footer.css';
 import Logo from '../assets/branding/Logo.png';
 import Name from '../assets/branding/Name.png';
+import '../styles/components/Footer.css';
 
+// Footer at the bottom of the page
 const Footer = () => {
     return (
         <div className='FooterContainer'>
@@ -29,6 +30,7 @@ const Footer = () => {
     )
 }
 
+// Component for the different featured pages on the footer, such as home, articles, team, contact
 const FooterPageItem = ({ pageName }) => {
     const destination = (pageName !== 'Home') ? "/" + pageName.toLowerCase() : '/';
     const location = useLocation();
