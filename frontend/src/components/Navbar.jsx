@@ -1,10 +1,23 @@
 import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import RedirectButton from './RedirectButton';
+import HamburgerMenu from './HamburgerMenu';
 import '../styles/components/Navbar.css';
 import Logo from '../assets/branding/Logo.png';
 import Name from '../assets/branding/Name.png';
+// import HamburgerMenuIcon from '../assets/hamburgerMenu/HamburgerMenu.svg';
 
+// The main navbar, holds both the navbar and the hamburger menu together
+const MainNavbar = () => {
+    return (
+        <div>
+            <Navbar/>
+            <HamburgerMenu/>
+        </div>
+    )
+}
+
+// The Navbar that is shown at all times
 const Navbar = () => {
     return (
         <div className='NavbarContainer'>
@@ -46,4 +59,4 @@ const NavbarPageItem = ({ pageName }) => {
     );
 };
 
-export default Navbar;
+export default MainNavbar;
