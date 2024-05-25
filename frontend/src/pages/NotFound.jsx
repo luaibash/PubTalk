@@ -1,7 +1,7 @@
 import React from 'react';
 import RedirectButton from '../components/RedirectButton';
 import '../styles/NotFound.css';
-import ReadingError from '../assets/Error/ReadingError.png';
+import ReadingError from '../assets/error/ReadingError.png';
 
 const NotFound = () => {
   return (
