@@ -4,7 +4,7 @@ import RedirectButton from './RedirectButton';
 import HamburgerMenu from './HamburgerMenu';
 import Logo from '../assets/branding/Logo.png';
 import Name from '../assets/branding/Name.png';
-// import HamburgerMenuIcon from '../assets/hamburgerMenu/HamburgerMenu.svg';
+import HamburgerMenuIcon from '../assets/hamburgerMenu/HamburgerMenu.svg';
 import '../styles/components/Navbar.css';
 
 // The main navbar, holds both the navbar and the hamburger menu together
@@ -33,6 +33,7 @@ const Navbar = () => {
                     <div className='NavbarButtonContainer'>
                         <RedirectButton title="Read More" destination="Articles"/>
                     </div>
+                    <img src={HamburgerMenuIcon} alt="Hamburger Menu Icon" className='HamburgerMenuIcon'/>
                 </div>
             </div>
         </div>
