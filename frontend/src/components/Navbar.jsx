@@ -36,15 +36,15 @@ const MainNavbar = () => {
 
     // Switches scrollbars whenever hamburger menu is opened or closed
     const SwitchScrollBar = () => {
-        if (showHamburgerMenu) {
+        if (showHamburgerMenu) { // Switching from show to not show, but showHamburgerMenu still true because code has not finished running to update it yet
             document.body.style.overflow = 'auto';
             document.querySelector('#HamburgerMenuActive').style.overflow = 'hidden';
         }
-        else {
+        else {                   // Switching from not show to show, showHamburgerMenu still false for the same idea
             setTimeout(() => {
                 document.body.style.overflow = 'hidden';
                 document.querySelector('#HamburgerMenuActive').style.overflow = 'auto';
-            }, 500 );
+            }, 1);
         }
     };
 
