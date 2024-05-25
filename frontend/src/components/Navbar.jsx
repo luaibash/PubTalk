@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import RedirectButton from './RedirectButton';
 import HamburgerMenu from './HamburgerMenu';
@@ -9,16 +9,55 @@ import '../styles/components/Navbar.css';
 
 // The main navbar, holds both the navbar and the hamburger menu together
 const MainNavbar = () => {
+    const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+
+    // useEffect to close hamburger menu whenever window is large enough to not need it
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 1000) {
+                setShowHamburgerMenu(false);
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    // Used to switch hamburger menu from open to close, or close to open. Updates value of showHamburgerMenu and closes/opens it
+    const updateHamburgerMenu = () => {
+        setShowHamburgerMenu(showHamburgerMenu => !showHamburgerMenu);
+
+        SwitchScrollBar();
+    };
+
+    // Switches scrollbars whenever hamburger menu is opened or closed
+    const SwitchScrollBar = () => {
+        if (showHamburgerMenu) {
+            document.body.style.overflow = 'auto';
+            document.querySelector('#HamburgerMenuActive').style.overflow = 'hidden';
+        }
+        else {
+            setTimeout(() => {
+                document.body.style.overflow = 'hidden';
+                document.querySelector('#HamburgerMenuActive').style.overflow = 'auto';
+            }, 500 );
+        }
+    };
+
     return (
         <div>
-            <Navbar/>
-            <HamburgerMenu/>
+            <Navbar updateHamburgerMenu={updateHamburgerMenu}/>
+            <HamburgerMenu showHamburgerMenu={showHamburgerMenu} updateHamburgerMenu={updateHamburgerMenu}/>
         </div>
     )
 }
 
 // The Navbar that is shown at all times
-const Navbar = () => {
+const Navbar = ({updateHamburgerMenu}) => {
     return (
         <div className='NavbarContainer'>
             <div className='Navbar'>
@@ -33,7 +72,7 @@ const Navbar = () => {
                     <div className='NavbarButtonContainer'>
                         <RedirectButton title="Read More" destination="Articles"/>
                     </div>
-                    <img src={HamburgerMenuIcon} alt="Hamburger Menu Icon" className='HamburgerMenuIcon'/>
+                    <img src={HamburgerMenuIcon} alt="Hamburger Menu Icon" className='HamburgerMenuIcon' onClick={() => updateHamburgerMenu()}/>
                 </div>
             </div>
         </div>
