@@ -1,6 +1,10 @@
 import {React} from 'react';
 import {useNavigate} from 'react-router-dom';
 import CloseIcon from '../assets/hamburgerMenu/CloseIcon.png';
+import HomeIcon from '../assets/hamburgerMenu/HomeIcon.png';
+import ArticlesIcon from '../assets/hamburgerMenu/ArticlesIcon.png';
+import TeamIcon from '../assets/hamburgerMenu/TeamIcon.png';
+import ContactIcon from '../assets/hamburgerMenu/ContactIcon.png';
 import RightArrow from '../assets/hamburgerMenu/RightArrow.svg';
 import '../styles/components/HamburgerMenu.css';
 
@@ -14,10 +18,10 @@ const HamburgerMenu = ({showHamburgerMenu, updateHamburgerMenu}) => {
                     <img src={CloseIcon} alt="Close Icon" className='CloseIcon' onClick={() => updateHamburgerMenu()}/>
                 </div>
                 <div className='HamburgerPages'>
-                    <HamburgerPage showPage={showHamburgerMenu} text={'Home'} pageNumber={0} destination="/" hamburgerMenu={showHamburgerMenu} setHamburgerMenu={updateHamburgerMenu}/>
-                    <HamburgerPage showPage={showHamburgerMenu} text={'Articles'} pageNumber={1} destination="/articles" hamburgerMenu={showHamburgerMenu} setHamburgerMenu={updateHamburgerMenu}/>
-                    <HamburgerPage showPage={showHamburgerMenu} text={'Team'} pageNumber={2} destination="/team" hamburgerMenu={showHamburgerMenu} setHamburgerMenu={updateHamburgerMenu}/>
-                    <HamburgerPage showPage={showHamburgerMenu} text={'Contact'} pageNumber={3} destination="/contact" hamburgerMenu={showHamburgerMenu} setHamburgerMenu={updateHamburgerMenu}/>
+                    <HamburgerPage showPage={showHamburgerMenu} text={'Home'} pageNumber={0} destination="/" icon={HomeIcon} hamburgerMenu={showHamburgerMenu} setHamburgerMenu={updateHamburgerMenu}/>
+                    <HamburgerPage showPage={showHamburgerMenu} text={'Articles'} pageNumber={1} destination="/articles" icon={ArticlesIcon} hamburgerMenu={showHamburgerMenu} setHamburgerMenu={updateHamburgerMenu}/>
+                    <HamburgerPage showPage={showHamburgerMenu} text={'Team'} pageNumber={2} destination="/team" icon={TeamIcon} hamburgerMenu={showHamburgerMenu} setHamburgerMenu={updateHamburgerMenu}/>
+                    <HamburgerPage showPage={showHamburgerMenu} text={'Contact'} pageNumber={3} destination="/contact" icon={ContactIcon} hamburgerMenu={showHamburgerMenu} setHamburgerMenu={updateHamburgerMenu}/>
                 </div>
             </div>
         </div>
@@ -25,7 +29,7 @@ const HamburgerMenu = ({showHamburgerMenu, updateHamburgerMenu}) => {
 }
 
 // Defines one of each page listed on the hamburger menu
-const HamburgerPage = ({showPage, text, pageNumber, destination, setHamburgerMenu}) => {
+const HamburgerPage = ({showPage, text, pageNumber, destination, icon, setHamburgerMenu}) => {
     const maxPage = 5; const interval = 0.05; const maxTime = maxPage*interval;
     const delay = (showPage) ? (0.5 + pageNumber*interval) : (maxTime - pageNumber*interval);
     const pageStyle = {
@@ -42,7 +46,10 @@ const HamburgerPage = ({showPage, text, pageNumber, destination, setHamburgerMen
 
     return (
         <div className='HamburgerPage' id={showPage ? 'HamburgerPageActive' : 'HamburgerPageInactive'} style={pageStyle} onClick={() => goToLocation(destination)}>
-            {text}
+            <div className='HamburgerTitleAndIcon'>
+                {icon && <img src={icon} alt="Page Icon" className='HamburgerPageIcon'/>}
+                {text}
+            </div>
             <img src={RightArrow} alt="Arrow" className='HamburgerArrow'/>
         </div>
     );

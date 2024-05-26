@@ -98,6 +98,16 @@
     margin-top: -10px;
 }
 
+.HamburgerTitleAndIcon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.HamburgerPageIcon {
+    width: 25px;
+}
+
 .HamburgerArrow {
     height: 20px;
     opacity: 0;
