@@ -17,7 +17,7 @@
 }
 .CloseIcon {
     right: 10px;
-    height: 30px;
+    height: 25px;
     padding: 15px;
 }
 .HamburgerMenuIcon:hover, .CloseIcon:hover {
@@ -68,6 +68,41 @@
     height: 64px;
     border-bottom: solid 1px #d9d9d9;
     box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.HamburgerPages {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 25px 0 25px;
+}
+
+.HamburgerPage {
+    font-size: 20px;
+    font-weight: 600;
+    color: #A4A4A4;
+    text-align: left;
+    padding: 10px 0;
+
+    display: flex;
+    justify-content: space-between;
+}
+.HamburgerPage:hover {
+    color: black;
+    padding-left: 20px;
+    cursor: pointer;
+}
+#HamburgerPageInactive {
+    opacity: 0;
+    margin-top: -10px;
+}
+
+.HamburgerArrow {
+    height: 20px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.HamburgerPage:hover .HamburgerArrow {
+    opacity: 1;
 }
 
 @media (min-width: 1001px) {
