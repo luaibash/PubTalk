@@ -1,11 +1,8 @@
-.HamburgerMenuIcon {
+.HamburgerMenuIcon, .CloseIcon {
     position: absolute;
-    right: 0;
 
     border-radius: 50px;
-    height: 35px;
-    padding: 12px;
-
+    
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 0% 0%;
@@ -13,7 +10,17 @@
 
     transition: background-size .15s;
 }
-.HamburgerMenuIcon:hover {
+.HamburgerMenuIcon {
+    right: 0;
+    height: 35px;
+    padding: 12px;
+}
+.CloseIcon {
+    right: 10px;
+    height: 30px;
+    padding: 15px;
+}
+.HamburgerMenuIcon:hover, .CloseIcon:hover {
     cursor: pointer;
     background-size: 100% 100%;
 }
@@ -47,17 +54,18 @@
 }
 #HamburgerMenuActive {
     width: 300px;
-    transition: width 0.5s cubic-bezier(.95,.01,.05,.99), height 0.5s cubic-bezier(.95,.01,.05,.99);
+    transition: width 0.5s cubic-bezier(.95,.01,.05,.99);
 }
 #HamburgerMenuInactive {
     width: 0;
     overflow-y: hidden;
-    transition: width 0.5s cubic-bezier(.89,0,.12,.99) 0.3s, height 0.5s cubic-bezier(.89,0,.12,.99) 0.3s;
+    transition: width 0.5s cubic-bezier(.89,0,.12,.99) 0.3s;
 }
 
 .HamburgerMenuTop {
+    display: flex;
+    align-items: center;
     height: 64px;
-    width: 100%;
     border-bottom: solid 1px #d9d9d9;
     box-shadow: 0 2px 12px rgba(0,0,0,.08);
 }
