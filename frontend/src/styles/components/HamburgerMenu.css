@@ -36,11 +36,12 @@
     background: rgba(26, 26, 26, 0.24);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+    transition: opacity 0.3s 0.3s, visibility 0.3s 0.3s;
 }
 #DarkOverlayActive {
     opacity: 1;
     visibility: visible;
+    transition: opacity 0.3s, visibility 0.3s;
 }
 
 .HamburgerMenuContainer {
