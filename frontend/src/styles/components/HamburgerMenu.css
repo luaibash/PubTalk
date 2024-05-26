@@ -77,14 +77,15 @@
 }
 
 .HamburgerPage {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
-    color: #A4A4A4;
+    color: #5e5e5e;
     text-align: left;
     padding: 10px 0;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .HamburgerPage:hover {
     color: black;
