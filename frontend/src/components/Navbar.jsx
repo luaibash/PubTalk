@@ -9,7 +9,8 @@ import '../styles/components/Navbar.css';
 
 // The main navbar, holds both the navbar and the hamburger menu together
 const MainNavbar = () => {
-    const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+    const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);  // Tracks if the hamburger menu should be showing now or not
+    const [isSwitching, setIsSwitching] = useState(false);              // Tracks if the hamburger menu is currently closing/opening
 
     // useEffect to close hamburger menu whenever window is large enough to not need it
     useEffect(() => {
@@ -29,9 +30,17 @@ const MainNavbar = () => {
 
     // Used to switch hamburger menu from open to close, or close to open. Updates value of showHamburgerMenu and closes/opens it
     const updateHamburgerMenu = () => {
-        setShowHamburgerMenu(showHamburgerMenu => !showHamburgerMenu);
+        // If the menu is currently switching, do not allow it to switch again during the animation
+        if (isSwitching) return;
 
+        setIsSwitching(true);
+        setShowHamburgerMenu(showHamburgerMenu => !showHamburgerMenu);
         SwitchScrollBar();
+
+        // Switching animation takes 0.8 seconds, once animation is done set variable back to not switching
+        setTimeout(() => {
+            setIsSwitching(false);
+        }, 800);
     };
 
     // Switches scrollbars whenever hamburger menu is opened or closed

@@ -12,7 +12,7 @@ import '../styles/components/HamburgerMenu.css';
 const HamburgerMenu = ({showHamburgerMenu, updateHamburgerMenu}) => {
     return (
         <div className='OverlayAndHamburgerMenu'>
-            <div className='DarkOverlay' id={showHamburgerMenu ? 'DarkOverlayActive' : ''}/>
+            <div className='DarkOverlay' id={showHamburgerMenu ? 'DarkOverlayActive' : ''} onClick={() => updateHamburgerMenu()}/>
             <div className='HamburgerMenuContainer' id={showHamburgerMenu ? 'HamburgerMenuActive' : 'HamburgerMenuInactive'}>
                 <div className='HamburgerMenuTop'>
                     <img src={CloseIcon} alt="Close Icon" className='CloseIcon' onClick={() => updateHamburgerMenu()}/>
@@ -30,8 +30,11 @@ const HamburgerMenu = ({showHamburgerMenu, updateHamburgerMenu}) => {
 
 // Defines one of each page listed on the hamburger menu
 const HamburgerPage = ({showPage, text, pageNumber, destination, icon, setHamburgerMenu}) => {
+    // Variables used to calculate the delay of each page animating into the menu, as they each happen one after another
     const maxPage = 5; const interval = 0.05; const maxTime = maxPage*interval;
     const delay = (showPage) ? (0.5 + pageNumber*interval) : (maxTime - pageNumber*interval);
+
+    // Dynamic styling is used here since delay varies on the pageNumber, this is applied with style={pageStyle} on the div
     const pageStyle = {
         transition: `padding-left 0.5s, color 0.5s, opacity 0.2s ease-out ${delay}s, margin-top 0.2s ease-out ${delay}s`,
     };
