@@ -67,12 +67,23 @@ const MainNavbar = () => {
 
 // The Navbar that is shown at all times
 const Navbar = ({updateHamburgerMenu}) => {
+    const curLocation = useLocation();
+    const navigate = useNavigate();
+    const goToLocation = (location) => {
+        // If user already on home page, just steadily scroll them up
+        if (curLocation.pathname === '/') window.scrollTo({ top: 0, behavior: 'smooth' });
+        else {
+            navigate(location);
+        window.scrollTo(0,0);
+        }
+    };
+
     return (
         <div className='NavbarContainer'>
             <div className='Navbar'>
                 <div className='NavbarLeft'>
-                    <img src={Logo} alt="Article Logo" className='NavbarLogo'/>
-                    <img src={Name} alt="Article Name" className='NavbarName'/>
+                    <img src={Logo} alt="Article Logo" className='NavbarLogo' onClick={() => goToLocation('/')}/>
+                    <img src={Name} alt="Article Name" className='NavbarName' onClick={() => goToLocation('/')}/>
                 </div>
                 <div className='NavbarRight'>
                     <NavbarPageItem pageName="Home"/>
