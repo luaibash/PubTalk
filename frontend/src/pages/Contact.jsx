@@ -55,7 +55,7 @@ const Contact = () => {
                         <textarea placeholder="Write about anything you&#39;d like." className='Input' id='Message'></textarea>
                     </div>
                     <div className='ContactButtonContainer'>
-                        <div className='test'>
+                        <div className='ContactAndErrorContainer'>
                             <div className='ContactButton' onClick={() => sendEmail(isSent, setSent)}>
                                 <div className='TransitionContainer'>
                                     Submit
