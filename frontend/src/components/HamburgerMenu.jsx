@@ -50,7 +50,7 @@ const HamburgerPage = ({showPage, text, pageNumber, destination, icon, setHambur
     return (
         <div className='HamburgerPage' id={showPage ? 'HamburgerPageActive' : 'HamburgerPageInactive'} style={pageStyle} onClick={() => goToLocation(destination)}>
             <div className='HamburgerTitleAndIcon'>
-                {icon && <img src={icon} alt="Page Icon" className='HamburgerPageIcon'/>}
+                <img src={icon} alt="Page Icon" className='HamburgerPageIcon'/>
                 {text}
             </div>
             <img src={RightArrow} alt="Arrow" className='HamburgerArrow'/>
