@@ -92,6 +92,23 @@
     justify-content: center;
 }
 
+.test {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.Error {
+    position: absolute;
+    left: -5px;
+    bottom: 47px;
+    width: 170px;
+
+    color: rgb(240, 58, 58);
+    font-size: 14px;
+    display: none;
+}
+
 .ContactButton {
     border-radius: 20px;
     padding: 10px 50px;

@@ -54,12 +54,15 @@ const Contact = () => {
                         </div>
                         <textarea placeholder="Write about anything you&#39;d like." className='Input' id='Message'></textarea>
                     </div>
-                    <div className='ContactButtonContainer' onClick={() => sendEmail(isSent, setSent)}>
-                        <div className='ContactButton'>
-                            <div className='TransitionContainer'>
-                                Submit
-                                <img src={Checkmark} alt="" className='Checkmark'/>
+                    <div className='ContactButtonContainer'>
+                        <div className='test'>
+                            <div className='ContactButton' onClick={() => sendEmail(isSent, setSent)}>
+                                <div className='TransitionContainer'>
+                                    Submit
+                                    <img src={Checkmark} alt="" className='Checkmark'/>
+                                </div>
                             </div>
+                            <div className='Error'>* An error has occurred.</div>
                         </div>
                     </div>
                 </div>
@@ -75,6 +78,9 @@ const sendEmail = (isSent, setSent) => {
         if (isVisible) document.getElementsByClassName("Required")[index].style.display = 'block';
         else document.getElementsByClassName("Required")[index].style.display = 'none';  
     };
+
+    // Removes error message at the start of send if it is shown
+    document.getElementsByClassName("Error")[0].style.display = 'none';
 
     // Grabs values filled into each respective box in the contact box
     const firstName = document.getElementsByClassName("Input")[0].value;
@@ -108,6 +114,7 @@ const sendEmail = (isSent, setSent) => {
             setSent(true);
             console.log('SUCCESS!', response.status, response.text);
         }, function(error) {
+            document.getElementsByClassName("Error")[0].style.display = 'block';  // If error has occurred, notify the user
             console.log('FAILED...', error);
         });
     }
