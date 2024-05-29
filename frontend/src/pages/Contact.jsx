@@ -1,5 +1,6 @@
 import {React, useState} from 'react';
 import emailjs from '@emailjs/browser';
+import * as EmailValidator from 'email-validator';
 import Waves from '../assets/contact/Waves.svg';
 import Checkmark from '../assets/contact/Checkmark.png';
 import '../styles/App.css';
@@ -43,8 +44,9 @@ const Contact = () => {
                             <div className='ContactTitle'>
                                 Email
                                 <div className='Required'>* Required</div>
+                                <div className='EmailWarning'>* Invalid Email</div>
                             </div>
-                            <input type="text" placeholder='john@gmail.com' className='Input'/>
+                            <input type="email" placeholder='john@gmail.com' className='Input'/>
                         </div>
                     </div>
                     <div className='MessageContainer'>
@@ -87,13 +89,19 @@ const sendEmail = (isSent, setSent) => {
     const lastName = document.getElementsByClassName("Input")[1].value;
     const email = document.getElementsByClassName("Input")[2].value;
     const message = document.getElementsByClassName("Input")[3].value;
+
+    // Checks if the email provided by the user is a valid email. If not, notify the user
+    if (!(email.trim() === "") && !EmailValidator.validate(email)) document.getElementsByClassName("EmailWarning")[0].style.display = 'block';
+    else document.getElementsByClassName("EmailWarning")[0].style.display = 'none';
     
     // If any value is empty, notify the user with a "*required"
     (firstName.trim() === "") ? setDisplay(true, 0) : setDisplay(false, 0);
     (lastName.trim() === "") ? setDisplay(true, 1) : setDisplay(false, 1);
     (email.trim() === "") ? setDisplay(true, 2) : setDisplay(false, 2);
     (message.trim() === "") ? setDisplay(true, 3) : setDisplay(false, 3);
-    if (firstName.trim() === "" || lastName.trim() === "" || email.trim() === "" || message.trim() === "") return;
+
+    // Exit the attempt to send email
+    if (!EmailValidator.validate(email) || firstName.trim() === "" || lastName.trim() === "" || email.trim() === "" || message.trim() === "") return;
 
     // Template for email to send to the API
     var templateParams = {
