@@ -76,6 +76,10 @@ const Contact = () => {
 
 // Function that sends email once all fields are filled in
 const sendEmail = (isSent, setSent) => {
+    // If an email has already been sent, don't allow another one to be sent
+    if (isSent) return;
+    
+    // setDisplay function to change whether to display "* required" or not for each form box
     const setDisplay = (isVisible, index) => {
         if (isVisible) document.getElementsByClassName("Required")[index].style.display = 'block';
         else document.getElementsByClassName("Required")[index].style.display = 'none';  
@@ -115,17 +119,15 @@ const sendEmail = (isSent, setSent) => {
     var publicKey = "8brRPBwE__7zDFkLo";
     
     // If an email has not already been sent, send the email
-    if (!isSent) {
-        emailjs.send(serviceID, templateID, templateParams, publicKey)
-        .then(function(response) {
-            document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
-            setSent(true);
-            console.log('SUCCESS!', response.status, response.text);
-        }, function(error) {
-            document.getElementsByClassName("Error")[0].style.display = 'block';  // If error has occurred, notify the user
-            console.log('FAILED...', error);
-        });
-    }
+    emailjs.send(serviceID, templateID, templateParams, publicKey)
+    .then(function(response) {
+        document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
+        setSent(true);
+        console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+        document.getElementsByClassName("Error")[0].style.display = 'block';  // If error has occurred, notify the user
+        console.log('FAILED...', error);
+    });
 };
 
 export default Contact;
