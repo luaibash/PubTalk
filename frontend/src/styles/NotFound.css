@@ -29,6 +29,18 @@
     display: flex;
 }
 
+@media (min-height: 1300px) {
+    .NotFoundPanel {
+        margin-top: 330px;
+        margin-bottom: 276px;
+    }
+}
+@media(max-height: 1300px) and (min-height: 865px) {
+    .NotFoundPanel {
+        margin-top: calc((100vh - 244.33px - 64px - 448.33px)/2 + 59px);
+        margin-bottom: calc((100vh - 244.33px - 64px - 559.333px)/2 + 60px);
+    }
+}
 @media(max-width: 1200px) {
     .ReadingError {
         max-width: 500px;
