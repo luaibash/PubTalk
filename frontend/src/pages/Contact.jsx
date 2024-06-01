@@ -75,7 +75,7 @@ const Contact = () => {
 }
 
 // Function that sends email once all fields are filled in
-const sendEmail = (isSent, setSent) => {
+const sendEmail = async (isSent, setSent) => {
     // If an email has already been sent, don't allow another one to be sent
     if (isSent) return;
     
@@ -117,17 +117,34 @@ const sendEmail = (isSent, setSent) => {
     var serviceID = "service_2hxcqkk";
     var templateID = "template_3i0d6br";
     var publicKey = "8brRPBwE__7zDFkLo";
-    
-    // If an email has not already been sent, send the email
-    emailjs.send(serviceID, templateID, templateParams, publicKey)
-    .then(function(response) {
-        document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
-        setSent(true);
+
+    try {
+        // Make a fetch request to check if the user is allowed to submit another form, based on the 5 submits per 10 min limit
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+        });
+
+        // If rate limit exceeded, display error message and exit function
+        if (!response.ok) {
+            console.error('Rate limit exceeded:', response.status);
+            return;
+        }
+
+        // setSent(true);
         console.log('SUCCESS!', response.status, response.text);
-    }, function(error) {
-        document.getElementsByClassName("Error")[0].style.display = 'block';  // If error has occurred, notify the user
-        console.log('FAILED...', error);
-    });
+        // If the user is allowed to submit another form, proceed with sending the email
+        // emailjs.send(serviceID, templateID, templateParams, publicKey)
+        // .then(function(response) {
+        //     document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
+        //     setSent(true);
+        //     console.log('SUCCESS!', response.status, response.text);
+        // }, function(error) {
+        //     document.getElementsByClassName("Error")[0].style.display = 'block';  // If error has occurred, notify the user
+        //     console.log('FAILED...', error);
+        // });
+    } catch (error) {   // Handle error accordingly (e.g., display error message to the user)
+        console.error('Error checking rate limit:', error);
+    }
 };
 
 export default Contact;
