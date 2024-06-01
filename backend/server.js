@@ -2,10 +2,9 @@ require('dotenv').config(); // Allows us to use the .env folder which is a priva
 
 const express = require('express');
 const mongoose = require('mongoose');
-const articleRoutes = require('./routes/articleRoutes');                    // Gets the routes of each GET/POST/DELETE function from articleRoutes.js
-const authorRoutes = require('./routes/authorRoutes');                      // Gets the routes of each GET/POST/DELETE function from authorRoutes.js
-const rateLimitController = require('./controllers/rateLimitController');   // Gets the controller of the rateLimiter 
-const contactController = require('./controllers/contactController');
+const articleRoutes = require('./routes/articleRoutes'); // Gets the routes of each GET/POST/DELETE function from articleRoutes.js
+const authorRoutes = require('./routes/authorRoutes');   // Gets the routes of each GET/POST/DELETE function from authorRoutes.js
+const contactRoutes = require('./routes/contactRoutes'); // Gets the routes of each GET/POST/DELETE function from contactRoutes.js
 
 // Express app
 const app = express();
@@ -20,9 +19,9 @@ app.use((req, res, next) => {
 })
 
 //routes
-app.use('/api/contact', contactController);   // Goes straight to the one rate limit controller function
-app.use('/api/articles', articleRoutes);        // Routes for articles controller functions
-app.use('/api/authors', authorRoutes);          // Routes for authors controller functions
+app.use('/api/contact', contactRoutes);  // Routes for contact controller functions
+app.use('/api/articles', articleRoutes); // Routes for articles controller functions
+app.use('/api/authors', authorRoutes);   // Routes for authors controller functions
 
 //connect to DB
 mongoose.connect(process.env.MONGO_URI)

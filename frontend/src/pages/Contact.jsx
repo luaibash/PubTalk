@@ -126,22 +126,20 @@ const sendEmail = async (isSent, setSent) => {
 
         // If rate limit exceeded, display error message and exit function
         if (!response.ok) {
-            console.error('Rate limit exceeded:', response.status);
+            console.error(response.statusText + ":", response.status);
             return;
         }
 
-        // setSent(true);
-        console.log('SUCCESS!', response.status, response.text);
         // If the user is allowed to submit another form, proceed with sending the email
-        // emailjs.send(serviceID, templateID, templateParams, publicKey)
-        // .then(function(response) {
-        //     document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
-        //     setSent(true);
-        //     console.log('SUCCESS!', response.status, response.text);
-        // }, function(error) {
-        //     document.getElementsByClassName("Error")[0].style.display = 'block';  // If error has occurred, notify the user
-        //     console.log('FAILED...', error);
-        // });
+        emailjs.send(serviceID, templateID, templateParams, publicKey)
+        .then(function(response) {
+            document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
+            setSent(true);
+            console.log('SUCCESS!', response.status, response.text);
+        }, function(error) {
+            document.getElementsByClassName("Error")[0].style.display = 'block';  // If error has occurred, notify the user
+            console.log('FAILED...', error);
+        });
     } catch (error) {   // Handle error accordingly (e.g., display error message to the user)
         console.error('Error checking rate limit:', error);
     }

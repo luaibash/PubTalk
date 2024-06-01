@@ -1,15 +1,18 @@
-// contactController.js
-const express = require('express');
-const router = express.Router();
-const rateLimiter = require('./rateLimitController');
+const rateLimit = require('express-rate-limit');
 
-router.post('/', rateLimiter, (req, res) => {
-    // Handle the contact form submission logic here
-    const { name, email, message } = req.body;
-    
-    console.log("ran")
-    // Example response
-    res.status(200).json({ message: 'Form submitted successfully!' });
+// Limits up to 5 requests per 10 minutes for the contact form
+const rateLimiter = rateLimit({
+    windowMs: 10 * 60 * 1000,   // Limit of 10 minutes
+    max: 5,                     // Limit of 5 requests
+    message: { message: 'Too many requests, try again later.' },
 });
 
-module.exports = router;
+// If the limit has not been reached, return a message to notify that the form can be sent
+const handleRateLimiter = (req, res) => {
+    res.status(200).json({ message: 'Form can be sent, under limit!' });
+};
+
+module.exports = {
+    rateLimiter,
+    handleRateLimiter,
+};
