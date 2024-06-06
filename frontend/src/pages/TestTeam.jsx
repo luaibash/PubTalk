@@ -5,8 +5,6 @@ import Gabe from '../assets/team/GabrielHernandez.png';
 import Ivan from '../assets/team/IvanManca.png';
 import Alex from '../assets/team/AlexS.png';
 import LinkedInLogo from '../assets/team/LinkedIn.png';
-import LeftArrow from '../assets/team/LeftArrow.svg';
-import RightArrow from '../assets/team/RightArrow.svg';
 import '../styles/App.css';
 import '../styles/TestTeam.css';
 
@@ -34,27 +32,37 @@ const TeamMembers = () => {
     return (
         <div className='TeamMembersContainer'>
             <div className='TeamMemberColumn'>
-                <TeamMember/>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar'/>
             </div>
             <div className='TeamMemberColumn'>
-                <TeamMember/>
+                <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260'/>
             </div>
             <div className='TeamMemberColumn'>
-                <TeamMember/>
+                <TeamMember name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/'/>
             </div>
             <div className='TeamMemberColumn'>
-                <TeamMember/>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/'/>
             </div>
         </div>
     )
 }
 
 // Defines one team member card
-const TeamMember = () => {
+const TeamMember = ({name, role, headshot, link}) => {
 
     return (
         <div className='TeamMemberContainer'>
-            
+            <div className='TestHeadshotContainer'>
+                <img src={headshot} alt="" className='TestHeadshot'/>
+            </div>
+            <div className='TestTextContainer'>
+                <div className='TestMemberName'>
+                    {name}
+                </div>
+                <div className='TestMemberRole'>
+                    {role}
+                </div>
+            </div>
         </div>
     )
 }

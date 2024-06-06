@@ -130,9 +130,9 @@ const MembersDefault = () => {
 const Member = ({name, role, headshot, link, colour}) => {
     const headshotRef = useRef(null);
 
-    useEffect(() => {
-        headshotRef.current.style.backgroundColor = colour;
-    }, [colour]);
+    // useEffect(() => {
+    //     headshotRef.current.style.backgroundColor = colour;
+    // }, [colour]);
 
     return (
         <div className='MemberContainer'>

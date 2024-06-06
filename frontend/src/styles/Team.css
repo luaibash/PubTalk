@@ -24,6 +24,10 @@
     color: #0044CC;
 }
 
+.HeadshotContainer {
+    background-color: rgb(216, 224, 230);
+}
+
 /* The following is for a separate member */
 .MemberContainer {
     width: 300px;
