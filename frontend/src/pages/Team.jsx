@@ -4,7 +4,7 @@ import Owen from '../assets/team/OwenSkanes.png';
 import Gabe from '../assets/team/GabrielHernandez.png';
 import Ivan from '../assets/team/IvanManca.png';
 import Alex from '../assets/team/AlexS.png';
-import LinkedInLogo from '../assets/team/LinkedIn.png';
+import LinkedInLogo from '../assets/team/LinkedIn.svg';
 import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
 import '../styles/App.css';

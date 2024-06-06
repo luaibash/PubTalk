@@ -1,7 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import NotFound from './NotFound';
-import LinkedInLogo from '../assets/team/LinkedIn.png';
+import LinkedInLogo from '../assets/team/LinkedIn.svg';
 import '../styles/App.css';
 import '../styles/ArticlePage.css';
 

@@ -4,7 +4,7 @@ import Owen from '../assets/team/OwenSkanes.png';
 import Gabe from '../assets/team/GabrielHernandez.png';
 import Ivan from '../assets/team/IvanManca.png';
 import Alex from '../assets/team/AlexS.png';
-import LinkedInLogo from '../assets/team/LinkedIn.png';
+import LinkedInLogo from '../assets/team/LinkedIn.svg';
 import '../styles/App.css';
 import '../styles/TestTeam.css';
 
@@ -63,8 +63,18 @@ const TeamMember = ({name, role, headshot, link}) => {
                     {role}
                 </div>
             </div>
+            {link && <LinkedIn link={link}/>}
         </div>
     )
+}
+
+// LinkedIn link under respective member card that redirects user to their linkedIn
+const LinkedIn = (link) => {
+    return (
+        <a href={link.link} target="_blank" rel="noopener noreferrer">
+            <img src={LinkedInLogo} alt="" className='LinkedInLogo'/>
+        </a>
+    );
 }
 
 export default TestTeam;
