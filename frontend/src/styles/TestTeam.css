@@ -1,0 +1,40 @@
+.TestTeamPanel {
+    margin-top: 125px;
+    margin-bottom: 125px;
+}
+
+.TitleContainer {
+    max-width: 1250px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+#TestTeamSubtext {
+    max-width: 530px;
+}
+
+.TeamMembersContainer {
+    display: flex;
+    gap: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.TeamMemberColumn {
+    flex: 4;
+}
+
+.TeamMemberContainer {
+    aspect-ratio: 0.8;
+    background-color: gray;
+    border-radius: 30px;
+}
+
+@media (max-width: 1000px) {
+    .TitleContainer {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
