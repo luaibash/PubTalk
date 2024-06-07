@@ -1,6 +1,9 @@
 .TestTeamPanel {
-    margin-top: 125px;
-    margin-bottom: 125px;
+    padding-top: 125px;
+    padding-bottom: 400px;
+    background-color: rgb(224,235,242);
+    overflow: hidden;
+    
 }
 
 .TitleContainer {
@@ -22,15 +25,21 @@
     margin-right: 50px;
 }
 
-.TeamMemberColumn {
+.TeamMemberColumnSlowRise, .TeamMemberColumnFastRise {
     flex: 4;
+
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .TeamMemberContainer {
     aspect-ratio: 0.8;
     border-radius: 30px;
     background-color: #F6F1F1;
-    /* box-shadow: 0 0 15px rgba(0,0,0,0.1); */
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
 
     display: flex;
     flex-direction: column;
@@ -50,21 +59,27 @@
     height: 130%;
 }
 
-.TestTextContainer {
+.TestTextContainer, .InvertedTextContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
     flex-grow: 1;
 
     padding-top: 35px;
-    padding-right: 15px;
 
-    text-align: end;
     background-color: #E7E7E7;
 
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+}
+.TestTextContainer {
+    padding-right: 15px;
+    text-align: end;
     clip-path: polygon(0% 35%, 100% 0%, 100% 100%, 0% 100%);
+}
+.InvertedTextContainer {
+    padding-left: 15px;
+    clip-path: polygon(0% 0%, 100% 35%, 100% 100%, 0% 100%);
 }
 
 .TestMemberName {

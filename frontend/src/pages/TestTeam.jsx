@@ -1,4 +1,4 @@
-import { React, useEffect, useRef, useState } from 'react';
+import { React, useEffect } from 'react';
 import Luai from '../assets/team/LuaiBashar.png';
 import Owen from '../assets/team/OwenSkanes.png';
 import Gabe from '../assets/team/GabrielHernandez.png';
@@ -29,33 +29,64 @@ const TestTeam = () => {
 // All team member cards in one container
 const TeamMembers = () => {
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY.toString();
+
+            const slowRise = document.getElementsByClassName('TeamMemberColumnSlowRise');
+            if (slowRise) {
+                slowRise[0].style.transform = `translateY(calc(500px - 0.3*${scrollPosition}px))`;
+                slowRise[1].style.transform = `translateY(calc(500px - 0.3*${scrollPosition}px))`;
+            }
+
+            const fastRise = document.getElementsByClassName('TeamMemberColumnFastRise');
+            if (fastRise) {
+                fastRise[0].style.transform = `translateY(calc(550px - 0.5*${scrollPosition}px))`;
+                fastRise[1].style.transform = `translateY(calc(550px - 0.5*${scrollPosition}px))`;
+            }
+        };
+        
+        // Add event listener to trigger anytime scrolling occurs, and call handleScroll once to initialize margins at component mount
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+    
+        // Clean up the event listener on component unmount
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
     return (
         <div className='TeamMembersContainer'>
-            <div className='TeamMemberColumn'>
+            <div className='TeamMemberColumnSlowRise'>
                 <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar'/>
-            </div>
-            <div className='TeamMemberColumn'>
-                <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260'/>
-            </div>
-            <div className='TeamMemberColumn'>
-                <TeamMember name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/'/>
-            </div>
-            <div className='TeamMemberColumn'>
                 <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/'/>
+            </div>
+            <div className='TeamMemberColumnFastRise'>
+                <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' inverted={true}/>
+                <TeamMember name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' inverted={true}/>
+            </div>
+            <div className='TeamMemberColumnSlowRise'>
+                <TeamMember name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/'/>
+                <TeamMember name='Alex S.' role ='Head Author' headshot={Alex}/>
+            </div>
+            <div className='TeamMemberColumnFastRise'>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' inverted={true}/>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' inverted={true}/>
             </div>
         </div>
     )
 }
 
-// Defines one team member card
-const TeamMember = ({name, role, headshot, link}) => {
+// Defines one team member card. If inverted is true, text container will be mirrored
+const TeamMember = ({name, role, headshot, link, inverted}) => {
 
     return (
         <div className='TeamMemberContainer'>
             <div className='TestHeadshotContainer'>
                 <img src={headshot} alt="" className='TestHeadshot'/>
             </div>
-            <div className='TestTextContainer'>
+            <div className={!inverted ? 'TestTextContainer' : 'InvertedTextContainer'}>
                 <div className='TestMemberName'>
                     {name}
                 </div>
