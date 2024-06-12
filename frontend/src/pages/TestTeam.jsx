@@ -13,13 +13,17 @@ const TestTeam = () => {
 
     return (
         <div className='TestTeamPanel'>
-            <div className='TitleContainer'>  
-                <div className='Title'>
-                    Meet Our Team.
+            <div className='TestTitleContainer'>  
+                <div className='InnerTitleContainer'>
+                    <div className='TestTitle'>
+                        Meet Our Team At PubTalk.
+                    </div>
+                    <div className='TestTeamSubtext'>
+                        A diverse group of students passionate about exploring today, future, and past topics in history, politics, technology, and more.
+                    </div> 
                 </div>
-                <div className='Subtext' id='TestTeamSubtext'>
-                    Meet our team: A diverse group of students passionate about exploring today, future, and past topics in technology, politics, and more.
-                </div>
+                <div className='TopBackground'/>
+                <div className='BottomBackground'/>
             </div>
             <TeamMembers/>
         </div>
