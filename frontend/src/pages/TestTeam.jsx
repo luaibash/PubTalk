@@ -35,28 +35,44 @@ const TeamMembers = () => {
 
     useEffect(() => {
         const handleScroll = () => {
+            // Retrieves the current position and the height of the page to calculate the percentage scrolled
             const scrollPosition = window.scrollY.toString();
+            const documentHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+            const maxScroll = documentHeight - windowHeight;
 
+            // If the page is unscrollable, set scroll percentage to 100%, otherwise calculate it
+            var scrollPercentage;
+            if (maxScroll <= 0) scrollPercentage = 100;
+            else scrollPercentage = Math.round((scrollPosition / maxScroll) * 100);
+
+            // Sets the rising speed of the slow columns
             const slowRise = document.getElementsByClassName('TeamMemberColumnSlowRise');
             if (slowRise) {
                 slowRise[0].style.transform = `translateY(calc(500px - 0.3*${scrollPosition}px))`;
                 slowRise[1].style.transform = `translateY(calc(500px - 0.3*${scrollPosition}px))`;
             }
 
+            // Sets the rising speed of the fast columns
             const fastRise = document.getElementsByClassName('TeamMemberColumnFastRise');
             if (fastRise) {
                 fastRise[0].style.transform = `translateY(calc(550px - 0.5*${scrollPosition}px))`;
                 fastRise[1].style.transform = `translateY(calc(550px - 0.5*${scrollPosition}px))`;
             }
+
+            // console.log(window.scrollY)
+            // console.log(scrollPercentage)
         };
         
-        // Add event listener to trigger anytime scrolling occurs, and call handleScroll once to initialize margins at component mount
+        // Add event listener to trigger anytime scrolling/resizing occurs, and call handleScroll once to initialize margins at component mount
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
         handleScroll();
     
         // Clean up the event listener on component unmount
         return () => {
           window.removeEventListener('scroll', handleScroll);
+          window.removeEventListener('resize', handleScroll);
         };
       }, []);
 
