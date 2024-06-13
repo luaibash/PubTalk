@@ -1,6 +1,6 @@
 .TestTeamPanel {
     padding-top: 125px;
-    padding-bottom: 200px;
+    padding-bottom: 150px;
     overflow: hidden;
 }
 
@@ -78,7 +78,7 @@
     flex-direction: column;
     gap: 80px;
 
-    transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition: margin-top 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .TeamMemberContainer {
