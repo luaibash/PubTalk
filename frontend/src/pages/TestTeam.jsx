@@ -32,8 +32,7 @@ const TestTeam = () => {
 
 // All team member cards in one container
 const TeamMembers = () => {
-    const minSlowMargin = 100; const minFastMargin = -100;
-    // 175                      // -100
+    const minSlowMargin = 100; const minFastMargin = 0;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -50,7 +49,7 @@ const TeamMembers = () => {
 
             // Sets the rising speed of the slow columns
             const slowRise = document.getElementsByClassName('TeamMemberColumnSlowRise');
-            const slowMargin = 600 - 0.3*scrollPosition
+            const slowMargin = 600 - 6*scrollPercentage
             if (slowRise && slowMargin <= minSlowMargin) {
                 slowRise[0].style.marginTop = `calc(${minSlowMargin}px)`;
                 slowRise[1].style.marginTop = `calc(${minSlowMargin}px)`; 
@@ -62,7 +61,7 @@ const TeamMembers = () => {
 
             // Sets the rising speed of the fast columns
             const fastRise = document.getElementsByClassName('TeamMemberColumnFastRise');
-            const fastMargin = 700 - 0.5*scrollPosition
+            const fastMargin = 700 - 8.4*scrollPercentage
             if (fastRise && fastMargin <= minFastMargin) {
                 fastRise[0].style.marginTop = `calc(${minFastMargin}px)`;
                 fastRise[1].style.marginTop = `calc(${minFastMargin}px)`; 
@@ -72,7 +71,7 @@ const TeamMembers = () => {
                 fastRise[1].style.marginTop = `calc(${fastMargin}px)`;
             }
 
-            console.log(window.scrollY)
+            // console.log(window.scrollY)
             // console.log(scrollPercentage)
         };
         
