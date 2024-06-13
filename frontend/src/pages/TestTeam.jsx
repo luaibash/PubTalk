@@ -32,7 +32,8 @@ const TestTeam = () => {
 
 // All team member cards in one container
 const TeamMembers = () => {
-    const minSlowMargin = 100; const minFastMargin = 0;
+    const minSlowMargin = 100; const minFastMargin = -100;
+    // 175                      // -100
 
     useEffect(() => {
         const handleScroll = () => {
@@ -52,7 +53,7 @@ const TeamMembers = () => {
             const slowMargin = 600 - 0.3*scrollPosition
             if (slowRise && slowMargin <= minSlowMargin) {
                 slowRise[0].style.marginTop = `calc(${minSlowMargin}px)`;
-                slowRise[1].style.marginTop = `calc(${minSlowMargin}}px)`; 
+                slowRise[1].style.marginTop = `calc(${minSlowMargin}px)`; 
             }
             else if (slowRise) {
                 slowRise[0].style.marginTop = `calc(${slowMargin}px)`;
@@ -64,14 +65,14 @@ const TeamMembers = () => {
             const fastMargin = 700 - 0.5*scrollPosition
             if (fastRise && fastMargin <= minFastMargin) {
                 fastRise[0].style.marginTop = `calc(${minFastMargin}px)`;
-                fastRise[1].style.marginTop = `calc(${minFastMargin}}px)`; 
+                fastRise[1].style.marginTop = `calc(${minFastMargin}px)`; 
             }
             else if (fastRise) {
                 fastRise[0].style.marginTop = `calc(${fastMargin}px)`;
                 fastRise[1].style.marginTop = `calc(${fastMargin}px)`;
             }
 
-            // console.log(window.scrollY)
+            console.log(window.scrollY)
             // console.log(scrollPercentage)
         };
         
