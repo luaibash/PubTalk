@@ -152,6 +152,22 @@
     cursor: pointer;
 }
 
+@media (min-width: 2000px) {
+    .TeamMemberContainer, .TeamMemberColumnFastRise, .TeamMemberColumnSlowRise {
+        flex-grow: 0;
+        width: 451px;
+    }
+
+    .TeamMembersContainer {
+        max-width: 1880px;
+        padding: 0 50px;
+        margin: 0 auto;
+    }
+
+    .TestHeadshot {
+        height: 550px;
+    }
+}
 
 @media (max-width: 1000px) {
     .TitleContainer {
