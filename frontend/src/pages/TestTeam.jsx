@@ -95,10 +95,10 @@ const TeamMembers = () => {
             </div>
             <div className='TeamMemberColumnFastRise'>
                 <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' inverted={true}/>
-                <TeamMember name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' inverted={true}/>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' inverted={true}/>
             </div>
             <div className='TeamMemberColumnSlowRise'>
-                <TeamMember name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/'/>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/'/>
                 <TeamMember name='Alex S.' role ='Head Author' headshot={Alex}/>
             </div>
             <div className='TeamMemberColumnFastRise'>

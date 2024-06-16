@@ -85,7 +85,6 @@
     aspect-ratio: 0.8;
     border-radius: 30px;
     background-color: #f3ebeb;
-    /* background-color: #f0f0f0; */
     box-shadow: 0 5px 15px rgba(0,0,0,0.06);
 
     display: flex;
@@ -114,7 +113,6 @@
 
     padding-top: calc(35px + (10 * ((100vw - 1700px) / 300))); /* 45px at 2000px width, linearly decreases to 35px at 1700px width */
 
-    /* background-color: #f1f1f1; */
     background-color: #f5f5f5;
 
     border-bottom-left-radius: 30px;
@@ -153,6 +151,7 @@
     cursor: pointer;
 }
 
+/* Transition from medium team member sizes to large team member sizes */
 @media (min-width: 2000px) {
     .TeamMemberContainer {
         flex-grow: 0;
@@ -192,42 +191,44 @@
     }
 }
 
+/* Transition from medium team member sizes to small team member sizes. A lot of calcs used to transition from medium to small nicely */
 @media (max-width: 1500px) {
     .TeamMembersContainer {
-        gap: 20px;
+        gap: 1.66vw;
     }
 
     .TeamMemberColumnFastRise, .TeamMemberColumnSlowRise {
-        gap: 25px;
+        gap: calc(25px + (50 * ((100vw - 1000px) / 500)));              /* 75px at 1500px width, linearly decreases to 25px at 1000px width */
     }
 
     .TeamMemberContainer {
-        border-radius: 20px;
+        border-radius: 2vw;
     }
 
     .TestTextContainer, .InvertedTextContainer {
-        padding-top: 18px;
-        gap: 4px;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+        padding-top: calc(18px + (10.333 * ((100vw - 1000px) / 500)));  /* 28.3px at 1500px width, linearly decreases to 18px at 1000px width */
+        gap: calc(5px + (5 * ((100vw - 1000px) / 500)));                /* 10px at 1500px width, linearly decreases to 5px at 1000px width */
+        border-bottom-left-radius: 2vw;
+        border-bottom-right-radius: 2vw;
     }
 
     .TestMemberName {
-        font-size: 13px;
+        font-size: calc(13px + (9.5 * ((100vw - 1000px) / 500)));       /* 22.5px at 1500px width, linearly decreases to 13px at 1000px width */
     }
     
     .TestMemberRole {
-        font-size: 10px;
+        font-size: calc(10px + (5 * ((100vw - 1000px) / 500)));         /* 15px at 1500px width, linearly decreases to 10px at 1000px width */
     }
 
     .LinkedInLogo {
         right: 1.66vw;
         top: 1.66vw;
-        height: calc(20px + (5 * ((100vw - 1000px) / 500))); /* 25px at 1500px width, linearly decreases to 20px at 1000px width */
+        height: calc(20px + (5 * ((100vw - 1000px) / 500)));            /* 25px at 1500px width, linearly decreases to 20px at 1000px width */
         border-radius: 4px;
     }
 }
 
+/* Transition from small team member sizes to two column team members */
 @media (max-width: 1000px) {
     .TitleContainer {
         padding-left: 25px;
