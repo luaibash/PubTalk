@@ -112,7 +112,7 @@
     gap: 10px;
     flex-grow: 1;
 
-    padding-top: calc(35px + (10 * ((100vw - 1700px) / 300)));
+    padding-top: calc(35px + (10 * ((100vw - 1700px) / 300))); /* 45px at 2000px width, linearly decreases to 35px at 1700px width */
 
     /* background-color: #f1f1f1; */
     background-color: #f5f5f5;
@@ -189,6 +189,42 @@
     
     .TestMemberRole {
         font-size: 20px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .TeamMembersContainer {
+        gap: 20px;
+    }
+
+    .TeamMemberColumnFastRise, .TeamMemberColumnSlowRise {
+        gap: 25px;
+    }
+
+    .TeamMemberContainer {
+        border-radius: 20px;
+    }
+
+    .TestTextContainer, .InvertedTextContainer {
+        padding-top: 18px;
+        gap: 4px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    .TestMemberName {
+        font-size: 13px;
+    }
+    
+    .TestMemberRole {
+        font-size: 10px;
+    }
+
+    .LinkedInLogo {
+        right: 1.66vw;
+        top: 1.66vw;
+        height: calc(20px + (5 * ((100vw - 1000px) / 500))); /* 25px at 1500px width, linearly decreases to 20px at 1000px width */
+        border-radius: 4px;
     }
 }
 
