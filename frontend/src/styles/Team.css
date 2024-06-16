@@ -1,171 +1,237 @@
 .TeamPanel {
-    margin-top: 125px;
-    margin-bottom: 125px;
+    padding-top: 125px;
+    padding-bottom: 150px;
+    overflow: hidden;
 }
 
-.TitleContainer {
+.TeamTitleContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
     max-width: 1250px;
-    margin: 0 auto;
-    padding-left: 75px;
+    margin: 300px auto 100px auto;
+    padding-left: 125px;
     padding-right: 75px;
 }
 
-#TeamSubtext {
-    margin-bottom: 30px;
-}
-#TeamSubtextBottom {
-    margin-bottom: 100px;
-}
-
-.EmailLink:link, .EmailLink:visited {
-    color: #0066CC;
-}
-.EmailLink:hover {
-    color: #0044CC;
+.Title {
+    margin: 0 auto;
+    font-weight: 700;
+    font-size: 100px;
+    max-width: 1000px;
 }
 
-.HeadshotContainer {
-    background-color: rgb(216, 224, 230);
+.TeamSubtext {
+    font-size: 34px;
+    font-weight: 500;
+    color: #434343;
+    margin: 300px auto 0 auto;
+    max-width: 950px;
 }
 
-/* The following is for a separate member */
-.MemberContainer {
-    width: 300px;
-    height: 450px;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    background-color: #F8F8F8;
+.TeamTopBackground {
+    position: absolute;
+    z-index: -1;
+
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 100%;
+    height: 1024px;
+
+    background-image: url('../assets/team/BarTop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.TeamBottomBackground {
+    position: absolute;
+    z-index: 1;
+
+    top: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 100%;
+    height: 477px;
+
+    background-image: url('../assets/team/BarBottom.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.TeamMembersContainer {
+    display: flex;
+    gap: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.TeamMemberColumnSlowRise, .TeamMemberColumnFastRise {
+    flex: 4;
 
     display: flex;
     flex-direction: column;
+    gap: 5vw;
+
+    transition: margin-top 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.TeamMemberContainer {
+    aspect-ratio: 0.8;
+    border-radius: 30px;
+    background-color: #f3ebeb;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 .HeadshotContainer {
     display: flex;
     justify-content: center;
     position: relative;
-
-    height: 350px;
-    width: 300px;
-
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    height: 75%;
 }
 
 .Headshot {
     position: absolute;
-    bottom: 0;
-    height: 390px;
+    bottom: -50px;
+    height: 130%;
 }
 
-.TextContainer {
+.TextContainer, .InvertedTextContainer {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
 
-    padding: 15px;
-    gap: 15px;
+    padding-top: calc(35px + (10 * ((100vw - 1700px) / 300))); /* 45px at 2000px width, linearly decreases to 35px at 1700px width */
+
+    background-color: #f5f5f5;
+
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.TextContainer {
+    padding-right: 1vw;
+    text-align: end;
+    clip-path: polygon(0% 35%, 100% 0%, 100% 100%, 0% 100%);
+}
+.InvertedTextContainer {
+    padding-left: 1vw;
+    clip-path: polygon(0% 0%, 100% 35%, 100% 100%, 0% 100%);
 }
 
 .MemberName {
-    font-size: 24px;
-    display: flex;
-    align-items: center;
+    font-size: 1.5vw;
 }
 
 .MemberRole {
+    font-size: 1vw;
     font-weight: 400;
     color: gray;
 }
 
-.LogoContainer {
-    display: flex;
-}
-.LinkedIn {
+.LinkedInLogo {
+    position: absolute;
+    right: 25px;
+    top: 25px;
     height: 25px;
-    margin-left: 10px;
-}
-.LinkedIn:hover {
-    cursor: pointer;
-}
 
-/* The following is for member slideshow */
-.MembersSlideshowContainer {
-    display: flex;
-    position: relative;
-    align-items: center;
-    height: 450px;
-}
-.MembersSlideshow {
-    display: flex;
-    position: absolute;
-    gap: 50px;
-    margin-left: -1925px;
-    transition: margin-left 0.4s ease;
-}
-
-.ScrollButtonLeft, .ScrollButtonRight {
-    position: absolute;
-    z-index: 1;
-    width: 60px;
-    height: 60px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-    box-shadow: 0 6px 8px 0 #0003;
     background-color: white;
-
-    user-select: none;
-
-    transition: transform 0.2s ease-in-out;
+    border-radius: 5px;
 }
-.ScrollButtonLeft:hover, .ScrollButtonRight:hover {
+.LinkedInLogo:hover {
     cursor: pointer;
-    transform: scale(1.05,1.05);
-}
-.ScrollButtonLeft {
-    left: 75px;
-}
-.ScrollButtonRight {
-    right: 75px;
-}
-.ScrollArrow {
-    width: 15px;
-    height: 15px;
 }
 
-/* The following is for default member */
-@media (min-width: 651px) {
-    .MembersDefaultContainer {
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-        margin: 0 auto;
+/* Transition from medium team member sizes to large team member sizes */
+@media (min-width: 2000px) {
+    .TeamMemberContainer {
+        flex-grow: 0;
+        width: 451px;
     }
-}
-@media (max-width: 650px) {
-    .MembersDefaultContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+
+    .TeamMemberColumnFastRise, .TeamMemberColumnSlowRise {
         gap: 100px;
     }
+
+    .TeamMembersContainer {
+        max-width: 1880px;
+        padding: 0 50px;
+        margin: 0 auto;
+    }
+
+    .Headshot {
+        height: 550px;
+    }
+
+    .TextContainer, .InvertedTextContainer {
+        padding-top: 45px;
+    }
+    .TextContainer {
+        padding-right: 20px;
+    }
+    .InvertedTextContainer {
+        padding-left: 20px;
+    }
+    
+    .MemberName {
+        font-size: 30px;
+    }
+    
+    .MemberRole {
+        font-size: 20px;
+    }
 }
 
-/* Default media queries */
+/* Transition from medium team member sizes to small team member sizes. A lot of calcs used to transition from medium to small nicely */
+@media (max-width: 1500px) {
+    .TeamMembersContainer {
+        gap: 1.66vw;
+    }
+
+    .TeamMemberColumnFastRise, .TeamMemberColumnSlowRise {
+        gap: calc(25px + (50 * ((100vw - 1000px) / 500)));              /* 75px at 1500px width, linearly decreases to 25px at 1000px width */
+    }
+
+    .TeamMemberContainer {
+        border-radius: 2vw;
+    }
+
+    .TextContainer, .InvertedTextContainer {
+        padding-top: calc(18px + (10.333 * ((100vw - 1000px) / 500)));  /* 28.3px at 1500px width, linearly decreases to 18px at 1000px width */
+        gap: calc(5px + (5 * ((100vw - 1000px) / 500)));                /* 10px at 1500px width, linearly decreases to 5px at 1000px width */
+        border-bottom-left-radius: 2vw;
+        border-bottom-right-radius: 2vw;
+    }
+
+    .MemberName {
+        font-size: calc(13px + (9.5 * ((100vw - 1000px) / 500)));       /* 22.5px at 1500px width, linearly decreases to 13px at 1000px width */
+    }
+    
+    .MemberRole {
+        font-size: calc(10px + (5 * ((100vw - 1000px) / 500)));         /* 15px at 1500px width, linearly decreases to 10px at 1000px width */
+    }
+
+    .LinkedInLogo {
+        right: 1.66vw;
+        top: 1.66vw;
+        height: calc(20px + (5 * ((100vw - 1000px) / 500)));            /* 25px at 1500px width, linearly decreases to 20px at 1000px width */
+        border-radius: 4px;
+    }
+}
+
+/* Transition from small team member sizes to two column team members */
 @media (max-width: 1000px) {
-    .TitleContainer {
+    .TeamTitleContainer {
         padding-left: 25px;
         padding-right: 25px;
-    }
-
-    .ScrollButtonLeft {
-        left: 25px;
-    }
-
-    .ScrollButtonRight {
-        right: 25px;
     }
 }

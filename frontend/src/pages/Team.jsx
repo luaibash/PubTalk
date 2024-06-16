@@ -1,162 +1,137 @@
-import { React, useEffect, useRef, useState } from 'react';
+import { React, useEffect } from 'react';
 import Luai from '../assets/team/LuaiBashar.png';
 import Owen from '../assets/team/OwenSkanes.png';
 import Gabe from '../assets/team/GabrielHernandez.png';
 import Ivan from '../assets/team/IvanManca.png';
 import Alex from '../assets/team/AlexS.png';
 import LinkedInLogo from '../assets/team/LinkedIn.svg';
-import LeftArrow from '../assets/team/LeftArrow.svg';
-import RightArrow from '../assets/team/RightArrow.svg';
 import '../styles/App.css';
 import '../styles/Team.css';
 
 // Team page that shows the whole team that worked on PubTalk!
 const Team = () => {
-    const [showSlideshow, setSlideshow] = useState(false);
 
-    // Checks if width is too long to display slideshow
+    return (
+        <div className='TeamPanel'>
+            <div className='TeamTitleContainer'>  
+                <div className='TeamInnerTitleContainer'>
+                    <div className='Title'>
+                        Meet Our Team At PubTalk.
+                    </div>
+                    <div className='TeamSubtext'>
+                        A diverse group of students passionate about exploring today, future, and past topics in history, politics, technology, and more.
+                    </div> 
+                </div>
+                <div className='TeamTopBackground'/>
+                <div className='TeamBottomBackground'/>
+            </div>
+            <TeamMembers/>
+        </div>
+    )
+}
+
+// All team member cards in one container
+const TeamMembers = () => {
+    const minSlowMargin = 100; const minFastMargin = 0;
+
     useEffect(() => {
-        const handleResize = () => {
-          setSlideshow(window.innerWidth >= 650 && window.innerWidth < 1650);
+        const handleScroll = () => {
+            // Retrieves the current position and the height of the page to calculate the percentage scrolled
+            const scrollPosition = window.scrollY.toString();
+            const documentHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+            const maxScroll = documentHeight - windowHeight;
+
+            // If the team members can be seen without scrolling, set scroll percentage to 100%, otherwise calculate it
+            var scrollPercentage;
+            if (windowHeight >= 1700) scrollPercentage = 100;                       // Members can be seen once screen height is over 1700px
+            else scrollPercentage = Math.round((scrollPosition / maxScroll) * 100);
+
+            // Sets the rising speed of the slow columns
+            const slowRise = document.getElementsByClassName('TeamMemberColumnSlowRise');
+            const slowMargin = 600 - 6*scrollPercentage
+            if (slowRise && slowMargin <= minSlowMargin) {
+                slowRise[0].style.marginTop = `calc(${minSlowMargin}px)`;
+                slowRise[1].style.marginTop = `calc(${minSlowMargin}px)`; 
+            }
+            else if (slowRise) {
+                slowRise[0].style.marginTop = `calc(${slowMargin}px)`;
+                slowRise[1].style.marginTop = `calc(${slowMargin}px)`;
+            }
+
+            // Sets the rising speed of the fast columns
+            const fastRise = document.getElementsByClassName('TeamMemberColumnFastRise');
+            const fastMargin = 700 - 8.4*scrollPercentage
+            if (fastRise && fastMargin <= minFastMargin) {
+                fastRise[0].style.marginTop = `calc(${minFastMargin}px)`;
+                fastRise[1].style.marginTop = `calc(${minFastMargin}px)`; 
+            }
+            else if (fastRise) {
+                fastRise[0].style.marginTop = `calc(${fastMargin}px)`;
+                fastRise[1].style.marginTop = `calc(${fastMargin}px)`;
+            }
         };
+        
+        // Add event listener to trigger anytime scrolling/resizing occurs, and call handleScroll once to initialize margins at component mount
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        handleScroll();
     
-        // Initial check when the component mounts and add event listener
-        handleResize();
-        window.addEventListener('resize', handleResize);
-    
+        // Clean up the event listener on component unmount
         return () => {
-          window.removeEventListener('resize', handleResize);
+          window.removeEventListener('scroll', handleScroll);
+          window.removeEventListener('resize', handleScroll);
         };
       }, []);
 
     return (
-        <div className='TeamPanel'>
-            <div className='TitleContainer'>  
-                <div className='Title'>
-                    Meet Our Team.
-                </div>
-                <div className='Subtext' id='TeamSubtext'>
-                    Introducing PubTalk, an article platform crafted by a diverse group of students passionate about exploring today, future, and past topics. Our platform is designed to amplify the diverse voices of students, offering a space where anyone can publish their thoughts and ideas.
-                </div>
-                <div className='Subtext' id='TeamSubtext'>
-                    Our goal is simple: to provide a platform for student expression and foster meaningful discussions on topics that matter. Whether it's through insightful articles, thought-provoking opinion pieces, or engaging multimedia content, we aim to spark dialogue and inspire change.
-                </div>
-                <div className='Subtext' id='TeamSubtextBottom'>
-                    Want to see your picture here? Simply reach out to us via <a href="/contact" className='EmailLink'>email</a>, and you'll have the opportunity to become a part of our editorial crew. At PubTalk, we believe in the power of student voices. Join us in shaping the conversation and making a difference in our community.
-                </div>
+        <div className='TeamMembersContainer'>
+            <div className='TeamMemberColumnSlowRise'>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar'/>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/'/>
             </div>
-            {showSlideshow ? <MembersSlideshow/> : <MembersDefault/>}
-        </div>
-    );
-}
-
-// Member carousel that displayed each teammate and their card, and rotates when you click left or right
-const MembersSlideshow = () => {
-    const memberRef = useRef(null);
-    const [isScrolling, setScrolling] = useState(false);
-
-    const scroll = ({ left, right }) => {
-        if (isScrolling) return;
-        setScrolling(true);
-
-        requestAnimationFrame(() => {
-            // Retrieve current margin value
-            const computedStyle = window.getComputedStyle(memberRef.current);
-            var marginLeft = computedStyle.getPropertyValue('margin-left');
-            marginLeft = parseInt(marginLeft, 10);
-
-            // Add current shift in margin based on direction, and apply it
-            if (left) marginLeft += 350;
-            else if (right) marginLeft -= 350;
-            memberRef.current.style.marginLeft = `${marginLeft}px`;
-
-            // Wait until shift has completed. Check if threshold reached, then return to middle.
-            setTimeout(() => {
-                if (marginLeft <= -3675 || marginLeft >= -175) {
-                    memberRef.current.style.transition = 'none';
-                    memberRef.current.style.marginLeft = '-1925px';
-                };
-                setScrolling(false);
-            }, 400);
-
-            memberRef.current.style.transition = 'margin-left 0.4s ease';
-        });
-    }
-
-    return (
-        <div className='MembersSlideshowContainer'>
-            <div className='MembersSlideshow' ref={memberRef}>
-                <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                <Member name='Luai Bashar' role ='Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                <Member name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' colour='#72FF80'/>
-                <Member name='Gabriel Hernandez' role='Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' colour='#7299FF'/>
-                <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                <Member name='Luai Bashar' role ='Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                <Member name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' colour='#72FF80'/>
-                <Member name='Gabriel Hernandez' role='Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' colour='#7299FF'/>
-                <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-                <Member name='Luai Bashar' role ='Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-                <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-                <Member name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' colour='#72FF80'/>
-                <Member name='Gabriel Hernandez' role='Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' colour='#7299FF'/>
-                <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
+            <div className='TeamMemberColumnFastRise'>
+                <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' inverted={true}/>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' inverted={true}/>
             </div>
-            <div className='ScrollButtonLeft' onClick={() => scroll({left: true})}>
-                <img src={LeftArrow} alt="" className='ScrollArrow'/>
+            <div className='TeamMemberColumnSlowRise'>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/'/>
+                <TeamMember name='Alex S.' role ='Head Author' headshot={Alex}/>
             </div>
-            <div className='ScrollButtonRight' onClick={() => scroll({right: true})}>
-                <img src={RightArrow} alt="" className='ScrollArrow'/>
+            <div className='TeamMemberColumnFastRise'>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' inverted={true}/>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' inverted={true}/>
             </div>
         </div>
-    );
+    )
 }
 
-// Default Member showcase that does not move, and just shows the members
-const MembersDefault = () => {
-    return (
-        <div className='MembersDefaultContainer'>
-            <Member name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' colour='#FF6161'/>
-            <Member name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' colour='#FCFF72'/>
-            <Member name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' colour='#72FF80'/>
-            <Member name='Gabriel Hernandez' role='Student of the game' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' colour='#7299FF'/>
-            <Member name='Alex S.' headshot={Alex} role='Head Author' colour='#D661FF'/>
-        </div>
-    );
-}
-
-// Member component that is shows the member's card and their details
-const Member = ({name, role, headshot, link, colour}) => {
-    const headshotRef = useRef(null);
-
-    // useEffect(() => {
-    //     headshotRef.current.style.backgroundColor = colour;
-    // }, [colour]);
+// Defines one team member card. If inverted is true, text container will be mirrored
+const TeamMember = ({name, role, headshot, link, inverted}) => {
 
     return (
-        <div className='MemberContainer'>
-            <div className='HeadshotContainer' ref={headshotRef}>
+        <div className='TeamMemberContainer'>
+            <div className='HeadshotContainer'>
                 <img src={headshot} alt="" className='Headshot'/>
             </div>
-            <div className='TextContainer'>
+            <div className={!inverted ? 'TextContainer' : 'InvertedTextContainer'}>
                 <div className='MemberName'>
                     {name}
-                    {link && <LinkedIn link={link}/>}
                 </div>
                 <div className='MemberRole'>
                     {role}
                 </div>
             </div>
+            {link && <LinkedIn link={link}/>}
         </div>
-    );
+    )
 }
 
 // LinkedIn link under respective member card that redirects user to their linkedIn
 const LinkedIn = (link) => {
     return (
-        <a className='LogoContainer' href={link.link} target="_blank" rel="noopener noreferrer">
-            <img src={LinkedInLogo} alt="" className='LinkedIn'/>
+        <a href={link.link} target="_blank" rel="noopener noreferrer">
+            <img src={LinkedInLogo} alt="" className='LinkedInLogo'/>
         </a>
     );
 }

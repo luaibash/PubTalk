@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Team from './pages/Team';
-import TestTeam from './pages/TestTeam';
 import Contact from './pages/Contact';
 import Article from './pages/Articles';
 import Navbar from './components/Navbar';
@@ -21,7 +20,6 @@ function App() {
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/team' element={<Team/>}/>
-            <Route path='/test_team' element={<TestTeam/>}/>
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/articles' element={<Article/>}/>
             <Route path='/articles/:articleLink' element={<ArticlePage/>}/>
