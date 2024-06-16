@@ -42,9 +42,9 @@ const TeamMembers = () => {
             const windowHeight = window.innerHeight;
             const maxScroll = documentHeight - windowHeight;
 
-            // If the page is unscrollable, set scroll percentage to 100%, otherwise calculate it
+            // If the team members can be seen without scrolling, set scroll percentage to 100%, otherwise calculate it
             var scrollPercentage;
-            if (maxScroll <= 0) scrollPercentage = 100;
+            if (windowHeight >= 1700) scrollPercentage = 100;                       // Members can be seen once screen height is over 1700px
             else scrollPercentage = Math.round((scrollPosition / maxScroll) * 100);
 
             // Sets the rising speed of the slow columns
@@ -70,9 +70,6 @@ const TeamMembers = () => {
                 fastRise[0].style.marginTop = `calc(${fastMargin}px)`;
                 fastRise[1].style.marginTop = `calc(${fastMargin}px)`;
             }
-
-            // console.log(window.scrollY)
-            // console.log(scrollPercentage)
         };
         
         // Add event listener to trigger anytime scrolling/resizing occurs, and call handleScroll once to initialize margins at component mount
