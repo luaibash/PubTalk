@@ -15,7 +15,7 @@ const Team = () => {
         <div className='TeamPanel'>
             <div className='TeamTitleContainer'>  
                 <div className='TeamInnerTitleContainer'>
-                    <div className='Title'>
+                    <div className='TeamTitle'>
                         Meet Our Team At PubTalk.
                     </div>
                     <div className='TeamSubtext'>
