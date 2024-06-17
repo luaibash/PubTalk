@@ -234,4 +234,14 @@
         padding-left: 25px;
         padding-right: 25px;
     }
+
+    .TeamMemberColumnLeft, .TeamMemberColumnRight{
+        flex: 2;
+    
+        display: flex;
+        flex-direction: column;
+        gap: 75px;
+
+        margin-top: 0;
+    }
 }

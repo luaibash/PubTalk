@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import Luai from '../assets/team/LuaiBashar.png';
 import Owen from '../assets/team/OwenSkanes.png';
 import Gabe from '../assets/team/GabrielHernandez.png';
@@ -10,6 +10,15 @@ import '../styles/Team.css';
 
 // Team page that shows the whole team that worked on PubTalk!
 const Team = () => {
+    // Tracks whether the screen is over 1000px wide or not to decide which format to display
+    const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 1000);
+
+    useEffect(() => {
+        const handleResize = () => setIsWideScreen(window.innerWidth > 1000);
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div className='TeamPanel'>
@@ -25,13 +34,33 @@ const Team = () => {
                 <div className='TeamTopBackground'/>
                 <div className='TeamBottomBackground'/>
             </div>
-            <TeamMembers/>
+            {isWideScreen ? <TeamMembersLarge/> : <TeamMembersSmall/>}
         </div>
     )
 }
 
-// All team member cards in one container
-const TeamMembers = () => {
+// Team members display. If screen is smaller than 1000px, use this format where team members are in two stationary columns
+const TeamMembersSmall = () => {
+    return (
+        <div className='TeamMembersContainer'>
+            <div className='TeamMemberColumnLeft'>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar'/>
+                <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' inverted={true}/>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/'/>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' inverted={true}/>
+            </div>
+            <div className='TeamMemberColumnRight'>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' inverted={true}/>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/'/>
+                <TeamMember name='Alex S.' role ='Head Author' headshot={Alex}/>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar'/>
+            </div>
+        </div>
+    )
+}
+
+// Team members display. If screen is larger than 1000px, use this format where team members are in scrolling moving columns
+const TeamMembersLarge = () => {
     const minSlowMargin = 100; const minFastMargin = 0;
 
     useEffect(() => {
