@@ -239,6 +239,10 @@
         padding-right: 25px;
     }
 
+    .TeamSubtext {
+        font-size: 3.4vw;
+    }
+
     .TeamMembersContainer {
         gap: 2.5vw;
         margin-left: 5vw;
@@ -292,6 +296,13 @@
         top: 25px;
         height: 25px;
         border-radius: 5px;
+    }
+}
+
+/* Stays at 30px at 882px width as this is where 3.4vw from the 1000px query equals 30 */
+@media (max-width: 882px) {
+    .TeamSubtext {
+        font-size: 30px;
     }
 }
 
