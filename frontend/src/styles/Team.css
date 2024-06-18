@@ -230,9 +230,9 @@
 
 /* Transition from small team member sizes to two column team members */
 @media (max-width: 1000px) {
-    /* .TeamPanel {
-        padding-bottom: Make it responsive;
-    } */
+    .TeamPanel {
+        padding-bottom: 15vw;
+    }
 
     .TeamTitleContainer {
         padding-left: 25px;
@@ -240,7 +240,9 @@
     }
 
     .TeamMembersContainer {
-        gap: 25px;
+        gap: 2.5vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
     }
 
     .TeamMemberColumnLeft, .TeamMemberColumnRight{
@@ -248,43 +250,41 @@
     
         display: flex;
         flex-direction: column;
-        gap: 25px;
-
-        margin-top: 0;
+        gap: 2.5vw;
     }
     .TeamMemberColumnLeft {
-        margin-top: 100px;
+        margin-top: 10vw;
     }
 
     .TeamMemberContainer {
-        border-radius: 30px;
+        border-radius: 3vw;
     }
 
     .Headshot {
-        bottom: -100px;
+        bottom: -10vw;
         height: 120%;
     }
 
     .TextContainer, .InvertedTextContainer {
-        padding-top: 40px;
-        gap: 10px;
+        padding-top: 4vw;
+        gap: 1vw;
         
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 3vw;
+        border-bottom-right-radius: 3vw;
     }
     .TextContainer {
-        padding-right: 20px;
+        padding-right: 2vw;
     }
     .InvertedTextContainer {
-        padding-left: 20px;
+        padding-left: 2vw;
     }
 
     .MemberName {
-        font-size: 28px;
+        font-size: 2.8vw;
     }
     
     .MemberRole {
-        font-size: 18px;
+        font-size: 1.8vw;
     }
 
     .LinkedInLogo {
@@ -292,5 +292,14 @@
         top: 25px;
         height: 25px;
         border-radius: 5px;
+    }
+}
+
+@media (max-width: 700px) {
+    .LinkedInLogo {
+        right: 3.6vw;
+        top: 3.6vw;
+        height: 3.6vw;
+        border-radius: 0.7vw;
     }
 }
