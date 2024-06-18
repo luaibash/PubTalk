@@ -314,3 +314,57 @@
         border-radius: 0.7vw;
     }
 }
+
+@media (max-width: 500px) {
+    .TeamPanel {
+        padding-bottom: 150px;
+    }
+
+    .TeamMembersContainer {
+        flex-direction: column;
+
+        gap: 30px;
+    }
+
+    .TeamMemberColumnLeft, .TeamMemberColumnRight{
+        gap: 30px;
+    }
+
+    .TeamMemberContainer {
+        border-radius: 30px;
+    }
+
+    .Headshot {
+        bottom: -100px;
+        height: 120%;
+    }
+
+    .TextContainer, .InvertedTextContainer {
+        padding-top: 40px;
+        gap: 10px;
+        
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+    .TextContainer {
+        padding-right: 20px;
+    }
+    .InvertedTextContainer {
+        padding-left: 20px;
+    }
+
+    .MemberName {
+        font-size: 28px;
+    }
+    
+    .MemberRole {
+        font-size: 18px;
+    }
+
+    .LinkedInLogo {
+        right: 25px;
+        top: 25px;
+        height: 25px;
+        border-radius: 5px;
+    }
+}
