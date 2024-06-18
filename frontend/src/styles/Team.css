@@ -317,48 +317,48 @@
 
 @media (max-width: 500px) {
     .TeamPanel {
-        padding-bottom: 150px;
+        padding-bottom: 30vw;
     }
 
     .TeamMembersContainer {
         flex-direction: column;
 
-        gap: 30px;
+        gap: 6vw;
     }
 
     .TeamMemberColumnLeft, .TeamMemberColumnRight{
-        gap: 30px;
+        gap: 6vw;
     }
 
     .TeamMemberContainer {
-        border-radius: 30px;
+        border-radius: 6vw;
     }
 
     .Headshot {
-        bottom: -100px;
+        bottom: -20vw;
         height: 120%;
     }
 
     .TextContainer, .InvertedTextContainer {
-        padding-top: 40px;
-        gap: 10px;
+        padding-top: 8vw;
+        gap: 2vw;
         
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 6vw;
+        border-bottom-right-radius: 6vw;
     }
     .TextContainer {
-        padding-right: 20px;
+        padding-right: 4vw;
     }
     .InvertedTextContainer {
-        padding-left: 20px;
+        padding-left: 4vw;
     }
 
     .MemberName {
-        font-size: 28px;
+        font-size: 5.6vw;
     }
     
     .MemberRole {
-        font-size: 18px;
+        font-size: 3.6vw;
     }
 
     .LinkedInLogo {
@@ -366,5 +366,14 @@
         top: 25px;
         height: 25px;
         border-radius: 5px;
+    }
+}
+
+@media (max-width: 300px) {
+    .LinkedInLogo {
+        right: 8.33vw;
+        top: 8.33vw;
+        height: 8.33vw;
+        border-radius: 1.66vw;
     }
 }
