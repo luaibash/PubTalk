@@ -37,7 +37,8 @@
     font-size: 16px;
     font-family: Inter, serif;
 
-    background-image: url('../assets/articles/Search.png');
+    background-image: url('../assets/articles/Search.svg');
+    background-size: 30px;
     background-repeat: no-repeat;
     background-position: calc(100% - 20px);
 }
