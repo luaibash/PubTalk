@@ -13,6 +13,7 @@ const Team = () => {
     // Tracks whether the screen is over 1000px wide or not to decide which format to display
     const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 1000);
 
+    // Updates isWideScreen on every screen resize
     useEffect(() => {
         const handleResize = () => setIsWideScreen(window.innerWidth > 1000);
         window.addEventListener('resize', handleResize);
@@ -76,7 +77,7 @@ const TeamMembersLarge = () => {
             if (windowHeight >= 1700) scrollPercentage = 100;                       // Members can be seen once screen height is over 1700px
             else scrollPercentage = Math.round((scrollPosition / maxScroll) * 100);
 
-            // Sets the rising speed of the slow columns
+            // Sets the rising speed of the slow columns. If it is passed its max scrolling, set it to the minimum margins
             const slowRise = document.getElementsByClassName('TeamMemberColumnSlowRise');
             const slowMargin = 600 - 6*scrollPercentage
             if (slowRise && slowMargin <= minSlowMargin) {
@@ -88,7 +89,7 @@ const TeamMembersLarge = () => {
                 slowRise[1].style.marginTop = `calc(${slowMargin}px)`;
             }
 
-            // Sets the rising speed of the fast columns
+            // Sets the rising speed of the fast columns. If it is passed its max scrolling, set it to the minimum margins
             const fastRise = document.getElementsByClassName('TeamMemberColumnFastRise');
             const fastMargin = 700 - 8.4*scrollPercentage
             if (fastRise && fastMargin <= minFastMargin) {
@@ -137,7 +138,6 @@ const TeamMembersLarge = () => {
 
 // Defines one team member card. If inverted is true, text container will be mirrored
 const TeamMember = ({name, role, headshot, link, inverted}) => {
-
     return (
         <div className='TeamMemberContainer'>
             <div className='HeadshotContainer'>
