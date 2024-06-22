@@ -21,7 +21,8 @@ const Articles = () => {
 
 // Search Articles container that holds the search bar for the user to search articles
 const SearchArticles = () => {
-    const [userSearch, setUserSearch] = useState("");   // Holds content of the search bar
+    const [userSearch, setUserSearch] = useState("");                   // Holds content of the search bar
+    const [showSearchResults, setShowSearchResults] = useState(false);  // Holds whether to show search results or not
 
     // Activates when users inputs a search in the search bar, updating userSearch
     const handleSearch = (e) => {
@@ -31,9 +32,11 @@ const SearchArticles = () => {
     // Searches database for results on user search, returns results
     useEffect(() =>{
         if (userSearch) {
+            setShowSearchResults(true);
             console.log(userSearch);
         }
         else {
+            setShowSearchResults(false);
             console.log("empty search.")
         }
     }, [userSearch])
@@ -46,6 +49,9 @@ const SearchArticles = () => {
             </div>
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} placeholder='What are you looking for?' className='Search'/>
+            </div>
+            <div className='SearchResults' id={showSearchResults ? 'ShowSearchResults' : "HideSearchResults"}>
+                yuh
             </div>
             <div className='SearchBackground'/>
         </div>

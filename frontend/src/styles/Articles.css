@@ -47,6 +47,13 @@
     outline: none;
 }
 
+#ShowSearchResults {
+    display: block;
+}
+#HideSearchResults {
+    display: none;
+}
+
 .SearchBackground {
     position: absolute;
     z-index: -1;
