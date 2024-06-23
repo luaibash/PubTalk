@@ -82,22 +82,8 @@ const SearchSuggestions = () => {
                     ARTICLES
                 </div>
                 <div className='SuggestionsDivider'/>
-                <div className='ArticleSuggestion'>
-                    <div className='ArticleSuggestionTitle'>
-                        From Fossil Fuels to Solar Fields: The Energy Transformation
-                    </div>
-                    <div className='ArticleSuggestionDetails'>
-                        Luai Bashar &#8226; 6/9/2024 &#8226; Energy, Politics
-                    </div>
-                </div>
-                <div className='ArticleSuggestion'>
-                    <div className='ArticleSuggestionTitle'>
-                        The Rise of NFTs: Exploring the Digital Art Revolution
-                    </div>
-                    <div className='ArticleSuggestionDetails'>
-                        Ivan Manca &#8226; 8/23/2024 &#8226; Technology
-                    </div>
-                </div>
+                <ArticleSuggestion articleName={"From Fossil Fuels to Solar Fields: The Energy Transformation"} articleAuthor={"Luai Bashar"} articleDate={"6/9/2024"} articleGenres={"Energy, Politics"}/>
+                <ArticleSuggestion articleName={"The Rise of NFTs: Exploring the Digital Art Revolution"} articleAuthor={"Ivan Manca"} articleDate={"8/23/2024"} articleGenres={"Technology"}/>
             </div>
             <div className='AuthorSuggestionsContainer'>
                 <div className='SuggestionsTitle'>
@@ -106,8 +92,40 @@ const SearchSuggestions = () => {
                 <div className='SuggestionsDivider'/>
             </div>
             <div className='GenreSuggestionsContainer'>
-
+                <div className='SuggestionsTitle'>
+                    GENRES
+                </div>
+                <div className='SuggestionsDivider'/>
             </div>
+        </div>
+    )
+}
+
+const ArticleSuggestion = ({ articleName, articleAuthor, articleDate, articleGenres }) => {
+    return (
+        <div className='ArticleSuggestion'>
+            <div className='ArticleSuggestionTitle'>
+                {articleName}
+            </div>
+            <div className='ArticleSuggestionDetails'>
+                {articleAuthor} &#8226; {articleDate} &#8226; {articleGenres}
+            </div>
+        </div>
+    )
+}
+
+const AuthorSuggestion = ({ authorName }) => {
+    return (
+        <div className='AuthorSuggestion'>
+            
+        </div>
+    )
+}
+
+const GenreSuggestion = ({ authorName,  }) => {
+    return (
+        <div className='GenreSuggestion'>
+            
         </div>
     )
 }

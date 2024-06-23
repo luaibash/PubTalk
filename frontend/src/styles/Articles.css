@@ -108,9 +108,8 @@
     margin-bottom: 5px;
 }
 
-.ArticleSuggestion {
+.ArticleSuggestion, .AuthorSuggestion, .GenreSuggestion {
     display: flex;
-    flex-direction: column;
     padding: 10px 0 10px 25px;
 
     border-top-right-radius: 50px;
@@ -119,9 +118,13 @@
 
     transition: background-color 0.3s;
 }
-.ArticleSuggestion:hover {
+.ArticleSuggestion:hover, .AuthorSuggestion:hover, .GenreSuggestion:hover {
     background-color: #eeeeee;
 }
+.ArticleSuggestion {
+    flex-direction: column;
+}
+
 
 .ArticleSuggestionTitle {
     font-size: 16px;
