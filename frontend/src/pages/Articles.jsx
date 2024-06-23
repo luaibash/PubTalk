@@ -64,8 +64,8 @@ const SearchArticles = () => {
             </div>
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onBlur={handleSearchUnfocus} placeholder='What are you looking for?' className='Search'/>
-                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"}>
-                    {showSearchResults ? <SearchResults/> : <InitialSearchResults/>}
+                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "ShowSearchResults"}>
+                    {showSearchResults ? <SearchResults/> : <SearchSuggestions/>}
                 </div>
             </div>
             <div className='SearchBackground'/>
@@ -74,10 +74,40 @@ const SearchArticles = () => {
 }
 
 // Search results that show when user is focused on search bar but has not input a search yet
-const InitialSearchResults = () => {
+const SearchSuggestions = () => {
     return (
-        <div>
-            empty search results
+        <div className='SearchSuggestionsContainer'>
+            <div className='ArticleSuggestionsContainer'>
+                <div className='SuggestionsTitle'>
+                    ARTICLES
+                </div>
+                <div className='SuggestionsDivider'/>
+                <div className='ArticleSuggestion'>
+                    <div className='ArticleSuggestionTitle'>
+                        From Fossil Fuels to Solar Fields: The Energy Transformation
+                    </div>
+                    <div className='ArticleSuggestionDetails'>
+                        Luai Bashar &#8226; 6/9/2024 &#8226; Energy, Politics
+                    </div>
+                </div>
+                <div className='ArticleSuggestion'>
+                    <div className='ArticleSuggestionTitle'>
+                        The Rise of NFTs: Exploring the Digital Art Revolution
+                    </div>
+                    <div className='ArticleSuggestionDetails'>
+                        Ivan Manca &#8226; 8/23/2024 &#8226; Technology
+                    </div>
+                </div>
+            </div>
+            <div className='AuthorSuggestionsContainer'>
+                <div className='SuggestionsTitle'>
+                    AUTHORS
+                </div>
+                <div className='SuggestionsDivider'/>
+            </div>
+            <div className='GenreSuggestionsContainer'>
+
+            </div>
         </div>
     )
 }
