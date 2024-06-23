@@ -69,7 +69,6 @@
     position: absolute;
     top: 75px;
 
-    height: 500px;
     width: 679px;
 
     border-radius: 20px;
@@ -85,7 +84,7 @@
 }
 
 .SearchSuggestionsContainer {
-    margin: 25px 25px 25px 0;
+    margin: 25px 25px 20px 0;
 }
 
 .ArticleSuggestionsContainer, .AuthorSuggestionsContainer, .GenreSuggestionsContainer {
@@ -124,19 +123,30 @@
 .ArticleSuggestion {
     flex-direction: column;
 }
+.AuthorSuggestion, .GenreSuggestion {
+    gap: 13px;
+    align-items: center;
+}
 
-
-.ArticleSuggestionTitle {
+.SuggestionName {
     font-size: 16px;
     font-weight: 500;
 
     margin-bottom: 5px;
 }
 
-.ArticleSuggestionDetails {
+.SuggestionDetails, .SuggestionRole, .SuggestionGenre {
     font-size: 14px;
     font-weight: 500;
     color: #434343;
+}
+
+.AuthorSuggestionImage, .GenreSuggestionImage {
+    width: 50px;
+    height: 50px;
+
+    border: 1px solid;
+    border-radius: 10px;
 }
 
 .BoxRow {

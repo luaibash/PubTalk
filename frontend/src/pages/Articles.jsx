@@ -64,7 +64,7 @@ const SearchArticles = () => {
             </div>
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onBlur={handleSearchUnfocus} placeholder='What are you looking for?' className='Search'/>
-                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "ShowSearchResults"}>
+                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"}>
                     {showSearchResults ? <SearchResults/> : <SearchSuggestions/>}
                 </div>
             </div>
@@ -90,12 +90,16 @@ const SearchSuggestions = () => {
                     AUTHORS
                 </div>
                 <div className='SuggestionsDivider'/>
+                <AuthorSuggestion authorName={"Luai Bashar"} authorRole={"Head Author"}/>
+                <AuthorSuggestion authorName={"Ivan Manca"} authorRole={"Author"}/>
             </div>
             <div className='GenreSuggestionsContainer'>
                 <div className='SuggestionsTitle'>
                     GENRES
                 </div>
                 <div className='SuggestionsDivider'/>
+                <GenreSuggestion genreName={"Economics"}/>
+                <GenreSuggestion genreName={"Politics"}/>
             </div>
         </div>
     )
@@ -104,28 +108,48 @@ const SearchSuggestions = () => {
 const ArticleSuggestion = ({ articleName, articleAuthor, articleDate, articleGenres }) => {
     return (
         <div className='ArticleSuggestion'>
-            <div className='ArticleSuggestionTitle'>
+            <div className='SuggestionName'>
                 {articleName}
             </div>
-            <div className='ArticleSuggestionDetails'>
+            <div className='SuggestionDetails'>
                 {articleAuthor} &#8226; {articleDate} &#8226; {articleGenres}
             </div>
         </div>
     )
 }
 
-const AuthorSuggestion = ({ authorName }) => {
+const AuthorSuggestion = ({ authorName, authorRole }) => {
     return (
         <div className='AuthorSuggestion'>
-            
+            <div className='AuthorSuggestionImage'>
+
+            </div>
+            <div className='AuthorSuggestionDetails'>
+                <div className='SuggestionName'>
+                    {authorName}
+                </div>
+                <div className='SuggestionRole'>
+                    {authorRole}
+                </div>
+            </div>
         </div>
     )
 }
 
-const GenreSuggestion = ({ authorName,  }) => {
+const GenreSuggestion = ({ genreName }) => {
     return (
         <div className='GenreSuggestion'>
-            
+            <div className='GenreSuggestionImage'>
+
+            </div>
+            <div className='GenreSuggestionDetails'>
+                <div className='SuggestionName'>
+                    {genreName}
+                </div>
+                <div className='SuggestionGenre'>
+                    Genre
+                </div>
+            </div>
         </div>
     )
 }
