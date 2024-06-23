@@ -21,6 +21,7 @@
 }
 
 .SearchContainer {
+    position: relative;
     display: flex;
     justify-content: center;
 }
@@ -45,6 +46,18 @@
 .Search:focus {
     border: solid 2px black;
     outline: none;
+}
+
+.SearchResults {
+    position: absolute;
+    top: 75px;
+
+    height: 500px;
+    width: 679px;
+
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    background-color: white;
 }
 
 #ShowSearchResults {

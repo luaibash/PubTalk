@@ -22,7 +22,18 @@ const Articles = () => {
 // Search Articles container that holds the search bar for the user to search articles
 const SearchArticles = () => {
     const [userSearch, setUserSearch] = useState("");                   // Holds content of the search bar
-    const [showSearchResults, setShowSearchResults] = useState(false);  // Holds whether to show search results or not
+    const [showSearchBox, setShowSearchBox] = useState(false);          // Holds whether to show the search box or not
+    const [showSearchResults, setShowSearchResults] = useState(false);  // Holds whether to show search results or the initial suggestions
+
+    // Activates when user focuses on the search bar
+    const handleSearchFocus = (e) => {
+        setShowSearchBox(true);
+    }
+
+    // Activates when user unfocurses on the search bar
+    const handleSearchUnfocus = (e) => {
+        setShowSearchBox(false);
+    }
 
     // Activates when users inputs a search in the search bar, updating userSearch
     const handleSearch = (e) => {
@@ -31,15 +42,19 @@ const SearchArticles = () => {
 
     // Searches database for results on user search, returns results
     useEffect(() =>{
-        if (userSearch) {
-            setShowSearchResults(true);
-            console.log(userSearch);
+        // If the search box is being shown, proceed
+        if (showSearchBox) {
+            // If search is not empty, execute search query and return results
+            if (userSearch) {
+                setShowSearchResults(true);
+            }
+            
+            // If search is empty, return suggested results
+            else {
+                setShowSearchResults(false);
+            }
         }
-        else {
-            setShowSearchResults(false);
-            console.log("empty search.")
-        }
-    }, [userSearch])
+    }, [userSearch, showSearchBox])
 
     return (
         <div className='SearchArticleContainer'>
@@ -48,14 +63,32 @@ const SearchArticles = () => {
                 Topics Here
             </div>
             <div className='SearchContainer'>
-                <input type="text" value={userSearch} onChange={handleSearch} placeholder='What are you looking for?' className='Search'/>
-            </div>
-            <div className='SearchResults' id={showSearchResults ? 'ShowSearchResults' : "HideSearchResults"}>
-                yuh
+                <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onBlur={handleSearchUnfocus} placeholder='What are you looking for?' className='Search'/>
+                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"}>
+                    {showSearchResults ? <SearchResults/> : <InitialSearchResults/>}
+                </div>
             </div>
             <div className='SearchBackground'/>
         </div>
     );
+}
+
+// Search results that show when user is focused on search bar but has not input a search yet
+const InitialSearchResults = () => {
+    return (
+        <div>
+            empty search results
+        </div>
+    )
+}
+
+// Search results that show when user has input a search into the search bar
+const SearchResults = () => {
+    return (
+        <div>
+            Search results
+        </div>
+    )
 }
 
 // Top articles container that shows all the top articles
