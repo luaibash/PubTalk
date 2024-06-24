@@ -6,6 +6,7 @@ const {
     getArticleByID,
     getArticlesByGenre,
     getArticlesByAuthor,
+    getRandomArticles,
     createArticle,
     deleteArticle,
     updateArticle
@@ -16,11 +17,14 @@ const router = express.Router()
 // GET all articles
 router.get('/', getArticles)
 
-// GET all RECENT articles
+// GET RECENT articles
 router.get('/recent', getRecentArticles)
 
-// GET all TOP RATED articles
+// GET TOP RATED articles
 router.get('/top', getTopArticles)
+
+// GET RANDOM articles
+router.get('/random', getRandomArticles)
 
 // GET a single article based on id
 router.get('/id/:id', getArticleByID)

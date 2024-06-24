@@ -38,6 +38,16 @@ const getTopArticles = async(req, res) => {
     res.status(200).json(articles);
 }
 
+// Get a random number of articles, with limit that specifies how many articles to grab
+const getRandomArticles = async (req, res) => {
+    // Retrieves limit parameter from query string, if not specified, default to 1 article
+    const limit = parseInt(req.query.limit) || 1;
+
+    // Use the aggregate function to get the specified number of random articles
+    const articles = await Article.aggregate([{ $sample: { size: limit } }]);
+    res.status(200).json(randomArticles);
+}
+
 // Get a single article specified by ID
 const getArticleByID = async(req, res) => {
     // Retrieves id from GET request, checks if the id is within 12 bits of json, if the id is like 123 it wont work and this will trigger
@@ -179,6 +189,7 @@ module.exports = {
     getArticles,
     getRecentArticles,
     getTopArticles,
+    getRandomArticles,
     getArticleByID,
     getArticlesByGenre,
     getArticlesByAuthor,
