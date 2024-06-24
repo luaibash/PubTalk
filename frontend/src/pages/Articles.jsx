@@ -111,7 +111,7 @@ const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, se
         // Only fetch when random articles/authors/genres haven't been initialized yet, which is when page is first loaded
         if (!randomArticles) fetchRandomArticles();
         if (!randomAuthors) fetchRandomAuthors();
-    }, [])
+    }, [randomArticles, setRandomArticles, randomAuthors, setRandomAuthors])
 
     return (
         <div className='SearchSuggestionsContainer'>
