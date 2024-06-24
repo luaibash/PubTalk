@@ -70,6 +70,7 @@
     top: 75px;
 
     width: 679px;
+    max-width: 100%;
 
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
