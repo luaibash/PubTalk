@@ -28,7 +28,8 @@ const SearchArticles = () => {
     const [showSearchResults, setShowSearchResults] = useState(false);  // Holds whether to show search results or the initial suggestions
 
     // Search suggestion variables. Held in parent component to maintain memory when component gets mounted/unmounted
-    const [randomArticles, setRandomArticles] = useState(null);         // Holds the random articles for the search suggestions.
+    const [randomArticles, setRandomArticles] = useState(null);         // Holds the random articles for the search suggestions
+    const [randomAuthors, setRandomAuthors] = useState(null);           // Holds the random authors for the search suggestions
 
     // Activates when user focuses on the search bar
     const handleSearchFocus = (e) => {
@@ -70,7 +71,16 @@ const SearchArticles = () => {
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onBlur={handleSearchUnfocus} placeholder='What are you looking for?' className='Search'/>
                 <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "ShowSearchResults"}>
-                    {showSearchResults ? <SearchResults/> : <SearchSuggestions randomArticles={randomArticles} setRandomArticles={setRandomArticles}/>}
+                {showSearchResults ? 
+                    <SearchResults/> 
+                    : 
+                    <SearchSuggestions 
+                        randomArticles={randomArticles} 
+                        setRandomArticles={setRandomArticles} 
+                        randomAuthors={randomAuthors} 
+                        setRandomAuthors={setRandomAuthors} 
+                    />
+                }
                 </div>
             </div>
             <div className='SearchBackground'/>
@@ -79,20 +89,29 @@ const SearchArticles = () => {
 }
 
 // Search results that show when user is focused on search bar but has not input a search yet
-const SearchSuggestions = ({randomArticles, setRandomArticles}) => {
+const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, setRandomAuthors}) => {
     // Use effect to fetch the random articles, authors, and genres
     useEffect(() => {
+        // Fetches the API to get 2 random articles
         const fetchRandomArticles = async () => {
-            // Fetches the API to get 2 random articles
             const response = await fetch('/api/articles/random?limit=2');
             const json = await response.json();
 
             if (response.ok) setRandomArticles(json);
         }
 
-        if (!randomArticles) fetchRandomArticles();
-    }, [randomArticles, setRandomArticles])
+        // Fetches the API to get 2 random authors
+        const fetchRandomAuthors = async () => {
+            const response = await fetch('/api/authors/random?limit=2');
+            const json = await response.json();
 
+            if (response.ok) setRandomAuthors(json);
+        }
+
+        // Only fetch when random articles/authors/genres haven't been initialized yet, which is when page is first loaded
+        if (!randomArticles) fetchRandomArticles();
+        if (!randomAuthors) fetchRandomAuthors();
+    }, [])
 
     return (
         <div className='SearchSuggestionsContainer'>
@@ -109,8 +128,8 @@ const SearchSuggestions = ({randomArticles, setRandomArticles}) => {
                     AUTHORS
                 </div>
                 <div className='SuggestionsDivider'/>
-                <AuthorSuggestion authorName={"Luai Bashar"} authorRole={"Head Author"}/>
-                <AuthorSuggestion authorName={"Ivan Manca"} authorRole={"Author"}/>
+                {randomAuthors && <AuthorSuggestion author={randomAuthors[0]}/>}
+                {randomAuthors && <AuthorSuggestion author={randomAuthors[1]}/>}
             </div>
             <div className='GenreSuggestionsContainer'>
                 <div className='SuggestionsTitle'>
@@ -154,7 +173,7 @@ const ArticleSuggestion = ({ article, articleGenres }) => {
 }
 
 // An author suggestion given in the initial search box before the user searches anything
-const AuthorSuggestion = ({ authorName, authorRole }) => {
+const AuthorSuggestion = ({ author }) => {
     return (
         <div className='AuthorSuggestion'>
             <div className='AuthorSuggestionImage'>
@@ -162,10 +181,10 @@ const AuthorSuggestion = ({ authorName, authorRole }) => {
             </div>
             <div className='AuthorSuggestionDetails'>
                 <div className='SuggestionName'>
-                    {authorName}
+                    {author.name}
                 </div>
                 <div className='SuggestionRole'>
-                    {authorRole}
+                    {author.role}
                 </div>
             </div>
         </div>

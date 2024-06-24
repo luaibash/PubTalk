@@ -163,7 +163,7 @@ const AuthorDetails = ({ authorName }) => {
     useEffect(() => {
         const fetchAuthor = async () => {
             // Fetches the API and finds author using the author name
-            const response = await fetch(`/api/authors/${authorName}`);
+            const response = await fetch(`/api/authors/name/${authorName}`);
             const json = await response.json();
 
             if (response.ok) setAuthor(json);
