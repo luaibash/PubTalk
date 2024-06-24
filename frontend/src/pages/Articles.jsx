@@ -27,6 +27,9 @@ const SearchArticles = () => {
     const [showSearchBox, setShowSearchBox] = useState(false);          // Holds whether to show the search box or not
     const [showSearchResults, setShowSearchResults] = useState(false);  // Holds whether to show search results or the initial suggestions
 
+    // Search suggestion variables. Held in parent component to maintain memory when component gets mounted/unmounted
+    const [randomArticles, setRandomArticles] = useState(null);         // Holds the random articles for the search suggestions.
+
     // Activates when user focuses on the search bar
     const handleSearchFocus = (e) => {
         setShowSearchBox(true);
@@ -67,7 +70,7 @@ const SearchArticles = () => {
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onBlur={handleSearchUnfocus} placeholder='What are you looking for?' className='Search'/>
                 <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "ShowSearchResults"}>
-                    {showSearchResults ? <SearchResults/> : <SearchSuggestions/>}
+                    {showSearchResults ? <SearchResults/> : <SearchSuggestions randomArticles={randomArticles} setRandomArticles={setRandomArticles}/>}
                 </div>
             </div>
             <div className='SearchBackground'/>
@@ -76,9 +79,7 @@ const SearchArticles = () => {
 }
 
 // Search results that show when user is focused on search bar but has not input a search yet
-const SearchSuggestions = () => {
-    const [randomArticles, setRandomArticles] = useState(null);
-    
+const SearchSuggestions = ({randomArticles, setRandomArticles}) => {
     // Use effect to fetch the random articles, authors, and genres
     useEffect(() => {
         const fetchRandomArticles = async () => {
@@ -89,8 +90,8 @@ const SearchSuggestions = () => {
             if (response.ok) setRandomArticles(json);
         }
 
-        fetchRandomArticles();
-    }, [])
+        if (!randomArticles) fetchRandomArticles();
+    }, [randomArticles, setRandomArticles])
 
 
     return (
