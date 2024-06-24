@@ -3,6 +3,7 @@ import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
 import Genres from '../components/Genres';
 import Arrow from '../assets/home/Arrow.png';
+import GenreSuggestionIcon from '../assets/articles/ArticleSuggestionIcon.svg';
 import '../styles/App.css';
 import '../styles/Articles.css';
 import '../styles/Boxes.css';
@@ -139,9 +140,7 @@ const AuthorSuggestion = ({ authorName, authorRole }) => {
 const GenreSuggestion = ({ genreName }) => {
     return (
         <div className='GenreSuggestion'>
-            <div className='GenreSuggestionImage'>
-
-            </div>
+            <img src={GenreSuggestionIcon} alt="Article Suggestion Icon" className='GenreSuggestionIcon' />
             <div className='GenreSuggestionDetails'>
                 <div className='SuggestionName'>
                     {genreName}

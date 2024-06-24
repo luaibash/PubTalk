@@ -141,12 +141,17 @@
     color: #434343;
 }
 
-.AuthorSuggestionImage, .GenreSuggestionImage {
+.AuthorSuggestionImage {
     width: 50px;
     height: 50px;
 
     border: 1px solid;
     border-radius: 10px;
+}
+
+.GenreSuggestionIcon {
+    width: 40px;
+    padding: 0 5px;
 }
 
 .BoxRow {
