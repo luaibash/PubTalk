@@ -45,7 +45,7 @@ const getRandomArticles = async (req, res) => {
 
     // Use the aggregate function to get the specified number of random articles
     const articles = await Article.aggregate([{ $sample: { size: limit } }]);
-    res.status(200).json(randomArticles);
+    res.status(200).json(articles);
 }
 
 // Get a single article specified by ID

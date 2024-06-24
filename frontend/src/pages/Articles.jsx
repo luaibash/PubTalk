@@ -1,4 +1,5 @@
 import {React, useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
 import Genres from '../components/Genres';
@@ -65,7 +66,7 @@ const SearchArticles = () => {
             </div>
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onBlur={handleSearchUnfocus} placeholder='What are you looking for?' className='Search'/>
-                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"}>
+                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "ShowSearchResults"}>
                     {showSearchResults ? <SearchResults/> : <SearchSuggestions/>}
                 </div>
             </div>
@@ -76,6 +77,22 @@ const SearchArticles = () => {
 
 // Search results that show when user is focused on search bar but has not input a search yet
 const SearchSuggestions = () => {
+    const [randomArticles, setRandomArticles] = useState(null);
+    
+    // Use effect to fetch the random articles, authors, and genres
+    useEffect(() => {
+        const fetchRandomArticles = async () => {
+            // Fetches the API to get 2 random articles
+            const response = await fetch('/api/articles/random?limit=2');
+            const json = await response.json();
+
+            if (response.ok) setRandomArticles(json);
+        }
+
+        fetchRandomArticles();
+    }, [])
+
+
     return (
         <div className='SearchSuggestionsContainer'>
             <div className='ArticleSuggestionsContainer'>
@@ -83,8 +100,8 @@ const SearchSuggestions = () => {
                     ARTICLES
                 </div>
                 <div className='SuggestionsDivider'/>
-                <ArticleSuggestion articleName={"From Fossil Fuels to Solar Fields: The Energy Transformation"} articleAuthor={"Luai Bashar"} articleDate={"6/9/2024"} articleGenres={"Energy, Politics"}/>
-                <ArticleSuggestion articleName={"The Rise of NFTs: Exploring the Digital Art Revolution"} articleAuthor={"Ivan Manca"} articleDate={"8/23/2024"} articleGenres={"Technology"}/>
+                {randomArticles && <ArticleSuggestion article={randomArticles[0]}/>}
+                {randomArticles && <ArticleSuggestion article={randomArticles[1]}/>}
             </div>
             <div className='AuthorSuggestionsContainer'>
                 <div className='SuggestionsTitle'>
@@ -106,19 +123,36 @@ const SearchSuggestions = () => {
     )
 }
 
-const ArticleSuggestion = ({ articleName, articleAuthor, articleDate, articleGenres }) => {
+// An article suggestion given in the initial search box before the user searches anything
+const ArticleSuggestion = ({ article, articleGenres }) => {
+    const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-'); // Grab article link
+
+    // Converts the date given by the article to more readable terms
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+
+    // Takes the first two genres and returns a string to display for the article
+    function formatGenres(genres) {
+        if (genres.length === 0) return "General";       // If array is empty, return general genre
+        else if (genres.length === 1) return genres[0];   // If there is only one genre, return it
+        else return `${genres[0]}, ${genres[1]}`;         // If there are two or more genres, format and return the first two
+    }
+
     return (
-        <div className='ArticleSuggestion'>
+        <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='ArticleSuggestion'>
             <div className='SuggestionName'>
-                {articleName}
+                {article.title}
             </div>
             <div className='SuggestionDetails'>
-                {articleAuthor} &#8226; {articleDate} &#8226; {articleGenres}
+                {article.author} &#8226; {formatDate(article.createdAt)} &#8226; {formatGenres(article.genre)}
             </div>
-        </div>
+        </Link>
     )
 }
 
+// An author suggestion given in the initial search box before the user searches anything
 const AuthorSuggestion = ({ authorName, authorRole }) => {
     return (
         <div className='AuthorSuggestion'>
@@ -137,6 +171,7 @@ const AuthorSuggestion = ({ authorName, authorRole }) => {
     )
 }
 
+// A genre suggestion given in the initial search box before the user searches anything
 const GenreSuggestion = ({ genreName }) => {
     return (
         <div className='GenreSuggestion'>

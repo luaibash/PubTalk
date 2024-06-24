@@ -92,6 +92,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    min-height: 150px;
 }
 
 .SuggestionsTitle {
@@ -116,6 +117,7 @@
     border-bottom-right-radius: 50px;
     cursor: pointer;
 
+    text-decoration: none;
     transition: background-color 0.3s;
 }
 .ArticleSuggestion:hover, .AuthorSuggestion:hover, .GenreSuggestion:hover {
@@ -132,6 +134,7 @@
 .SuggestionName {
     font-size: 16px;
     font-weight: 500;
+    color: black;
 
     margin-bottom: 5px;
 }
