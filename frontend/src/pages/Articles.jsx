@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
@@ -26,6 +26,7 @@ const SearchArticles = () => {
     const [userSearch, setUserSearch] = useState("");                   // Holds content of the search bar
     const [showSearchBox, setShowSearchBox] = useState(false);          // Holds whether to show the search box or not
     const [showSearchResults, setShowSearchResults] = useState(false);  // Holds whether to show search results or the initial suggestions
+    const searchContainerRef = useRef(null);                            // Reference of the search bar and search box
 
     // Search suggestion variables. Held in parent component to maintain memory when component gets mounted/unmounted
     const [randomArticles, setRandomArticles] = useState(null);         // Holds the random articles for the search suggestions
@@ -37,15 +38,27 @@ const SearchArticles = () => {
         setShowSearchBox(true);
     }
 
-    // Activates when user unfocurses on the search bar
-    const handleSearchUnfocus = (e) => {
-        setShowSearchBox(false);
-    }
-
     // Activates when users inputs a search in the search bar, updating userSearch
     const handleSearch = (e) => {
         setUserSearch(e.target.value);
     }
+
+    // Used to track every click and close the search box if user clicks anywhere excluding the search bar and search box itself
+    useEffect(() => {
+        // Triggers every click and checks the reference for the search box to see if the event (click) was in the search box
+        const handleClickOutside = (e) => {
+            if (searchContainerRef.current && !searchContainerRef.current.contains(e.target)) {
+                setShowSearchBox(false);
+            }
+        };
+
+        // Add event listener to trigger useEffect on any click
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     // Searches database for results on user search, returns results
     useEffect(() =>{
@@ -69,9 +82,9 @@ const SearchArticles = () => {
                 Explore Our Articles: Find Your Desired
                 Topics Here
             </div>
-            <div className='SearchContainer'>
-                <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onBlur={handleSearchUnfocus} placeholder='What are you looking for?' className='Search'/>
-                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "ShowSearchResults"}>
+            <div className='SearchContainer' ref={searchContainerRef}>
+                <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search'/>
+                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"}>
                 {showSearchResults ? 
                     <SearchResults/> 
                     : 
