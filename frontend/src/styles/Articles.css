@@ -70,6 +70,7 @@
     top: 75px;
 
     width: 679px;
+    min-width: 293px;
     max-width: 100%;
 
     border-radius: 20px;
@@ -118,6 +119,10 @@
     cursor: pointer;
 
     text-decoration: none;
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+
     transition: background-color 0.3s;
 }
 .ArticleSuggestion:hover, .AuthorSuggestion:hover, .GenreSuggestion:hover {
@@ -136,13 +141,24 @@
     font-weight: 500;
     color: black;
 
+    padding-right: 15px;
     margin-bottom: 5px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .SuggestionDetails, .SuggestionRole, .SuggestionGenre {
     font-size: 14px;
     font-weight: 500;
     color: #434343;
+
+    padding-right: 20px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .AuthorSuggestionImage {
