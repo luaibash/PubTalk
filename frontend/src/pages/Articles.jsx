@@ -71,7 +71,7 @@ const SearchArticles = () => {
             </div>
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onBlur={handleSearchUnfocus} placeholder='What are you looking for?' className='Search'/>
-                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "ShowSearchResults"}>
+                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"}>
                 {showSearchResults ? 
                     <SearchResults/> 
                     : 
@@ -95,7 +95,6 @@ const SearchArticles = () => {
 const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, setRandomAuthors, randomGenres, setRandomGenres}) => {
     // Use effect to fetch the random articles, authors, and genres
     useEffect(() => {
-        console.log("bomba")
         // Fetches the API to get 2 random articles
         const fetchRandomArticles = async () => {
             const response = await fetch('/api/articles/random?limit=2');
