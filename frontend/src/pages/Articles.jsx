@@ -30,6 +30,7 @@ const SearchArticles = () => {
     // Search suggestion variables. Held in parent component to maintain memory when component gets mounted/unmounted
     const [randomArticles, setRandomArticles] = useState(null);         // Holds the random articles for the search suggestions
     const [randomAuthors, setRandomAuthors] = useState(null);           // Holds the random authors for the search suggestions
+    const [randomGenres, setRandomGenres] = useState(null);             // Holds the random genres for the search suggestions
 
     // Activates when user focuses on the search bar
     const handleSearchFocus = (e) => {
@@ -79,6 +80,8 @@ const SearchArticles = () => {
                         setRandomArticles={setRandomArticles} 
                         randomAuthors={randomAuthors} 
                         setRandomAuthors={setRandomAuthors} 
+                        randomGenres={randomGenres}
+                        setRandomGenres={setRandomGenres}
                     />
                 }
                 </div>
@@ -89,9 +92,10 @@ const SearchArticles = () => {
 }
 
 // Search results that show when user is focused on search bar but has not input a search yet
-const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, setRandomAuthors}) => {
+const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, setRandomAuthors, randomGenres, setRandomGenres}) => {
     // Use effect to fetch the random articles, authors, and genres
     useEffect(() => {
+        console.log("bomba")
         // Fetches the API to get 2 random articles
         const fetchRandomArticles = async () => {
             const response = await fetch('/api/articles/random?limit=2');
@@ -108,10 +112,28 @@ const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, se
             if (response.ok) setRandomAuthors(json);
         }
 
+        // Get 2 random genres from the available genres
+        const getRandomGenres = async () => {
+            const genres = ["Technology", "Art", "History", "Society", "Cooking", "AI", "Business", 
+                            "Design", "Innovation", "Ethics", "War", "Sustainability", "Climate", 
+                            "Sports", "Entertainment", "Mystery", "Fantasy", "Adventure"];
+            
+            // Use Math.random() to get random indexes and make sure they aren't the same
+            var firstGenre = genres[(Math.floor(Math.random() * genres.length))];
+            var secondGenre = genres[(Math.floor(Math.random() * genres.length))];
+            if (firstGenre === secondGenre) {
+                if (secondGenre === genres.length) secondGenre -= 1;
+                else secondGenre += 1;
+            }
+
+            setRandomGenres([firstGenre, secondGenre]);
+        }
+
         // Only fetch when random articles/authors/genres haven't been initialized yet, which is when page is first loaded
         if (!randomArticles) fetchRandomArticles();
         if (!randomAuthors) fetchRandomAuthors();
-    }, [randomArticles, setRandomArticles, randomAuthors, setRandomAuthors])
+        if (!randomGenres) getRandomGenres();
+    }, [])
 
     return (
         <div className='SearchSuggestionsContainer'>
@@ -136,15 +158,15 @@ const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, se
                     GENRES
                 </div>
                 <div className='SuggestionsDivider'/>
-                <GenreSuggestion genreName={"Economics"}/>
-                <GenreSuggestion genreName={"Politics"}/>
+                {randomGenres && <GenreSuggestion genre={randomGenres[0]}/>}
+                {randomGenres && <GenreSuggestion genre={randomGenres[1]}/>}
             </div>
         </div>
     )
 }
 
 // An article suggestion given in the initial search box before the user searches anything
-const ArticleSuggestion = ({ article, articleGenres }) => {
+const ArticleSuggestion = ({ article }) => {
     const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-'); // Grab article link
 
     // Converts the date given by the article to more readable terms
@@ -192,13 +214,13 @@ const AuthorSuggestion = ({ author }) => {
 }
 
 // A genre suggestion given in the initial search box before the user searches anything
-const GenreSuggestion = ({ genreName }) => {
+const GenreSuggestion = ({ genre }) => {
     return (
         <div className='GenreSuggestion'>
             <img src={GenreSuggestionIcon} alt="Article Suggestion Icon" className='GenreSuggestionIcon' />
             <div className='GenreSuggestionDetails'>
                 <div className='SuggestionName'>
-                    {genreName}
+                    {genre}
                 </div>
                 <div className='SuggestionGenre'>
                     Genre
