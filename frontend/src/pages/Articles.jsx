@@ -26,7 +26,8 @@ const SearchArticles = () => {
     const [userSearch, setUserSearch] = useState("");                   // Holds content of the search bar
     const [showSearchBox, setShowSearchBox] = useState(false);          // Holds whether to show the search box or not
     const [showSearchResults, setShowSearchResults] = useState(false);  // Holds whether to show search results or the initial suggestions
-    const searchContainerRef = useRef(null);                            // Reference of the search bar and search box
+    const searchBarRef = useRef(null);                                  // Reference of the search bar
+    const searchResultsRef = useRef(null);                              // Reference of the search results box
 
     // Search suggestion variables. Held in parent component to maintain memory when component gets mounted/unmounted
     const [randomArticles, setRandomArticles] = useState(null);         // Holds the random articles for the search suggestions
@@ -47,7 +48,7 @@ const SearchArticles = () => {
     useEffect(() => {
         // Triggers every click and checks the reference for the search box to see if the event (click) was in the search box
         const handleClickOutside = (e) => {
-            if (searchContainerRef.current && !searchContainerRef.current.contains(e.target)) {
+            if (searchBarRef.current && !searchBarRef.current.contains(e.target) && searchResultsRef.current && !searchResultsRef.current.contains(e.target)) {
                 setShowSearchBox(false);
             }
         };
@@ -82,9 +83,9 @@ const SearchArticles = () => {
                 Explore Our Articles: Find Your Desired
                 Topics Here
             </div>
-            <div className='SearchContainer' ref={searchContainerRef}>
-                <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search'/>
-                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"}>
+            <div className='SearchContainer'>
+                <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
+                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"} ref={searchResultsRef}>
                 {showSearchResults ? 
                     <SearchResults/> 
                     : 

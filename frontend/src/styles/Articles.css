@@ -119,10 +119,6 @@
     cursor: pointer;
 
     text-decoration: none;
-    /* white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; */
-
     transition: background-color 0.3s;
 }
 .ArticleSuggestion:hover, .AuthorSuggestion:hover, .GenreSuggestion:hover {
