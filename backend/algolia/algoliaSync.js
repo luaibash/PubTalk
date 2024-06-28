@@ -15,14 +15,18 @@ const syncAlgolia = async () => {
         // Select every article, and take only relevant portions of the articles for searches
         const articles = await Article.find().select('title author description genre');
 
-        // Map all articles to an acceptable format for algolia, and sync them
+        // Map all articles to an acceptable format for algolia
         const algoliaArticleObjects = articles.map(article => ({
             objectID: article._id.toString(),
             ...article.toObject()
         }));
-        await articlesIndex.saveObjects(algoliaArticleObjects);
+        
+        // Clear the Algolia articles index to remove any articles that don't exist anymore
+        await articlesIndex.clearObjects();
+        console.log('Algolia articles index cleared');
 
-        // Log that the articles sync worked
+        // Sync the articles to algolia
+        await articlesIndex.saveObjects(algoliaArticleObjects);
         console.log('Algolia articles index synced');
     } catch (error) {
         console.error('Error syncing Algolia articles index:', error);
@@ -33,14 +37,18 @@ const syncAlgolia = async () => {
         // Select every author, and take only relevant portions of the authors for searches
         const authors = await Author.find();
 
-        // Map all authors to an acceptable format for algolia, and sync them
+        // Map all authors to an acceptable format for algolia
         const algoliaAuthorObjects = authors.map(author => ({
             objectID: author._id.toString(),
             ...author.toObject()
         }));
-        await authorsIndex.saveObjects(algoliaAuthorObjects);
 
-        // Log that the authors sync worked
+        // Clear the Algolia authors index to remove any authors that don't exist anymore
+        await authorsIndex.clearObjects();
+        console.log('Algolia authors index cleared');
+
+        // Sync the authors to algolia
+        await authorsIndex.saveObjects(algoliaAuthorObjects);
         console.log('Algolia authors index synced');
     } catch (error) {
         console.error('Error syncing Algolia authors index:', error);
