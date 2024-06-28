@@ -1,10 +1,11 @@
-require('dotenv').config();                             // Allows use of the .env folder which holds private data
+require('dotenv').config();                                         // Allows use of the .env folder which holds private data
 const express = require('express');
 const mongoose = require('mongoose');
 const syncAlgolia = require('./algolia/algoliaSync');
-const articleRoutes = require('./routes/articleRoutes'); // Gets the routes of each GET/POST/DELETE function from articleRoutes.js
-const authorRoutes = require('./routes/authorRoutes');   // Gets the routes of each GET/POST/DELETE function from authorRoutes.js
-const contactRoutes = require('./routes/contactRoutes'); // Gets the routes of each GET/POST/DELETE function from contactRoutes.js
+const setUpChangeStreams = require('./algolia/setUpChangeStreams');
+const articleRoutes = require('./routes/articleRoutes');            // Gets the routes of each GET/POST/DELETE function from articleRoutes.js
+const authorRoutes = require('./routes/authorRoutes');              // Gets the routes of each GET/POST/DELETE function from authorRoutes.js
+const contactRoutes = require('./routes/contactRoutes');            // Gets the routes of each GET/POST/DELETE function from contactRoutes.js
 
 // Express app
 const app = express();
@@ -26,8 +27,11 @@ app.use('/api/authors', authorRoutes);   // Routes for authors controller functi
 //connect to DB
 mongoose.connect(process.env.MONGO_URI)
     .then(async () => {     
-        // Update Algolia database to be in sync with MongoDB database
+        // Update Algolia database to be in sync with MongoDB database on server startup
         await syncAlgolia();
+
+        // Set up Change Streams, a listener that triggers on any change to the DB to resync the algolia DB
+        setUpChangeStreams(mongoose.connection);
 
         // Listen for requests
         app.listen(process.env.PORT, () => {

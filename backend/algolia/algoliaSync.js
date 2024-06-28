@@ -13,7 +13,7 @@ const syncAlgolia = async () => {
     // Sync articles index
     try {
         // Select every article, and take only relevant portions of the articles for searches
-        const articles = await Article.find().select('title _id author description genre');
+        const articles = await Article.find().select('title author description genre');
 
         // Map all articles to an acceptable format for algolia, and sync them
         const algoliaArticleObjects = articles.map(article => ({
