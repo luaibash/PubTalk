@@ -1,7 +1,7 @@
-require('dotenv').config(); // Allows us to use the .env folder which is a private folder that can keep sensitive info such as port number
-
+require('dotenv').config();                             // Allows use of the .env folder which holds private data
 const express = require('express');
 const mongoose = require('mongoose');
+const syncAlgolia = require('./algolia/algoliaSync');
 const articleRoutes = require('./routes/articleRoutes'); // Gets the routes of each GET/POST/DELETE function from articleRoutes.js
 const authorRoutes = require('./routes/authorRoutes');   // Gets the routes of each GET/POST/DELETE function from authorRoutes.js
 const contactRoutes = require('./routes/contactRoutes'); // Gets the routes of each GET/POST/DELETE function from contactRoutes.js
@@ -25,7 +25,10 @@ app.use('/api/authors', authorRoutes);   // Routes for authors controller functi
 
 //connect to DB
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => {     
+    .then(async () => {     
+        // Update Algolia database to be in sync with MongoDB database
+        await syncAlgolia();
+
         // Listen for requests
         app.listen(process.env.PORT, () => {
             console.log("connected to DB and listening on port", process.env.PORT);

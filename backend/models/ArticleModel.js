@@ -28,8 +28,6 @@ const articleSchema = new Schema({
         type: Number,
         required: true
     }
-    
-
 }, {timestamps: true})  // Extra argument that will automatically give timestamp of when it is created and last updated
 
 // Creates this model to be used in the controller as the name "Article". Ex. Article.find() will find all articles
