@@ -1,4 +1,4 @@
-const { syncAlgoliaArticlesIndex, syncAlgoliaAuthorsIndex } = require('./algoliaSync');
+const { syncAlgoliaArticlesIndex, syncAlgoliaAuthorsIndex } = require('./syncAlgolia');
 
 // Sets up a listener that triggers on any change to the mongo DB, used to resync the algolia DB
 const setUpChangeStreams = (db) => {

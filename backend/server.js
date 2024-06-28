@@ -1,7 +1,7 @@
 require('dotenv').config();                                         // Allows use of the .env folder which holds private data
 const express = require('express');
 const mongoose = require('mongoose');
-const {syncAlgoliaOnStartup} = require('./algolia/algoliaSync');
+const {syncAlgoliaOnStartup} = require('./algolia/syncAlgolia');
 const setUpChangeStreams = require('./algolia/setUpChangeStreams');
 const articleRoutes = require('./routes/articleRoutes');            // Gets the routes of each GET/POST/DELETE function from articleRoutes.js
 const authorRoutes = require('./routes/authorRoutes');              // Gets the routes of each GET/POST/DELETE function from authorRoutes.js
