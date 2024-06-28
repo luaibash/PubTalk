@@ -1,11 +1,17 @@
-const syncAlgolia = require('./algoliaSync');
+const { syncAlgoliaArticlesIndex, syncAlgoliaAuthorsIndex } = require('./algoliaSync');
 
 // Sets up a listener that triggers on any change to the mongo DB, used to resync the algolia DB
 const setUpChangeStreams = (db) => {
-    // Triggers on any change, calling the syncAlgolia function
-    const handleDbChange = async (change) => {
-        console.log('MongoDB Change detected:', change);
-        await syncAlgolia();
+    // Triggers on any article MongoDB change, syncing the articles index
+    const handleDbArticleChange = async (change) => {
+        console.log('MongoDB article change detected:', change);
+        await syncAlgoliaArticlesIndex();
+    };
+
+    // Triggers on any author MongoDB change, syncing the authors index
+    const handleDbAuthorChange = async (change) => {
+        console.log('MongoDB author change detected:', change);
+        await syncAlgoliaAuthorsIndex();
     };
 
     // Set up the listener for each table
@@ -13,8 +19,8 @@ const setUpChangeStreams = (db) => {
     const authorChangeStream = db.collection('authors').watch();
 
     // Set up the trigger for each table
-    articleChangeStream.on('change', handleDbChange);
-    authorChangeStream.on('change', handleDbChange);
+    articleChangeStream.on('change', handleDbArticleChange);
+    authorChangeStream.on('change', handleDbAuthorChange);
 
     // Error handling
     articleChangeStream.on('error', (error) => {

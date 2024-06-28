@@ -8,9 +8,14 @@ const algoliaClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGO
 const articlesIndex = algoliaClient.initIndex('articles');                                       // Articles table
 const authorsIndex = algoliaClient.initIndex('authors');                                         // Authors table
 
-// Sync MongoDB data to the Algolia database
-const syncAlgolia = async () => {
-    // Sync articles index
+// Called on server startup to sync MongoDB data to the Algolia database
+const syncAlgoliaOnStartup = async () => {
+    await syncAlgoliaArticlesIndex();
+    await syncAlgoliaAuthorsIndex();
+};
+
+// Sync MongoDB's articles table to the Algolia articles index
+const syncAlgoliaArticlesIndex = async () => {
     try {
         // Select every article, and take only relevant portions of the articles for searches
         const articles = await Article.find().select('title author description genre');
@@ -31,7 +36,10 @@ const syncAlgolia = async () => {
     } catch (error) {
         console.error('Error syncing Algolia articles index:', error);
     }
+};
 
+// Sync MongoDB's authors table to the Algolia authors index
+const syncAlgoliaAuthorsIndex = async () => {
     // Sync authors index
     try {
         // Select every author, and take only relevant portions of the authors for searches
@@ -55,4 +63,8 @@ const syncAlgolia = async () => {
     }
 };
 
-module.exports = syncAlgolia;
+module.exports = {
+    syncAlgoliaOnStartup,
+    syncAlgoliaArticlesIndex,
+    syncAlgoliaAuthorsIndex
+};
