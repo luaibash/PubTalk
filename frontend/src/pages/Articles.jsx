@@ -1,5 +1,6 @@
 import {React, useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
+import algoliasearch from 'algoliasearch/lite';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
 import Genres from '../components/Genres';
@@ -8,6 +9,9 @@ import GenreSuggestionIcon from '../assets/articles/ArticleSuggestionIcon.svg';
 import '../styles/App.css';
 import '../styles/Articles.css';
 import '../styles/Boxes.css';
+
+// Initialize Algolia client
+const algoliaClient = algoliasearch('CR0XOAU6BN', '2c2faec31dd00dfd86d5e49977949d98');
 
 // Articles page that lets user search for articles, and see articles from most recent/popular/genre
 const Articles = () => {
@@ -67,6 +71,23 @@ const SearchArticles = () => {
         if (showSearchBox) {
             // If search is not empty, execute search query and return results
             if (userSearch) {
+                // Perform multiple queries
+                algoliaClient.multipleQueries([
+                    { indexName: 'articles', query: userSearch },
+                    { indexName: 'authors', query: userSearch },
+                    { indexName: 'genres', query: userSearch }
+                ]).then(({ results }) => {
+                    // Combine results from all indexes
+                    const combinedResults = results.reduce((acc, result) => {
+                        return acc.concat(result.hits);
+                    }, []);
+
+                    console.log(combinedResults)
+                    // setSearchResults(combinedResults);
+                }).catch(err => {
+                    console.error('Error searching Algolia:', err);
+                });
+
                 setShowSearchResults(true);
             }
             
