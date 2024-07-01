@@ -31,14 +31,14 @@ const Contact = () => {
                                 First Name
                                 <div className='Required'>* Required</div>
                             </div>
-                            <input type="text" placeholder='e.g. John' className='Input'/>
+                            <input type="text" placeholder='e.g. John' autoComplete='given-name' className='Input'/>
                         </div>
                         <div className='InputContainer'>
                             <div className='ContactTitle'>
                                 Last Name
                                 <div className='Required'>* Required</div>
                             </div>
-                            <input type="text" placeholder='Smith' className='Input'/>
+                            <input type="text" placeholder='Smith' autoComplete="family-name" className='Input'/>
                         </div>
                         <div className='InputContainer'>
                             <div className='ContactTitle'>
@@ -46,7 +46,7 @@ const Contact = () => {
                                 <div className='Required'>* Required</div>
                                 <div className='EmailWarning'>* Invalid Email</div>
                             </div>
-                            <input type="email" placeholder='john@gmail.com' className='Input'/>
+                            <input type="email" placeholder='john@gmail.com' autoComplete="email" className='Input'/>
                         </div>
                     </div>
                     <div className='MessageContainer'>
@@ -76,7 +76,7 @@ const Contact = () => {
 
 // Function that sends email once all fields are filled in
 const sendEmail = async (isSent, setSent) => {
-    // If an email has already been sent, don't allow another one to be sent
+    // If an email has already been sent or is being sent, don't allow another one to be sent
     if (isSent) return;
     
     // setDisplay function to change whether to display "* required" or not for each form box
@@ -107,18 +107,21 @@ const sendEmail = async (isSent, setSent) => {
     // Exit the attempt to send email
     if (!EmailValidator.validate(email) || firstName.trim() === "" || lastName.trim() === "" || email.trim() === "" || message.trim() === "") return;
 
-    // Template for email to send to the API
+    // Template for email to send to the API, and emailjs credentials from .env folder
     var templateParams = {
         firstName: firstName,
         lastName: lastName,
         email: email,
         message: message
     };
-    var serviceID = "service_2hxcqkk";
-    var templateID = "template_3i0d6br";
-    var publicKey = "8brRPBwE__7zDFkLo";
+    var serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    var templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    var publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
     try {
+        // Set is sent to true to only force one request at a time
+        setSent(true);
+
         // Make a fetch request to check if the user is allowed to submit another form, based on the 5 submits per 10 min limit
         const response = await fetch('/api/contact', {
             method: 'POST',
@@ -134,9 +137,9 @@ const sendEmail = async (isSent, setSent) => {
         emailjs.send(serviceID, templateID, templateParams, publicKey)
         .then(function(response) {
             document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
-            setSent(true);
             console.log('SUCCESS!', response.status, response.text);
         }, function(error) {
+            setSent(false);                                                       // Allow user to send another email as it failed
             document.getElementsByClassName("Error")[0].style.display = 'block';  // If error has occurred, notify the user
             console.log('FAILED...', error);
         });

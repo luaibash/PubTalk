@@ -10,8 +10,8 @@ import '../styles/App.css';
 import '../styles/Articles.css';
 import '../styles/Boxes.css';
 
-// Initialize Algolia client
-const algoliaClient = algoliasearch('CR0XOAU6BN', '2c2faec31dd00dfd86d5e49977949d98');
+// Initialize Algolia client, grabbing credentials from .env file
+const algoliaClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, process.env.REACT_APP_ALGOLIA_API_KEY);
 
 // Articles page that lets user search for articles, and see articles from most recent/popular/genre
 const Articles = () => {
@@ -83,7 +83,6 @@ const SearchArticles = () => {
                     }, []);
 
                     console.log(combinedResults)
-                    // setSearchResults(combinedResults);
                 }).catch(err => {
                     console.error('Error searching Algolia:', err);
                 });
