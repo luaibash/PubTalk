@@ -18,7 +18,7 @@ const syncAlgoliaOnStartup = async () => {
 const syncAlgoliaArticlesIndex = async () => {
     try {
         // Select every article, and take only relevant portions of the articles for searches
-        const articles = await Article.find().select('title author description genre');
+        const articles = await Article.find().select('title author description genre createdAt');
 
         // Map all articles to an acceptable format for algolia
         const algoliaArticleObjects = articles.map(article => ({

@@ -85,8 +85,12 @@
     display: none;
 }
 
-.SearchResultsContainer, .SearchSuggestionsContainer {
+.SearchSuggestionsContainer {
     margin: 25px 25px 20px 0;
+}
+
+.SearchResultsContainer {
+    margin: 16px 25px 15px 0;
 }
 
 .ArticleSuggestionsContainer, .AuthorSuggestionsContainer, .GenreSuggestionsContainer {

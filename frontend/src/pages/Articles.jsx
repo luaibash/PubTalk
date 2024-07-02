@@ -28,6 +28,7 @@ const Articles = () => {
 // Search Articles container that holds the search bar for the user to search articles
 const SearchArticles = () => {
     const [userSearch, setUserSearch] = useState("");                   // Holds content of the search bar
+    const [searchResults, setSearchResults] = useState([]);             // Holds contents of the search results
     const [showSearchBox, setShowSearchBox] = useState(false);          // Holds whether to show the search box or not
     const [showSearchResults, setShowSearchResults] = useState(false);  // Holds whether to show search results or the initial suggestions
     const searchBarRef = useRef(null);                                  // Reference of the search bar
@@ -77,12 +78,19 @@ const SearchArticles = () => {
                     { indexName: 'authors', query: userSearch },
                     { indexName: 'genres', query: userSearch }
                 ]).then(({ results }) => {
-                    // Combine results from all indexes into one array
-                    const combinedResults = results.reduce((acc, result) => {
-                        return acc.concat(result.hits);
-                    }, []);
+                    // Combine results from all indexes and calculate a relevance score
+                    const combinedSearchResults = results.flatMap((result, index) => {
+                        return result.hits.map((hit, hitIndex) => ({
+                            ...hit,
+                            relevance: result.processingTimeMS + hitIndex, // Processing time of index + the ranking of entry in index
+                            objectType: result.index                       // Stores Index name to know what type of result it is      
+                        }));
+                    });
 
-                    console.log(combinedResults)
+                    // Sort combined results by relevance score, limit it to a max of 6 search results, and set it to searchResults
+                    combinedSearchResults.sort((a, b) => a.relevance - b.relevance);
+                    setSearchResults(combinedSearchResults.slice(0, 6));
+                    console.log(combinedSearchResults)
                 }).catch(err => {
                     console.error('Error searching Algolia:', err);
                 });
@@ -107,7 +115,7 @@ const SearchArticles = () => {
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
                 <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"} ref={searchResultsRef}>
                 {showSearchResults ? 
-                    <SearchResults/> 
+                    <SearchResults searchResults={searchResults}/> 
                     : 
                     <SearchSuggestions 
                         randomArticles={randomArticles} 
@@ -126,10 +134,21 @@ const SearchArticles = () => {
 }
 
 // Search results that show when user has input a search into the search bar
-const SearchResults = () => {
+const SearchResults = ({searchResults}) => {
+    // Maps out all search results and uses the corresponding component for it result type
     return (
         <div className='SearchResultsContainer'>
-            Search results
+            {searchResults.map(result => {
+                if (result.objectType === 'articles') {
+                    return <ArticleSuggestion key={result.objectID} article={result}/>;
+                } else if (result.objectType === 'authors') {
+                    return <AuthorSuggestion key={result.objectID} author={result}/>;
+                } else if (result.objectType === 'genres') {
+                    return <GenreSuggestion key={result.objectID} genre={result.genre}/>;
+                } else {
+                    return null;
+                }
+            })}
         </div>
     )
 }
