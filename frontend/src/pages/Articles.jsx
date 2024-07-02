@@ -69,15 +69,15 @@ const SearchArticles = () => {
     useEffect(() =>{
         // If the search box is being shown, proceed
         if (showSearchBox) {
-            // If search is not empty, execute search query and return results
+            // If search is not empty, execute algolia search query and return results
             if (userSearch) {
-                // Perform multiple queries
+                // Perform search with all indexes
                 algoliaClient.multipleQueries([
                     { indexName: 'articles', query: userSearch },
                     { indexName: 'authors', query: userSearch },
                     { indexName: 'genres', query: userSearch }
                 ]).then(({ results }) => {
-                    // Combine results from all indexes
+                    // Combine results from all indexes into one array
                     const combinedResults = results.reduce((acc, result) => {
                         return acc.concat(result.hits);
                     }, []);
@@ -123,6 +123,15 @@ const SearchArticles = () => {
             <div className='SearchBackground'/>
         </div>
     );
+}
+
+// Search results that show when user has input a search into the search bar
+const SearchResults = () => {
+    return (
+        <div className='SearchResultsContainer'>
+            Search results
+        </div>
+    )
 }
 
 // Search results that show when user is focused on search bar but has not input a search yet
@@ -259,15 +268,6 @@ const GenreSuggestion = ({ genre }) => {
                     Genre
                 </div>
             </div>
-        </div>
-    )
-}
-
-// Search results that show when user has input a search into the search bar
-const SearchResults = () => {
-    return (
-        <div>
-            Search results
         </div>
     )
 }
