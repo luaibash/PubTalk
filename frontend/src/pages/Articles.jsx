@@ -87,6 +87,10 @@ const SearchArticles = () => {
                         }));
                     });
 
+                    // If there are no search results, still show the search results
+                    if (combinedSearchResults.length === 0) setShowSearchResults(true);
+                    else setShowSearchResults(false);
+
                     // Sort combined results by relevance score, limit it to a max of 6 search results, and set it to searchResults
                     combinedSearchResults.sort((a, b) => a.relevance - b.relevance);
                     setSearchResults(combinedSearchResults.slice(0, 6));
@@ -94,12 +98,11 @@ const SearchArticles = () => {
                 }).catch(err => {
                     console.error('Error searching Algolia:', err);
                 });
-
-                setShowSearchResults(true);
             }
             
-            // If search is empty, return suggested results
+            // If search is empty, empty out search results and show suggested results
             else {
+                setSearchResults([]);
                 setShowSearchResults(false);
             }
         }
@@ -114,7 +117,7 @@ const SearchArticles = () => {
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
                 <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"} ref={searchResultsRef}>
-                {showSearchResults ? 
+                {searchResults.length != 0 || showSearchResults ? 
                     <SearchResults searchResults={searchResults}/> 
                     : 
                     <SearchSuggestions 
