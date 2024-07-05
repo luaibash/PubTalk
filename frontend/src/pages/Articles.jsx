@@ -141,8 +141,8 @@ const SearchArticles = () => {
 const SearchResults = ({searchResults, userSearch}) => {
     // Maps out all search results and uses the corresponding component for it result type
     return (
-        <div className='SearchResultsContainer'>
-            <div className='PromptSearchContainer'>
+        <div className={searchResults.length != 0 ? 'SearchResultsContainer' : 'EmptySearchResultsContainer'}>
+            <div className='PromptSearchContainer' id={searchResults.length != 0 ? '' : 'EmptyPromptSearchContainer'}>
                 <img src={SearchIcon} alt="Search Icon" className='SearchIcon'/>
                 <div className='PromptSearchName'>
                     {userSearch}
