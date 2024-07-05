@@ -117,7 +117,7 @@ const SearchArticles = () => {
             </div>
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
-                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"} ref={searchResultsRef}>
+                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "ShowSearchResults"} ref={searchResultsRef}>
                 {searchResults.length != 0 || showSearchResults ? 
                     <SearchResults searchResults={searchResults} userSearch={userSearch}/> 
                     : 
@@ -191,14 +191,14 @@ const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, se
                             "Sports", "Entertainment", "Mystery", "Fantasy", "Adventure"];
             
             // Use Math.random() to get random indexes and make sure they aren't the same
-            var firstGenre = genres[(Math.floor(Math.random() * genres.length))];
-            var secondGenre = genres[(Math.floor(Math.random() * genres.length))];
+            var firstGenre = Math.floor(Math.random()*genres.length);
+            var secondGenre = Math.floor(Math.random()*genres.length);
             if (firstGenre === secondGenre) {
                 if (secondGenre === genres.length) secondGenre -= 1;
                 else secondGenre += 1;
             }
 
-            setRandomGenres([firstGenre, secondGenre]);
+            setRandomGenres([genres[firstGenre], genres[secondGenre]]);
         }
 
         // Only fetch when random articles/authors/genres haven't been initialized yet, which is when page is first loaded
