@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import emailjs from '@emailjs/browser';
 import * as EmailValidator from 'email-validator';
 import Waves from '../assets/contact/Waves.svg';
+import LoadAnimation from '../components/LoadAnimation';
 import Checkmark from '../assets/contact/Checkmark.png';
 import '../styles/App.css';
 import '../styles/Contact.css';
@@ -38,7 +39,7 @@ const Contact = () => {
                                 Last Name
                                 <div className='Required'>* Required</div>
                             </div>
-                            <input type="text" placeholder='Smith' autoComplete="family-name" className='Input'/>
+                            <input type="text" placeholder='Smith' autoComplete='family-name' className='Input'/>
                         </div>
                         <div className='InputContainer'>
                             <div className='ContactTitle'>
@@ -46,7 +47,7 @@ const Contact = () => {
                                 <div className='Required'>* Required</div>
                                 <div className='EmailWarning'>* Invalid Email</div>
                             </div>
-                            <input type="email" placeholder='john@gmail.com' autoComplete="email" className='Input'/>
+                            <input type="email" placeholder='john@gmail.com' autoComplete='email' className='Input'/>
                         </div>
                     </div>
                     <div className='MessageContainer'>
@@ -61,6 +62,7 @@ const Contact = () => {
                             <div className='ContactButton' onClick={() => sendEmail(isSent, setSent)}>
                                 <div className='TransitionContainer'>
                                     Submit
+                                    <LoadAnimation/>
                                     <img src={Checkmark} alt="" className='Checkmark'/>
                                 </div>
                             </div>
@@ -133,14 +135,19 @@ const sendEmail = async (isSent, setSent) => {
             return;
         }
 
-        // If the user is allowed to submit another form, proceed with sending the email
+        // If the user is allowed to submit another form, start loading animation and send the email
+        document.getElementsByClassName("TransitionContainer")[0].style.animation = 'LoadingTransition 1s ease forwards';
         emailjs.send(serviceID, templateID, templateParams, publicKey)
         .then(function(response) {
-            document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
-            console.log('SUCCESS!', response.status, response.text);
+            // Wait a second to ensure that the loading transition is complete
+            setTimeout(() => {
+                document.getElementsByClassName("TransitionContainer")[0].style.animation = 'CheckmarkTransition 1s ease forwards';
+                console.log('SUCCESS!', response.status, response.text);
+            }, 1000);
         }, function(error) {
             setSent(false);                                                       // Allow user to send another email as it failed
             document.getElementsByClassName("Error")[0].style.display = 'block';  // If error has occurred, notify the user
+            document.getElementsByClassName("TransitionContainer")[0].style.animation = '';
             console.log('FAILED...', error);
         });
     } catch (error) {   // Handle error accordingly (e.g., display error message to the user)
