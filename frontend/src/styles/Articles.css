@@ -137,11 +137,11 @@
     padding: 10px 0 10px 25px;
 }
 .PromptSearchContainer {
-    padding: 15px 0 10px 25px;
+    padding: 20px 0 10px 25px;
     border-top-left-radius: 33px;
 }
 #EmptyPromptSearchContainer {
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     border-radius: 20px;
 }
 

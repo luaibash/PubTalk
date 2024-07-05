@@ -117,7 +117,7 @@ const SearchArticles = () => {
             </div>
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
-                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "ShowSearchResults"} ref={searchResultsRef}>
+                <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"} ref={searchResultsRef}>
                 {searchResults.length != 0 || showSearchResults ? 
                     <SearchResults searchResults={searchResults} userSearch={userSearch}/> 
                     : 
