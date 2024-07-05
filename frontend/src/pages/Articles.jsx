@@ -4,8 +4,9 @@ import algoliasearch from 'algoliasearch/lite';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
 import Genres from '../components/Genres';
-import Arrow from '../assets/home/Arrow.png';
+import SearchIcon from '../assets/articles/Search.svg'
 import GenreSuggestionIcon from '../assets/articles/ArticleSuggestionIcon.svg';
+import Arrow from '../assets/home/Arrow.png';
 import '../styles/App.css';
 import '../styles/Articles.css';
 import '../styles/Boxes.css';
@@ -118,7 +119,7 @@ const SearchArticles = () => {
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
                 <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"} ref={searchResultsRef}>
                 {searchResults.length != 0 || showSearchResults ? 
-                    <SearchResults searchResults={searchResults}/> 
+                    <SearchResults searchResults={searchResults} userSearch={userSearch}/> 
                     : 
                     <SearchSuggestions 
                         randomArticles={randomArticles} 
@@ -137,10 +138,17 @@ const SearchArticles = () => {
 }
 
 // Search results that show when user has input a search into the search bar
-const SearchResults = ({searchResults}) => {
+const SearchResults = ({searchResults, userSearch}) => {
     // Maps out all search results and uses the corresponding component for it result type
     return (
         <div className='SearchResultsContainer'>
+            <div className='PromptSearchContainer'>
+                <img src={SearchIcon} alt="Search Icon" className='SearchIcon'/>
+                <div className='PromptSearchName'>
+                    {userSearch}
+                    <span className='GraySearch'> &nbsp;-&nbsp; Search</span>
+                </div>
+            </div>
             {searchResults.map(result => {
                 if (result.objectType === 'articles') {
                     return <ArticleSuggestion key={result.objectID} article={result}/>;

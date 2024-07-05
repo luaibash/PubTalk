@@ -90,7 +90,7 @@
 }
 
 .SearchResultsContainer {
-    margin: 16px 25px 15px 0;
+    margin: 0 25px 15px 0;
 }
 
 .ArticleSuggestionsContainer, .AuthorSuggestionsContainer, .GenreSuggestionsContainer {
@@ -114,9 +114,8 @@
     margin-bottom: 5px;
 }
 
-.ArticleSuggestion, .AuthorSuggestion, .GenreSuggestion {
+.ArticleSuggestion, .AuthorSuggestion, .GenreSuggestion, .PromptSearchContainer {
     display: flex;
-    padding: 10px 0 10px 25px;
 
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
@@ -125,18 +124,24 @@
     text-decoration: none;
     transition: background-color 0.3s;
 }
-.ArticleSuggestion:hover, .AuthorSuggestion:hover, .GenreSuggestion:hover {
+.ArticleSuggestion:hover, .AuthorSuggestion:hover, .GenreSuggestion:hover, .PromptSearchContainer:hover {
     background-color: #eeeeee;
 }
 .ArticleSuggestion {
     flex-direction: column;
+    padding: 10px 0 10px 25px;
 }
-.AuthorSuggestion, .GenreSuggestion {
+.AuthorSuggestion, .GenreSuggestion, .PromptSearchContainer {
     gap: 13px;
     align-items: center;
+    padding: 10px 0 10px 25px;
+}
+.PromptSearchContainer {
+    padding: 20px 0 10px 25px;
+    border-top-left-radius: 33px;
 }
 
-.SuggestionName {
+.SuggestionName, .PromptSearchName {
     font-size: 16px;
     font-weight: 500;
     color: black;
@@ -159,6 +164,15 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.GraySearch {
+    color: #656565;
+}
+
+.SearchIcon {
+    width: 30px;
+    padding: 0 11px;
 }
 
 .AuthorSuggestionImage {
