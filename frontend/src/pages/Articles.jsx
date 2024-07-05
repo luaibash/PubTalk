@@ -73,29 +73,20 @@ const SearchArticles = () => {
         if (showSearchBox) {
             // If search is not empty, execute algolia search query and return results
             if (userSearch) {
-                // Perform search with all indexes
-                algoliaClient.multipleQueries([
-                    { indexName: 'articles', query: userSearch },
-                    { indexName: 'authors', query: userSearch },
-                    { indexName: 'genres', query: userSearch }
+                // Perform search with the pubtalk index
+                algoliaClient.search([
+                    { indexName: 'pubtalk', query: userSearch },
                 ]).then(({ results }) => {
-                    // Combine results from all indexes and calculate a relevance score
-                    const combinedSearchResults = results.flatMap((result, index) => {
-                        return result.hits.map((hit, hitIndex) => ({
-                            ...hit,
-                            relevance: result.processingTimeMS + hitIndex, // Processing time of index + the ranking of entry in index
-                            objectType: result.index                       // Stores Index name to know what type of result it is      
-                        }));
-                    });
+                    // Take the first 6 search results and set it to searchResults
+                    const slicedSearchResults = results[0].hits.slice(0, 6);
 
                     // If there are no search results, still show the search results
-                    if (combinedSearchResults.length === 0) setShowSearchResults(true);
+                    if (slicedSearchResults.length === 0) setShowSearchResults(true);
                     else setShowSearchResults(false);
 
-                    // Sort combined results by relevance score, limit it to a max of 6 search results, and set it to searchResults
-                    combinedSearchResults.sort((a, b) => a.relevance - b.relevance);
-                    setSearchResults(combinedSearchResults.slice(0, 6));
-                    console.log(combinedSearchResults)
+                    // Set it to searchResults
+                    setSearchResults(slicedSearchResults);
+                    console.log(slicedSearchResults);
                 }).catch(err => {
                     console.error('Error searching Algolia:', err);
                 });
@@ -150,11 +141,11 @@ const SearchResults = ({searchResults, userSearch}) => {
                 </div>
             </div>
             {searchResults.map(result => {
-                if (result.objectType === 'articles') {
+                if (result.objectType === 'article') {
                     return <ArticleSuggestion key={result.objectID} article={result}/>;
-                } else if (result.objectType === 'authors') {
+                } else if (result.objectType === 'author') {
                     return <AuthorSuggestion key={result.objectID} author={result}/>;
-                } else if (result.objectType === 'genres') {
+                } else if (result.objectType === 'genre') {
                     return <GenreSuggestion key={result.objectID} genre={result.genre}/>;
                 } else {
                     return null;
