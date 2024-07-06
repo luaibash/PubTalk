@@ -64,4 +64,89 @@ const clearAlgoliaPubtalkIndex = async () => {
     }
 }
 
-module.exports = syncAlgoliaPubtalkIndex;
+// Inserts the given entry to the pubtalk index
+const insertEntryPubtalkIndex = async (object) => {
+    try {
+        // Retrieve all important values from incoming mongoDB object
+        const table = object.ns.coll;
+        const entry = object.fullDocument;
+        let newAlgoliaObject;
+
+        // Map entry to an acceptable format for algolia, based on type of entry
+        if (table === "articles") {
+            newAlgoliaObject = {
+                objectID: entry._id.toString(),
+                objectType: "article",
+                id: entry._id,
+                title: entry.title,
+                author: entry.author,
+                description: entry.description,
+                genre: entry.genre,
+                createdAt: entry.createdAt,
+            };
+        }
+        else if (table === "authors") {
+            newAlgoliaObject = {
+                objectID: entry._id.toString(),
+                objectType: "author",
+                ...entry
+            };
+        }
+        else if (table === "genres") {
+            newAlgoliaObject = {
+                objectID: entry._id.toString(),
+                objectType: "genre",
+                ...entry
+            };
+        }
+        else {
+            console.log(`New object is from unknown table ${table}, skipping upsert`);
+            return;
+        }
+
+        // Save the new object to algolia
+        await pubtalkDatabaseIndex.saveObject(newAlgoliaObject);
+        console.log('Inserted new object into Algolia pubtalk index:', newAlgoliaObject);
+    } catch (error) {
+        console.error('Error inserting object into Algolia pubtalk index:', error);
+    }
+};
+
+// Updates the given entry to the pubtalk index
+const updateEntryPubtalkIndex = async (object) => {
+    try {
+        // Retrieve the updated fields and the objectID of the existing entry
+        const updatedFields = object.updateDescription.updatedFields;
+        const objectID = object.documentKey._id.toString();
+
+        // Update the existing object in algolia
+        await pubtalkDatabaseIndex.partialUpdateObject({
+            objectID,
+            ...updatedFields
+        });
+        console.log('Updated object in Algolia pubtalk index:', { objectID, ...updatedFields });
+    } catch (error) {
+        console.error('Error updating object in Algolia:', error);
+    }
+};
+
+// Deletes the given entry from the pubtalk index
+const deleteEntryPubtalkIndex = async (object) => {
+    try {
+        // Retrieve the objectID of the existing entry
+        const objectID = object.documentKey._id.toString();
+
+        // Delete the existing object in algolia
+        await pubtalkDatabaseIndex.deleteObject(objectID);
+        console.log('Deleted object from Algolia pubtalk index with objectID', objectID);
+    } catch (error) {
+        console.error('Error deleting object from Algolia pubtalk index:', error);
+    }
+};
+
+module.exports = {
+    syncAlgoliaPubtalkIndex,
+    insertEntryPubtalkIndex,
+    updateEntryPubtalkIndex,
+    deleteEntryPubtalkIndex,
+}
