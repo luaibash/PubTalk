@@ -7,6 +7,7 @@ const {
     getArticlesByGenre,
     getArticlesByAuthor,
     getRandomArticles,
+    getRandomGenres,
     createArticle,
     deleteArticle,
     updateArticle
@@ -24,7 +25,10 @@ router.get('/recent', getRecentArticles)
 router.get('/top', getTopArticles)
 
 // GET RANDOM articles
-router.get('/random', getRandomArticles)
+router.get('/random/articles', getRandomArticles)
+
+// GET RANDOM genres
+router.get('/random/genres', getRandomGenres)
 
 // GET a single article based on id
 router.get('/id/:id', getArticleByID)

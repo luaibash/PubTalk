@@ -1,7 +1,8 @@
 require('dotenv').config();                         // Allows use of the .env folder which holds private data
 const algoliasearch = require('algoliasearch');     // Algolia package to access algolia account
 const Article = require('../models/articleModel');  // Gets the article model to retrieve all articles and sync them in algolia
-const Author = require('../models/authorModel');    // Gets the author model to retrieve all author and sync them in algolia
+const Author = require('../models/authorModel');    // Gets the author model to retrieve all authors and sync them in algolia
+const Genre = require('../models/genreModel');      // Gets the genre model to retrieve all genres and sync them in algolia
 
 // Connect to algolia environment and indexes
 const algoliaClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
@@ -25,17 +26,29 @@ const syncAlgoliaPubtalkIndex = async () => {
             objectType: "author",
             ...author.toObject()
         }));
-        
+
+        // Select every genre, and map to an acceptable format for algolia
+        const genres = await Genre.find();
+        const algoliaGenreObjects = genres.map(genre => ({
+            objectID: genre._id.toString(),
+            objectType: "genre",
+            ...genre.toObject()
+        }));
+    
         // Clear the Algolia pubtalk index to remove any entries that don't exist anymore
         await clearAlgoliaPubtalkIndex();
 
         // Sync the articles to algolia
         await pubtalkDatabaseIndex.saveObjects(algoliaArticleObjects);
-        console.log('Algolia articles index synced');
+        console.log('Algolia articles synced to pubtalk index');
 
         // Sync the authors to algolia
         await pubtalkDatabaseIndex.saveObjects(algoliaAuthorObjects);
-        console.log('Algolia authors index synced');
+        console.log('Algolia authors synced to pubtalk index');
+
+        // Sync the genres to algolia
+        await pubtalkDatabaseIndex.saveObjects(algoliaGenreObjects);
+        console.log('Algolia genres synced to pubtalk index')
     } catch (error) {
         console.error('Error syncing Algolia pubtalk index:', error);
     }

@@ -146,7 +146,7 @@ const SearchResults = ({searchResults, userSearch}) => {
                 } else if (result.objectType === 'author') {
                     return <AuthorSuggestion key={result.objectID} author={result}/>;
                 } else if (result.objectType === 'genre') {
-                    return <GenreSuggestion key={result.objectID} genre={result.genre}/>;
+                    return <GenreSuggestion key={result.objectID} genre={result}/>;
                 } else {
                     return null;
                 }
@@ -161,7 +161,7 @@ const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, se
     useEffect(() => {
         // Fetches the API to get 2 random articles
         const fetchRandomArticles = async () => {
-            const response = await fetch('/api/articles/random?limit=2');
+            const response = await fetch('/api/articles/random/articles?limit=2');
             const json = await response.json();
 
             if (response.ok) setRandomArticles(json);
@@ -175,27 +175,18 @@ const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, se
             if (response.ok) setRandomAuthors(json);
         }
 
-        // Get 2 random genres from the available genres
-        const getRandomGenres = async () => {
-            const genres = ["Technology", "Art", "History", "Society", "Cooking", "AI", "Business", 
-                            "Design", "Innovation", "Ethics", "War", "Sustainability", "Climate", 
-                            "Sports", "Entertainment", "Mystery", "Fantasy", "Adventure"];
-            
-            // Use Math.random() to get random indexes and make sure they aren't the same
-            var firstGenre = Math.floor(Math.random()*genres.length);
-            var secondGenre = Math.floor(Math.random()*genres.length);
-            if (firstGenre === secondGenre) {
-                if (secondGenre === genres.length) secondGenre -= 1;
-                else secondGenre += 1;
-            }
+        // Fetches the API to get 2 random genres
+        const fetchRandomGenres = async () => {
+            const response = await fetch('/api/articles/random/genres?limit=2');
+            const json = await response.json();
 
-            setRandomGenres([genres[firstGenre], genres[secondGenre]]);
+            if (response.ok) setRandomGenres(json);
         }
 
         // Only fetch when random articles/authors/genres haven't been initialized yet, which is when page is first loaded
         if (!randomArticles) fetchRandomArticles();
         if (!randomAuthors) fetchRandomAuthors();
-        if (!randomGenres) getRandomGenres();
+        if (!randomGenres) fetchRandomGenres();
     }, [])
 
     return (
@@ -283,7 +274,7 @@ const GenreSuggestion = ({ genre }) => {
             <img src={GenreSuggestionIcon} alt="Article Suggestion Icon" className='GenreSuggestionIcon' />
             <div className='GenreSuggestionDetails'>
                 <div className='SuggestionName'>
-                    {genre}
+                    {genre.genre}
                 </div>
                 <div className='SuggestionGenre'>
                     Genre
