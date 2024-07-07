@@ -1,5 +1,5 @@
 import {React, useState, useEffect, useRef} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import algoliasearch from 'algoliasearch/lite';
 import PageScroll from '../components/PageScroll';
 import ArticleDetails from '../components/ArticleDetails';
@@ -40,6 +40,9 @@ const SearchArticles = () => {
     const [randomAuthors, setRandomAuthors] = useState(null);           // Holds the random authors for the search suggestions
     const [randomGenres, setRandomGenres] = useState(null);             // Holds the random genres for the search suggestions
 
+    // Navigate variable initialized to navigate pages
+    const navigate = useNavigate();
+
     // Activates when user focuses on the search bar
     const handleSearchFocus = (e) => {
         setShowSearchBox(true);
@@ -48,6 +51,14 @@ const SearchArticles = () => {
     // Activates when users inputs a search in the search bar, updating userSearch
     const handleSearch = (e) => {
         setUserSearch(e.target.value);
+    }
+
+    // Activates when the user presses enter, redirecting to the search results page
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            const encodedUserSearch = encodeURIComponent(userSearch).replace(/%20/g, '+');
+            navigate(`/search?userSearch=${encodedUserSearch}`);
+        }
     }
 
     // Used to track every click and close the search box if user clicks anywhere excluding the search bar and search box itself
@@ -106,7 +117,7 @@ const SearchArticles = () => {
                 Topics Here
             </div>
             <div className='SearchContainer'>
-                <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
+                <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onKeyDown={handleKeyDown} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
                 <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"} ref={searchResultsRef}>
                 {searchResults.length !== 0 || showSearchResults ? 
                     <SearchResults searchResults={searchResults} userSearch={userSearch}/> 
