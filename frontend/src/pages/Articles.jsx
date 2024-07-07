@@ -86,7 +86,6 @@ const SearchArticles = () => {
 
                     // Set it to searchResults
                     setSearchResults(slicedSearchResults);
-                    console.log(slicedSearchResults);
                 }).catch(err => {
                     console.error('Error searching Algolia:', err);
                 });
@@ -109,7 +108,7 @@ const SearchArticles = () => {
             <div className='SearchContainer'>
                 <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
                 <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"} ref={searchResultsRef}>
-                {searchResults.length != 0 || showSearchResults ? 
+                {searchResults.length !== 0 || showSearchResults ? 
                     <SearchResults searchResults={searchResults} userSearch={userSearch}/> 
                     : 
                     <SearchSuggestions 
@@ -130,16 +129,19 @@ const SearchArticles = () => {
 
 // Search results that show when user has input a search into the search bar
 const SearchResults = ({searchResults, userSearch}) => {
+    // encode userSearch so that symbols like & will work. Replace spaces with + for link
+    const encodedUserSearch = encodeURIComponent(userSearch).replace(/%20/g, '+');
+
     // Maps out all search results and uses the corresponding component for it result type
     return (
-        <div className={searchResults.length != 0 ? 'SearchResultsContainer' : 'EmptySearchResultsContainer'}>
-            <div className='PromptSearchContainer' id={searchResults.length != 0 ? '' : 'EmptyPromptSearchContainer'}>
+        <div className={searchResults.length !== 0 ? 'SearchResultsContainer' : 'EmptySearchResultsContainer'}>
+            <Link to={`/search?userSearch=${encodedUserSearch}`} className='PromptSearchContainer' id={searchResults.length !== 0 ? '' : 'EmptyPromptSearchContainer'}>
                 <img src={SearchIcon} alt="Search Icon" className='SearchIcon'/>
                 <div className='PromptSearchName'>
                     {userSearch}
                     <span className='GraySearch'> &nbsp;-&nbsp; Search</span>
                 </div>
-            </div>
+            </Link>
             {searchResults.map(result => {
                 if (result.objectType === 'article') {
                     return <ArticleSuggestion key={result.objectID} article={result}/>;
