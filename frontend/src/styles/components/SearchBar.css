@@ -1,0 +1,157 @@
+.SearchContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.Search {
+    width: 600px; 
+    height: 45px;
+    padding-left: 20px;
+    padding-right: 55px;
+
+    border: solid 2px #B9B5B5;
+    border-radius: 50px;
+
+    font-size: 16px;
+    font-family: Inter, serif;
+
+    background-image: url('../../assets/articles/Search.svg');
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px);
+}
+.Search:focus {
+    border: solid 2px black;
+    outline: none;
+}
+
+.SearchResults {
+    position: absolute;
+    top: 75px;
+
+    width: 679px;
+    min-width: 293px;
+    max-width: 100%;
+
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+#ShowSearchResults {
+    display: block;
+}
+#HideSearchResults {
+    display: none;
+}
+
+.SearchSuggestionsContainer {
+    margin: 25px 25px 20px 0;
+}
+
+.SearchResultsContainer {
+    margin: 0 25px 15px 0;
+}
+
+.ArticleSuggestionsContainer, .AuthorSuggestionsContainer, .GenreSuggestionsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    min-height: 150px;
+}
+
+.SuggestionsTitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #949494;
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+
+.SuggestionsDivider {
+    border-bottom: 1px solid #C5C5C5;
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+
+.ArticleSuggestion, .AuthorSuggestion, .GenreSuggestion, .PromptSearchContainer {
+    display: flex;
+
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    cursor: pointer;
+
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.ArticleSuggestion:hover, .AuthorSuggestion:hover, .GenreSuggestion:hover, .PromptSearchContainer:hover {
+    background-color: #eeeeee;
+}
+.ArticleSuggestion {
+    flex-direction: column;
+    padding: 10px 0 10px 25px;
+}
+.AuthorSuggestion, .GenreSuggestion, .PromptSearchContainer {
+    gap: 13px;
+    align-items: center;
+    padding: 10px 0 10px 25px;
+}
+.PromptSearchContainer {
+    padding: 20px 0 10px 25px;
+    border-top-left-radius: 33px;
+}
+#EmptyPromptSearchContainer {
+    padding-bottom: 20px;
+    border-radius: 20px;
+}
+
+.SuggestionName, .PromptSearchName {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+
+    padding-right: 15px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.SuggestionName {
+    margin-bottom: 5px;
+}
+
+.SuggestionDetails, .SuggestionRole, .SuggestionGenre {
+    font-size: 14px;
+    font-weight: 500;
+    color: #434343;
+
+    padding-right: 20px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.GraySearch {
+    color: #656565;
+}
+
+.SearchIcon {
+    min-width: 30px;
+    width: 30px;
+    padding: 0 11px;
+}
+
+.AuthorSuggestionImage {
+    width: 50px;
+    height: 50px;
+
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.GenreSuggestionIcon {
+    width: 40px;
+    padding: 0 5px;
+}
