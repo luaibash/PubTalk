@@ -15,21 +15,55 @@
 }
 
 .SearchResultsFilterContainer {
-    margin-top: 50px;
-    padding-bottom: 15px;
+    position: relative;
     display: flex;
     gap: 50px;
+
+    margin-top: 50px;
+    padding-bottom: 15px;
+
     border-bottom: solid 1px #C9C9C9;
 }
 
 .SearchResultFilter {
-    cursor: pointer;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
+    color: #666666;
+
+    transition: color 0.15s;
+}
+.SearchResultFilter:hover {
+    cursor: pointer;
+    color: black;
+}
+#SearchResultFilterActive {
+    color: black;
+}
+
+.ActiveFilterBorder {
+    position: absolute;
+    bottom: -0.5px;
+
+    border-bottom: solid 1px black;
+}
+#AllBorder {
+    width: 22px;
+}
+#ArticlesBorder {
+    left: 73px;
+    width: 70px;
+}
+#AuthorsBorder {
+    left: 195px;
+    width: 73px;
+}
+#GenresBorder {
+    left: 320px;
+    width: 65px;
 }
 
 .SearchResultsContainer {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 @media (max-width: 1000px) {

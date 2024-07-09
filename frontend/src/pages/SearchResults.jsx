@@ -15,9 +15,9 @@ const SearchResults = () => {
     const queryParams = new URLSearchParams(window.location.search);
     const userSearch = queryParams.get('userSearch');
 
-
+    // Switches the current search filter to the clicked one, modifying the style to represent the change
     const switchSearchFilter = (filter) => {
-        setSearchFilter(filter)
+        setSearchFilter(filter);
     };
 
     // Perform search with the pubtalk index and set search results
@@ -41,18 +41,19 @@ const SearchResults = () => {
                 <SearchBar showSearchSuggestions={false} initialSearch={userSearch} searchContainerCentred={false}/> 
             </div>
             <div className='SearchResultsFilterContainer'>
-                <div className='SearchResultFilter' onClick={() => switchSearchFilter("all")}>
+                <div className='SearchResultFilter' id={searchFilter === "all" ? "SearchResultFilterActive" : ""} onClick={() => switchSearchFilter("all")}>
                     All
                 </div>
-                <div className='SearchResultFilter' onClick={() => switchSearchFilter("articles")}>
+                <div className='SearchResultFilter' id={searchFilter === "articles" ? "SearchResultFilterActive" : ""} onClick={() => switchSearchFilter("articles")}>
                     Articles
                 </div>
-                <div className='SearchResultFilter' onClick={() => switchSearchFilter("authors")}>
+                <div className='SearchResultFilter' id={searchFilter === "authors" ? "SearchResultFilterActive" : ""} onClick={() => switchSearchFilter("authors")}>
                     Authors
                 </div>
-                <div className='SearchResultFilter' onClick={() => switchSearchFilter("genres")}>
+                <div className='SearchResultFilter' id={searchFilter === "genres" ? "SearchResultFilterActive" : ""} onClick={() => switchSearchFilter("genres")}>
                     Genres
                 </div>
+                <div className='ActiveFilterBorder' id={searchFilter === "all" ? "AllBorder" : (searchFilter === "articles" ? "ArticlesBorder" : (searchFilter === "authors" ? "AuthorsBorder" : "GenresBorder"))}/>
             </div>
             <div className='SearchResultsContainer'>
                 {searchResults.map(result => {
