@@ -6,8 +6,6 @@
 
     display: flex;
     flex-direction: column;
-
-    height: 1000px;
 }
 
 .SearchBarContainer {
@@ -65,7 +63,71 @@
     display: flex;
     padding: 30px 0;
 
+    text-decoration: none;
     border-bottom: 1px solid #e4e4e4;
+}
+.ArticleResult {
+    flex-direction: column;
+}
+
+.ArticleResultAuthorContainer {
+    display: flex;
+    gap: 10px;
+
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.ArticleResultAuthorPicture {
+    border-radius: 50px;
+    border: solid 1px black;
+    width: 25px;
+    height: 25px
+}
+
+.SearchResultsArticleCover {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.ArticleResultAuthorName {
+    font-size: 14px;
+    color: black;
+}
+
+.ArticleResultAuthorRole {
+    font-weight: 500;
+    color: #444444;
+}
+
+.ArticleResultContent {
+    display: flex;
+    gap: 50px;
+}
+
+.ArticleResultDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    max-width: 600px;
+}
+
+.ArticleResultTitle {
+    font-size: 20px;
+    color: black;
+}
+
+.ArticleResultDescription {
+    color: black;
+    font-weight: 500;
+}
+
+.ArticleResultOther {
+    display: flex;
+    justify-content: space-between;
+    color: #444444;
 }
 
 @media (max-width: 1000px) {

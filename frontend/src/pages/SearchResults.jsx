@@ -1,4 +1,5 @@
 import {React, useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import algoliasearch from 'algoliasearch/lite';
 import SearchBar from '../components/SearchBar';
 import GenreIcon from '../assets/articles/GenreIcon.svg';
@@ -72,10 +73,50 @@ const SearchResults = () => {
 }
 
 const ArticleResult = ({ article }) => {
+    const imageFolder = (article) ? article.title.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
+    const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-');  // Grab article link
+
+    // Converts the date given by the article to more readable terms
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+
+    // Takes the first two genres and returns a string to display for the article
+    function formatGenres(genres) {
+        if (genres.length === 0) return "General";       // If array is empty, return general genre
+        else if (genres.length === 1) return genres[0];   // If there is only one genre, return it
+        else return `${genres[0]}, ${genres[1]}`;         // If there are two or more genres, format and return the first two
+    }
+
     return (
-        <div className='ArticleResult'>
-            {article.title}
-        </div>
+        <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='ArticleResult'>
+            <div className='ArticleResultAuthorContainer'>
+                <div className='ArticleResultAuthorPicture'/>
+                <div className='ArticleResultAuthorName'>
+                    {article.author} <span className='ArticleResultAuthorRole'> - Author </span>
+                </div>
+            </div>
+            <div className='ArticleResultContent'>
+                <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='SearchResultsArticleCover'/>
+                <div className='ArticleResultDetails'>
+                    <div className='ArticleResultTitle'>
+                        {article.title}
+                    </div>
+                    <div className='ArticleResultDescription'>
+                        {article.description}
+                    </div>
+                    <div className='ArticleResultOther'>
+                        <div>
+                            {formatDate(article.createdAt)}
+                        </div>
+                        <div>
+                            {formatGenres(article.genre)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Link>
     )
 }
 
