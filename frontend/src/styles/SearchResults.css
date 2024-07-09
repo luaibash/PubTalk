@@ -22,7 +22,7 @@
     margin-top: 50px;
     padding-bottom: 15px;
 
-    border-bottom: solid 1px #C9C9C9;
+    border-bottom: solid 1.5px #e4e4e4;
 }
 
 .SearchResultFilter {
@@ -42,9 +42,8 @@
 
 .ActiveFilterBorder {
     position: absolute;
-    bottom: -0.5px;
-
-    border-bottom: solid 1px black;
+    bottom: -1px;
+    border-bottom: solid 1.5px black;
 }
 #AllBorder {
     width: 22px;
