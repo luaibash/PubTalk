@@ -115,14 +115,28 @@
 }
 
 .ArticleResultTitle {
-    font-size: 20px;
+    font-size: 22px;
     color: black;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .ArticleResultDescription {
-    color: black;
+    color: rgb(110, 109, 109);
     font-size: 16px;
     font-weight: 400;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .ArticleResultOther {
