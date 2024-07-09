@@ -121,13 +121,17 @@
 
 .ArticleResultDescription {
     color: black;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .ArticleResultOther {
     display: flex;
     justify-content: space-between;
+
+    font-size: 14px;
     color: #444444;
+    font-weight: 400;
 }
 
 @media (max-width: 1000px) {
