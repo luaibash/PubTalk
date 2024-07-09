@@ -28,7 +28,7 @@ const SearchArticles = () => {
                 Explore Our Articles: Find Your Desired
                 Topics Here
             </div>
-            <SearchBar/>
+            <SearchBar showSearchSuggestions={true} searchContainerCentred={true}/>
             <div className='SearchBackground'/>
         </div>
     );

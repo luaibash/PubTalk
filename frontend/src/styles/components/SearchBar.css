@@ -1,6 +1,8 @@
 .SearchContainer {
     position: relative;
     display: flex;
+}
+#SearchContainerCentred {
     justify-content: center;
 }
 

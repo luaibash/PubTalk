@@ -10,8 +10,8 @@ import '../styles/components/SearchBar.css';
 const algoliaClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, process.env.REACT_APP_ALGOLIA_SEARCH_API_KEY);
 
 // Articles page that lets user search for articles, and see articles from most recent/popular/genre
-const SearchBar = () => {
-    const [userSearch, setUserSearch] = useState("");                   // Holds content of the search bar
+const SearchBar = ({showSearchSuggestions, initialSearch = "", searchContainerCentred}) => {
+    const [userSearch, setUserSearch] = useState(initialSearch);        // Holds content of the search bar
     const [searchResults, setSearchResults] = useState([]);             // Holds contents of the search results
     const [showSearchBox, setShowSearchBox] = useState(false);          // Holds whether to show the search box or not
     const [showSearchResults, setShowSearchResults] = useState(false);  // Holds whether to show search results or the initial suggestions
@@ -94,20 +94,24 @@ const SearchBar = () => {
     }, [userSearch, showSearchBox])
 
     return (
-        <div className='SearchContainer'>
+        <div className='SearchContainer' id={searchContainerCentred ? "SearchContainerCentred" : ""}>
             <input type="text" value={userSearch} onChange={handleSearch} onFocus={handleSearchFocus} onKeyDown={handleKeyDown} placeholder='What are you looking for?' className='Search' ref={searchBarRef}/>
             <div className='SearchResults' id={showSearchBox ? 'ShowSearchResults' : "HideSearchResults"} ref={searchResultsRef}>
             {searchResults.length !== 0 || showSearchResults ? 
                 <SearchResults searchResults={searchResults} userSearch={userSearch}/> 
-                : 
-                <SearchSuggestions 
+                :
+                (showSearchSuggestions ?
+                    <SearchSuggestions 
                     randomArticles={randomArticles} 
                     setRandomArticles={setRandomArticles} 
                     randomAuthors={randomAuthors} 
                     setRandomAuthors={setRandomAuthors} 
                     randomGenres={randomGenres}
                     setRandomGenres={setRandomGenres}
-                />
+                    />
+                    :
+                    null
+                )
             }
             </div>
         </div>
