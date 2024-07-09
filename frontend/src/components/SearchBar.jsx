@@ -1,8 +1,8 @@
 import {React, useState, useEffect, useRef} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import algoliasearch from 'algoliasearch/lite';
-import SearchIcon from '../assets/articles/Search.svg'
-import GenreSuggestionIcon from '../assets/articles/ArticleSuggestionIcon.svg';
+import SearchIcon from '../assets/articles/Search.svg';
+import GenreIcon from '../assets/articles/GenreIcon.svg';
 import '../styles/App.css';
 import '../styles/components/SearchBar.css';
 
@@ -82,6 +82,7 @@ const SearchBar = ({showSearchSuggestions, initialSearch = "", searchContainerCe
                     setSearchResults(slicedSearchResults);
                 }).catch(err => {
                     console.error('Error searching Algolia:', err);
+                    setShowSearchResults(true);
                 });
             }
             
@@ -264,7 +265,7 @@ const AuthorSuggestion = ({ author }) => {
 const GenreSuggestion = ({ genre }) => {
     return (
         <div className='GenreSuggestion'>
-            <img src={GenreSuggestionIcon} alt="Article Suggestion Icon" className='GenreSuggestionIcon' />
+            <img src={GenreIcon} alt="Article Suggestion Icon" className='GenreSuggestionIcon' />
             <div className='GenreSuggestionDetails'>
                 <div className='SuggestionName'>
                     {genre.genre}

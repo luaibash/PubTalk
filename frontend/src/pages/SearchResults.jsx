@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import SearchBar from '../components/SearchBar';
+import GenreIcon from '../assets/articles/GenreIcon.svg';
 import '../styles/SearchResults.css';
 
 // Initialize Algolia client, grabbing credentials from .env file
@@ -55,26 +56,24 @@ const SearchResults = () => {
                 </div>
                 <div className='ActiveFilterBorder' id={searchFilter === "all" ? "AllBorder" : (searchFilter === "articles" ? "ArticlesBorder" : (searchFilter === "authors" ? "AuthorsBorder" : "GenresBorder"))}/>
             </div>
-            <div className='SearchResultsContainer'>
-                {searchResults.map(result => {
-                    if (result.objectType === 'article') {
-                        return <ArticleResult key={result.objectID} article={result}/>;
-                    } else if (result.objectType === 'author') {
-                        return <AuthorResult key={result.objectID} author={result}/>;
-                    } else if (result.objectType === 'genre') {
-                        return <GenreResult key={result.objectID} genre={result}/>;
-                    } else {
-                        return null;
-                    }
-                })}
-            </div>
+            {searchResults.map(result => {
+                if (result.objectType === 'article') {
+                    return <ArticleResult key={result.objectID} article={result}/>;
+                } else if (result.objectType === 'author') {
+                    return <AuthorResult key={result.objectID} author={result}/>;
+                } else if (result.objectType === 'genre') {
+                    return <GenreResult key={result.objectID} genre={result}/>;
+                } else {
+                    return null;
+                }
+            })}
         </div>
     )
 }
 
 const ArticleResult = ({ article }) => {
     return (
-        <div>
+        <div className='ArticleResult'>
             {article.title}
         </div>
     )
@@ -82,7 +81,7 @@ const ArticleResult = ({ article }) => {
 
 const AuthorResult = ({ author }) => {
     return (
-        <div>
+        <div className='AuthorResult'>
             {author.name}
         </div>
     )
@@ -90,7 +89,7 @@ const AuthorResult = ({ author }) => {
 
 const GenreResult = ({ genre }) => {
     return (
-        <div>
+        <div className='GenreResult'>
             {genre.genre}
         </div>
     )
