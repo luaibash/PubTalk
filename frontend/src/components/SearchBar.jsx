@@ -9,7 +9,7 @@ import '../styles/components/SearchBar.css';
 // Initialize Algolia client, grabbing credentials from .env file
 const algoliaClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, process.env.REACT_APP_ALGOLIA_SEARCH_API_KEY);
 
-// Articles page that lets user search for articles, and see articles from most recent/popular/genre
+// Search bar that lets users search for what they want
 const SearchBar = ({showSearchSuggestions, initialSearch = "", searchContainerCentred}) => {
     const [userSearch, setUserSearch] = useState(initialSearch);        // Holds content of the search bar
     const [searchResults, setSearchResults] = useState([]);             // Holds contents of the search results
