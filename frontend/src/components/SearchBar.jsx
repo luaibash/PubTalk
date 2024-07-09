@@ -125,7 +125,7 @@ const SearchResults = ({searchResults, userSearch}) => {
 
     // Maps out all search results and uses the corresponding component for it result type
     return (
-        <div className={searchResults.length !== 0 ? 'SearchResultsContainer' : 'EmptySearchResultsContainer'}>
+        <div className={searchResults.length !== 0 ? 'SearchBarResultsContainer' : 'EmptySearchBarResultsContainer'}>
             <Link to={`/search?userSearch=${encodedUserSearch}`} className='PromptSearchContainer' id={searchResults.length !== 0 ? '' : 'EmptyPromptSearchContainer'}>
                 <img src={SearchIcon} alt="Search Icon" className='SearchIcon'/>
                 <div className='PromptSearchName'>
@@ -212,7 +212,7 @@ const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, se
     )
 }
 
-// An article suggestion given in the initial search box before the user searches anything
+// An article suggestion given in the search box
 const ArticleSuggestion = ({ article }) => {
     const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-'); // Grab article link
 
@@ -241,7 +241,7 @@ const ArticleSuggestion = ({ article }) => {
     )
 }
 
-// An author suggestion given in the initial search box before the user searches anything
+// An author suggestion given in the search box
 const AuthorSuggestion = ({ author }) => {
     return (
         <div className='AuthorSuggestion'>
@@ -260,7 +260,7 @@ const AuthorSuggestion = ({ author }) => {
     )
 }
 
-// A genre suggestion given in the initial search box before the user searches anything
+// A genre suggestion given in the search box
 const GenreSuggestion = ({ genre }) => {
     return (
         <div className='GenreSuggestion'>

@@ -14,6 +14,24 @@
     margin-top: 30px;
 }
 
+.SearchResultsFilterContainer {
+    margin-top: 50px;
+    padding-bottom: 15px;
+    display: flex;
+    gap: 50px;
+    border-bottom: solid 1px #C9C9C9;
+}
+
+.SearchResultFilter {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.SearchResultsContainer {
+    margin-top: 50px;
+}
+
 @media (max-width: 1000px) {
     .SearchResultsPanel {
         padding-left: 25px;
