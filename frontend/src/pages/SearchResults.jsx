@@ -111,7 +111,7 @@ const ArticleResult = ({ article }) => {
             </div>
             <div className='ArticleResultContentContainer'>
                 <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='ArticleResultContent'>
-                    <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='SearchResultsArticleCover'/>
+                    <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='ArticleResultsCover'/>
                     <div className='ArticleResultDetails'>
                         <div className='ArticleResultTitle'>
                             {article.title}
@@ -137,7 +137,29 @@ const ArticleResult = ({ article }) => {
 const AuthorResult = ({ author }) => {
     return (
         <div className='AuthorResult'>
-            {author.name}
+            <div className='AuthorResultContentContainer'>
+                <Link to={`/`} className='AuthorResultContent'>
+                    <div className='AuthorResultPictureContainer'>
+                        <div className='AuthorResultPicture'/>
+                    </div>
+                    <div className='AuthorResultDetails'>
+                        <div className='AuthorResultTitle'>
+                            {author.name} - {author.role}
+                        </div>
+                        <div className='AuthorResultDescription'>
+                            {author.description}
+                        </div>
+                        <div className='AuthorResultOther'>
+                            <div>
+                                Favourite Genres: AI, Technology
+                            </div>
+                            <div>
+                                McMaster University
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+            </div>
         </div>
     )
 }
