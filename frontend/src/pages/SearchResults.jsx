@@ -158,6 +158,21 @@ const AuthorResult = ({ author }) => {
 }
 
 const GenreResult = ({ genre }) => {
+    const [genreCount, setGenreCount] = useState();
+
+    // Retrieve the author object from the DB based on the author name
+    useEffect(() => {
+        const fetchGenreCount = async () => {
+            const response = await fetch(`/api/articles/count/${genre.genre}`);
+            const json = await response.json();
+
+            if (response.ok) setGenreCount(json);
+            console.log(json)
+        }
+
+        if (genre) fetchGenreCount();
+    }, [genre]);
+
     return (
         <div className='GenreResult'>
             <div className='GenreResultContentContainer'>
@@ -173,9 +188,11 @@ const GenreResult = ({ genre }) => {
                             <div>
                                 Genre
                             </div>
-                            <div>
-                                17 articles
-                            </div>
+                            {genreCount && genreCount.count !== undefined && (
+                                <div>
+                                    {genreCount.count} {genreCount.count === 1 ? 'article' : 'articles'}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </Link>

@@ -109,6 +109,19 @@ const getArticlesByAuthor = async (req, res) => {
     res.status(200).json(articles);
 }
 
+// Get the number of articles for a specific genre
+const getArticleCountByGenre = async (req, res) => {
+    const { genre } = req.params;
+
+    try {
+        // Count the number of articles that match the given genre
+        const count = await Article.countDocuments({ genre: genre });
+        res.status(200).json({count: count });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 
 
 
@@ -205,6 +218,7 @@ module.exports = {
     getArticleByID,
     getArticlesByGenre,
     getArticlesByAuthor,
+    getArticleCountByGenre,
     createArticle, 
     deleteArticle,
     updateArticle

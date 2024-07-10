@@ -8,6 +8,7 @@ const {
     getArticlesByAuthor,
     getRandomArticles,
     getRandomGenres,
+    getArticleCountByGenre,
     createArticle,
     deleteArticle,
     updateArticle
@@ -38,6 +39,9 @@ router.get('/genre/:genre', getArticlesByGenre)
 
 // GET articles by a specific author
 router.get('/author/:author', getArticlesByAuthor)
+
+// GET number of articles in a genre
+router.get('/count/:genre', getArticleCountByGenre)
 
 // POST a new article
 router.post('/', createArticle)
