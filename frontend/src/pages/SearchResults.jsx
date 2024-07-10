@@ -75,6 +75,19 @@ const SearchResults = () => {
 const ArticleResult = ({ article }) => {
     const imageFolder = (article) ? article.title.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
     const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-');  // Grab article link
+    const [author, setAuthor] = useState(null);
+
+    // Retrieve the author object from the DB based on the author name
+    useEffect(() => {
+        const fetchAuthor = async () => {
+            const response = await fetch(`/api/authors/name/${article.author}`);
+            const json = await response.json();
+
+            if (response.ok) setAuthor(json);
+        }
+
+        if (article) fetchAuthor();
+    }, [article]);
 
     // Converts the date given by the article to more readable terms
     function formatDate(dateString) {
@@ -93,12 +106,8 @@ const ArticleResult = ({ article }) => {
         <div className='ArticleResult'>
             <div className='ArticleResultAuthorContainer'>
                 <Link to={'/'} className='ArticleResultAuthorPicture'/>
-                <Link to={'/'} className='ArticleResultAuthorName'>
-                    {article.author}
-                </Link>
-                <div className='ArticleResultAuthorRole'>
-                    &nbsp; - Author 
-                </div>
+                {author &&  <Link to={'/'} className='ArticleResultAuthorName'>{author.name}</Link>}
+                {author && <div className='ArticleResultAuthorRole'>&nbsp;- {author.role}</div>}
             </div>
             <div className='ArticleResultContentContainer'>
                 <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='ArticleResultContent'>
