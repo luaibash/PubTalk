@@ -72,25 +72,29 @@
     gap: 40px;
 }
 
-.ArticleResultContentContainer, .AuthorResultContentContainer {
+.ArticleResultContentContainer, .AuthorResultContentContainer, .GenreResultContentContainer {
     display: flex;
 }
 
-.ArticleResultContent, .AuthorResultContent {
+.ArticleResultContent, .AuthorResultContent, .GenreResultContent {
     display: flex;
     gap: 40px;
     text-decoration: none;
 }
 
-.ArticleResultDetails, .AuthorResultDetails {
+.ArticleResultDetails, .AuthorResultDetails, .GenreResultDetails {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     max-width: 600px;
 }
+.GenreResultDetails {
+    justify-content: start;
+    gap: 30px;
+}
 
-.ArticleResultTitle, .AuthorResultTitle {
+.ArticleResultTitle, .AuthorResultTitle, .GenreResultTitle {
     font-size: 22px;
     color: black;
 
@@ -100,6 +104,9 @@
     line-clamp: 2;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.GenreResultTitle {
+    margin-top: 10px;
 }
 
 .ArticleResultDescription, .AuthorResultDescription {
@@ -115,13 +122,17 @@
     text-overflow: ellipsis;
 }
 
-.ArticleResultOther, .AuthorResultOther {
+.ArticleResultOther, .AuthorResultOther, .GenreResultOther {
     display: flex;
     justify-content: space-between;
 
     font-size: 14px;
     color: #444444;
     font-weight: 400;
+}
+.GenreResultOther {
+    justify-content: start;
+    gap: 50px;
 }
 
 /* Author results styling */
@@ -174,6 +185,17 @@
 
     border: 1px solid black;
     border-radius: 100px;
+}
+
+/* Genre results styling */
+.GenreResultIconContainer {
+    display: flex;
+    width: 200px;
+    justify-content: center;
+}
+
+.GenreResultIcon {
+    width: 125px;
 }
 
 @media (max-width: 1000px) {

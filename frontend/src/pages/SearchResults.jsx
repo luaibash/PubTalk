@@ -167,7 +167,26 @@ const AuthorResult = ({ author }) => {
 const GenreResult = ({ genre }) => {
     return (
         <div className='GenreResult'>
-            {genre.genre}
+            <div className='GenreResultContentContainer'>
+                <Link to={`/`} className='GenreResultContent'>
+                    <div className='GenreResultIconContainer'>
+                        <img src={GenreIcon} alt="Genre Icon" className='GenreResultIcon'/>
+                    </div>
+                    <div className='GenreResultDetails'>
+                        <div className='GenreResultTitle'>
+                            {genre.genre}
+                        </div>
+                        <div className='GenreResultOther'>
+                            <div>
+                                Genre
+                            </div>
+                            <div>
+                                17 articles
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+            </div>
         </div>
     )
 }
