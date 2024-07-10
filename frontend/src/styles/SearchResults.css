@@ -62,8 +62,6 @@
 .ArticleResult, .AuthorResult, .GenreResult {
     display: flex;
     padding: 30px 0;
-
-    text-decoration: none;
     border-bottom: 1px solid #e4e4e4;
 }
 .ArticleResult {
@@ -72,7 +70,6 @@
 
 .ArticleResultAuthorContainer {
     display: flex;
-    gap: 10px;
 
     align-items: center;
     margin-bottom: 15px;
@@ -82,7 +79,8 @@
     border-radius: 50px;
     border: solid 1px black;
     width: 25px;
-    height: 25px
+    height: 25px;
+    margin-right: 10px;
 }
 
 .SearchResultsArticleCover {
@@ -94,16 +92,22 @@
 .ArticleResultAuthorName {
     font-size: 14px;
     color: black;
+    text-decoration: none;
 }
-
 .ArticleResultAuthorRole {
+    font-size: 14px;
     font-weight: 500;
     color: #444444;
 }
 
+.ArticleResultContentContainer {
+    display: flex;
+}
+
 .ArticleResultContent {
     display: flex;
-    gap: 50px;
+    gap: 40px;
+    text-decoration: none;
 }
 
 .ArticleResultDetails {
@@ -127,7 +131,7 @@
 }
 
 .ArticleResultDescription {
-    color: rgb(110, 109, 109);
+    color: #444444;
     font-size: 16px;
     font-weight: 400;
 

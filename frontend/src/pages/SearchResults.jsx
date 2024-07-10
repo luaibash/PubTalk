@@ -90,33 +90,38 @@ const ArticleResult = ({ article }) => {
     }
 
     return (
-        <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='ArticleResult'>
+        <div className='ArticleResult'>
             <div className='ArticleResultAuthorContainer'>
-                <div className='ArticleResultAuthorPicture'/>
-                <div className='ArticleResultAuthorName'>
-                    {article.author} <span className='ArticleResultAuthorRole'> - Author </span>
+                <Link to={'/'} className='ArticleResultAuthorPicture'/>
+                <Link to={'/'} className='ArticleResultAuthorName'>
+                    {article.author}
+                </Link>
+                <div className='ArticleResultAuthorRole'>
+                    &nbsp; - Author 
                 </div>
             </div>
-            <div className='ArticleResultContent'>
-                <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='SearchResultsArticleCover'/>
-                <div className='ArticleResultDetails'>
-                    <div className='ArticleResultTitle'>
-                        {article.title}
-                    </div>
-                    <div className='ArticleResultDescription'>
-                        {article.description}
-                    </div>
-                    <div className='ArticleResultOther'>
-                        <div>
-                            {formatDate(article.createdAt)}
+            <div className='ArticleResultContentContainer'>
+                <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='ArticleResultContent'>
+                    <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='SearchResultsArticleCover'/>
+                    <div className='ArticleResultDetails'>
+                        <div className='ArticleResultTitle'>
+                            {article.title}
                         </div>
-                        <div>
-                            {formatGenres(article.genre)}
+                        <div className='ArticleResultDescription'>
+                            {article.description}
+                        </div>
+                        <div className='ArticleResultOther'>
+                            <div>
+                                {formatDate(article.createdAt)}
+                            </div>
+                            <div>
+                                {formatGenres(article.genre)}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             </div>
-        </Link>
+        </div>
     )
 }
 
