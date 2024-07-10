@@ -21,7 +21,7 @@ const articleSchema = new Schema({
         required: true
     },
     genre: {
-        type: Array,
+        type: [String],
         required: true
     },
     rating: {

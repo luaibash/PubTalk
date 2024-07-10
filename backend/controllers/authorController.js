@@ -29,7 +29,7 @@ const getRandomAuthors = async (req, res) => {
 
 // Create a new author
 const createAuthor = async (req, res) => {
-    const { name, description, linkedIn, role } = req.body;
+    const { name, description, linkedIn, role, school, favourite_genre } = req.body;
 
     // Name and description must be provided to create a new author
     if (!name || !description || !role) return res.status(400).json({ error: 'name and description are required' });

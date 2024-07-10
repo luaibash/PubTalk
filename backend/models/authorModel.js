@@ -19,6 +19,14 @@ const authorSchema = new Schema({
     role: {
         type: String,
         required: true
+    },
+    school: {
+        type: String,
+        required: true
+    },
+    favourite_genres: {
+        type: [String],
+        required: true
     }
 });
 
