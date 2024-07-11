@@ -38,8 +38,11 @@ const SearchResults = () => {
 
     return (
         <div className='SearchResultsPanel'>
-            <div className='Title'>
-                Search Results
+            <div className='Title' id="SearchResultsTitle">
+                <div> Search Results for&nbsp;</div>
+                <div className='SearchResultsTitleSearch'>
+                    {userSearch}
+                </div>
             </div>
             <div className='SearchBarContainer'>
                 <SearchBar showSearchSuggestions={false} initialSearch={userSearch} searchContainerCentred={false}/> 

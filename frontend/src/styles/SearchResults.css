@@ -9,6 +9,16 @@
     flex-direction: column;
 }
 
+#SearchResultsTitle {
+    display: flex;
+    white-space: nowrap;
+}
+.SearchResultsTitleSearch {
+    color: #666666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .SearchBarContainer {
     margin-top: 30px;
 }
