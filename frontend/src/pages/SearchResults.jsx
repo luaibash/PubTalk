@@ -10,17 +10,12 @@ const algoliaClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, proces
 
 // Search results page that show all results for user after a search
 const SearchResults = () => {
-    const [searchResults, setSearchResults] = useState([]);             // Holds contents of the search results
-    const [searchFilter, setSearchFilter] = useState("all");
+    const [searchResults, setSearchResults] = useState([]);  // Holds contents of the search results
+    const [searchFilter, setSearchFilter] = useState("all"); // Holds current filter active
 
     // Grab userSearch from link
     const queryParams = new URLSearchParams(window.location.search);
     const userSearch = queryParams.get('userSearch');
-
-    // Switches the current search filter to the clicked one, modifying the style to represent the change
-    const switchSearchFilter = (filter) => {
-        setSearchFilter(filter);
-    };
 
     // Perform search with the pubtalk index and set search results
     useEffect(() => {
@@ -32,7 +27,13 @@ const SearchResults = () => {
         }).catch(err => {
             console.error('Error searching Algolia:', err);
         });
-    }, []);
+    }, [userSearch]);
+
+    // Filter results based on the current searchFilter
+    const filteredResults = searchResults.filter(result => {
+        if (searchFilter === 'all') return true;
+        return result.objectType === searchFilter;
+    });
 
     return (
         <div className='SearchResultsPanel'>
@@ -43,21 +44,21 @@ const SearchResults = () => {
                 <SearchBar showSearchSuggestions={false} initialSearch={userSearch} searchContainerCentred={false}/> 
             </div>
             <div className='SearchResultsFilterContainer'>
-                <div className='SearchResultFilter' id={searchFilter === "all" ? "SearchResultFilterActive" : ""} onClick={() => switchSearchFilter("all")}>
+                <div className='SearchResultFilter' id={searchFilter === "all" ? "SearchResultFilterActive" : ""} onClick={() => setSearchFilter("all")}>
                     All
                 </div>
-                <div className='SearchResultFilter' id={searchFilter === "articles" ? "SearchResultFilterActive" : ""} onClick={() => switchSearchFilter("articles")}>
+                <div className='SearchResultFilter' id={searchFilter === "article" ? "SearchResultFilterActive" : ""} onClick={() => setSearchFilter("article")}>
                     Articles
                 </div>
-                <div className='SearchResultFilter' id={searchFilter === "authors" ? "SearchResultFilterActive" : ""} onClick={() => switchSearchFilter("authors")}>
+                <div className='SearchResultFilter' id={searchFilter === "author" ? "SearchResultFilterActive" : ""} onClick={() => setSearchFilter("author")}>
                     Authors
                 </div>
-                <div className='SearchResultFilter' id={searchFilter === "genres" ? "SearchResultFilterActive" : ""} onClick={() => switchSearchFilter("genres")}>
+                <div className='SearchResultFilter' id={searchFilter === "genre" ? "SearchResultFilterActive" : ""} onClick={() => setSearchFilter("genre")}>
                     Genres
                 </div>
-                <div className='ActiveFilterBorder' id={searchFilter === "all" ? "AllBorder" : (searchFilter === "articles" ? "ArticlesBorder" : (searchFilter === "authors" ? "AuthorsBorder" : "GenresBorder"))}/>
+                <div className='ActiveFilterBorder' id={searchFilter === "all" ? "AllBorder" : (searchFilter === "article" ? "ArticlesBorder" : (searchFilter === "author" ? "AuthorsBorder" : "GenresBorder"))}/>
             </div>
-            {searchResults.map(result => {
+            {filteredResults.map(result => {
                 if (result.objectType === 'article') {
                     return <ArticleResult key={result.objectID} article={result}/>;
                 } else if (result.objectType === 'author') {
@@ -167,7 +168,6 @@ const GenreResult = ({ genre }) => {
             const json = await response.json();
 
             if (response.ok) setGenreCount(json);
-            console.log(json)
         }
 
         if (genre) fetchGenreCount();
