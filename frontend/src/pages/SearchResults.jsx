@@ -10,7 +10,7 @@ const algoliaClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, proces
 
 // Search results page that show all results for user after a search
 const SearchResults = () => {
-    const [searchResults, setSearchResults] = useState([]);  // Holds contents of the search results
+    const [searchResults, setSearchResults] = useState();    // Holds contents of the search results
     const [searchFilter, setSearchFilter] = useState("all"); // Holds current filter active
 
     // Grab userSearch from link
@@ -29,9 +29,10 @@ const SearchResults = () => {
         });
     }, [userSearch]);
 
-    // Filter results based on the current searchFilter
-    const filteredResults = searchResults.filter(result => {
-        if (searchFilter === 'all') return true;
+    // Filter results based on the current searchFilter only after algolia returns search results
+    const filteredResults = searchResults && searchResults.filter(result => {
+        if (!searchResults) return true;
+        else if (searchFilter === 'all') return true;
         return result.objectType === searchFilter;
     });
 
@@ -58,17 +59,28 @@ const SearchResults = () => {
                 </div>
                 <div className='ActiveFilterBorder' id={searchFilter === "all" ? "AllBorder" : (searchFilter === "article" ? "ArticlesBorder" : (searchFilter === "author" ? "AuthorsBorder" : "GenresBorder"))}/>
             </div>
-            {filteredResults.map(result => {
-                if (result.objectType === 'article') {
-                    return <ArticleResult key={result.objectID} article={result}/>;
-                } else if (result.objectType === 'author') {
-                    return <AuthorResult key={result.objectID} author={result}/>;
-                } else if (result.objectType === 'genre') {
-                    return <GenreResult key={result.objectID} genre={result}/>;
-                } else {
-                    return null;
-                }
-            })}
+            {filteredResults && filteredResults.length === 0 ? (
+                <div className='NoSearchResultsContainer'>
+                    <div className='NoSearchResults'>
+                    Your search did not match any results.
+                    </div>
+                    <li className='NoSearchResultsBullet'> Make sure all words are spelled correctly. </li>
+                    <li className='NoSearchResultsBullet'> Try different keywords. </li>
+                    <li className='NoSearchResultsBullet'> Try more general keywords. </li>
+                </div>
+            ) : (
+                filteredResults && filteredResults.map(result => {
+                    if (result.objectType === 'article') {
+                        return <ArticleResult key={result.objectID} article={result}/>;
+                    } else if (result.objectType === 'author') {
+                        return <AuthorResult key={result.objectID} author={result}/>;
+                    } else if (result.objectType === 'genre') {
+                        return <GenreResult key={result.objectID} genre={result}/>;
+                    } else {
+                        return null;
+                    }
+                })
+            )}
         </div>
     )
 }

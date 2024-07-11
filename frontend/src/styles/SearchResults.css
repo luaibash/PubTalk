@@ -1,5 +1,6 @@
 .SearchResultsPanel {
     max-width: 1250px;
+    min-height: 1000px;
 
     padding: 150px 75px 120px 75px;
     margin: 0 auto;
@@ -57,6 +58,22 @@
 #GenresBorder {
     left: 320px;
     width: 65px;
+}
+
+.NoSearchResults {
+    margin-top: 50px;
+    margin-bottom: 15px;
+
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.NoSearchResultsBullet {
+    margin-left: 20px;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 /* General Article/Author/Genre Styling */
