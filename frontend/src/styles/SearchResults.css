@@ -132,6 +132,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.ArticleResultTitle:hover, .AuthorResultTitle:hover, .GenreResultTitle:hover {
+    text-decoration: underline;
+}
 .GenreResultTitle {
     margin-top: 10px;
 }
@@ -197,6 +200,11 @@
     width: 200px;
     height: 150px;
     object-fit: cover;
+
+    transition: opacity 0.3s;
+}
+.ArticleResultsCover:hover {
+    opacity: 0.85;
 }
 
 /* Author results styling */
@@ -212,6 +220,11 @@
 
     border: 1px solid black;
     border-radius: 100px;
+
+    transition: opacity 0.3s;
+}
+.AuthorResultPicture:hover {
+    opacity: 0.85;
 }
 
 /* Genre results styling */
@@ -223,6 +236,11 @@
 
 .GenreResultIcon {
     width: 125px;
+
+    transition: opacity 0.3s;
+}
+.GenreResultIcon:hover {   
+    opacity: 0.75;
 }
 
 @media (max-width: 1000px) {
