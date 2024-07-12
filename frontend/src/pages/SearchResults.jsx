@@ -2,6 +2,7 @@ import {React, useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import algoliasearch from 'algoliasearch/lite';
 import SearchBar from '../components/SearchBar';
+// import PageScroll from '../components/PageScroll';
 import GenreIcon from '../assets/articles/GenreIcon.svg';
 import '../styles/SearchResults.css';
 
@@ -10,8 +11,11 @@ const algoliaClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, proces
 
 // Search results page that show all results for user after a search
 const SearchResults = () => {
-    const [searchResults, setSearchResults] = useState();    // Holds contents of the search results
-    const [searchFilter, setSearchFilter] = useState("all"); // Holds current filter active
+    const [searchResults, setSearchResults] = useState(null); // Holds contents of the search results
+    const [searchFilter, setSearchFilter] = useState("all");  // Holds current filter active
+    const [totalPages, setTotalPages] = useState(null);       // Holds max possible number of pages, where each page holds 10 results
+    const [currentPage, setCurrentPage] = useState(1);        // Holds which number page is currently showing
+    const articlesPerPage = 10;
 
     // Grab userSearch from link
     const queryParams = new URLSearchParams(window.location.search);
@@ -20,14 +24,14 @@ const SearchResults = () => {
     // Perform search with the pubtalk index and set search results
     useEffect(() => {
         algoliaClient.search([
-            { indexName: 'pubtalk', query: userSearch },
+            { indexName: 'pubtalk', query: userSearch, params: { hitsPerPage: 2, page: (currentPage - 1) }},
         ]).then(({ results }) => {
             setSearchResults(results[0].hits);
-            console.log(results);
+            setTotalPages(Math.ceil(results[0].nbHits / articlesPerPage))  // nbHits is the total number of possible hits
         }).catch(err => {
             console.error('Error searching Algolia:', err);
         });
-    }, [userSearch]);
+    }, [userSearch, currentPage]);
 
     // Filter results based on the current searchFilter only after algolia returns search results
     const filteredResults = searchResults && searchResults.filter(result => {
@@ -84,6 +88,7 @@ const SearchResults = () => {
                     }
                 })
             )}
+            {/* <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={searchResults}/> */}
         </div>
     )
 }

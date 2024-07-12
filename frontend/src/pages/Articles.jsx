@@ -37,6 +37,7 @@ const SearchArticles = () => {
 // Top articles container that shows all the top articles
 const TopArticles = () => {
     const [articles, setArticles] = useState(null);
+    const [numberOfArticles, setNumberOfArticles] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     
     useEffect(() => {
@@ -50,6 +51,7 @@ const TopArticles = () => {
                 const duplicatedArticles = Array.from({ length: 7 }, () => [...json]); // duplicated way to test scrolling
                 const combinedArticles = [].concat(...duplicatedArticles);
                 setArticles(combinedArticles);
+                setNumberOfArticles(combinedArticles.length);
             }
         }
 
@@ -82,7 +84,7 @@ const TopArticles = () => {
                     ))}
                 </div>
             </div>
-            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={articles}/>
+            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} numberOfResults={numberOfArticles} resultsPerPage={8}/>
         </div>
     )
 }
@@ -90,6 +92,7 @@ const TopArticles = () => {
 // All articles container that shows most recent articles
 const AllArticles = () => {
     const [articles, setArticles] = useState(null);
+    const [numberOfArticles, setNumberOfArticles] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     
     useEffect(() => {
@@ -103,6 +106,7 @@ const AllArticles = () => {
                 const duplicatedArticles = Array.from({ length: 7 }, () => [...json]); // duplicated way to test scrolling
                 const combinedArticles = [].concat(...duplicatedArticles);
                 setArticles(combinedArticles);
+                setNumberOfArticles(combinedArticles.length);
             }
         }
 
@@ -136,7 +140,7 @@ const AllArticles = () => {
                     ))}
                 </div>
             </div>
-            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={articles}/>
+            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} numberOfResults={numberOfArticles} resultsPerPage={8}/>
         </div>
     )
 }
@@ -145,6 +149,7 @@ const AllArticles = () => {
 const ArticleGenres = () => {
     const [genre, setGenre] = useState('Fantasy');
     const [articles, setArticles] = useState(null);
+    const [numberOfArticles, setNumberOfArticles] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     
     useEffect(() => {
@@ -158,6 +163,7 @@ const ArticleGenres = () => {
                 const duplicatedArticles = Array.from({ length: 7 }, () => [...json]); // duplicated way to test scrolling
                 const combinedArticles = [].concat(...duplicatedArticles);
                 setArticles(combinedArticles);
+                setNumberOfArticles(combinedArticles.length);
             }
         }
 
@@ -197,7 +203,7 @@ const ArticleGenres = () => {
                     <Genres genre={genre} setGenre={setGenre}/>
                 </div>
             </div>
-            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={articles} articlesPerPage={4}/>
+            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} numberOfResults={numberOfArticles} resultsPerPage={4}/>
         </div>
     )
 }
