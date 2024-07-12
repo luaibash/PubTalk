@@ -3,26 +3,24 @@ import LeftArrow from '../assets/team/LeftArrow.svg';
 import RightArrow from '../assets/team/RightArrow.svg';
 import '../styles/components/PageScroll.css';
 
-// Scroll bar on bottom of each article section in the articles page, used to switch to next/previous page of articles
-const PageScroll = ({currentPage, setCurrentPage, articles, articlesPerPage=8}) => {
-    const [articlesLength, setArticlesLength] = useState(0);
+// Scroll bar used to switch to next/previous page of results
+const PageScroll = ({currentPage, setCurrentPage, numberOfResults, resultsPerPage}) => {
     const [pages, setPages] = useState(0);
 
-    // Find article length, set the amount of pages it will fill and bring user back to page 1 everytime genre changes
+    // Set the amount of pages the results will fill and bring user back to page 1 everytime results changes
     useEffect(() => {
-        if (articles) {
-            setArticlesLength(articles.length);
-            setPages(Math.ceil(articlesLength / articlesPerPage));
+        if (numberOfResults) {
+            setPages(Math.ceil(numberOfResults / resultsPerPage));
             setCurrentPage(1);
         }
-    }, [articles, articlesLength, articlesPerPage, setCurrentPage]);
+    }, [numberOfResults, resultsPerPage, setCurrentPage]);
 
     // If there is only one page, return a space to replace the page numbers
     if (pages <= 1) {
         return <div style={{ height: '75px' }}></div>;
     }
 
-    // Create arrary holding each page number
+    // Create array holding each page number
     const pageNumbers = [];
     for (let i = 1; i <= pages; i++) {
         pageNumbers.push(i);
