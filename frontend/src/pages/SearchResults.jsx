@@ -43,7 +43,7 @@ const SearchResults = () => {
         }).catch(err => {
             console.error('Error searching Algolia:', err);
         });
-    }, [userSearch, searchFilter, currentPage, resultsPerPage]);
+    }, [userSearch, currentPage, resultsPerPage]);
 
     // When the page has been switched or there is a new user search, run an algolia search
     // Switching filter is not added here as a dependency because if currentPage and filter switch happen at same time, two searches will occur
