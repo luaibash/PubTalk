@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState, useEffect, useCallback} from 'react';
 import {Link} from 'react-router-dom';
 import algoliasearch from 'algoliasearch/lite';
 import SearchBar from '../components/SearchBar';
@@ -22,8 +22,10 @@ const SearchResults = () => {
     const userSearch = queryParams.get('userSearch');
 
     // Perform search with the pubtalk index and set search results
-    useEffect(() => {
-        const filter = (searchFilter === 'all') ? '' : `objectType:${searchFilter}`;
+    const runAlgoliaSearch = useCallback((newFilter = null) => {
+        // Grabs the filter the search is being made on for algolia to use
+        const curSearchFilter = (newFilter) ? newFilter : searchFilter;
+        const filter = (curSearchFilter === 'all') ? '' : `objectType:${curSearchFilter}`;
 
         algoliaClient.search([
             {
@@ -32,7 +34,7 @@ const SearchResults = () => {
                 params: { 
                     hitsPerPage: resultsPerPage, // Number of results to return for one page
                     page: (currentPage - 1),     // Sets which page of results to return
-                    filters: filter
+                    filters: filter              // Filter results to be of type article/author/genre
                 }
             },
         ]).then(({ results }) => {
@@ -41,7 +43,20 @@ const SearchResults = () => {
         }).catch(err => {
             console.error('Error searching Algolia:', err);
         });
-    }, [userSearch, currentPage, searchFilter]);
+    }, [userSearch, searchFilter, currentPage, resultsPerPage]);
+
+    // When the page has been switched or there is a new user search, run an algolia search
+    // Switching filter is not added here as a dependency because if currentPage and filter switch happen at same time, two searches will occur
+    useEffect(() => {
+        runAlgoliaSearch();
+    }, [userSearch, currentPage, runAlgoliaSearch]);
+
+    // Switch the filter to the one provided, and then run an algolia search
+    const switchFilter = (filter) => {
+        setSearchFilter(filter);
+        if (currentPage === 1) runAlgoliaSearch(filter);    // Manually run search here as setting currentPage to same value won't trigger useEffect
+        else setCurrentPage(1);                             // Setting currentPage to one here will trigger the useEffect
+    }
 
     return (
         <div className='SearchResultsPanel'>
@@ -55,16 +70,16 @@ const SearchResults = () => {
                 <SearchBar showSearchSuggestions={false} initialSearch={userSearch} searchContainerCentred={false}/> 
             </div>
             <div className='SearchResultsFilterContainer'>
-                <div className='SearchResultFilter' id={searchFilter === "all" ? "SearchResultFilterActive" : ""} onClick={() => setSearchFilter("all")}>
+                <div className='SearchResultFilter' id={searchFilter === "all" ? "SearchResultFilterActive" : ""} onClick={() => switchFilter("all")}>
                     All
                 </div>
-                <div className='SearchResultFilter' id={searchFilter === "article" ? "SearchResultFilterActive" : ""} onClick={() => setSearchFilter("article")}>
+                <div className='SearchResultFilter' id={searchFilter === "article" ? "SearchResultFilterActive" : ""} onClick={() => switchFilter("article")}>
                     Articles
                 </div>
-                <div className='SearchResultFilter' id={searchFilter === "author" ? "SearchResultFilterActive" : ""} onClick={() => setSearchFilter("author")}>
+                <div className='SearchResultFilter' id={searchFilter === "author" ? "SearchResultFilterActive" : ""} onClick={() => switchFilter("author")}>
                     Authors
                 </div>
-                <div className='SearchResultFilter' id={searchFilter === "genre" ? "SearchResultFilterActive" : ""} onClick={() => setSearchFilter("genre")}>
+                <div className='SearchResultFilter' id={searchFilter === "genre" ? "SearchResultFilterActive" : ""} onClick={() => switchFilter("genre")}>
                     Genres
                 </div>
                 <div className='ActiveFilterBorder' id={searchFilter === "all" ? "AllBorder" : (searchFilter === "article" ? "ArticlesBorder" : (searchFilter === "author" ? "AuthorsBorder" : "GenresBorder"))}/>

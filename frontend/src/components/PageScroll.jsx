@@ -4,7 +4,7 @@ import RightArrow from '../assets/team/RightArrow.svg';
 import '../styles/components/PageScroll.css';
 
 // Scroll bar used to switch to next/previous page of results
-const PageScroll = ({currentPage, setCurrentPage, numberOfResults, resultsPerPage, scrollToTop=false, filter}) => {
+const PageScroll = ({currentPage, setCurrentPage, numberOfResults, resultsPerPage, scrollToTop=false}) => {
     const [pages, setPages] = useState(0);
 
     // Set the amount of pages the results will fill and bring user back to page 1 everytime results changes
@@ -13,7 +13,7 @@ const PageScroll = ({currentPage, setCurrentPage, numberOfResults, resultsPerPag
             setPages(Math.ceil(numberOfResults / resultsPerPage));
             setCurrentPage(1);
         }
-    }, [numberOfResults, resultsPerPage, setCurrentPage, filter]);
+    }, [numberOfResults, resultsPerPage, setCurrentPage]);
 
     // If there is only one page, return a space to replace the page numbers
     if (pages <= 1) {
