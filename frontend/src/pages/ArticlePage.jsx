@@ -32,7 +32,7 @@ const ArticlePage = () => {
     }, [articleID, articleLink])
 
     // Converts the date given by the article to more readable terms
-    function formatDate(dateString) {
+    const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         return new Date(dateString).toLocaleDateString('en-US', options);
     }

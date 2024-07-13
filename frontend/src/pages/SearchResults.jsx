@@ -131,7 +131,7 @@ const ArticleResult = ({ article }) => {
     }, [article]);
 
     // Converts the date given by the article to more readable terms
-    function formatDate(dateString) {
+    const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         return new Date(dateString).toLocaleDateString('en-US', options);
     }
@@ -242,7 +242,7 @@ const GenreResult = ({ genre }) => {
 }
 
 // Takes the first two genres and returns a string to display for the article
-function formatGenres(genres) {
+const formatGenres = (genres) => {
     if (genres.length === 0) return "General";       // If array is empty, return general genre
     else if (genres.length === 1) return genres[0];   // If there is only one genre, return it
     else return `${genres[0]}, ${genres[1]}`;         // If there are two or more genres, format and return the first two
