@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import algoliasearch from 'algoliasearch/lite';
 import SearchBar from '../components/SearchBar';
-// import PageScroll from '../components/PageScroll';
+import PageScroll from '../components/PageScroll';
 import GenreIcon from '../assets/articles/GenreIcon.svg';
 import '../styles/SearchResults.css';
 
@@ -11,11 +11,11 @@ const algoliaClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, proces
 
 // Search results page that show all results for user after a search
 const SearchResults = () => {
-    const [searchResults, setSearchResults] = useState(null); // Holds contents of the search results
-    const [searchFilter, setSearchFilter] = useState("all");  // Holds current filter active
-    const [totalPages, setTotalPages] = useState(null);       // Holds max possible number of pages, where each page holds 10 results
-    const [currentPage, setCurrentPage] = useState(1);        // Holds which number page is currently showing
-    const articlesPerPage = 10;
+    const [searchResults, setSearchResults] = useState(null);      // Holds contents of the search results
+    const [searchFilter, setSearchFilter] = useState("all");       // Holds current filter active
+    const [numberOfResults, setNumberOfResults] = useState(null);  // Holds total possible number of results
+    const [currentPage, setCurrentPage] = useState(1);             // Holds which number page is currently showing
+    const resultsPerPage = 10;
 
     // Grab userSearch from link
     const queryParams = new URLSearchParams(window.location.search);
@@ -23,22 +23,25 @@ const SearchResults = () => {
 
     // Perform search with the pubtalk index and set search results
     useEffect(() => {
+        const filter = (searchFilter === 'all') ? '' : `objectType:${searchFilter}`;
+
         algoliaClient.search([
-            { indexName: 'pubtalk', query: userSearch, params: { hitsPerPage: 2, page: (currentPage - 1) }},
+            {
+                indexName: 'pubtalk',
+                query: userSearch,
+                params: { 
+                    hitsPerPage: resultsPerPage, // Number of results to return for one page
+                    page: (currentPage - 1),     // Sets which page of results to return
+                    filters: filter
+                }
+            },
         ]).then(({ results }) => {
             setSearchResults(results[0].hits);
-            setTotalPages(Math.ceil(results[0].nbHits / articlesPerPage))  // nbHits is the total number of possible hits
+            setNumberOfResults(results[0].nbHits);
         }).catch(err => {
             console.error('Error searching Algolia:', err);
         });
-    }, [userSearch, currentPage]);
-
-    // Filter results based on the current searchFilter only after algolia returns search results
-    const filteredResults = searchResults && searchResults.filter(result => {
-        if (!searchResults) return true;
-        else if (searchFilter === 'all') return true;
-        return result.objectType === searchFilter;
-    });
+    }, [userSearch, currentPage, searchFilter]);
 
     return (
         <div className='SearchResultsPanel'>
@@ -66,7 +69,7 @@ const SearchResults = () => {
                 </div>
                 <div className='ActiveFilterBorder' id={searchFilter === "all" ? "AllBorder" : (searchFilter === "article" ? "ArticlesBorder" : (searchFilter === "author" ? "AuthorsBorder" : "GenresBorder"))}/>
             </div>
-            {filteredResults && filteredResults.length === 0 ? (
+            {searchResults && searchResults.length === 0 ? (
                 <div className='NoSearchResultsContainer'>
                     <div className='NoSearchResults'>
                     Your search did not match any results.
@@ -76,7 +79,7 @@ const SearchResults = () => {
                     <li className='NoSearchResultsBullet'> Try more general keywords. </li>
                 </div>
             ) : (
-                filteredResults && filteredResults.map(result => {
+                searchResults && searchResults.map(result => {
                     if (result.objectType === 'article') {
                         return <ArticleResult key={result.objectID} article={result}/>;
                     } else if (result.objectType === 'author') {
@@ -88,7 +91,9 @@ const SearchResults = () => {
                     }
                 })
             )}
-            {/* <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} articles={searchResults}/> */}
+            {numberOfResults > 0 && (
+                <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} numberOfResults={numberOfResults} resultsPerPage={resultsPerPage} scrollToTop={true} filter={searchFilter}/>
+            )}
         </div>
     )
 }

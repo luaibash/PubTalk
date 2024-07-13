@@ -4,7 +4,7 @@ import RightArrow from '../assets/team/RightArrow.svg';
 import '../styles/components/PageScroll.css';
 
 // Scroll bar used to switch to next/previous page of results
-const PageScroll = ({currentPage, setCurrentPage, numberOfResults, resultsPerPage}) => {
+const PageScroll = ({currentPage, setCurrentPage, numberOfResults, resultsPerPage, scrollToTop=false, filter}) => {
     const [pages, setPages] = useState(0);
 
     // Set the amount of pages the results will fill and bring user back to page 1 everytime results changes
@@ -13,7 +13,7 @@ const PageScroll = ({currentPage, setCurrentPage, numberOfResults, resultsPerPag
             setPages(Math.ceil(numberOfResults / resultsPerPage));
             setCurrentPage(1);
         }
-    }, [numberOfResults, resultsPerPage, setCurrentPage]);
+    }, [numberOfResults, resultsPerPage, setCurrentPage, filter]);
 
     // If there is only one page, return a space to replace the page numbers
     if (pages <= 1) {
@@ -26,21 +26,33 @@ const PageScroll = ({currentPage, setCurrentPage, numberOfResults, resultsPerPag
         pageNumbers.push(i);
     }
 
-    // Switch page number based on if allowed or not
-    const switchPage = (change) => {
-        if (change > 0 && currentPage + change <= pages) setCurrentPage(currentPage + change);
-        else if (change < 0 && currentPage + change > 0) setCurrentPage(currentPage + change);
+    // Switch page number to an adjacent page based on if allowed or not
+    const switchAdjacentPage = (change) => {
+        if (change > 0 && currentPage + change <= pages) {
+            setCurrentPage(currentPage + change);
+            if (scrollToTop) window.scrollTo(0, 0);
+        }
+        else if (change < 0 && currentPage + change > 0) {
+            setCurrentPage(currentPage + change);
+            if (scrollToTop) window.scrollTo(0, 0);
+        }
+    }
+
+    // Switch page number to the page number given
+    const switchPage = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        if (scrollToTop) window.scrollTo(0, 0);
     }
 
     return (
         <div className="PageScrollContainer">
-            <img src={LeftArrow} alt="Left Arrow" className='ScrollLeftArrow' id={currentPage !== 1 ? "ActiveArrow" : ""} onClick={() => switchPage(-1)}/>
+            <img src={LeftArrow} alt="Left Arrow" className='ScrollLeftArrow' id={currentPage !== 1 ? "ActiveArrow" : ""} onClick={() => switchAdjacentPage(-1)}/>
             {pageNumbers.map((pageNumber) => (
-                <div key={pageNumber} className="PageNumber" id={pageNumber === currentPage ? "ActivePage" : ""} onClick={() => setCurrentPage(pageNumber)}>
+                <div key={pageNumber} className="PageNumber" id={pageNumber === currentPage ? "ActivePage" : ""} onClick={() => switchPage(pageNumber)}>
                 {pageNumber}
                 </div>
             ))}
-            <img src={RightArrow} alt="Right Arrow" className='ScrollRightArrow' id={currentPage !== pages ? "ActiveArrow" : ""} onClick={() => switchPage(1)}/>
+            <img src={RightArrow} alt="Right Arrow" className='ScrollRightArrow' id={currentPage !== pages ? "ActiveArrow" : ""} onClick={() => switchAdjacentPage(1)}/>
         </div>
     );
 }
