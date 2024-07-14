@@ -36,11 +36,13 @@ const SearchBar = ({showSearchSuggestions, initialSearch = "", searchContainerCe
         setUserSearch(e.target.value);
     }
 
-    // Activates when the user presses enter, redirecting to the search results page
+    // Activates when the user presses enter, closing search box and redirecting to the search results page
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             const encodedUserSearch = encodeURIComponent(userSearch).replace(/%20/g, '+');
             navigate(`/search?userSearch=${encodedUserSearch}`);
+            searchBarRef.current.blur();
+            setShowSearchBox(false);
         }
     }
 

@@ -1,5 +1,5 @@
 import {React, useState, useEffect, useCallback} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import algoliasearch from 'algoliasearch/lite';
 import SearchBar from '../components/SearchBar';
 import PageScroll from '../components/PageScroll';
@@ -11,6 +11,7 @@ const algoliaClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, proces
 
 // Search results page that show all results for user after a search
 const SearchResults = () => {
+    const location = useLocation();                                // Keeps track of current link
     const [searchResults, setSearchResults] = useState(null);      // Holds contents of the search results
     const [searchFilter, setSearchFilter] = useState("all");       // Holds current filter active
     const [numberOfResults, setNumberOfResults] = useState(null);  // Holds total possible number of results
@@ -40,19 +41,23 @@ const SearchResults = () => {
         ]).then(({ results }) => {
             setSearchResults(results[0].hits);
             setNumberOfResults(results[0].nbHits);
+            console.log("test")
         }).catch(err => {
             console.error('Error searching Algolia:', err);
         });
     }, [userSearch, currentPage, resultsPerPage]);
 
     // When the page has been switched or there is a new user search, run an algolia search
-    // Switching filter is not added here as a dependency because if currentPage and filter switch happen at same time, two searches will occur
+    // searchFilter is not added here as a dependency because if currentPage and filter switch happen at same time, two searches will occur
+    // Location added as a dependency to force a new search when a new link has been reached
     useEffect(() => {
         runAlgoliaSearch();
-    }, [userSearch, currentPage, runAlgoliaSearch]);
+    }, [userSearch, currentPage, runAlgoliaSearch, location]);
 
     // Switch the filter to the one provided, and then run an algolia search
     const switchFilter = (filter) => {
+        if (filter === searchFilter) return;
+
         setSearchFilter(filter);
         if (currentPage === 1) runAlgoliaSearch(filter);    // Manually run search here as setting currentPage to same value won't trigger useEffect
         else setCurrentPage(1);                             // Setting currentPage to one here will trigger the useEffect
