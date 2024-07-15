@@ -299,3 +299,52 @@
         width: 13.89vw;
     }
 }
+@media (max-width: 600px) {
+    .ArticleResultContent, .AuthorResultContent, .GenreResultContent {
+        gap: 26.64px;
+    }
+
+    .ArticleResultTitle, .AuthorResultTitle, .GenreResultTitle {
+        font-size: 14.64px;
+    }
+
+    .ArticleResultDescription, .AuthorResultDescription {
+        font-size: 10.68px;
+    }
+
+    .ArticleResultOther, .AuthorResultOther, .GenreResultOther {
+        font-size: 9.3px;
+    }
+
+    .ArticleResultAuthorPicture {
+        width: 16.62px;
+        height: 16.62px;
+        margin-right: 6.66px;
+    }
+    
+    .ArticleResultAuthorName, .ArticleResultAuthorRole {
+        font-size: 9.3px;
+    }
+
+    .ArticleResultsCover {
+        width: 133.32px;
+        height: 99.96px;
+    }
+
+    .AuthorResultPictureContainer {
+        width: 133.32px;
+    }
+
+    .AuthorResultPicture {
+        width: 83.34px;
+        height: 83.34px;
+    }
+
+    .GenreResultIconContainer {
+        width: 133.32px;
+    }
+
+    .GenreResultIcon {
+        width: 83.34px;
+    }
+}
