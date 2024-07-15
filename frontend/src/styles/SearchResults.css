@@ -212,6 +212,7 @@
     display: flex;
     width: 200px;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .AuthorResultPicture {
@@ -247,5 +248,54 @@
     .SearchResultsPanel {
         padding-left: 25px;
         padding-right: 25px;
+    }
+}
+@media (max-width: 900px) {
+    .ArticleResultContent, .AuthorResultContent, .GenreResultContent {
+        gap: 4.44vw;
+    }
+
+    .ArticleResultTitle, .AuthorResultTitle, .GenreResultTitle {
+        font-size: 2.44vw;
+    }
+
+    .ArticleResultDescription, .AuthorResultDescription {
+        font-size: 1.78vw;
+    }
+
+    .ArticleResultOther, .AuthorResultOther, .GenreResultOther {
+        font-size: 1.55vw;
+    }
+
+    .ArticleResultAuthorPicture {
+        width: 2.77vw;
+        height: 2.77vw;
+        margin-right: 1.11vw;
+    }
+    
+    .ArticleResultAuthorName, .ArticleResultAuthorRole {
+        font-size: 1.55vw;
+    }
+
+    .ArticleResultsCover {
+        width: 22.22vw;
+        height: 16.66vw;
+    }
+
+    .AuthorResultPictureContainer {
+        width: 22.22vw;
+    }
+
+    .AuthorResultPicture {
+        width: 13.89vw;
+        height: 13.89vw;
+    }
+
+    .GenreResultIconContainer {
+        width: 22.22vw;
+    }
+
+    .GenreResultIcon {
+        width: 13.89vw;
     }
 }
