@@ -251,6 +251,39 @@
     }
 }
 @media (max-width: 900px) {
+    #SearchResultsTitle {
+        font-size: 4vw;
+    }
+
+    .SearchBarContainer {
+        margin-top: 3.33vw;
+    }
+
+    .SearchResultsFilterContainer {
+        gap: 5.55vw;
+        padding-bottom: 1.67vw;
+    }
+
+    .SearchResultFilter {
+        font-size: 2.22vw;
+    }
+
+    #AllBorder {
+        width: 2.44vw;
+    }
+    #ArticlesBorder {
+        left: 8.11vw;
+        width: 7.77vw;
+    }
+    #AuthorsBorder {
+        left: 21.66vw;
+        width: 8.11vw;
+    }
+    #GenresBorder {
+        left: 35.55vw;
+        width: 7.22vw;
+    }
+
     .ArticleResultContent, .AuthorResultContent, .GenreResultContent {
         gap: 4.44vw;
     }
@@ -297,6 +330,32 @@
 
     .GenreResultIcon {
         width: 13.89vw;
+    }
+}
+@media (max-width: 700px) {
+    .SearchResultsFilterContainer {
+        gap: 38.85px;
+        padding-bottom: 11.69px;
+    }
+
+    .SearchResultFilter {
+        font-size: 15.54px;
+    }
+
+    #AllBorder {
+        width: 17.08px;
+    }
+    #ArticlesBorder {
+        left: 56.77px;
+        width: 54.39px;
+    }
+    #AuthorsBorder {
+        left: 151.62px;
+        width: 56.77px;
+    }
+    #GenresBorder {
+        left: 248.85px;
+        width: 50.54px;
     }
 }
 @media (max-width: 600px) {
