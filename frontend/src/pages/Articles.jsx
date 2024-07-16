@@ -203,7 +203,7 @@ const ArticleGenres = () => {
                     <Genres genre={genre} setGenre={setGenre}/>
                 </div>
             </div>
-            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} numberOfResults={numberOfArticles} resultsPerPage={4}/>
+            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} numberOfResults={numberOfArticles} resultsPerPage={4} genre={genre}/>
         </div>
     )
 }
