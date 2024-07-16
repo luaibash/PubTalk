@@ -176,11 +176,11 @@ const ArticleGenres = () => {
             <div className='Title' id='GenresTitle'>
                 Explore Different Genres:
                 <span className='RevolvingWordsContainer'>
-                    <span className='RevolvingWord' style={{color: 'rgb(75, 81, 170)'}}>Technology.</span>
-                    <span className='RevolvingWord' style={{color: 'rgb(168, 169, 189)'}}>Economics.</span>
-                    <span className='RevolvingWord' style={{color: 'rgb(102, 201, 63)'}}>Science.</span>
-                    <span className='RevolvingWord' style={{color: 'rgb(236, 86, 131)'}}>Education.</span>
-                    <span className='RevolvingWord' style={{color: 'rgb(75, 81, 170)'}}>Technology.</span>
+                    <span className='RevolvingWord' style={{color: 'rgb(75, 81, 170)'}}>Technology</span>
+                    <span className='RevolvingWord' style={{color: 'rgb(168, 169, 189)'}}>Economics</span>
+                    <span className='RevolvingWord' style={{color: 'rgb(102, 201, 63)'}}>Science</span>
+                    <span className='RevolvingWord' style={{color: 'rgb(236, 86, 131)'}}>Education</span>
+                    <span className='RevolvingWord' style={{color: 'rgb(75, 81, 170)'}}>Technology</span>
                 </span>
             </div>
             <div className='ArticlesAndGenresContainer'>

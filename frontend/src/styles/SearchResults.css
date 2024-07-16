@@ -284,6 +284,10 @@
         width: 7.22vw;
     }
 
+    .ArticleResult, .AuthorResult, .GenreResult {
+        padding: 3.33vw 0;
+    }
+
     .ArticleResultContent, .AuthorResultContent, .GenreResultContent {
         gap: 4.44vw;
     }
@@ -359,6 +363,10 @@
     }
 }
 @media (max-width: 600px) {
+    .ArticleResult, .AuthorResult, .GenreResult {
+        padding: 19.98px 0;
+    }
+
     .ArticleResultContent, .AuthorResultContent, .GenreResultContent {
         gap: 26.64px;
     }
