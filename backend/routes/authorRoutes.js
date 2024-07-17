@@ -1,5 +1,6 @@
 const express = require('express');
 const {
+    getAuthorByID,
     getAuthorByName,
     getRandomAuthors,
     createAuthor,
@@ -8,6 +9,9 @@ const {
 } = require('../controllers/authorController');
 
 const router = express.Router();
+
+// GET a single author based on id
+router.get('/id/:id', getAuthorByID)
 
 // GET an author by specifying name
 router.get('/name/:name', getAuthorByName);

@@ -1,6 +1,18 @@
 const Author = require('../models/authorModel');
 const mongoose = require('mongoose');
 
+// Get a single author specified by ID
+const getAuthorByID = async(req, res) => {
+    // Retrieves id from GET request, checks if the id is within 12 bits of json, if the id is like 123 it wont work and this will trigger
+    const {id} = req.params;
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({error: 'Invalid author ID'});
+    
+    // Checks for author with id. If no author, returns an error. We need to return something as the code will continue to run if we don't
+    const author = await Author.findById(id);
+    if (!author) return res.status(404).json({error: 'no such author'});
+    else res.status(200).json(author);
+}
+
 // Get an author specified by name
 const getAuthorByName = async (req, res) => {
     // Retrieves name from GET request
@@ -76,6 +88,7 @@ const deleteAuthor = async (req, res) => {
 }
 
 module.exports = {
+    getAuthorByID,
     getAuthorByName,
     getRandomAuthors,
     createAuthor,

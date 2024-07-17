@@ -1,0 +1,9 @@
+.LoadingPage {
+    min-height: 20000px; /* Just some really high value to fill up the page until the article renders in */
+}
+
+.AuthorPagePanel {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 125px 75px;
+}
