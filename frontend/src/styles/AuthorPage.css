@@ -64,3 +64,15 @@
         padding-right: 25px;
     }
 }
+@media (max-width: 900px) {
+    #AuthorPageArticlesTitle {
+        font-size: 4vw;
+        margin-bottom: 1.11vw;
+    }
+}
+@media (max-width: 600px) {
+    #AuthorPageArticlesTitle {
+        font-size: 24px;
+        margin-bottom: 6.66px;
+    }
+}

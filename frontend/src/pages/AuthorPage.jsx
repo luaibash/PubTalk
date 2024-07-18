@@ -56,7 +56,7 @@ const AuthorArticles = ({ authorName }) => {
     const [articles, setArticles] = useState([]);
     const [numberOfArticles, setNumberOfArticles] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const resultsPerPage = 2;
+    const resultsPerPage = 10;
 
     // Create a ref to scroll to on page switch
     const articlesTitleRef = useRef(null);
