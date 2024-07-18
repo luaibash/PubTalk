@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import NotFound from './NotFound';
+import ArticleResult from '../components/ArticleResult';
 import '../styles/AuthorPage.css';
 
 // Author page that show a description of the author and their articles
@@ -44,6 +45,35 @@ const AuthorPage = () => {
                 <div className='AuthorPagePicture'/>
                 <div className='AuthorPageInfoDivider'/>
             </div>
+            <div className='Title' id='AuthorPageArticlesTitle'>
+                Articles By Author
+            </div>
+            <AuthorArticles authorName={author.name}/>
+        </div>
+    )
+}
+
+// A list of articles made by the author
+const AuthorArticles = ({ authorName }) => {
+    const [articles, setArticles] = useState([]);
+
+    // Fetches the API and finds articles from the author
+    useEffect(() => {
+        const fetchArticles = async () => {
+            const response = await fetch(`/api/articles/author/${authorName}`);
+            const json = await response.json();
+
+            if (response.ok) setArticles(json);
+        }
+
+        fetchArticles()
+    }, [authorName])
+
+    return (
+        <div className='AuthorPageArticlesContainer'>
+            {articles.map(article => {
+                return <ArticleResult key={article._id} article={article}/>;
+            })}
         </div>
     )
 }

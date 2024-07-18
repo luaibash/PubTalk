@@ -196,7 +196,7 @@ const AuthorArticles = ({ article }) => {
 
     useEffect(() => {
         const fetchArticles = async () => {
-            // Fetches the API and finds article using its id, providing a limit on articles to grab, and to exclude the current article being viewed
+            // Fetches the API and finds articles from the author, providing a limit on articles to grab, and to exclude the current article being viewed
             const articleToExclude = JSON.stringify(article);
             const response = await fetch(`/api/articles/author/${article.author}?limit=4&excludeArticle=${articleToExclude}`);
             const json = await response.json();
