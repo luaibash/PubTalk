@@ -32,7 +32,18 @@ const AuthorPage = () => {
 
     else if (author) return (
         <div className='AuthorPagePanel'>
-            {author.name}
+            <div className='AuthorPageInfoContainer'>
+                <div className='AuthorPageNameAndDescription'>
+                    <div className='AuthorPageName'>
+                        {author.name} - {author.role}
+                    </div>
+                    <div className='AuthorPageDescription'>
+                        {author.description}
+                    </div>
+                </div>
+                <div className='AuthorPagePicture'/>
+                <div className='AuthorPageInfoDivider'/>
+            </div>
         </div>
     )
 }
