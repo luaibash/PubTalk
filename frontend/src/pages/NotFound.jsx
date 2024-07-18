@@ -14,7 +14,7 @@ const NotFound = () => {
                 nothing here...
             </div>
             <div className='NotFoundText'>
-                Sorry, that article does not exist, but we can help you find other great articles to read.
+                Sorry, that page does not exist, but we can help you find other great pages to explore.
             </div>
             <div className='ErrorButton'>
                 <RedirectButton title={"Go Home"} destination={"/"}/>
