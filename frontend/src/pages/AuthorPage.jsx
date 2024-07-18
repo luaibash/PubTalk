@@ -1,6 +1,7 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState, useEffect, useRef} from 'react';
 import NotFound from './NotFound';
 import ArticleResult from '../components/ArticleResult';
+import PageScroll from '../components/PageScroll';
 import '../styles/AuthorPage.css';
 
 // Author page that show a description of the author and their articles
@@ -45,9 +46,6 @@ const AuthorPage = () => {
                 <div className='AuthorPagePicture'/>
                 <div className='AuthorPageInfoDivider'/>
             </div>
-            <div className='Title' id='AuthorPageArticlesTitle'>
-                Articles By Author
-            </div>
             <AuthorArticles authorName={author.name}/>
         </div>
     )
@@ -56,6 +54,12 @@ const AuthorPage = () => {
 // A list of articles made by the author
 const AuthorArticles = ({ authorName }) => {
     const [articles, setArticles] = useState([]);
+    const [numberOfArticles, setNumberOfArticles] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const resultsPerPage = 2;
+
+    // Create a ref to scroll to on page switch
+    const articlesTitleRef = useRef(null);
 
     // Fetches the API and finds articles from the author
     useEffect(() => {
@@ -63,17 +67,29 @@ const AuthorArticles = ({ authorName }) => {
             const response = await fetch(`/api/articles/author/${authorName}`);
             const json = await response.json();
 
-            if (response.ok) setArticles(json);
+            if (response.ok) {
+                setArticles(json);
+                setNumberOfArticles(json.length)
+            }
         }
 
         fetchArticles()
     }, [authorName])
 
+    // Calculate the articles to display for the current page
+    const startIndex = (currentPage - 1) * resultsPerPage;
+    const endIndex = startIndex + resultsPerPage;
+    const currentArticles = articles.slice(startIndex, endIndex);
+
     return (
         <div className='AuthorPageArticlesContainer'>
-            {articles.map(article => {
+            <div className='Title' id='AuthorPageArticlesTitle' ref={articlesTitleRef}>
+                Articles By Author
+            </div>
+            {currentArticles.map(article => {
                 return <ArticleResult key={article._id} article={article}/>;
             })}
+            <PageScroll currentPage={currentPage} setCurrentPage={setCurrentPage} numberOfResults={numberOfArticles} resultsPerPage={resultsPerPage} scrollRef={articlesTitleRef}/>
         </div>
     )
 }
