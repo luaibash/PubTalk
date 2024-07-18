@@ -303,6 +303,14 @@
     }
 }
 @media (max-width: 600px) {
+    #SearchResultsTitle {
+        font-size: 24px;
+    }
+
+    .SearchBarContainer {
+        margin-top: 19.98px;
+    }
+
     .AuthorResult, .GenreResult {
         padding: 19.98px 0;
     }
