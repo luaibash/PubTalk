@@ -64,6 +64,11 @@
     object-fit: cover;
     object-position: center top;
     border: solid 1px #C9C9C9;
+
+    transition: filter 0.3s;
+}
+.AuthorHeadshot:hover {
+    filter:brightness(0.9);
 }
 
 .AuthorDetails {
@@ -74,6 +79,9 @@
 .AuthorNameAndRole {
     font-size: 18px;
     font-weight: 700;
+
+    color: black;
+    text-decoration: none;
 }
 
 .AuthorDescription {

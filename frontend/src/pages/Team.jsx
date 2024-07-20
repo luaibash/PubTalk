@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import Luai from '../assets/team/LuaiBashar.png';
 import Owen from '../assets/team/OwenSkanes.png';
 import Gabe from '../assets/team/GabrielHernandez.png';
@@ -117,35 +118,39 @@ const TeamMembersLarge = () => {
     return (
         <div className='TeamMembersContainer'>
             <div className='TeamMemberColumnSlowRise'>
-                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar'/>
-                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/'/>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' id='6647faf38c00aae475e66509'/>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' id='6647fc938c00aae475e6650d'/>
             </div>
             <div className='TeamMemberColumnFastRise'>
-                <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' inverted={true}/>
-                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' inverted={true}/>
+                <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' id='6647fc658c00aae475e6650c' inverted={true}/>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' id='669b1e5779b24a6a45bfff1f' inverted={true}/>
             </div>
             <div className='TeamMemberColumnSlowRise'>
-                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/'/>
-                <TeamMember name='Alex S.' role ='Head Author' headshot={Alex}/>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' id='669b1e5779b24a6a45bfff1f'/>
+                <TeamMember name='Alex S.' role ='Head Author' headshot={Alex} id='6647fcba8c00aae475e6650e'/>
             </div>
             <div className='TeamMemberColumnFastRise'>
-                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' inverted={true}/>
-                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' inverted={true}/>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' id='6647fc938c00aae475e6650d' inverted={true}/>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' id='6647faf38c00aae475e66509' inverted={true}/>
             </div>
         </div>
     )
 }
 
 // Defines one team member card. If inverted is true, text container will be mirrored
-const TeamMember = ({name, role, headshot, link, inverted}) => {
+const TeamMember = ({name, role, headshot, link, id, inverted}) => {
+    const authorLink = name.replace(/[^\w\s]/g, '').replace(/\s+/g, '-');  // Grab author link
+
     return (
         <div className='TeamMemberContainer'>
             <div className='HeadshotContainer'>
                 <img src={headshot} alt="" className='Headshot'/>
             </div>
             <div className={!inverted ? 'TextContainer' : 'InvertedTextContainer'}>
-                <div className='MemberName'>
-                    {name}
+                <div className='MemberNameContainer'>
+                    <Link to={`/author/${authorLink}?id=${encodeURIComponent(id)}`} className='MemberName'>
+                        {name}
+                    </Link>
                 </div>
                 <div className='MemberRole'>
                     {role}

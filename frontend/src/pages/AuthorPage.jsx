@@ -81,7 +81,7 @@ const AuthorArticles = ({ authorName }) => {
     const endIndex = startIndex + resultsPerPage;
     const currentArticles = articles.slice(startIndex, endIndex);
 
-    return (
+    if (articles && articles.length > 0) return (
         <div className='AuthorPageArticlesContainer'>
             <div className='Title' id='AuthorPageArticlesTitle' ref={articlesTitleRef}>
                 Articles By Author

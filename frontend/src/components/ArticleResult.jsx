@@ -6,7 +6,9 @@ import '../styles/components/ArticleResult.css';
 const ArticleResult = ({ article }) => {
     const imageFolder = (article) ? article.title.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
     const articleLink = article.title.replace(/[^\w\s]/g, '').replace(/\s+/g, '-');  // Grab article link
+
     const [author, setAuthor] = useState(null);
+    const authorLink = article.author.replace(/[^\w\s]/g, '').replace(/\s+/g, '-');  // Grab author link
 
     // Retrieve the author object from the DB based on the author name
     useEffect(() => {
@@ -35,11 +37,11 @@ const ArticleResult = ({ article }) => {
 
     return (
         <div className='ArticleResult'>
-            <div className='ArticleResultAuthorContainer'>
-                <Link to={'/'} className='ArticleResultAuthorPicture'/>
-                {author &&  <Link to={'/'} className='ArticleResultAuthorName'>{author.name}</Link>}
-                {author && <div className='ArticleResultAuthorRole'>&nbsp;- {author.role}</div>}
-            </div>
+            {author && <div className='ArticleResultAuthorContainer'>
+                <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='ArticleResultAuthorPicture'/>
+                <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='ArticleResultAuthorName'>{author.name}</Link>
+                <div className='ArticleResultAuthorRole'>&nbsp;- {author.role}</div>
+            </div>}
             <div className='ArticleResultContentContainer'>
                 <Link to={`/articles/${articleLink}?id=${encodeURIComponent(article._id)}`} className='ArticleResultContent'>
                     <img src={require(`../assets/articleImages/${imageFolder}/Cover.png`)} alt="Article Cover" className='ArticleResultsCover'/>

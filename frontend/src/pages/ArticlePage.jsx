@@ -158,7 +158,8 @@ const OtherArticle = ({ article }) => {
 // Author details components that holds who wrote the article
 const AuthorDetails = ({ authorName }) => {
     const [author, setAuthor] = useState();
-    const authorHeadshotFolder = (authorName) ? authorName.replace(/[^a-zA-Z0-9]/g, '') : ""; // Grabs name of folder for specified article
+    const authorHeadshotFolder = (authorName) ? authorName.replace(/[^a-zA-Z0-9]/g, '') : "";        // Grabs name of folder for specified article
+    const authorLink = (authorName) ? authorName.replace(/[^\w\s]/g, '').replace(/\s+/g, '-') : "";  // Grab author link
 
     useEffect(() => {
         const fetchAuthor = async () => {
@@ -174,10 +175,14 @@ const AuthorDetails = ({ authorName }) => {
 
     if (author) return (
         <div className='AuthorContainer'>
-            <img src={require(`../assets/team/${authorHeadshotFolder}.png`)} alt="Author Headshot" className='AuthorHeadshot'/>
+            <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`}>
+                <img src={require(`../assets/team/${authorHeadshotFolder}.png`)} alt="Author Headshot" className='AuthorHeadshot'/>
+            </Link>
             <div className='AuthorDetails'>
-                <div className='AuthorNameAndRole'>
-                    {author.name} - {author.role}
+                <div>
+                    <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='AuthorNameAndRole'>
+                        {author.name} - {author.role}
+                    </Link>
                 </div>
                 <div className='AuthorDescription'>
                     {author.description}
