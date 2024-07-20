@@ -53,7 +53,7 @@ const AuthorPage = () => {
 
 // A list of articles made by the author
 const AuthorArticles = ({ authorName }) => {
-    const [articles, setArticles] = useState([]);
+    const [articles, setArticles] = useState(null);
     const [numberOfArticles, setNumberOfArticles] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const resultsPerPage = 10;
@@ -79,9 +79,11 @@ const AuthorArticles = ({ authorName }) => {
     // Calculate the articles to display for the current page
     const startIndex = (currentPage - 1) * resultsPerPage;
     const endIndex = startIndex + resultsPerPage;
-    const currentArticles = articles.slice(startIndex, endIndex);
+    const currentArticles = (articles) ? articles.slice(startIndex, endIndex) : [];
+    
+    if (!articles) return <div className='AuthorPageArticlesLoading'/>
 
-    if (articles && articles.length > 0) return (
+    else if (articles.length > 0) return (
         <div className='AuthorPageArticlesContainer'>
             <div className='Title' id='AuthorPageArticlesTitle' ref={articlesTitleRef}>
                 Articles By Author
