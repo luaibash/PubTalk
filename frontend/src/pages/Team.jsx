@@ -46,16 +46,16 @@ const TeamMembersSmall = () => {
     return (
         <div className='TeamMembersContainer'>
             <div className='TeamMemberColumnLeft'>
-                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar'/>
-                <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' inverted={true}/>
-                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/'/>
-                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' inverted={true}/>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' id='6647faf38c00aae475e66509'/>
+                <TeamMember name='Ivan Manca' role='Head Author' headshot={Ivan} link='https://www.linkedin.com/in/ivan-manca-b27b17260' id='6647fc658c00aae475e6650c' inverted={true}/>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' id='6647fc938c00aae475e6650d'/>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' id='669b1e5779b24a6a45bfff1f' inverted={true}/>
             </div>
             <div className='TeamMemberColumnRight'>
-                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' inverted={true}/>
-                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/'/>
-                <TeamMember name='Alex S.' role ='Head Author' headshot={Alex}/>
-                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar'/>
+                <TeamMember name='Gabriel Hernandez' role='Head Software Developer' headshot={Gabe} link='https://www.linkedin.com/in/gabriel-hernandez-34353b297/' id='669b1e5779b24a6a45bfff1f' inverted={true}/>
+                <TeamMember name='Owen Skanes' role='Head Author' headshot={Owen} link='https://www.linkedin.com/in/owen-skanes-06958a2a8/' id='6647fc938c00aae475e6650d'/>
+                <TeamMember name='Alex S.' role ='Head Author' headshot={Alex} id='6647fcba8c00aae475e6650e'/>
+                <TeamMember name='Luai Bashar' role ='Head Software Developer' headshot={Luai} link='https://www.linkedin.com/in/luaibashar' id='6647faf38c00aae475e66509'/>
             </div>
         </div>
     )

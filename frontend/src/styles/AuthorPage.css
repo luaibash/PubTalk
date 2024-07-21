@@ -11,7 +11,7 @@
 .AuthorPageInfoContainer {
     position: relative;
     display: flex;
-    gap: 150px;
+    justify-content: space-between;
     margin-top: 100px;
 }
 
@@ -19,11 +19,12 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
+    max-width: 800px;
 }
 
 .AuthorPageName {
     font-size: 62px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .AuthorPageDescription {
@@ -38,6 +39,7 @@
     aspect-ratio: 1;
 
     margin-top: 50px;
+    margin-left: 50px;
     
     background-color: white;
     border-radius: 100%;
@@ -62,10 +64,53 @@
     margin-bottom: 10px;
 }
 
+@media (max-width: 1330px) {
+    .AuthorPageNameAndDescription {
+        gap: 3.76vw;
+    }
+
+    .AuthorPageName {
+        font-size: 4.66vw;
+    }
+    
+    .AuthorPageDescription {
+        font-size: 1.8vw;
+    }
+
+    .AuthorPagePicture {
+        margin-top: calc(50px + (1330px - 100vw) * 0.07);
+    }
+}
 @media (max-width: 1000px) {
     .AuthorPagePanel {
         padding-left: 25px;
         padding-right: 25px;
+    }
+
+    .AuthorPageInfoContainer {
+        flex-direction: column;
+        margin-top: 50px;
+        margin-bottom: 75px;
+    }
+
+    .AuthorPageNameAndDescription {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .AuthorPageName {
+        font-size: 60px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .AuthorPageDescription {
+        font-size: 24px;
+    }
+
+    .AuthorPagePicture {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 @media (max-width: 900px) {
