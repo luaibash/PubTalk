@@ -85,6 +85,7 @@
     .AuthorPagePanel {
         padding-left: 25px;
         padding-right: 25px;
+        padding-bottom: 10vw;
     }
 
     .AuthorPageInfoContainer {
@@ -96,6 +97,7 @@
     .AuthorPageNameAndDescription {
         text-align: center;
         margin: 0 auto;
+        gap: 50px
     }
 
     .AuthorPageName {
@@ -109,11 +111,34 @@
     }
 
     .AuthorPagePicture {
-        margin-left: auto;
-        margin-right: auto;
+        margin: 70px auto 0 auto;
     }
 }
 @media (max-width: 900px) {
+    .AuthorPageInfoContainer {
+        margin-top: 5.55vw;
+        margin-bottom: 8.33vw;
+    }
+
+    .AuthorPageNameAndDescription {
+        gap: 5.55vw;
+    }
+
+    .AuthorPageName {
+        font-size: 6.66vw;
+        max-width: 77.77vw;
+    }
+    
+    .AuthorPageDescription {
+        font-size: 2.66vw;
+        max-width: 88.88vw;
+    }
+
+    .AuthorPagePicture {
+        margin-top: 7.77vw;
+        max-width: 38.88vw;
+    }
+
     #AuthorPageArticlesTitle {
         font-size: 4vw;
         margin-bottom: 1.11vw;
