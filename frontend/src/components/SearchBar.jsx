@@ -246,8 +246,10 @@ const ArticleSuggestion = ({ article }) => {
 
 // An author suggestion given in the search box
 const AuthorSuggestion = ({ author }) => {
+    const authorLink = author.name.replace(/[^\w\s]/g, '').replace(/\s+/g, '-');  // Grab author link
+
     return (
-        <div className='AuthorSuggestion'>
+        <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='AuthorSuggestion'>
             <div className='AuthorSuggestionImage'>
 
             </div>
@@ -259,7 +261,7 @@ const AuthorSuggestion = ({ author }) => {
                     {author.role}
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

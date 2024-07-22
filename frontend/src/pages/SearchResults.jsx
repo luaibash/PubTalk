@@ -120,6 +120,8 @@ const SearchResults = () => {
 }
 
 const AuthorResult = ({ author }) => {
+    const authorLink = author.name.replace(/[^\w\s]/g, '').replace(/\s+/g, '-');  // Grab author link
+
     // Takes the first two genres and returns a string to display for the article
     const formatGenres = (genres) => {
         if (genres.length === 0) return "General";       // If array is empty, return general genre
@@ -130,7 +132,7 @@ const AuthorResult = ({ author }) => {
     return (
         <div className='AuthorResult'>
             <div className='AuthorResultContentContainer'>
-                <Link to={`/`} className='AuthorResultContent'>
+                <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='AuthorResultContent'>
                     <div className='AuthorResultPictureContainer'>
                         <div className='AuthorResultPicture'/>
                     </div>
