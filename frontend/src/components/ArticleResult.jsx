@@ -38,8 +38,8 @@ const ArticleResult = ({ article }) => {
     return (
         <div className='ArticleResult'>
             {author && <div className='ArticleResultAuthorContainer'>
-                <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='ArticleResultAuthorPicture'/>
-                <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='ArticleResultAuthorName'>{author.name}</Link>
+                <Link to={`/authors/${authorLink}?id=${encodeURIComponent(author._id)}`} className='ArticleResultAuthorPicture'/>
+                <Link to={`/authors/${authorLink}?id=${encodeURIComponent(author._id)}`} className='ArticleResultAuthorName'>{author.name}</Link>
                 <div className='ArticleResultAuthorRole'>&nbsp;- {author.role}</div>
             </div>}
             <div className='ArticleResultContentContainer'>

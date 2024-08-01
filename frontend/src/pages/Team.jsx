@@ -148,7 +148,7 @@ const TeamMember = ({name, role, headshot, link, id, inverted}) => {
             </div>
             <div className={!inverted ? 'TextContainer' : 'InvertedTextContainer'}>
                 <div className='MemberNameContainer'>
-                    <Link to={`/author/${authorLink}?id=${encodeURIComponent(id)}`} className='MemberName'>
+                    <Link to={`/authors/${authorLink}?id=${encodeURIComponent(id)}`} className='MemberName'>
                         {name}
                     </Link>
                 </div>

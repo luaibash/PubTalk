@@ -175,12 +175,12 @@ const AuthorDetails = ({ authorName }) => {
 
     if (author) return (
         <div className='AuthorContainer'>
-            <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`}>
+            <Link to={`/authors/${authorLink}?id=${encodeURIComponent(author._id)}`}>
                 <img src={require(`../assets/team/${authorHeadshotFolder}.png`)} alt="Author Headshot" className='AuthorHeadshot'/>
             </Link>
             <div className='AuthorDetails'>
                 <div>
-                    <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='AuthorNameAndRole'>
+                    <Link to={`/authors/${authorLink}?id=${encodeURIComponent(author._id)}`} className='AuthorNameAndRole'>
                         {author.name} - {author.role}
                     </Link>
                 </div>

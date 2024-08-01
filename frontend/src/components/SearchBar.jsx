@@ -249,7 +249,7 @@ const AuthorSuggestion = ({ author }) => {
     const authorLink = author.name.replace(/[^\w\s]/g, '').replace(/\s+/g, '-');  // Grab author link
 
     return (
-        <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='AuthorSuggestion'>
+        <Link to={`/authors/${authorLink}?id=${encodeURIComponent(author._id)}`} className='AuthorSuggestion'>
             <div className='AuthorSuggestionImage'>
 
             </div>

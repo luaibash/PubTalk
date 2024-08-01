@@ -132,7 +132,7 @@ const AuthorResult = ({ author }) => {
     return (
         <div className='AuthorResult'>
             <div className='AuthorResultContentContainer'>
-                <Link to={`/author/${authorLink}?id=${encodeURIComponent(author._id)}`} className='AuthorResultContent'>
+                <Link to={`/authors/${authorLink}?id=${encodeURIComponent(author._id)}`} className='AuthorResultContent'>
                     <div className='AuthorResultPictureContainer'>
                         <div className='AuthorResultPicture'/>
                     </div>
