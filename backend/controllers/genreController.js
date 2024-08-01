@@ -3,11 +3,12 @@ const mongoose = require('mongoose')
 
 // Get a genre by its name
 const getGenreByName = async (req, res) => {
-    // Retrieves genre name from GET request
-    const { genreName } = req.params;
+    // Retrieves genre name from GET request, and creates regex to have search be case insensitive
+    const { name } = req.params;
+    const caseInsensitiveName = new RegExp(`^${name}$`, 'i');
 
     // Checks for genre with name.
-    const genre = await Genre.findOne({ name: genreName });
+    const genre = await Genre.findOne({ genre: caseInsensitiveName });
     if (!genre) return res.status(404).json({ message: 'Genre not found' });
     res.status(200).json(genre);
 }

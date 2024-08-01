@@ -16,7 +16,7 @@ const GenrePage = () => {
     // Fetches the API and finds genre using its name
     useEffect(() => {
         const fetchGenre = async () => {
-            const response = await fetch(`/api/genres/${genre}`);
+            const response = await fetch(`/api/genres/name/${genre}`);
             const json = await response.json();
 
             if (response.ok) setGenreObject(json);
@@ -30,17 +30,17 @@ const GenrePage = () => {
     if (notFound) return <NotFound/>;
 
     // If author has not rendered yet, fill it with a blank page with space so it doesn't snap user to top. This is because if we return nothing, only the footer will show and the page will be very small height, automatically snapping user to top of page    
-    else if (!genre) return <div className='LoadingPage'/>
+    else if (!genreObject) return <div className='LoadingPage'/>
 
     else return (
         <div className='AuthorPagePanel'>
             <div className='AuthorPageInfoContainer'>
                 <div className='AuthorPageNameAndDescription'>
                     <div className='AuthorPageName'>
-                        {genre.genre}
+                        {genreObject.genre}
                     </div>
                     <div className='AuthorPageDescription'>
-                        {genre.description}
+                        {genreObject.description}
                     </div>
                 </div>
                 <div className='AuthorPagePicture'/>
