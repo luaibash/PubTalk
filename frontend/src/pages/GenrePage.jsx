@@ -1,4 +1,5 @@
 import {React, useState, useEffect, useRef} from 'react';
+import {useParams} from 'react-router-dom';
 import NotFound from './NotFound';
 import ArticleResult from '../components/ArticleResult';
 import PageScroll from '../components/PageScroll';
@@ -6,25 +7,24 @@ import '../styles/GenrePage.css';
 
 // Genre page that shows a description of the genre and its articles
 const GenrePage = () => {
-    const [genre, setGenre] = useState(null);
+    const [genreObject, setGenreObject] = useState(null);
     const [notFound, setNotFound] = useState(false);
 
-    // Grab author id from link
-    const queryParams = new URLSearchParams(window.location.search);
-    const authorID = queryParams.get('id');
+    // Grabs the current genre from the link
+    const { genre } = useParams();
 
     // Fetches the API and finds genre using its name
     useEffect(() => {
-        const fetchAuthor = async () => {
-            const response = await fetch(`/api/authors/id/${authorID}`);
+        const fetchGenre = async () => {
+            const response = await fetch(`/api/genres/${genre}`);
             const json = await response.json();
 
-            if (response.ok) setGenre(json);
+            if (response.ok) setGenreObject(json);
             else setNotFound(true);
         }
-
-        fetchAuthor()
-    }, [authorID])
+        
+        fetchGenre();
+    }, [genre])
 
     // If link does not exist, show not found page
     if (notFound) return <NotFound/>;

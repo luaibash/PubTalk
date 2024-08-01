@@ -157,7 +157,7 @@ const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, se
     useEffect(() => {
         // Fetches the API to get 2 random articles
         const fetchRandomArticles = async () => {
-            const response = await fetch('/api/articles/random/articles?limit=2');
+            const response = await fetch('/api/articles/random?limit=2');
             const json = await response.json();
 
             if (response.ok) setRandomArticles(json);
@@ -173,7 +173,7 @@ const SearchSuggestions = ({randomArticles, setRandomArticles, randomAuthors, se
 
         // Fetches the API to get 2 random genres
         const fetchRandomGenres = async () => {
-            const response = await fetch('/api/articles/random/genres?limit=2');
+            const response = await fetch('/api/genres/random/?limit=2');
             const json = await response.json();
 
             if (response.ok) setRandomGenres(json);

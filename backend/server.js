@@ -5,6 +5,7 @@ const {syncAlgoliaPubtalkIndex} = require('./algolia/syncAlgolia');
 const setUpChangeStreams = require('./algolia/setUpChangeStreams');
 const articleRoutes = require('./routes/articleRoutes');            // Gets the routes of each GET/POST/DELETE function from articleRoutes.js
 const authorRoutes = require('./routes/authorRoutes');              // Gets the routes of each GET/POST/DELETE function from authorRoutes.js
+const genreRoutes = require('./routes/genreRoutes');                // Gets the routes of each GET/POST/DELETE function from genreRoutes.js
 const contactRoutes = require('./routes/contactRoutes');            // Gets the routes of each GET/POST/DELETE function from contactRoutes.js
 
 // Express app
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 app.use('/api/contact', contactRoutes);  // Routes for contact controller functions
 app.use('/api/articles', articleRoutes); // Routes for articles controller functions
 app.use('/api/authors', authorRoutes);   // Routes for authors controller functions
+app.use('/api/genres', genreRoutes);     // Routes for genres controller functions
 
 //connect to DB
 mongoose.connect(process.env.MONGO_URI)

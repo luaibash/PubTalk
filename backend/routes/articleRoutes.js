@@ -26,10 +26,7 @@ router.get('/recent', getRecentArticles)
 router.get('/top', getTopArticles)
 
 // GET RANDOM articles
-router.get('/random/articles', getRandomArticles)
-
-// GET RANDOM genres
-router.get('/random/genres', getRandomGenres)
+router.get('/random', getRandomArticles)
 
 // GET a single article based on id
 router.get('/id/:id', getArticleByID)
