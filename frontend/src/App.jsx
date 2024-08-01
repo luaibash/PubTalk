@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Article from './pages/Articles';
 import ArticlePage from './pages/ArticlePage';
 import AuthorPage from './pages/AuthorPage';
+import GenrePage from './pages/GenrePage';
 import SearchResults from './pages/SearchResults';
 import NotFound from './pages/NotFound';
 import './styles/App.css';
@@ -25,7 +26,8 @@ function App() {
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/articles' element={<Article/>}/>
             <Route path='/articles/:articleLink' element={<ArticlePage/>}/>
-            <Route path='/author/:authorLink' element={<AuthorPage/>}/>
+            <Route path='/authors/:authorLink' element={<AuthorPage/>}/>
+            <Route path='/genres/:genre' element={<GenrePage/>}/>
             <Route path='/search' element={<SearchResults/>}/>
             <Route path="*" element={<NotFound/>} />
           </Routes>

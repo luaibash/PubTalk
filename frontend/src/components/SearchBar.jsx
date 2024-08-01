@@ -268,7 +268,7 @@ const AuthorSuggestion = ({ author }) => {
 // A genre suggestion given in the search box
 const GenreSuggestion = ({ genre }) => {
     return (
-        <div className='GenreSuggestion'>
+        <Link to={`/genres/${genre.genre}`} className='GenreSuggestion'>
             <img src={GenreIcon} alt="Article Suggestion Icon" className='GenreSuggestionIcon' />
             <div className='GenreSuggestionDetails'>
                 <div className='SuggestionName'>
@@ -278,7 +278,7 @@ const GenreSuggestion = ({ genre }) => {
                     Genre
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

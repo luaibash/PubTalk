@@ -30,9 +30,9 @@ const AuthorPage = () => {
     if (notFound) return <NotFound/>;
 
     // If author has not rendered yet, fill it with a blank page with space so it doesn't snap user to top. This is because if we return nothing, only the footer will show and the page will be very small height, automatically snapping user to top of page    
-    else if (!author) return <div className='LoadingPage' />
+    else if (!author) return <div className='LoadingPage'/>
 
-    else if (author) return (
+    else return (
         <div className='AuthorPagePanel'>
             <div className='AuthorPageInfoContainer'>
                 <div className='AuthorPageNameAndDescription'>

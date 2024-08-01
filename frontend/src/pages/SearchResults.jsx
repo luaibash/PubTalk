@@ -176,7 +176,7 @@ const GenreResult = ({ genre }) => {
     return (
         <div className='GenreResult'>
             <div className='GenreResultContentContainer'>
-                <Link to={`/`} className='GenreResultContent'>
+                <Link to={`/genres/${genre.genre}`} className='GenreResultContent'>
                     <div className='GenreResultIconContainer'>
                         <img src={GenreIcon} alt="Genre Icon" className='GenreResultIcon'/>
                     </div>
