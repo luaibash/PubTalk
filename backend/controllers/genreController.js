@@ -22,7 +22,59 @@ const getRandomGenres = async (req, res) => {
     res.status(200).json(genres);
 }
 
+// Create a new genre
+const createGenre = async (req, res) => {
+    const { genre, description } = req.body;
+
+    // Genre and description must be provided to create a new genre
+    if (!genre || !description) return res.status(400).json({ error: 'Genre and description are required' });
+
+    try {
+        const newGenre = await Genre.create({ genre, description });
+        res.status(201).json(newGenre);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+// Update a genre
+const updateGenre = async (req, res) => {
+    const { name } = req.params;
+    const { genre, description } = req.body;
+
+    // Find the genre by name and update it
+    try {
+        const updatedGenre = await Genre.findOneAndUpdate(
+            { genre: name },
+            { genre, description },
+            { new: true }
+        );
+
+        if (!updatedGenre) return res.status(404).json({ error: 'Genre not found' });
+        res.status(200).json(updatedGenre);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+// Delete a genre
+const deleteGenre = async (req, res) => {
+    const { name } = req.params;
+
+    // Find the genre by name and delete it
+    try {
+        const deletedGenre = await Genre.findOneAndDelete({ genre: name });
+        if (!deletedGenre) return res.status(404).json({ error: 'Genre not found' });
+        res.status(200).json(deletedGenre);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 module.exports = {
     getGenreByName,
-    getRandomGenres
+    getRandomGenres,
+    createGenre,
+    updateGenre,
+    deleteGenre
 }

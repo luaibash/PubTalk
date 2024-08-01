@@ -7,7 +7,11 @@ const genreSchema = new Schema({
     genre: {
         type: String,
         required: true
-    }
+    },
+    description: {
+        type: String,
+        required: true
+    },
 });
 
 // Creates this model to be used to access the genre table in mongoDB
