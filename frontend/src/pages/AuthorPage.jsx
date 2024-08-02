@@ -35,7 +35,7 @@ const AuthorPage = () => {
     else return (
         <div className='AuthorGenrePagePanel'>
             <div className='AuthorGenrePageInfoContainer'>
-                <div className='AuthorGenrePageNameAndDescription'>
+                <div className='AuthorPageNameAndDescription'>
                     <div className='AuthorGenrePageName'>
                         {author.name} - {author.role}
                     </div>
@@ -43,8 +43,8 @@ const AuthorPage = () => {
                         {author.description}
                     </div>
                 </div>
-                <div className='AuthorGenrePagePicture'/>
-                <div className='AuthorGenrePageInfoDivider'/>
+                <div className='AuthorPagePicture'/>
+                <div className='AuthorPageInfoDivider'/>
             </div>
             <AuthorArticles authorName={author.name}/>
         </div>

@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import NotFound from './NotFound';
 import ArticleResult from '../components/ArticleResult';
 import PageScroll from '../components/PageScroll';
+import GenreIcon from '../assets/articles/GenreIcon.svg';
 import '../styles/AuthorGenrePage.css';
 
 // Genre page that shows a description of the genre and its articles
@@ -35,7 +36,7 @@ const GenrePage = () => {
     else return (
         <div className='AuthorGenrePagePanel'>
             <div className='AuthorGenrePageInfoContainer'>
-                <div className='AuthorGenrePageNameAndDescription'>
+                <div className='GenrePageNameAndDescription'>
                     <div className='AuthorGenrePageName'>
                         {genreObject.genre}
                     </div>
@@ -43,8 +44,8 @@ const GenrePage = () => {
                         {genreObject.description}
                     </div>
                 </div>
-                <div className='AuthorGenrePagePicture'/>
-                <div className='AuthorGenrePageInfoDivider'/>
+                <img src={GenreIcon} alt="GenreIcon" className='GenrePagePicture'/>
+                <div className='GenrePageInfoDivider'/>
             </div>
             <GenreArticles genre={genreObject.genre}/>
         </div>
