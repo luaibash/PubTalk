@@ -2,7 +2,7 @@ import {React, useState, useEffect, useRef} from 'react';
 import NotFound from './NotFound';
 import ArticleResult from '../components/ArticleResult';
 import PageScroll from '../components/PageScroll';
-import '../styles/AuthorPage.css';
+import '../styles/AuthorGenrePage.css';
 
 // Author page that show a description of the author and their articles
 const AuthorPage = () => {
@@ -33,18 +33,18 @@ const AuthorPage = () => {
     else if (!author) return <div className='LoadingPage'/>
 
     else return (
-        <div className='AuthorPagePanel'>
-            <div className='AuthorPageInfoContainer'>
-                <div className='AuthorPageNameAndDescription'>
-                    <div className='AuthorPageName'>
+        <div className='AuthorGenrePagePanel'>
+            <div className='AuthorGenrePageInfoContainer'>
+                <div className='AuthorGenrePageNameAndDescription'>
+                    <div className='AuthorGenrePageName'>
                         {author.name} - {author.role}
                     </div>
-                    <div className='AuthorPageDescription'>
+                    <div className='AuthorGenrePageDescription'>
                         {author.description}
                     </div>
                 </div>
-                <div className='AuthorPagePicture'/>
-                <div className='AuthorPageInfoDivider'/>
+                <div className='AuthorGenrePagePicture'/>
+                <div className='AuthorGenrePageInfoDivider'/>
             </div>
             <AuthorArticles authorName={author.name}/>
         </div>
@@ -81,11 +81,11 @@ const AuthorArticles = ({ authorName }) => {
     const endIndex = startIndex + resultsPerPage;
     const currentArticles = (articles) ? articles.slice(startIndex, endIndex) : [];
     
-    if (!articles) return <div className='AuthorPageArticlesLoading'/>
+    if (!articles) return <div className='AuthorGenrePageArticlesLoading'/>
 
     else if (articles.length > 0) return (
-        <div className='AuthorPageArticlesContainer'>
-            <div className='Title' id='AuthorPageArticlesTitle' ref={articlesTitleRef}>
+        <div className='AuthorGenrePageArticlesContainer'>
+            <div className='Title' id='AuthorGenrePageArticlesTitle' ref={articlesTitleRef}>
                 Articles By Author
             </div>
             {currentArticles.map(article => {
