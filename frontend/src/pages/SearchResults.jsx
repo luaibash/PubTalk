@@ -17,6 +17,8 @@ const SearchResults = () => {
     const [searchFilter, setSearchFilter] = useState("all");       // Holds current filter active
     const [numberOfResults, setNumberOfResults] = useState(null);  // Holds total possible number of results
     const [currentPage, setCurrentPage] = useState(1);             // Holds which number page is currently showing
+    const [oldPage, setOldPage] = useState(1);                     // Holds old page before new search trigger
+    const [oldSearch, setOldSearch] = useState(null);              // Holds old search before new search trigger
     const resultsPerPage = 10;
 
     // Grab userSearch from link
@@ -24,10 +26,9 @@ const SearchResults = () => {
     const userSearch = queryParams.get('userSearch');
 
     // Perform search with the pubtalk index and set search results
-    const runAlgoliaSearch = useCallback((newFilter = null) => {
+    const runAlgoliaSearch = useCallback((newFilter, newPage) => {
         // Grabs the filter the search is being made on for algolia to use
-        const curSearchFilter = (newFilter) ? newFilter : searchFilter;
-        const filter = (curSearchFilter === 'all') ? '' : `objectType:${curSearchFilter}`;
+        const filter = (newFilter === 'all') ? '' : `objectType:${newFilter}`;
 
         algoliaClient.search([
             {
@@ -35,7 +36,7 @@ const SearchResults = () => {
                 query: userSearch,
                 params: { 
                     hitsPerPage: resultsPerPage, // Number of results to return for one page
-                    page: (currentPage - 1),     // Sets which page of results to return
+                    page: (newPage - 1),         // Sets which page of results to return
                     filters: filter              // Filter results to be of type article/author/genre
                 }
             },
@@ -52,16 +53,30 @@ const SearchResults = () => {
     // searchFilter is not added here as a dependency because if currentPage and filter switch happen at same time, two searches will occur
     // Location added as a dependency to force a new search when a new link has been reached
     useEffect(() => {
-        runAlgoliaSearch();
-    }, [userSearch, currentPage, runAlgoliaSearch, location]);
+        // If new search, set search filter to all and run search on first page
+        if (userSearch != oldSearch) {
+            setOldSearch(userSearch);
+            setOldPage(1);              // Manually setting this value as page has not updated fast enough
+            setSearchFilter("all");
+
+            // Run search with manual values as the values have not been updated fast enough
+            runAlgoliaSearch("all", 1);
+        }
+
+        // If new page, simply run the search
+        else if (currentPage != oldPage) {
+            setOldPage(currentPage);
+            runAlgoliaSearch(searchFilter, currentPage);
+        }
+    }, [userSearch, currentPage, location, runAlgoliaSearch]);
 
     // Switch the filter to the one provided, and then run an algolia search
     const switchFilter = (filter) => {
         if (filter === searchFilter) return;
 
         setSearchFilter(filter);
-        if (currentPage === 1) runAlgoliaSearch(filter);    // Manually run search here as setting currentPage to same value won't trigger useEffect
-        else setCurrentPage(1);                             // Setting currentPage to one here will trigger the useEffect
+        if (currentPage === 1) runAlgoliaSearch(filter, currentPage);   // Manually run search here as setting currentPage to same value won't trigger useEffect
+        else setCurrentPage(1);                                         // Setting currentPage to one here will trigger the useEffect
     }
 
     return (
