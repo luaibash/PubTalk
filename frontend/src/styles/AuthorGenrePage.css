@@ -8,29 +8,26 @@
     padding: 125px 75px;
 }
 
-.AuthorPageInfoContainer {
+.AuthorPageInfoContainer, .GenrePageInfoContainer {
     position: relative;
     display: flex;
     justify-content: space-between;
     margin-top: 100px;
 }
-.GenrePageInfoContainer {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
+.AuthorPageInfoContainer {
+    margin-top: 100px;
 }
 
-.AuthorPageNameAndDescription {
+.AuthorPageNameAndDescription, .GenrePageNameAndDescription {
     display: flex;
     flex-direction: column;
-    gap: 50px;
     max-width: 800px;
 }
+.AuthorPageNameAndDescription {
+    gap: 50px;
+}
 .GenrePageNameAndDescription {
-    display: flex;
-    flex-direction: column;
     gap: 60px;
-    max-width: 800px;
     margin-top: 95px;
 }
 
@@ -70,21 +67,18 @@
     margin-top: 110px;
 }
 
-.AuthorPageInfoDivider {
+.AuthorPageInfoDivider, .GenrePageInfoDivider {
     position: absolute;
-    bottom: 50px;
     width: 100%;
     z-index: -1;
 
     border-bottom: solid 1.5px #e4e4e4;
 }
+.AuthorPageInfoDivider {
+    bottom: 50px;
+}
 .GenrePageInfoDivider {
-    position: absolute;
     bottom: 75px;
-    width: 100%;
-    z-index: -1;
-
-    border-bottom: solid 1.5px #e4e4e4;
 }
 
 .AuthorGenrePageArticlesLoading {
@@ -134,23 +128,13 @@
         padding-bottom: 10vw;
     }
 
-    .AuthorPageInfoContainer {
-        flex-direction: column;
-        margin-top: 50px;
-        margin-bottom: 75px;
-    }
-    .GenrePageInfoContainer {
+    .AuthorPageInfoContainer, .GenrePageInfoContainer {
         flex-direction: column;
         margin-top: 50px;
         margin-bottom: 75px;
     }
 
-    .AuthorPageNameAndDescription {
-        text-align: center;
-        margin: 0 auto;
-        gap: 50px
-    }
-    .GenrePageNameAndDescription {
+    .AuthorPageNameAndDescription, .GenrePageNameAndDescription {
         text-align: center;
         margin: 0 auto;
         gap: 50px
@@ -185,19 +169,12 @@
     }
 }
 @media (max-width: 900px) {
-    .AuthorPageInfoContainer {
-        margin-top: 5.55vw;
-        margin-bottom: 8.33vw;
-    }
-    .GenrePageInfoContainer {
+    .AuthorPageInfoContainer, .GenrePageInfoContainer {
         margin-top: 5.55vw;
         margin-bottom: 8.33vw;
     }
 
-    .AuthorPageNameAndDescription {
-        gap: 5.55vw;
-    }
-    .GenrePageNameAndDescription {
+    .AuthorPageNameAndDescription, .GenrePageNameAndDescription {
         gap: 5.55vw;
     }
 
