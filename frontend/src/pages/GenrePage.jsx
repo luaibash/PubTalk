@@ -35,7 +35,7 @@ const GenrePage = () => {
 
     else return (
         <div className='AuthorGenrePagePanel'>
-            <div className='AuthorGenrePageInfoContainer'>
+            <div className='GenrePageInfoContainer'>
                 <div className='GenrePageNameAndDescription'>
                     <div className='AuthorGenrePageName'>
                         {genreObject.genre}
