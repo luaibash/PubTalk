@@ -84,7 +84,7 @@ const GenreArticles = ({ genre }) => {
     
     if (!articles) return <div className='AuthorGenrePageArticlesLoading'/>
 
-    else if (articles.length == 0) return (
+    else if (articles.length === 0) return (
         <div className='AuthorGenrePageArticlesContainer'>
             <div className='Title' id='AuthorGenrePageArticlesTitle' ref={articlesTitleRef}>
                 Articles In Genre
