@@ -84,7 +84,23 @@ const GenreArticles = ({ genre }) => {
     
     if (!articles) return <div className='AuthorGenrePageArticlesLoading'/>
 
-    else if (articles.length > 0) return (
+    else if (articles.length == 0) return (
+        <div className='AuthorGenrePageArticlesContainer'>
+            <div className='Title' id='AuthorGenrePageArticlesTitle' ref={articlesTitleRef}>
+                Articles In Genre
+            </div>
+            <div className='GenrePageNoArticles'>
+                    <div className='NoSearchResults'>
+                        There are currently no articles under this genre.
+                    </div>
+                    <li className='NoSearchResultsBullet'> Search for other popular genres. </li>
+                    <li className='NoSearchResultsBullet'> Try more general genres.</li>
+                    <li className='NoSearchResultsBullet'> Look for most recent and popular articles. </li>
+            </div>
+        </div>
+    )
+
+    else return (
         <div className='AuthorGenrePageArticlesContainer'>
             <div className='Title' id='AuthorGenrePageArticlesTitle' ref={articlesTitleRef}>
                 Articles In Genre
