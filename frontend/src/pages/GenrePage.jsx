@@ -37,7 +37,7 @@ const GenrePage = () => {
         <div className='AuthorGenrePagePanel'>
             <div className='GenrePageInfoContainer'>
                 <div className='GenrePageNameAndDescription'>
-                    <div className='AuthorGenrePageName'>
+                    <div className='GenrePageName'>
                         {genreObject.genre}
                     </div>
                     <div className='AuthorGenrePageDescription'>

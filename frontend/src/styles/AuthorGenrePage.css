@@ -34,8 +34,12 @@
     margin-top: 95px;
 }
 
-.AuthorGenrePageName {
+.AuthorPageName {
     font-size: 62px;
+    font-weight: 700;
+}
+.GenrePageName {
+    font-size: 82px;
     font-weight: 700;
 }
 
@@ -62,7 +66,7 @@
     max-width: 400px;
     aspect-ratio: 1;
 
-    margin-top: 75px;
+    margin-top: 90px;
 }
 
 .AuthorPageInfoDivider {
@@ -99,7 +103,10 @@
         gap: 3.76vw;
     }
 
-    .AuthorGenrePageName {
+    .AuthorPageName {
+        font-size: 4.66vw;
+    }
+    .GenrePageName {
         font-size: 4.66vw;
     }
     
@@ -143,7 +150,12 @@
         gap: 50px
     }
 
-    .AuthorGenrePageName {
+    .AuthorPageName {
+        font-size: 60px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .GenrePageName {
         font-size: 60px;
         max-width: 700px;
         margin: 0 auto;
@@ -177,7 +189,11 @@
         gap: 5.55vw;
     }
 
-    .AuthorGenrePageName {
+    .AuthorPageName {
+        font-size: 6.66vw;
+        max-width: 77.77vw;
+    }
+    .GenrePageName {
         font-size: 6.66vw;
         max-width: 77.77vw;
     }

@@ -36,7 +36,7 @@ const AuthorPage = () => {
         <div className='AuthorGenrePagePanel'>
             <div className='AuthorPageInfoContainer'>
                 <div className='AuthorPageNameAndDescription'>
-                    <div className='AuthorGenrePageName'>
+                    <div className='AuthorPageName'>
                         {author.name} - {author.role}
                     </div>
                     <div className='AuthorGenrePageDescription'>
