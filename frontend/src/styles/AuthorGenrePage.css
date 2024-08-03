@@ -67,7 +67,7 @@
     max-width: 400px;
     aspect-ratio: 1;
 
-    margin-top: 90px;
+    margin-top: 110px;
 }
 
 .AuthorPageInfoDivider {
@@ -101,14 +101,14 @@
         gap: 3.76vw;
     }
     .GenrePageNameAndDescription {
-        gap: 3.76vw;
+        gap: 4.51vw;
     }
 
     .AuthorPageName {
         font-size: 4.66vw;
     }
     .GenrePageName {
-        font-size: 4.66vw;
+        font-size: 6.16vw;
     }
     
     .AuthorGenrePageDescription {
@@ -119,7 +119,12 @@
         margin-top: calc(80px + (1330px - 100vw) * 0.0303);
     }
     .GenrePagePicture {
-        margin-top: calc(50px + (1330px - 100vw) * 0.07);
+        margin-top: calc(110px - (1330px - 100vw) * 0.0455);
+        width: 30vw;
+    }
+
+    .GenrePageInfoDivider {
+        bottom: calc(75px - (1330px - 100vw) * 0.0606);
     }
 }
 @media (max-width: 1000px) {
@@ -158,7 +163,7 @@
         margin: 0 auto;
     }
     .GenrePageName {
-        font-size: 60px;
+        font-size: 82px;
         max-width: 700px;
         margin: 0 auto;
     }
@@ -171,7 +176,12 @@
         margin: 70px auto 0 auto;
     }
     .GenrePagePicture {
-        margin: 70px auto 0 auto;
+        width: 400px;
+        margin: 25px auto 0 auto;
+    }
+
+    .GenrePageInfoDivider {
+        bottom: 75px;
     }
 }
 @media (max-width: 900px) {
@@ -195,7 +205,7 @@
         font-size: calc(60px - (900px - 100vw) * 0.05);
     }
     .GenrePageName {
-        font-size: 6.66vw;
+        font-size: 9.11vw;
         max-width: 77.77vw;
     }
     
@@ -208,8 +218,12 @@
         max-width: 38.88vw;
     }
     .GenrePagePicture {
-        margin-top: 7.77vw;
-        max-width: 38.88vw;
+        margin-top: 2.77vw;
+        width: 44.44vw;
+    }
+
+    .GenrePageInfoDivider {
+        bottom: 8.33vw;
     }
 
     #AuthorGenrePageArticlesTitle {
