@@ -1,4 +1,5 @@
 import {React, useState, useEffect, useRef} from 'react';
+import {useParams} from 'react-router-dom';
 import NotFound from './NotFound';
 import ArticleResult from '../components/ArticleResult';
 import PageScroll from '../components/PageScroll';
@@ -9,22 +10,26 @@ const AuthorPage = () => {
     const [author, setAuthor] = useState(null);
     const [notFound, setNotFound] = useState(false);
 
-    // Grab author id from link
+    // Grab author id and name from link
     const queryParams = new URLSearchParams(window.location.search);
     const authorID = queryParams.get('id');
+
+    // Grab author name from link and convert - to white space
+    const { authorLink } = useParams();
+    const authorName = authorLink.replace(/-/g, ' ');
 
     // Fetches the API and finds author using its id
     useEffect(() => {
         const fetchAuthor = async () => {
             const response = await fetch(`/api/authors/id/${authorID}`);
             const json = await response.json();
-
-            if (response.ok) setAuthor(json);
+            
+            if (response.ok && json.name === authorName) setAuthor(json);
             else setNotFound(true);
         }
 
-        fetchAuthor()
-    }, [authorID])
+        fetchAuthor();
+    }, [authorID, authorName])
 
     // If link does not exist, show not found page
     if (notFound) return <NotFound/>;
@@ -40,7 +45,8 @@ const AuthorPage = () => {
                         {author.name} - {author.role}
                     </div>
                     <div className='AuthorGenrePageDescription'>
-                        {author.description}
+                        {/* {author.description} */}
+                        I'm Luai Bashar, an aspiring mechatronics engineer studying at McMaster University. I'm also the creator of PubTalk so I get to add cool things for myself like below!
                     </div>
                 </div>
                 <div className='AuthorPagePicture'/>
