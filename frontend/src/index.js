@@ -15,3 +15,6 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// PREREQUISITES TO RUNNING FRONTEND: First do "npm install" to install all needed libraries. Second add .env file with URI and port for server to run on
+// TO RUN THE FRONTEND: Types "npm start"

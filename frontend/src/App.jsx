@@ -14,6 +14,8 @@ import SearchResults from './pages/SearchResults';
 import NotFound from './pages/NotFound';
 import './styles/App.css';
 
+import Test from './pages/Test';
+
 function App() {
   return (
     <div className="App">
@@ -29,6 +31,7 @@ function App() {
             <Route path='/authors/:authorLink' element={<AuthorPage/>}/>
             <Route path='/genres/:genre' element={<GenrePage/>}/>
             <Route path='/search' element={<SearchResults/>}/>
+            <Route path='/test' element={<Test/>}/>
             <Route path="*" element={<NotFound/>} />
           </Routes>
         <Footer/>
