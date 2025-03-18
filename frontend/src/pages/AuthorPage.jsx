@@ -102,4 +102,12 @@ const AuthorArticles = ({ authorName }) => {
     )
 }
 
+const LuaiDetails = ({}) => {
+    return (
+        <div>
+            
+        </div>
+    )
+}
+
 export default AuthorPage;
