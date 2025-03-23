@@ -38,8 +38,8 @@ mongoose.connect(process.env.MONGO_URI)
         setUpChangeStreams(mongoose.connection);
 
         // Listen for requests
-        app.listen(process.env.PORT, () => {
-            console.log("connected to DB and listening on port", process.env.PORT);
+        app.listen(process.env.MONGO_PORT, () => {
+            console.log("connected to DB and listening on port", process.env.MONGO_PORT);
         })
     })
     .catch((error) => {
